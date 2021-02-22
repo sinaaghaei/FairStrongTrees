@@ -1,0 +1,87 @@
+Using license file /Users/sina/gurobi.lic
+Using license file /Users/sina/gurobi.lic
+Academic license - for non-commercial use only - expires 2021-04-23
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 3600.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1254 rows, 934 columns and 5353 nonzeros
+Model fingerprint: 0x49634569
+Variable types: 882 continuous, 52 integer (52 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -62.0000000
+Presolve removed 501 rows and 502 columns
+Presolve time: 0.02s
+Presolved: 753 rows, 432 columns, 4226 nonzeros
+Found heuristic solution: objective -31.0000000
+Variable types: 384 continuous, 48 integer (48 binary)
+
+Root relaxation: objective -7.105427e-15, 702 iterations, 0.03 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0   -0.00000    0    4  -31.00000   -0.00000   100%     -    0s
+H    0     0                     -24.0000000   -0.00000   100%     -    0s
+     0     0   -0.00000    0   21  -24.00000   -0.00000   100%     -    0s
+H    0     0                     -21.0000000   -0.00000   100%     -    0s
+     0     0   -0.00000    0   17  -21.00000   -0.00000   100%     -    0s
+     0     0   -0.00000    0   11  -21.00000   -0.00000   100%     -    0s
+H    0     0                     -18.0000000   -0.00000   100%     -    0s
+     0     0   -0.00000    0   12  -18.00000   -0.00000   100%     -    0s
+     0     0   -0.00000    0   11  -18.00000   -0.00000   100%     -    0s
+     0     0   -0.00000    0   11  -18.00000   -0.00000   100%     -    0s
+     0     2   -0.00000    0    6  -18.00000   -0.00000   100%     -    0s
+*   18    16              15     -17.0000000   -0.00000   100%  67.3    0s
+H   27    12                     -11.0000000   -0.00000   100%  53.0    0s
+*   31    14               5      -9.0000000   -0.00000   100%  49.0    0s
+
+Cutting planes:
+  Gomory: 4
+  MIR: 23
+  RLT: 5
+  Relax-and-lift: 2
+
+Explored 243 nodes (9663 simplex iterations) in 0.97 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 8: -9 -11 -17 ... -62
+No other solutions better than -9
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -9.000000000000e+00, best bound -9.000000000000e+00, gap 0.0000%
+
+
+
+#########node  1
+Feat_1.1
+#########node  2
+Feat_0.1
+#########node  3
+Feat_0.2
+#########node  4
+leaf 1
+#########node  5
+leaf 0
+#########node  6
+leaf 1
+#########node  7
+leaf 0
+
+
+Total Solving Time 1.106011152267456
+obj value -9.0
+Total Callback counter (Integer) 0
+Total Successful Callback counter (Integer) 0
+Total Callback Time (Integer) 0
+Total Successful Callback Time (Integer) 0
+obj value -9.0
+train acc 0.8548387096774194
+test acc 0.7741935483870968
+calibration acc 0.7419354838709677
