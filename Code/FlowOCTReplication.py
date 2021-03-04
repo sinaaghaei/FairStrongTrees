@@ -63,7 +63,7 @@ def main(argv):
 
     start_time = time.time()
     data_path = os.getcwd() + '/../DataSets/'
-    data_reg = pd.read_csv(data_path + input_file_reg, delimiter = ";")
+    data_reg = pd.read_csv(data_path + input_file_reg)
     data_enc = pd.read_csv(data_path + input_file_enc)
     '''Name of the column in the dataset representing the class label.
     In the datasets we have, we assume the label is target. Please change this value at your need'''

@@ -1,0 +1,17 @@
+Restricted license - for non-production use only - expires 2022-01-13
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 3600.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Restricted license - for non-production use only - expires 2022-01-13
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 3600.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Restricted license - for non-production use only - expires 2022-01-13
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 3600.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
