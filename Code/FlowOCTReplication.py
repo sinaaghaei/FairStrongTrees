@@ -34,7 +34,7 @@ def main(argv):
 
     try:
         opts, args = getopt.getopt(argv, "r:f:d:t:l:i:c:a:b:e:",
-                                   ["input_file_reg=", "input_file_enc", "depth=", "timelimit=", "lambda=",
+                                   ["input_file_reg=", "input_file_enc=", "depth=", "timelimit=", "lambda=",
                                     "input_sample=",
                                     "calibration=", "fairness_type=", "fairness_bound=","protected_feature="])
     except getopt.GetoptError:
