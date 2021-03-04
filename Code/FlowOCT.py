@@ -4,27 +4,30 @@ This module formulate the FlowOCT problem in gurobipy.
 
 from gurobipy import *
 import numpy as np
-
-# hello
+from itertools import combinations
 
 
 class FlowOCT:
-    def __init__(self, data, label, tree, _lambda, time_limit, fairness_type, fairness_bound, protected_feature):
+    def __init__(self, data_enc, data_reg, label, tree, _lambda, time_limit, fairness_type, fairness_bound, protected_feature):
         '''
 
-        :param data: The training data
+        :param data_enc: The encoded training data
+        :param data_reg: The original training data
         :param label: Name of the column representing the class label
         :param tree: Tree object
         :param _lambda: The regularization parameter in the objective
         :param time_limit: The given time limit for solving the MIP
-        ## New info ##
+        :param fairness_type: The fairness constraint you wish to deploy
+        :param fairness_bound: The bias bound
+        :param protected_feature: The feature where fairness is evaluated
         '''
 
-        self.data = data
-        self.datapoints = data.index
+        self.data_enc = data_enc
+        self.data_reg = data_reg
+        self.datapoints = data_enc.index
         self.label = label
 
-        self.labels = data[label].unique()
+        self.labels = data_enc[label].unique()
 
         self.fairness_type = fairness_type
         self.fairness_bound = fairness_bound
@@ -34,7 +37,7 @@ class FlowOCT:
         cat_features is the set of all categorical features. 
         reg_features is the set of all features used for the linear regression prediction model in the leaves.  
         '''
-        self.cat_features = self.data.columns[self.data.columns != self.label]
+        self.cat_features = self.data_enc.columns[self.data_enc.columns != self.label]
         # self.reg_features = None
         # self.num_of_reg_features = 1
 
@@ -115,13 +118,13 @@ class FlowOCT:
         # z[i,l(n)] <= sum(b[n,f], f if x[i,f]=0)    forall i, n in Nodes
         for i in self.datapoints:
             self.model.addConstrs(self.z[i, int(self.tree.get_left_children(n))] <= quicksum(
-                self.b[n, f] for f in self.cat_features if self.data.at[i, f] == 0) for n in self.tree.Nodes)
+                self.b[n, f] for f in self.cat_features if self.data_enc.at[i, f] == 0) for n in self.tree.Nodes)
 
         # Constraint 9h
         # z[i,r(n)] <= sum(b[n,f], f if x[i,f]=1)    forall i, n in Nodes
         for i in self.datapoints:
             self.model.addConstrs((self.z[i, int(self.tree.get_right_children(n))] <= quicksum(
-                self.b[n, f] for f in self.cat_features if self.data.at[i, f] == 1)) for n in self.tree.Nodes)
+                self.b[n, f] for f in self.cat_features if self.data_enc.at[i, f] == 1)) for n in self.tree.Nodes)
 
         # Constraint 9b
         # sum(b[n,f], f) + p[n] + sum(p[m], m in A(n)) = 1   forall n in Nodes
@@ -162,39 +165,34 @@ class FlowOCT:
         # Constraint Statistical Parity
 
         if self.fairness_type == "SP":
-            check = {}
-            for protected in self.data[self.protected_feature].unique():
-                for protected_prime in self.data[self.protected_feature].unique():
-                    if protected == protected_prime or (protected, protected_prime) in check:
-                        continue
+            for combo in combinations(self.data_reg[self.protected_feature].unique(), 2): 
+                protected = combo[0]
+                protected_prime = combo[1]
 
-                    check[(protected,protected_prime)] = 1
-                    check[(protected_prime,protected)] = 1
+                countProtected = np.count_nonzero(self.data_reg[self.protected_feature] == protected)
+                countProtected_prime = np.count_nonzero(self.data_reg[self.protected_feature] == protected_prime)
 
-                    countProtected = np.count_nonzero(self.data[self.protected_feature] == protected)
-                    countProtected_prime = np.count_nonzero(self.data[self.protected_feature] == protected_prime)
+                self.model.addConstr(self.absolute >= (1/countProtected) * quicksum(quicksum(self.zeta[i,n,1] for n in
+                                                                         self.tree.Leaves + self.tree.Nodes)
+                                                                for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected) -
+                                      (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,1] for n in
+                                                                         (self.tree.Leaves + self.tree.Nodes))
+                                                                for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected_prime))
+                self.model.addConstr(self.absolute >= (-1/countProtected) * quicksum(quicksum(self.zeta[i,n,1] for n in
+                                                                         (self.tree.Leaves + self.tree.Nodes))
+                                                                for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected) +
+                                      (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,1] for n in
+                                                                         (self.tree.Leaves + self.tree.Nodes))
+                                                                for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected_prime))
 
-                    self.model.addConstr(self.absolute >= (1/countProtected) * quicksum(quicksum(self.zeta[i,n,1] for n in
-                                                                             self.tree.Leaves + self.tree.Nodes)
-                                                                    for i in self.datapoints if self.data.at[i, self.protected_feature] == protected) -
-                                          (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,1] for n in
-                                                                             (self.tree.Leaves + self.tree.Nodes))
-                                                                    for i in self.datapoints if self.data.at[i, self.protected_feature] == protected_prime))
-                    self.model.addConstr(self.absolute >= (-1/countProtected) * quicksum(quicksum(self.zeta[i,n,1] for n in
-                                                                             (self.tree.Leaves + self.tree.Nodes))
-                                                                    for i in self.datapoints if self.data.at[i, self.protected_feature] == protected) +
-                                          (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,1] for n in
-                                                                             (self.tree.Leaves + self.tree.Nodes))
-                                                                    for i in self.datapoints if self.data.at[i, self.protected_feature] == protected_prime))
-
-                    self.model.addConstr(self.absolute <= self.fairness_bound)
+                self.model.addConstr(self.absolute <= self.fairness_bound)
 
         # define objective function
         # Max sum(sum(zeta[i,n,y(i)]))
         obj = LinExpr(0)
         for i in self.datapoints:
             for n in self.tree.Nodes + self.tree.Leaves:
-                obj.add((1 - self._lambda) * (self.zeta[i, n, self.data.at[i, self.label]] - 1))
+                obj.add((1 - self._lambda) * (self.zeta[i, n, self.data_enc.at[i, self.label]] - 1))
 
         for n in self.tree.Nodes:
             for f in self.cat_features:
