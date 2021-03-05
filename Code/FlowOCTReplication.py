@@ -172,14 +172,28 @@ def main(argv):
     # Call get_SP
 
     # Get statistical parity for all different combinations of two groups from protected feature
-    if fairness_type == "SP":    
-        for combos in combinations(data_reg[protected_feature].unique(), 2): 
+    max_sp_train_data = 0
+    max_sp_train_pred = 0
+    max_sp_test_data = 0
+    max_sp_test_pred = 0
+    max_sp_calib_data = 0
+    max_sp_calib_pred = 0
+    if fairness_type == "SP":
+        for combos in combinations(data_reg[protected_feature].unique(), 2):
             protection = combos[0]
             protection_prime = combos[1]
 
             # Print results
             print(str(protection) + " and " + str(protection_prime) + " Statistical Parity:")
-            print(get_sp(primal, data_reg, b_value, beta_value, p_value, protection, protection_prime, 'Data'))
+            tmp_sp_train_data = get_sp(primal, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, 'Data')
+            tmp_sp_train_pred = 0
+            tmp_sp_test_data = 0
+            tmp_sp_test_pred = 0
+            tmp_sp_calib_data = 0
+            tmp_sp_calib_pred = 0
+            print(tmp_sp)
+            if tmp_sp > max_sp:
+                max_sp = tmp_sp
 
     ##########################################################
     # writing info to the file
@@ -196,7 +210,7 @@ def main(argv):
              primal.model.getAttr("MIPGap") * 100, primal.model.getAttr("NodeCount"), solving_time,
              primal.model._total_callback_time_integer, primal.model._total_callback_time_integer_success,
              primal.model._callback_counter_integer, primal.model._callback_counter_integer_success,
-             test_acc, calibration_acc, input_sample])
+             test_acc, calibration_acc, input_sample, max_sp_train_data, max_sp_train_pred,max_sp_test_data,max_sp_test_pred,max_sp_calib_data,max_sp_calib_pred])
 
 if __name__ == "__main__":
     main(sys.argv[1:])

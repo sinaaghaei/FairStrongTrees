@@ -1,0 +1,109 @@
+Using license file /Users/sina/gurobi.lic
+Academic license - for non-commercial use only - expires 2021-04-23
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 83786 rows, 65203 columns and 592434 nonzeros
+Model fingerprint: 0x8ed60df0
+Variable types: 65136 continuous, 67 integer (67 binary)
+Coefficient statistics:
+  Matrix range     [6e-04, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+00]
+Found heuristic solution: objective -21707.00000
+Presolve removed 35159 rows and 35146 columns (presolve time = 5s) ...
+Presolve removed 35153 rows and 35140 columns
+Presolve time: 6.43s
+Presolved: 48633 rows, 30063 columns, 312684 nonzeros
+Variable types: 30000 continuous, 63 integer (63 binary)
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    1.3790000e+03   5.945439e+03   0.000000e+00      9s
+    3067    1.8976746e+04   0.000000e+00   0.000000e+00     10s
+
+Root relaxation: objective 1.897675e+04, 3067 iterations, 0.99 seconds
+Total elapsed time = 9.68s
+Total elapsed time = 10.75s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -18976.746    0    8 -21707.000 -18976.746  12.6%     -   12s
+H    0     0                    -19966.00000 -18976.746  4.95%     -   12s
+     0     0 -18976.746    0   15 -19966.000 -18976.746  4.95%     -   12s
+     0     0 -18976.746    0   19 -19966.000 -18976.746  4.95%     -   13s
+     0     0 -18976.746    0    5 -19966.000 -18976.746  4.95%     -   14s
+     0     0 -18976.746    0    5 -19966.000 -18976.746  4.95%     -   15s
+     0     0 -18976.746    0    7 -19966.000 -18976.746  4.95%     -   15s
+     0     0 -18976.746    0    7 -19966.000 -18976.746  4.95%     -   15s
+     0     0 -18976.746    0    8 -19966.000 -18976.746  4.95%     -   15s
+     0     0 -18976.746    0    7 -19966.000 -18976.746  4.95%     -   15s
+     0     0 -18976.746    0    7 -19966.000 -18976.746  4.95%     -   18s
+H    0     0                    -19876.04000 -18976.746  4.52%     -   18s
+     0     0 -18976.746    0   19 -19876.040 -18976.746  4.52%     -   18s
+     0     0 -18976.746    0    7 -19876.040 -18976.746  4.52%     -   21s
+     0     0 -18976.746    0    7 -19876.040 -18976.746  4.52%     -   22s
+     0     2 -18976.746    0    7 -19876.040 -18976.746  4.52%     -   23s
+     2     4 -18976.746    1    7 -19876.040 -18976.746  4.52%   539   25s
+H   28    22                    -19782.04000 -18976.746  4.07%   325   27s
+*   40    28              26    -19673.36716 -18976.746  3.54%   305   29s
+    48    28 -18976.746    3    9 -19673.367 -18976.746  3.54%   285   30s
+H   54    32                    -19672.60694 -18976.746  3.54%   274   31s
+H   70    48                    -19669.04000 -18976.746  3.52%   260   32s
+H   82    52                    -19655.04000 -18976.746  3.45%   272   33s
+   104    56 -19263.400   18    5 -19655.040 -18976.746  3.45%   263   35s
+H  162    54                    -19582.44932 -18976.746  3.09%   248   38s
+   187    63 -19386.005   17    3 -19582.449 -18976.746  3.09%   233   40s
+   227    89 -19566.924   35    5 -19582.449 -18976.746  3.09%   241   45s
+H  309   119                    -19561.83287 -18976.746  2.99%   222   50s
+   358   139 -18977.408    7    9 -19561.833 -18976.746  2.99%   218   55s
+
+Cutting planes:
+  MIR: 10
+  Flow cover: 13
+  RLT: 3
+  Relax-and-lift: 1
+
+Explored 385 nodes (101654 simplex iterations) in 60.07 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 9: -19561.8 -19655 -19669 ... -21707
+
+Time limit reached
+Best objective -1.956183286628e+04, best bound -1.897674621118e+04, gap 2.9910%
+
+
+
+#########node  1
+age_factor.1
+#########node  2
+age_factor.3
+#########node  3
+priors_count.1
+#########node  4
+leaf 1
+#########node  5
+leaf 2
+#########node  6
+leaf 2
+#########node  7
+leaf 1
+
+
+Total Solving Time 93.18290996551514
+obj value -19561.83286627695
+Total Callback counter (Integer) 0
+Total Successful Callback counter (Integer) 0
+Total Callback Time (Integer) 0
+Total Successful Callback Time (Integer) 0
+obj value -19561.83286627695
+train acc 0.7162205740083843
+test acc 0.7414128321451717
+calibration acc 0.7185863874345549
+6 and 2 Statistical Parity:
