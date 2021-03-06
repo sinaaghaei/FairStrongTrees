@@ -94,7 +94,7 @@ def get_predicted_value(grb_model, local_data, b, beta, p, i):
             else:  # going left on the branch
                 current = tree.get_left_children(current)
 
-def get_sp(grb_model, local_data, b, beta, p, protectedGroup, protectedGroup_prime, source):
+def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup, protectedGroup_prime, positive_class, source):
     '''
         This function returns the statistical parity for a given combination of the protected feature
         :param grb_model: The gurobi model we solved
@@ -114,9 +114,9 @@ def get_sp(grb_model, local_data, b, beta, p, protectedGroup, protectedGroup_pri
     protected_feature = grb_model.protected_feature
 
     # Create dataframe for the protected group only, then count how many rows exist
-    countProtected = np.count_nonzero(local_data[protected_feature] == protectedGroup)
+    countProtected = np.count_nonzero(local_data_reg[protected_feature] == protectedGroup)
     # Create dataframe for the protected group prime only, then count how many rows exist
-    countProtected_prime = np.count_nonzero(local_data[protected_feature] == protectedGroup_prime)
+    countProtected_prime = np.count_nonzero(local_data_reg[protected_feature] == protectedGroup_prime)
 
     # Looking at the statistical parity for the true label between groups
     # Akin to looking at data bias
@@ -126,13 +126,13 @@ def get_sp(grb_model, local_data, b, beta, p, protectedGroup, protectedGroup_pri
 
         # For our purposes, we only want to look at values of protected group and non-protected group hence
         # we are creating 2 new df's with only the groups of interest
-        df_protected = local_data.loc[local_data[protected_feature] == protectedGroup]
-        df_protected_prime = local_data.loc[local_data[protected_feature] == protectedGroup_prime]
+        df_protected = local_data_reg.loc[local_data_reg[protected_feature] == protectedGroup]
+        df_protected_prime = local_data_reg.loc[local_data_reg[protected_feature] == protectedGroup_prime]
 
         # Let's count number of positive values from protected group, then divide by the total to get the SP for
         # both groups
-        sp_protected = (1/countProtected) * df_protected.loc[df_protected[label] == 1].count()[label]
-        sp_protected_prime = (1/countProtected_prime) * df_protected_prime.loc[df_protected_prime[label] == 1].count()[label]
+        sp_protected = (1/countProtected) * df_protected.loc[df_protected[label] == positive_class].count()[label]
+        sp_protected_prime = (1/countProtected_prime) * df_protected_prime.loc[df_protected_prime[label] == positive_class].count()[label]
 
         # Return SP between two groups
         return abs(sp_protected - sp_protected_prime)
@@ -142,20 +142,20 @@ def get_sp(grb_model, local_data, b, beta, p, protectedGroup, protectedGroup_pri
     elif source == "Predictions":
 
         # First, let's get all the predicted values
-        for i in local_data.index:
-            yhat_i = get_predicted_value(grb_model, local_data, b, beta, p, i)
+        for i in local_data_reg.index:
+            yhat_i = get_predicted_value(grb_model, local_data_enc, b, beta, p, i)
 
         # Let's modify the dataframe to ensure we have a column with the predicted values
-        modified_data = local_data
+        modified_data = local_data_reg
         modified_data['Predictions'] = yhat_i
 
         # Let's take a look at the protected group and non-protected group here, so we can create two new df's
-        df_protected_predictions = local_data.loc[local_data[protected_feature] == protectedGroup]
-        df_protected_prime_predictions = local_data.loc[local_data[protected_feature] == protectedGroup_prime]
+        df_protected_predictions = modified_data.loc[modified_data[protected_feature] == protectedGroup]
+        df_protected_prime_predictions = modified_data.loc[modified_data[protected_feature] == protectedGroup_prime]
 
         # Define statistical parity for both groups
-        sp_protected_predictions = (1 / countProtected) * df_protected_predictions.loc[df_protected_predictions['Predictions'] == 1].count()['Predictions']
-        sp_protected_prime_predictions = (1 / countProtected_prime) * df_protected_prime_predictions.loc[df_protected_prime_predictions['Predictions'] == 1].count()['Predictions']
+        sp_protected_predictions = (1 / countProtected) * len(df_protected_predictions.loc[df_protected_predictions['Predictions'] == positive_class].index)
+        sp_protected_prime_predictions = (1 / countProtected_prime) * len(df_protected_prime_predictions.loc[df_protected_prime_predictions['Predictions'] == positive_class].index)
 
         # Return sp between both groups
         return abs(sp_protected_predictions - sp_protected_prime_predictions)

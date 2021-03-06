@@ -8,7 +8,7 @@ from itertools import combinations
 
 
 class FlowOCT:
-    def __init__(self, data_enc, data_reg, label, tree, _lambda, time_limit, fairness_type, fairness_bound, protected_feature):
+    def __init__(self, data_enc, data_reg, label, tree, _lambda, time_limit, fairness_type, fairness_bound, protected_feature, positive_class):
         '''
 
         :param data_enc: The encoded training data
@@ -32,6 +32,7 @@ class FlowOCT:
         self.fairness_type = fairness_type
         self.fairness_bound = fairness_bound
         self.protected_feature = protected_feature
+        self.positive_class = positive_class
 
         '''
         cat_features is the set of all categorical features. 
@@ -172,16 +173,16 @@ class FlowOCT:
                 countProtected = np.count_nonzero(self.data_reg[self.protected_feature] == protected)
                 countProtected_prime = np.count_nonzero(self.data_reg[self.protected_feature] == protected_prime)
 
-                self.model.addConstr(self.absolute >= (1/countProtected) * quicksum(quicksum(self.zeta[i,n,1] for n in
+                self.model.addConstr(self.absolute >= (1/countProtected) * quicksum(quicksum(self.zeta[i,n, self.positive_class] for n in
                                                                          self.tree.Leaves + self.tree.Nodes)
                                                                 for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected) -
-                                      (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,1] for n in
+                                      (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
                                                                          (self.tree.Leaves + self.tree.Nodes))
                                                                 for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected_prime))
-                self.model.addConstr(self.absolute >= (-1/countProtected) * quicksum(quicksum(self.zeta[i,n,1] for n in
+                self.model.addConstr(self.absolute >= (-1/countProtected) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
                                                                          (self.tree.Leaves + self.tree.Nodes))
                                                                 for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected) +
-                                      (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,1] for n in
+                                      (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
                                                                          (self.tree.Leaves + self.tree.Nodes))
                                                                 for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected_prime))
 
