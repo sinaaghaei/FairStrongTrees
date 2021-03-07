@@ -166,13 +166,17 @@ class FlowOCT:
         # Constraint Statistical Parity
 
         if self.fairness_type == "SP":
+
+            # Loop through all possible combinations of the protected feature
             for combo in combinations(self.data_reg[self.protected_feature].unique(), 2): 
                 protected = combo[0]
                 protected_prime = combo[1]
 
+                # Count how many samples correspond to each protected feature
                 countProtected = np.count_nonzero(self.data_reg[self.protected_feature] == protected)
                 countProtected_prime = np.count_nonzero(self.data_reg[self.protected_feature] == protected_prime)
 
+                # Sum(Sum(zeta(i,n,positive_class) for n in nodes) for i in datapoints) * 1 / (Count of Protected)
                 self.model.addConstr(self.absolute >= (1/countProtected) * quicksum(quicksum(self.zeta[i,n, self.positive_class] for n in
                                                                          self.tree.Leaves + self.tree.Nodes)
                                                                 for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected) -
@@ -186,6 +190,7 @@ class FlowOCT:
                                                                          (self.tree.Leaves + self.tree.Nodes))
                                                                 for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected_prime))
 
+                # Ensure absolute value is linearized
                 self.model.addConstr(self.absolute <= self.fairness_bound)
 
         # define objective function

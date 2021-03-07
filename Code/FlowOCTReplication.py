@@ -178,12 +178,16 @@ def main(argv):
 
     # Get statistical parity for all different combinations of two groups from protected feature
     if fairness_type == "SP" or fairness_type == "None":
+
+        # Define variables for maximum statistical parity for each dataset
         max_sp_train_data = 0
         max_sp_train_pred = 0
         max_sp_test_data = 0
         max_sp_test_pred = 0
         max_sp_calib_data = 0
         max_sp_calib_pred = 0
+
+        # Loop through all possible combinations of the protected feature
         for combos in combinations(data_reg[protected_feature].unique(), 2):
             protection = combos[0]
             protection_prime = combos[1]
@@ -192,6 +196,7 @@ def main(argv):
             # print(str(protection) + " and " + str(protection_prime) + " Statistical Parity:")
 
             # Let's construct the max SP for train, test, and calibration
+            # We use an if statement to determine if there is a higher maximum
             sp_train_data = get_sp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Data')
             if sp_train_data >= max_sp_train_data:
                 max_sp_train_data = sp_train_data
@@ -228,6 +233,7 @@ def main(argv):
                max_sp_calib_pred_protection = protection
                max_sp_calib_pred_protection_prime = protection_prime
 
+        # Print all maximum values with the corresponding protected varibles 
         print(str(max_sp_train_data_protection) + " & " + str(max_sp_train_data_protection_prime) + " has train data SP: " + str(max_sp_train_data))
         print(str(max_sp_train_pred_protection) + " & " + str(max_sp_train_pred_protection_prime) + " has train pred SP: " + str(max_sp_train_pred))
         print(str(max_sp_test_data_protection) + " & " + str(max_sp_test_data_protection_prime) + " has test data SP: " + str(max_sp_test_data))
