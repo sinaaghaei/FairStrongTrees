@@ -217,7 +217,7 @@ class FlowOCT:
                                                                 for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected) -
                                       (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
                                                                          (self.tree.Leaves + self.tree.Nodes))
-                                                                for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected_prime)) >= -1*self.fairness_bound)
+                                                                for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected_prime)) >= -*self.fairness_bound)
 
 
         # define objective function

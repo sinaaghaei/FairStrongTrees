@@ -239,6 +239,10 @@ def main(argv):
         print(str(max_sp_calib_data_protection) + " & " + str(max_sp_calib_data_protection_prime) + " has calibration data SP: " + str(max_sp_calib_data))
         print(str(max_sp_calib_pred_protection) + " & " + str(max_sp_calib_pred_protection_prime) + " has calibration pred SP: " + str(max_sp_calib_pred))
 
+        for combo in combinations(data_train_reg[protected_feature].unique(),2):
+            print(str(combo[0]) + "&" + str(combo[1]))
+            print(get_sp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, combo[0], combo[1], positive_class, 'Predictions'))
+
     ##########################################################
     # writing info to the file
     ##########################################################
