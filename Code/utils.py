@@ -146,9 +146,11 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
         for i in local_data_reg.index:
             yhat.append(get_predicted_value(grb_model, local_data_enc, b, beta, p, i))
 
+
         # Let's modify the dataframe to ensure we have a column with the predicted values
         modified_data = local_data_reg
         modified_data['Predictions'] = yhat
+        # import pdb; pdb.set_trace()
 
         # Let's take a look at the protected group and non-protected group here, so we can create two new df's
         df_protected_predictions = modified_data.loc[modified_data[protected_feature] == protectedGroup]
