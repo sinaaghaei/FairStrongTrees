@@ -160,8 +160,6 @@ def main(argv):
     over training, test and the calibration set
     '''
     train_acc = test_acc = calibration_acc = 0
-    train_mae = test_mae = calibration_mae = 0
-    train_r_squared = test_r_squared = calibration_r_squared = 0
 
     train_acc = get_acc(primal, data_train_enc, b_value, beta_value, p_value)
     test_acc = get_acc(primal, data_test_enc, b_value, beta_value, p_value)
@@ -233,7 +231,7 @@ def main(argv):
                max_sp_calib_pred_protection = protection
                max_sp_calib_pred_protection_prime = protection_prime
 
-        # Print all maximum values with the corresponding protected varibles 
+        # Print all maximum values with the corresponding protected varibles
         print(str(max_sp_train_data_protection) + " & " + str(max_sp_train_data_protection_prime) + " has train data SP: " + str(max_sp_train_data))
         print(str(max_sp_train_pred_protection) + " & " + str(max_sp_train_pred_protection_prime) + " has train pred SP: " + str(max_sp_train_pred))
         print(str(max_sp_test_data_protection) + " & " + str(max_sp_test_data_protection_prime) + " has test data SP: " + str(max_sp_test_data))

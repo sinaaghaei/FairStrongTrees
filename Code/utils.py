@@ -142,12 +142,13 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
     elif source == "Predictions":
 
         # First, let's get all the predicted values
+        yhat = []
         for i in local_data_reg.index:
-            yhat_i = get_predicted_value(grb_model, local_data_enc, b, beta, p, i)
+            yhat.append(get_predicted_value(grb_model, local_data_enc, b, beta, p, i))
 
         # Let's modify the dataframe to ensure we have a column with the predicted values
         modified_data = local_data_reg
-        modified_data['Predictions'] = yhat_i
+        modified_data['Predictions'] = yhat
 
         # Let's take a look at the protected group and non-protected group here, so we can create two new df's
         df_protected_predictions = modified_data.loc[modified_data[protected_feature] == protectedGroup]
@@ -185,71 +186,3 @@ def get_acc(grb_model, local_data, b, beta, p):
 
     acc = acc / len(local_data.index)
     return acc
-
-
-def get_mae(grb_model, local_data, b, beta, p):
-    '''
-    This function returns the MAE for a given dataset
-    :param grb_model: The gurobi model we solved
-    :param local_data: The dataset we want to compute accuracy for
-    :param b: The value of decision variable b
-    :param beta: The value of decision variable beta
-    :param p: The value of decision variable p
-    :return: The MAE
-    '''
-    label = grb_model.label
-    err = 0
-    for i in local_data.index:
-        yhat_i = get_predicted_value(grb_model, local_data, b, beta, p, i)
-        y_i = local_data.at[i, label]
-        err += abs(yhat_i - y_i)
-
-    err = err / len(local_data.index)
-    return err
-
-
-def get_mse(grb_model, local_data, b, beta, p):
-    '''
-    This function returns the MSE for a given dataset
-    :param grb_model: The gurobi model we solved
-    :param local_data: The dataset we want to compute accuracy for
-    :param b: The value of decision variable b
-    :param beta: The value of decision variable beta
-    :param p: The value of decision variable p
-    :return: The MSE
-    '''
-    label = grb_model.label
-    err = 0
-    for i in local_data.index:
-        yhat_i = get_predicted_value(grb_model, local_data, b, beta, p, i)
-        y_i = local_data.at[i, label]
-        err += np.power(yhat_i - y_i, 2)
-
-    err = err / len(local_data.index)
-    return err
-
-
-def get_r_squared(grb_model, local_data, b, beta, p):
-    '''
-    This function returns the R^2 for a given dataset
-    :param grb_model: The gurobi model we solved
-    :param local_data: The dataset we want to compute accuracy for
-    :param b: The value of decision variable b
-    :param beta: The value of decision variable beta
-    :param p: The value of decision variable p
-    :return: The R^2
-    '''
-    label = grb_model.label
-    R_squared = 0
-    y_bar = local_data[label].mean()
-    # print(y_bar)
-    SS_Residuals = 0
-    SS_Total = 0
-    for i in local_data.index:
-        yhat_i = get_predicted_value(grb_model, local_data, b, beta, p, i)
-        y_i = local_data.at[i, label]
-        SS_Residuals += np.power(yhat_i - y_i, 2)
-        SS_Total += np.power(y_bar - y_i, 2)
-
-    R_squared = 1 - SS_Residuals / SS_Total
-    return R_squared
