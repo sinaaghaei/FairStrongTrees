@@ -7,7 +7,7 @@ datasets = ["monk1.csv", 'monk1_enc.csv', 'monk2_enc.csv', 'monk3_enc.csv', 'car
             'compas.csv', 'compas_enc.csv']
 samples = [1, 2, 3, 4, 5]
 
-FlowOCTReplication.main(["-r", "compas.csv", "-f", 'compas_enc.csv', "-d", 2, "-t", 300, "-l", 0, "-i", 1, "-c", 1, "-a", 'SP', "-b", 0.001, "-e", 'race_factor', "-g", 2])
+FlowOCTReplication.main(["-r", "compas.csv", "-f", 'compas_enc.csv', "-d", 2, "-t", 300, "-l", 0, "-i", 1, "-c", 1, "-a", 'SP', "-b", 1/50, "-e", 'race_factor', "-g", 2])
 
 # for s in samples:
 #     for fairness_type in ["SP","None"]:
