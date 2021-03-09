@@ -102,6 +102,7 @@ class FlowOCT:
         # z[i,n] is the incoming flow to node n for datapoint i to terminal node k
         self.z = self.model.addVars(self.datapoints, self.tree.Nodes + self.tree.Leaves, vtype=GRB.CONTINUOUS, lb=0,
                                     name='z')
+
         # if self.fairness_type == 'SP':
         #     self.absolute = self.model.addVar(vtype=GRB.CONTINUOUS, lb=0, name='absolute')
 
@@ -204,20 +205,24 @@ class FlowOCT:
                 countProtected = np.count_nonzero(self.data_reg[self.protected_feature] == protected)
                 countProtected_prime = np.count_nonzero(self.data_reg[self.protected_feature] == protected_prime)
 
+
+                protected_df = self.data_reg.loc[self.data_reg[self.protected_feature] == protected]
+                protected_prime_df = self.data_reg.loc[self.data_reg[self.protected_feature] == protected_prime]
+
                 # Sum(Sum(zeta(i,n,positive_class) for n in nodes) for i in datapoints) * 1 / (Count of Protected)
-                self.model.addConstr(((1/countProtected) * quicksum(self.zeta[i,n, self.positive_class] for n in
-                                                                         (self.tree.Leaves + self.tree.Nodes)
-                                                                for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected) -
-                                      (1/countProtected_prime) * quicksum(self.zeta[i,n,self.positive_class] for n in
-                                                                         (self.tree.Leaves + self.tree.Nodes)
-                                                                for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected_prime)) <= self.fairness_bound)
+                self.model.addConstr(((1/countProtected) * quicksum(quicksum(self.zeta[i,n, self.positive_class] for n in
+                                                                         self.tree.Leaves + self.tree.Nodes)
+                                                                for i in protected_df.index) -
+                                      ((1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
+                                                                         self.tree.Leaves + self.tree.Nodes)
+                                                                for i in protected_prime_df.index))) <= self.fairness_bound)
 
                 self.model.addConstr(((1/countProtected) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
                                                                          (self.tree.Leaves + self.tree.Nodes))
-                                                                for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected)) -
-                                      (1/countProtected_prime) * quicksum(self.zeta[i,n,self.positive_class] for n in
-                                                                         (self.tree.Leaves + self.tree.Nodes)
-                                                                for i in self.datapoints if self.data_reg.at[i, self.protected_feature] == protected_prime) >= -1*self.fairness_bound)
+                                                                for i in protected_df.index)) - (
+                                      (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
+                                                                         self.tree.Leaves + self.tree.Nodes)
+                                                                for i in protected_prime_df.index)) >= -1*self.fairness_bound)
 
 
         # define objective function
