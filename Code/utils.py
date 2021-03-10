@@ -131,9 +131,13 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
 
         # Let's count number of positive values from protected group, then divide by the total to get the SP for
         # both groups
-        sp_protected = (1/countProtected) * df_protected.loc[df_protected[label] == positive_class].count()[label]
-        sp_protected_prime = (1/countProtected_prime) * df_protected_prime.loc[df_protected_prime[label] == positive_class].count()[label]
-
+        if countProtected != 0 and countProtected_prime != 0:
+            sp_protected = (1/countProtected) * df_protected.loc[df_protected[label] == positive_class].count()[label]
+            sp_protected_prime = (1/countProtected_prime) * df_protected_prime.loc[df_protected_prime[label] == positive_class].count()[label]
+        else:
+            sp_protected = 0
+            sp_protected_prime = 0
+            
         # Return SP between two groups
         return abs(sp_protected - sp_protected_prime)
 
@@ -156,9 +160,12 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
         df_protected_prime_predictions = local_data_reg.loc[local_data_reg[protected_feature] == protectedGroup_prime]
 
         # Define statistical parity for both groups
-        sp_protected_predictions = (1 / countProtected) * np.count_nonzero(df_protected_predictions['Predictions'] == positive_class)
-        sp_protected_prime_predictions = (1 / countProtected_prime) * np.count_nonzero(df_protected_prime_predictions['Predictions'] == positive_class)
-
+        if countProtected != 0 and countProtected_prime != 0:
+            sp_protected_predictions = (1 / countProtected) * np.count_nonzero(df_protected_predictions['Predictions'] == positive_class)
+            sp_protected_prime_predictions = (1 / countProtected_prime) * np.count_nonzero(df_protected_prime_predictions['Predictions'] == positive_class)
+        else:
+            sp_protected_predictions = 0
+            sp_protected_prime_predictions = 0
         # Return sp between both groups
         return abs(sp_protected_predictions - sp_protected_prime_predictions)
 
