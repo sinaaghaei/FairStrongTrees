@@ -546,3 +546,771 @@ calibration acc 1.0
 2 & 1 has calibration pred SP: 0
 1&2
 0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 124 rows, 165 columns and 638 nonzeros
+Model fingerprint: 0x2187c43d
+Variable types: 98 continuous, 67 integer (67 binary)
+Coefficient statistics:
+  Matrix range     [5e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [2e-02, 1e+00]
+Found heuristic solution: objective -28.0000000
+Presolve removed 65 rows and 101 columns
+Presolve time: 0.00s
+Presolved: 59 rows, 64 columns, 277 nonzeros
+Variable types: 37 continuous, 27 integer (27 binary)
+
+Root relaxation: objective -2.400000e+01, 47 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  -24.00000    0    2  -28.00000  -24.00000  14.3%     -    0s
+H    0     0                     -25.0000000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    4  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    4  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+     0     2  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+*   11     1               4     -24.0000000  -24.00000  0.00%   5.2    0s
+
+Cutting planes:
+  Gomory: 1
+  MIR: 6
+  Flow cover: 3
+  Relax-and-lift: 2
+
+Explored 12 nodes (123 simplex iterations) in 0.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 3: -24 -25 -28 
+No other solutions better than -24
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -2.400000000000e+01, best bound -2.400000000000e+01, gap 0.0000%
+
+
+
+#########node  1
+age_factor.1
+#########node  2
+crime_factor.1
+#########node  3
+gender_factor.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 0.05208086967468262
+obj value -24.0
+Total Callback counter (Integer) 0
+Total Successful Callback counter (Integer) 0
+Total Callback Time (Integer) 0
+Total Successful Callback Time (Integer) 0
+obj value -24.0
+train acc 1.0
+test acc 0.3333333333333333
+calibration acc 0.3333333333333333
+2 & 1 has train data SP: 0.0
+2 & 1 has train pred SP: 0.0
+2 & 1 has test data SP: 0
+6 & 1 has test pred SP: 0.5
+2 & 1 has calibration data SP: 0
+6 & 2 has calibration pred SP: 0.5
+1&2
+0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 124 rows, 165 columns and 638 nonzeros
+Model fingerprint: 0xa2ce2432
+Variable types: 98 continuous, 67 integer (67 binary)
+Coefficient statistics:
+  Matrix range     [5e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+00]
+Found heuristic solution: objective -28.0000000
+Presolve removed 54 rows and 91 columns
+Presolve time: 0.00s
+Presolved: 70 rows, 74 columns, 343 nonzeros
+Variable types: 47 continuous, 27 integer (27 binary)
+
+Root relaxation: objective -2.400000e+01, 38 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  -24.00000    0    4  -28.00000  -24.00000  14.3%     -    0s
+H    0     0                     -26.0000000  -24.00000  7.69%     -    0s
+H    0     0                     -25.0000000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     2  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+*   35     4               8     -24.0000000  -24.00000  0.00%   5.2    0s
+
+Cutting planes:
+  Gomory: 3
+  MIR: 1
+
+Explored 36 nodes (238 simplex iterations) in 0.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 4: -24 -25 -26 -28 
+No other solutions better than -24
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -2.400000000000e+01, best bound -2.400000000000e+01, gap 0.0000%
+
+
+
+#########node  1
+race_factor.2
+#########node  2
+two_year_recid.0
+#########node  3
+crime_factor.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 2
+#########node  7
+leaf 1
+
+
+Total Solving Time 0.047300100326538086
+obj value -24.0
+Total Callback counter (Integer) 0
+Total Successful Callback counter (Integer) 0
+Total Callback Time (Integer) 0
+Total Successful Callback Time (Integer) 0
+obj value -24.0
+train acc 1.0
+test acc 1.0
+calibration acc 1.0
+2 & 1 has train data SP: 0.0
+2 & 1 has train pred SP: 0.0
+2 & 1 has test data SP: 0
+2 & 1 has test pred SP: 0
+2 & 1 has calibration data SP: 0
+2 & 1 has calibration pred SP: 0
+1&2
+0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 124 rows, 165 columns and 638 nonzeros
+Model fingerprint: 0xa2ce2432
+Variable types: 98 continuous, 67 integer (67 binary)
+Coefficient statistics:
+  Matrix range     [5e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+00]
+Found heuristic solution: objective -28.0000000
+Presolve removed 54 rows and 91 columns
+Presolve time: 0.00s
+Presolved: 70 rows, 74 columns, 343 nonzeros
+Variable types: 47 continuous, 27 integer (27 binary)
+
+Root relaxation: objective -2.400000e+01, 38 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  -24.00000    0    4  -28.00000  -24.00000  14.3%     -    0s
+H    0     0                     -26.0000000  -24.00000  7.69%     -    0s
+H    0     0                     -25.0000000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     2  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+*   35     4               8     -24.0000000  -24.00000  0.00%   5.2    0s
+
+Cutting planes:
+  Gomory: 3
+  MIR: 1
+
+Explored 36 nodes (238 simplex iterations) in 0.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 4: -24 -25 -26 -28 
+No other solutions better than -24
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -2.400000000000e+01, best bound -2.400000000000e+01, gap 0.0000%
+
+
+
+#########node  1
+race_factor.2
+#########node  2
+two_year_recid.0
+#########node  3
+crime_factor.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 2
+#########node  7
+leaf 1
+
+
+Total Solving Time 0.040411949157714844
+obj value -24.0
+Total Callback counter (Integer) 0
+Total Successful Callback counter (Integer) 0
+Total Callback Time (Integer) 0
+Total Successful Callback Time (Integer) 0
+obj value -24.0
+train acc 1.0
+test acc 1.0
+calibration acc 1.0
+2 & 1 has train data SP: 0.0
+2 & 1 has train pred SP: 0.0
+2 & 1 has test data SP: 0
+2 & 1 has test pred SP: 0
+2 & 1 has calibration data SP: 0
+2 & 1 has calibration pred SP: 0
+1&2
+0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 124 rows, 165 columns and 638 nonzeros
+Model fingerprint: 0xa2ce2432
+Variable types: 98 continuous, 67 integer (67 binary)
+Coefficient statistics:
+  Matrix range     [5e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+00]
+Found heuristic solution: objective -28.0000000
+Presolve removed 54 rows and 91 columns
+Presolve time: 0.00s
+Presolved: 70 rows, 74 columns, 343 nonzeros
+Variable types: 47 continuous, 27 integer (27 binary)
+
+Root relaxation: objective -2.400000e+01, 38 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  -24.00000    0    4  -28.00000  -24.00000  14.3%     -    0s
+H    0     0                     -26.0000000  -24.00000  7.69%     -    0s
+H    0     0                     -25.0000000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     2  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+*   35     4               8     -24.0000000  -24.00000  0.00%   5.2    0s
+
+Cutting planes:
+  Gomory: 3
+  MIR: 1
+
+Explored 36 nodes (238 simplex iterations) in 0.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 4: -24 -25 -26 -28 
+No other solutions better than -24
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -2.400000000000e+01, best bound -2.400000000000e+01, gap 0.0000%
+
+
+
+#########node  1
+race_factor.2
+#########node  2
+two_year_recid.0
+#########node  3
+crime_factor.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 2
+#########node  7
+leaf 1
+
+
+Total Solving Time 0.040306806564331055
+obj value -24.0
+Total Callback counter (Integer) 0
+Total Successful Callback counter (Integer) 0
+Total Callback Time (Integer) 0
+Total Successful Callback Time (Integer) 0
+obj value -24.0
+train acc 1.0
+test acc 1.0
+calibration acc 1.0
+2 & 1 has train data SP: 0.0
+2 & 1 has train pred SP: 0.0
+2 & 1 has test data SP: 0
+2 & 1 has test pred SP: 0
+2 & 1 has calibration data SP: 0
+2 & 1 has calibration pred SP: 0
+1&2
+0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 124 rows, 165 columns and 638 nonzeros
+Model fingerprint: 0xa2ce2432
+Variable types: 98 continuous, 67 integer (67 binary)
+Coefficient statistics:
+  Matrix range     [5e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+00]
+Found heuristic solution: objective -28.0000000
+Presolve removed 54 rows and 91 columns
+Presolve time: 0.00s
+Presolved: 70 rows, 74 columns, 343 nonzeros
+Variable types: 47 continuous, 27 integer (27 binary)
+
+Root relaxation: objective -2.400000e+01, 38 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  -24.00000    0    4  -28.00000  -24.00000  14.3%     -    0s
+H    0     0                     -26.0000000  -24.00000  7.69%     -    0s
+H    0     0                     -25.0000000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     2  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+*   35     4               8     -24.0000000  -24.00000  0.00%   5.2    0s
+
+Cutting planes:
+  Gomory: 3
+  MIR: 1
+
+Explored 36 nodes (238 simplex iterations) in 0.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 4: -24 -25 -26 -28 
+No other solutions better than -24
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -2.400000000000e+01, best bound -2.400000000000e+01, gap 0.0000%
+
+
+
+#########node  1
+race_factor.2
+#########node  2
+two_year_recid.0
+#########node  3
+crime_factor.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 2
+#########node  7
+leaf 1
+
+
+Total Solving Time 0.04060697555541992
+obj value -24.0
+Total Callback counter (Integer) 0
+Total Successful Callback counter (Integer) 0
+Total Callback Time (Integer) 0
+Total Successful Callback Time (Integer) 0
+obj value -24.0
+train acc 1.0
+test acc 1.0
+calibration acc 1.0
+2 & 1 has train data SP: 0.0
+2 & 1 has train pred SP: 0.0
+2 & 1 has test data SP: 0
+2 & 1 has test pred SP: 0
+2 & 1 has calibration data SP: 0
+2 & 1 has calibration pred SP: 0
+1&2
+0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 124 rows, 165 columns and 638 nonzeros
+Model fingerprint: 0xa2ce2432
+Variable types: 98 continuous, 67 integer (67 binary)
+Coefficient statistics:
+  Matrix range     [5e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+00]
+Found heuristic solution: objective -28.0000000
+Presolve removed 54 rows and 91 columns
+Presolve time: 0.00s
+Presolved: 70 rows, 74 columns, 343 nonzeros
+Variable types: 47 continuous, 27 integer (27 binary)
+
+Root relaxation: objective -2.400000e+01, 38 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  -24.00000    0    4  -28.00000  -24.00000  14.3%     -    0s
+H    0     0                     -26.0000000  -24.00000  7.69%     -    0s
+H    0     0                     -25.0000000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     2  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+*   35     4               8     -24.0000000  -24.00000  0.00%   5.2    0s
+
+Cutting planes:
+  Gomory: 3
+  MIR: 1
+
+Explored 36 nodes (238 simplex iterations) in 0.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 4: -24 -25 -26 -28 
+No other solutions better than -24
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -2.400000000000e+01, best bound -2.400000000000e+01, gap 0.0000%
+
+
+
+#########node  1
+race_factor.2
+#########node  2
+two_year_recid.0
+#########node  3
+crime_factor.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 2
+#########node  7
+leaf 1
+
+
+Total Solving Time 0.043212890625
+obj value -24.0
+Total Callback counter (Integer) 0
+Total Successful Callback counter (Integer) 0
+Total Callback Time (Integer) 0
+Total Successful Callback Time (Integer) 0
+obj value -24.0
+train acc 1.0
+test acc 1.0
+calibration acc 1.0
+2 & 1 has train data SP: 0.0
+2 & 1 has train pred SP: 0.0
+2 & 1 has test data SP: 0
+2 & 1 has test pred SP: 0
+2 & 1 has calibration data SP: 0
+2 & 1 has calibration pred SP: 0
+1&2
+0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 124 rows, 165 columns and 638 nonzeros
+Model fingerprint: 0xa2ce2432
+Variable types: 98 continuous, 67 integer (67 binary)
+Coefficient statistics:
+  Matrix range     [5e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+00]
+Found heuristic solution: objective -28.0000000
+Presolve removed 54 rows and 91 columns
+Presolve time: 0.00s
+Presolved: 70 rows, 74 columns, 343 nonzeros
+Variable types: 47 continuous, 27 integer (27 binary)
+
+Root relaxation: objective -2.400000e+01, 38 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  -24.00000    0    4  -28.00000  -24.00000  14.3%     -    0s
+H    0     0                     -26.0000000  -24.00000  7.69%     -    0s
+H    0     0                     -25.0000000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     2  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+*   35     4               8     -24.0000000  -24.00000  0.00%   5.2    0s
+
+Cutting planes:
+  Gomory: 3
+  MIR: 1
+
+Explored 36 nodes (238 simplex iterations) in 0.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 4: -24 -25 -26 -28 
+No other solutions better than -24
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -2.400000000000e+01, best bound -2.400000000000e+01, gap 0.0000%
+
+
+
+#########node  1
+race_factor.2
+#########node  2
+two_year_recid.0
+#########node  3
+crime_factor.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 2
+#########node  7
+leaf 1
+
+
+Total Solving Time 0.04016518592834473
+obj value -24.0
+Total Callback counter (Integer) 0
+Total Successful Callback counter (Integer) 0
+Total Callback Time (Integer) 0
+Total Successful Callback Time (Integer) 0
+obj value -24.0
+train acc 1.0
+test acc 1.0
+calibration acc 1.0
+2 & 1 has train data SP: 0.0
+2 & 1 has train pred SP: 0.0
+2 & 1 has test data SP: 0
+2 & 1 has test pred SP: 0
+2 & 1 has calibration data SP: 0
+2 & 1 has calibration pred SP: 0
+1&2
+0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 124 rows, 165 columns and 638 nonzeros
+Model fingerprint: 0xa2ce2432
+Variable types: 98 continuous, 67 integer (67 binary)
+Coefficient statistics:
+  Matrix range     [5e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+00]
+Found heuristic solution: objective -28.0000000
+Presolve removed 54 rows and 91 columns
+Presolve time: 0.00s
+Presolved: 70 rows, 74 columns, 343 nonzeros
+Variable types: 47 continuous, 27 integer (27 binary)
+
+Root relaxation: objective -2.400000e+01, 38 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  -24.00000    0    4  -28.00000  -24.00000  14.3%     -    0s
+H    0     0                     -26.0000000  -24.00000  7.69%     -    0s
+H    0     0                     -25.0000000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     2  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+*   35     4               8     -24.0000000  -24.00000  0.00%   5.2    0s
+
+Cutting planes:
+  Gomory: 3
+  MIR: 1
+
+Explored 36 nodes (238 simplex iterations) in 0.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 4: -24 -25 -26 -28 
+No other solutions better than -24
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -2.400000000000e+01, best bound -2.400000000000e+01, gap 0.0000%
+
+
+
+#########node  1
+race_factor.2
+#########node  2
+two_year_recid.0
+#########node  3
+crime_factor.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 2
+#########node  7
+leaf 1
+
+
+Total Solving Time 0.040409088134765625
+obj value -24.0
+Total Callback counter (Integer) 0
+Total Successful Callback counter (Integer) 0
+Total Callback Time (Integer) 0
+Total Successful Callback Time (Integer) 0
+obj value -24.0
+train acc 1.0
+test acc 1.0
+calibration acc 1.0
+2 & 1 has train data SP: 0.0
+2 & 1 has train pred SP: 0.0
+2 & 1 has test data SP: 0
+2 & 1 has test pred SP: 0
+2 & 1 has calibration data SP: 0
+2 & 1 has calibration pred SP: 0
+1&2
+0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 124 rows, 165 columns and 638 nonzeros
+Model fingerprint: 0xa2ce2432
+Variable types: 98 continuous, 67 integer (67 binary)
+Coefficient statistics:
+  Matrix range     [5e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+00]
+Found heuristic solution: objective -28.0000000
+Presolve removed 54 rows and 91 columns
+Presolve time: 0.00s
+Presolved: 70 rows, 74 columns, 343 nonzeros
+Variable types: 47 continuous, 27 integer (27 binary)
+
+Root relaxation: objective -2.400000e+01, 38 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  -24.00000    0    4  -28.00000  -24.00000  14.3%     -    0s
+H    0     0                     -26.0000000  -24.00000  7.69%     -    0s
+H    0     0                     -25.0000000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    6  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     0  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+     0     2  -24.00000    0    7  -25.00000  -24.00000  4.00%     -    0s
+*   35     4               8     -24.0000000  -24.00000  0.00%   5.2    0s
+
+Cutting planes:
+  Gomory: 3
+  MIR: 1
+
+Explored 36 nodes (238 simplex iterations) in 0.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 4: -24 -25 -26 -28 
+No other solutions better than -24
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -2.400000000000e+01, best bound -2.400000000000e+01, gap 0.0000%
+
+
+
+#########node  1
+race_factor.2
+#########node  2
+two_year_recid.0
+#########node  3
+crime_factor.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 2
+#########node  7
+leaf 1
+
+
+Total Solving Time 0.041277170181274414
+obj value -24.0
+Total Callback counter (Integer) 0
+Total Successful Callback counter (Integer) 0
+Total Callback Time (Integer) 0
+Total Successful Callback Time (Integer) 0
+obj value -24.0
+train acc 1.0
+test acc 1.0
+calibration acc 1.0
+2 & 1 has train data SP: 0.0
+2 & 1 has train pred SP: 0.0
+2 & 1 has test data SP: 0
+2 & 1 has test pred SP: 0
+2 & 1 has calibration data SP: 0
+2 & 1 has calibration pred SP: 0
+1&2
+0.0
