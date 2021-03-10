@@ -137,7 +137,7 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
         else:
             sp_protected = 0
             sp_protected_prime = 0
-            
+
         # Return SP between two groups
         return abs(sp_protected - sp_protected_prime)
 

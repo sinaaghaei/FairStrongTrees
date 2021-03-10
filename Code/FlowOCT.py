@@ -205,6 +205,8 @@ class FlowOCT:
                 countProtected = np.count_nonzero(self.data_reg[self.protected_feature] == protected)
                 countProtected_prime = np.count_nonzero(self.data_reg[self.protected_feature] == protected_prime)
 
+                
+
 
                 protected_df = self.data_reg.loc[self.data_reg[self.protected_feature] == protected]
                 protected_prime_df = self.data_reg.loc[self.data_reg[self.protected_feature] == protected_prime]
