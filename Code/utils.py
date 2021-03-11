@@ -145,16 +145,6 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
     # Akin to measuring our model's bias
     elif source == "Predictions":
 
-        # First, let's get all the predicted values
-        yhat = []
-        for i in local_data_reg.index:
-            yhat.append(get_predicted_value(grb_model, local_data_enc, b, beta, p, i))
-
-
-        # Let's modify the dataframe to ensure we have a column with the predicted values
-        local_data_reg['Predictions'] = yhat
-        # import pdb; pdb.set_trace()
-
         # Let's take a look at the protected group and non-protected group here, so we can create two new df's
         df_protected_predictions = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
         df_protected_prime_predictions = local_data_reg[local_data_reg[protected_feature] == protectedGroup_prime]

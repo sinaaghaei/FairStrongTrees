@@ -178,6 +178,26 @@ def main(argv):
         max_sp_calib_data = 0
         max_sp_calib_pred = 0
 
+        # Let's pass in the predicted values for data's predicted values
+
+        yhat_train = []
+        yhat_test = []
+        yhat_calib = []
+        for i in data_train_reg.index:
+            yhat_train.append(get_predicted_value(primal, data_train_enc, b_value, beta_value, p_value, i))
+        for i in data_test_reg.index:
+            yhat_test.append(get_predicted_value(primal, data_test_enc, b_value, beta_value, p_value, i))
+        for i in data_calibration_reg.index:
+            yhat_calib.append(get_predicted_value(primal, data_calibration_enc, b_value, beta_value, p_value, i))
+
+        pd.set_option('mode.chained_assignment', None)
+
+        data_train_reg.loc[:,'Predictions'] = pd.Series(yhat_train)
+        data_test_reg.loc[:,'Predictions'] = pd.Series(yhat_test)
+        data_calibration_reg.loc[:,'Predictions'] = pd.Series(yhat_calib)
+
+
+
         # Loop through all possible combinations of the protected feature
         for combos in combinations(data_reg[protected_feature].unique(), 2):
             protection = combos[0]
@@ -188,6 +208,7 @@ def main(argv):
 
             # Let's construct the max SP for train, test, and calibration
             # We use an if statement to determine if there is a higher maximum
+
             sp_train_data = get_sp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Data')
             if sp_train_data >= max_sp_train_data:
                 max_sp_train_data = sp_train_data
