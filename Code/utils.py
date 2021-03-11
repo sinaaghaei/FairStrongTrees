@@ -126,14 +126,14 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
 
         # For our purposes, we only want to look at values of protected group and non-protected group hence
         # we are creating 2 new df's with only the groups of interest
-        df_protected = local_data_reg.loc[local_data_reg[protected_feature] == protectedGroup]
-        df_protected_prime = local_data_reg.loc[local_data_reg[protected_feature] == protectedGroup_prime]
+        df_protected = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
+        df_protected_prime = local_data_reg[local_data_reg[protected_feature] == protectedGroup_prime]
 
         # Let's count number of positive values from protected group, then divide by the total to get the SP for
         # both groups
         if countProtected != 0 and countProtected_prime != 0:
-            sp_protected = (1/countProtected) * df_protected.loc[df_protected[label] == positive_class].count()[label]
-            sp_protected_prime = (1/countProtected_prime) * df_protected_prime.loc[df_protected_prime[label] == positive_class].count()[label]
+            sp_protected = (1/countProtected) * df_protected[df_protected[label] == positive_class].count()[label]
+            sp_protected_prime = (1/countProtected_prime) * df_protected_prime[df_protected_prime[label] == positive_class].count()[label]
         else:
             sp_protected = 0
             sp_protected_prime = 0
@@ -156,8 +156,8 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
         # import pdb; pdb.set_trace()
 
         # Let's take a look at the protected group and non-protected group here, so we can create two new df's
-        df_protected_predictions = local_data_reg.loc[local_data_reg[protected_feature] == protectedGroup]
-        df_protected_prime_predictions = local_data_reg.loc[local_data_reg[protected_feature] == protectedGroup_prime]
+        df_protected_predictions = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
+        df_protected_prime_predictions = local_data_reg[local_data_reg[protected_feature] == protectedGroup_prime]
 
         # Define statistical parity for both groups
         if countProtected != 0 and countProtected_prime != 0:

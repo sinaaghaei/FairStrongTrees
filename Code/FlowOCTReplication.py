@@ -83,7 +83,7 @@ def main(argv):
     approach_name = 'FlowOCT'
     out_put_name = input_file_enc + '_' + str(input_sample) + '_' + approach_name + '_d_' + str(depth) + '_t_' + str(
         time_limit) + '_lambda_' + str(
-        _lambda) + '_c_' + str(calibration)
+        _lambda) + '_c_' + str(calibration) + '_ft_' + fairness_type + '_fb_' + str(fairness_bound)
     out_put_path = os.getcwd() + '/../Results/'
     # Using logger we log the output of the console in a text file
     sys.stdout = logger(out_put_path + out_put_name + '.txt')
@@ -114,9 +114,6 @@ def main(argv):
         data_train_enc = data_train_calibration_enc
         data_train_reg = data_train_calibration_reg
 
-    data_train_enc = data_enc
-    data_train_reg = data_reg
-
     train_len = len(data_train_enc.index)
     ##########################################################
     # Creating and Solving the problem
@@ -142,13 +139,6 @@ def main(argv):
 
     print('\n\nTotal Solving Time', solving_time)
     print("obj value", primal.model.getAttr("ObjVal"))
-
-    print('Total Callback counter (Integer)', primal.model._callback_counter_integer)
-    print('Total Successful Callback counter (Integer)', primal.model._callback_counter_integer_success)
-
-    print('Total Callback Time (Integer)', primal.model._total_callback_time_integer)
-    print('Total Successful Callback Time (Integer)', primal.model._total_callback_time_integer_success)
-
 
     # print(b_value)
     # print(p_value)
@@ -259,8 +249,6 @@ def main(argv):
             [approach_name, input_file_enc, fairness_type, fairness_bound, train_len, depth, _lambda, time_limit,
              primal.model.getAttr("Status"), primal.model.getAttr("ObjVal"), train_acc,
              primal.model.getAttr("MIPGap") * 100, primal.model.getAttr("NodeCount"), solving_time,
-             primal.model._total_callback_time_integer, primal.model._total_callback_time_integer_success,
-             primal.model._callback_counter_integer, primal.model._callback_counter_integer_success,
              test_acc, calibration_acc, input_sample, max_sp_train_data, max_sp_train_pred,max_sp_test_data,max_sp_test_pred,max_sp_calib_data,max_sp_calib_pred])
 
 if __name__ == "__main__":

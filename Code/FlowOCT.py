@@ -61,21 +61,7 @@ class FlowOCT:
         self.model.params.Threads = 1
         self.model.params.TimeLimit = time_limit
 
-        '''
-        The following variables are used for the Benders problem to keep track of the times we call the callback.
-        They are not used for this formulation.
-        '''
-        self.model._total_callback_time_integer = 0
-        self.model._total_callback_time_integer_success = 0
 
-        self.model._total_callback_time_general = 0
-        self.model._total_callback_time_general_success = 0
-
-        self.model._callback_counter_integer = 0
-        self.model._callback_counter_integer_success = 0
-
-        self.model._callback_counter_general = 0
-        self.model._callback_counter_general_success = 0
 
     ###########################################################
     # Create the MIP formulation
@@ -97,7 +83,7 @@ class FlowOCT:
         self.beta = self.model.addVars(self.tree.Nodes + self.tree.Leaves, self.labels, vtype=GRB.CONTINUOUS, lb=0,
                                        name='beta')
         # zeta[i,n,k] is the amount of flow through the edge connecting node n to sink node t,k for datapoint i
-        self.zeta = self.model.addVars(self.datapoints, self.tree.Nodes + self.tree.Leaves, self.labels, vtype=GRB.CONTINUOUS, lb=0,
+        self.zeta = self.model.addVars(self.datapoints, self.tree.Nodes + self.tree.Leaves, self.labels, vtype=GRB.BINARY, lb=0,
                                        name='zeta')
         # z[i,n] is the incoming flow to node n for datapoint i to terminal node k
         self.z = self.model.addVars(self.datapoints, self.tree.Nodes + self.tree.Leaves, vtype=GRB.CONTINUOUS, lb=0,
@@ -205,11 +191,11 @@ class FlowOCT:
                 countProtected = np.count_nonzero(self.data_reg[self.protected_feature] == protected)
                 countProtected_prime = np.count_nonzero(self.data_reg[self.protected_feature] == protected_prime)
 
-                
 
 
-                protected_df = self.data_reg.loc[self.data_reg[self.protected_feature] == protected]
-                protected_prime_df = self.data_reg.loc[self.data_reg[self.protected_feature] == protected_prime]
+
+                protected_df = self.data_reg[self.data_reg[self.protected_feature] == protected]
+                protected_prime_df = self.data_reg[self.data_reg[self.protected_feature] == protected_prime]
 
                 # Sum(Sum(zeta(i,n,positive_class) for n in nodes) for i in datapoints) * 1 / (Count of Protected)
                 self.model.addConstr(((1/countProtected) * quicksum(quicksum(self.zeta[i,n, self.positive_class] for n in
