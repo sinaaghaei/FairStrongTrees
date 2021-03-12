@@ -86,7 +86,7 @@ class FlowOCT:
         self.zeta = self.model.addVars(self.datapoints, self.tree.Nodes + self.tree.Leaves, self.labels, vtype=GRB.BINARY, lb=0,
                                        name='zeta')
         # z[i,n] is the incoming flow to node n for datapoint i to terminal node k
-        self.z = self.model.addVars(self.datapoints, self.tree.Nodes + self.tree.Leaves, vtype=GRB.CONTINUOUS, lb=0,
+        self.z = self.model.addVars(self.datapoints, self.tree.Nodes + self.tree.Leaves, vtype=GRB.BINARY, lb=0,
                                     name='z')
 
         # if self.fairness_type == 'SP':
