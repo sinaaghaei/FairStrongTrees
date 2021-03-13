@@ -158,6 +158,16 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
             sp_protected_predictions = 0
             sp_protected_prime_predictions = 0
         # Return sp between both groups
+
+        if protectedGroup == 6 and protectedGroup_prime == 1:
+            print("LOOK HERE:")
+            print(sp_protected_predictions)
+            print(sp_protected_prime_predictions)
+            print(countProtected)
+            print(countProtected_prime)
+            print("Indices")
+            print(list(df_protected_prime_predictions[df_protected_prime_predictions['Predictions'] == positive_class].index.values))
+
         return abs(sp_protected_predictions - sp_protected_prime_predictions)
 
     # If no source is given, then we will return an error

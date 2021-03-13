@@ -1,0 +1,1861 @@
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1376 rows, 1131 columns and 8248 nonzeros
+Model fingerprint: 0x3b1ca05a
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [4e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 526 rows and 539 columns
+Presolve time: 0.02s
+Presolved: 850 rows, 592 columns, 4693 nonzeros
+Variable types: 12 continuous, 580 integer (576 binary)
+
+Root relaxation: objective -3.021429e+02, 566 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -302.14286    0  109 -350.00000 -302.14286  13.7%     -    0s
+H    0     0                    -313.0000000 -302.14286  3.47%     -    0s
+     0     0 -302.66667    0  136 -313.00000 -302.66667  3.30%     -    0s
+     0     0 -302.66667    0  118 -313.00000 -302.66667  3.30%     -    0s
+     0     0 -302.66667    0  131 -313.00000 -302.66667  3.30%     -    0s
+     0     0 -303.00000    0  147 -313.00000 -303.00000  3.19%     -    0s
+     0     0 -303.00000    0  149 -313.00000 -303.00000  3.19%     -    0s
+     0     0 -303.00000    0  171 -313.00000 -303.00000  3.19%     -    0s
+     0     0 -303.00000    0  177 -313.00000 -303.00000  3.19%     -    0s
+     0     0 -303.00000    0  182 -313.00000 -303.00000  3.19%     -    0s
+     0     0 -303.00000    0  207 -313.00000 -303.00000  3.19%     -    0s
+     0     0 -303.00000    0   84 -313.00000 -303.00000  3.19%     -    0s
+     0     0 -303.00000    0   86 -313.00000 -303.00000  3.19%     -    0s
+     0     0 -303.00000    0  125 -313.00000 -303.00000  3.19%     -    0s
+     0     0 -303.00000    0  150 -313.00000 -303.00000  3.19%     -    0s
+     0     0 -303.00000    0  127 -313.00000 -303.00000  3.19%     -    0s
+     0     0 -303.00000    0  106 -313.00000 -303.00000  3.19%     -    0s
+     0     2 -303.00000    0  106 -313.00000 -303.00000  3.19%     -    0s
+*  689    46              31    -312.0000000 -308.88889  1.00%  31.2    1s
+
+Cutting planes:
+  Gomory: 4
+  Zero half: 67
+
+Explored 803 nodes (28569 simplex iterations) in 1.80 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 3: -312 -313 -350 
+No other solutions better than -312
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.120000000000e+02, best bound -3.120000000000e+02, gap 0.0000%
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 1.879539966583252
+obj value -312.0
+obj value -312.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1370 rows, 1131 columns and 7436 nonzeros
+Model fingerprint: 0xc2c2387a
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [4e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 555 rows and 568 columns
+Presolve time: 0.02s
+Presolved: 815 rows, 563 columns, 4556 nonzeros
+Variable types: 12 continuous, 551 integer (548 binary)
+
+Root relaxation: objective -3.007143e+02, 518 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -300.71429    0  109 -350.00000 -300.71429  14.1%     -    0s
+H    0     0                    -321.0000000 -300.71429  6.32%     -    0s
+     0     0 -300.71429    0  178 -321.00000 -300.71429  6.32%     -    0s
+     0     0 -300.71429    0  179 -321.00000 -300.71429  6.32%     -    0s
+     0     0 -300.71429    0  120 -321.00000 -300.71429  6.32%     -    0s
+     0     0 -301.00000    0  118 -321.00000 -301.00000  6.23%     -    0s
+     0     0 -301.00000    0  107 -321.00000 -301.00000  6.23%     -    0s
+     0     0 -301.00000    0  109 -321.00000 -301.00000  6.23%     -    0s
+     0     0 -301.00000    0  109 -321.00000 -301.00000  6.23%     -    0s
+     0     0 -301.00000    0  109 -321.00000 -301.00000  6.23%     -    0s
+     0     0 -301.00000    0  109 -321.00000 -301.00000  6.23%     -    0s
+     0     0 -301.00000    0  182 -321.00000 -301.00000  6.23%     -    0s
+     0     0 -301.00000    0  121 -321.00000 -301.00000  6.23%     -    0s
+     0     0 -301.00000    0   88 -321.00000 -301.00000  6.23%     -    0s
+H    0     0                    -315.0000000 -301.00000  4.44%     -    0s
+     0     2 -301.00000    0   88 -315.00000 -301.00000  4.44%     -    0s
+*   47    25              21    -314.0000000 -301.00000  4.14%  61.4    0s
+*   89    33              16    -313.0000000 -301.00000  3.83%  42.8    0s
+*  140    37              19    -311.0000000 -301.00000  3.22%  38.5    0s
+
+Cutting planes:
+  Gomory: 1
+  Zero half: 47
+
+Explored 704 nodes (24794 simplex iterations) in 1.32 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -311 -313 -314 ... -350
+No other solutions better than -311
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.110000000000e+02, best bound -3.110000000000e+02, gap 0.0000%
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 1.4070110321044922
+obj value -311.0
+obj value -311.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1396 rows, 1131 columns and 10348 nonzeros
+Model fingerprint: 0x81313c52
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [4e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 546 rows and 539 columns
+Presolve time: 0.02s
+Presolved: 850 rows, 592 columns, 4693 nonzeros
+Variable types: 12 continuous, 580 integer (576 binary)
+
+Root relaxation: objective -3.021429e+02, 611 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -302.14286    0  109 -350.00000 -302.14286  13.7%     -    0s
+H    0     0                    -321.0000000 -302.14286  5.87%     -    0s
+     0     0 -302.21429    0  201 -321.00000 -302.21429  5.85%     -    0s
+     0     0 -302.38095    0  163 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.66667    0  183 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  173 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  183 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  196 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -303.00000    0  136 -321.00000 -303.00000  5.61%     -    0s
+H    0     0                    -315.0000000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  130 -315.00000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  106 -315.00000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  110 -315.00000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  112 -315.00000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  195 -315.00000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  101 -315.00000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  159 -315.00000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  132 -315.00000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  108 -315.00000 -303.00000  3.81%     -    0s
+     0     2 -303.00000    0  108 -315.00000 -303.00000  3.81%     -    0s
+H   22    10                    -314.0000000 -303.00000  3.50%  74.8    0s
+*  159    37              17    -313.0000000 -303.00000  3.19%  48.7    0s
+*  162    36              18    -312.0000000 -303.00000  2.88%  47.9    0s
+
+Cutting planes:
+  Gomory: 6
+  MIR: 1
+  Zero half: 66
+
+Explored 688 nodes (29449 simplex iterations) in 1.43 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -312 -313 -314 ... -350
+No other solutions better than -312
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.120000000000e+02, best bound -3.120000000000e+02, gap 0.0000%
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 1.5253229141235352
+obj value -312.0
+obj value -312.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1388 rows, 1131 columns and 10348 nonzeros
+Model fingerprint: 0x6b919d5d
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [4e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 538 rows and 539 columns
+Presolve time: 0.05s
+Presolved: 850 rows, 592 columns, 4693 nonzeros
+Variable types: 12 continuous, 580 integer (576 binary)
+
+Root relaxation: objective -3.021429e+02, 500 iterations, 0.02 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -302.14286    0  140 -350.00000 -302.14286  13.7%     -    0s
+H    0     0                    -321.0000000 -302.14286  5.87%     -    0s
+     0     0 -302.21429    0  154 -321.00000 -302.21429  5.85%     -    0s
+     0     0 -302.21429    0  159 -321.00000 -302.21429  5.85%     -    0s
+     0     0 -302.38095    0  165 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  187 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  212 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  219 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.66667    0  148 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  186 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  207 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  203 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  152 -321.00000 -302.66667  5.71%     -    0s
+H    0     0                    -315.0000000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  154 -315.00000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  149 -315.00000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  144 -315.00000 -302.66667  3.92%     -    0s
+     0     2 -302.66667    0  123 -315.00000 -302.66667  3.92%     -    0s
+*   21     5              13    -314.0000000 -302.66667  3.61%  81.0    0s
+*   99    19              20    -313.0000000 -302.66667  3.30%  61.0    0s
+*  341    62              22    -312.0000000 -303.75000  2.64%  41.1    1s
+
+Cutting planes:
+  Gomory: 5
+  MIR: 1
+  Zero half: 54
+
+Explored 1391 nodes (41803 simplex iterations) in 2.07 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -312 -313 -314 ... -350
+No other solutions better than -312
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.120000000000e+02, best bound -3.120000000000e+02, gap 0.0000%
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 2.2117888927459717
+obj value -312.0
+obj value -312.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1388 rows, 1131 columns and 10348 nonzeros
+Model fingerprint: 0xf982908b
+Variable types: 14 continuous, 1117 integer (1117 binary)
+Coefficient statistics:
+  Matrix range     [4e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 401 rows and 451 columns
+Presolve time: 0.03s
+Presolved: 987 rows, 680 columns, 5131 nonzeros
+Variable types: 14 continuous, 666 integer (662 binary)
+
+Root relaxation: objective -3.021429e+02, 325 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -302.14286    0  164 -350.00000 -302.14286  13.7%     -    0s
+H    0     0                    -337.0000000 -302.14286  10.3%     -    0s
+     0     0 -303.00000    0  283 -337.00000 -303.00000  10.1%     -    0s
+H    0     0                    -331.0000000 -303.00000  8.46%     -    0s
+     0     0 -303.00000    0  283 -331.00000 -303.00000  8.46%     -    0s
+     0     0 -303.00000    0  289 -331.00000 -303.00000  8.46%     -    0s
+     0     0 -303.00000    0  285 -331.00000 -303.00000  8.46%     -    0s
+     0     0 -303.00000    0  160 -331.00000 -303.00000  8.46%     -    0s
+H    0     0                    -315.0000000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  174 -315.00000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  167 -315.00000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  156 -315.00000 -303.00000  3.81%     -    0s
+     0     0 -303.00000    0  156 -315.00000 -303.00000  3.81%     -    0s
+     0     2 -303.00000    0  153 -315.00000 -303.00000  3.81%     -    0s
+H   27    11                    -312.0000000 -303.00000  2.88%   137    0s
+
+Cutting planes:
+  Gomory: 2
+  MIR: 1
+  Zero half: 51
+
+Explored 1029 nodes (43437 simplex iterations) in 2.13 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 5: -312 -315 -331 ... -350
+No other solutions better than -312
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.120000000000e+02, best bound -3.120000000000e+02, gap 0.0000%
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 2.2230958938598633
+obj value -312.0
+obj value -312.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+1
+2
+1
+4
+1
+6
+2
+1
+2
+4
+2
+6
+4
+1
+4
+2
+4
+6
+6
+1
+6
+2
+6
+4
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1388 rows, 1131 columns and 10348 nonzeros
+Model fingerprint: 0x6b919d5d
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [4e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 538 rows and 539 columns
+Presolve time: 0.02s
+Presolved: 850 rows, 592 columns, 4693 nonzeros
+Variable types: 12 continuous, 580 integer (576 binary)
+
+Root relaxation: objective -3.021429e+02, 500 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -302.14286    0  140 -350.00000 -302.14286  13.7%     -    0s
+H    0     0                    -321.0000000 -302.14286  5.87%     -    0s
+     0     0 -302.21429    0  154 -321.00000 -302.21429  5.85%     -    0s
+     0     0 -302.21429    0  159 -321.00000 -302.21429  5.85%     -    0s
+     0     0 -302.38095    0  165 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  187 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  212 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  219 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.66667    0  148 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  186 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  207 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  203 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  152 -321.00000 -302.66667  5.71%     -    0s
+H    0     0                    -315.0000000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  154 -315.00000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  149 -315.00000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  144 -315.00000 -302.66667  3.92%     -    0s
+     0     2 -302.66667    0  123 -315.00000 -302.66667  3.92%     -    0s
+*   21     5              13    -314.0000000 -302.66667  3.61%  81.0    0s
+*   99    19              20    -313.0000000 -302.66667  3.30%  61.0    0s
+*  341    62              22    -312.0000000 -303.75000  2.64%  41.1    1s
+
+Cutting planes:
+  Gomory: 5
+  MIR: 1
+  Zero half: 54
+
+Explored 1391 nodes (41803 simplex iterations) in 1.96 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -312 -313 -314 ... -350
+No other solutions better than -312
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.120000000000e+02, best bound -3.120000000000e+02, gap 0.0000%
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 2.0536701679229736
+obj value -312.0
+obj value -312.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1388 rows, 1131 columns and 10348 nonzeros
+Model fingerprint: 0x6b919d5d
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [4e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 538 rows and 539 columns
+Presolve time: 0.02s
+Presolved: 850 rows, 592 columns, 4693 nonzeros
+Variable types: 12 continuous, 580 integer (576 binary)
+
+Root relaxation: objective -3.021429e+02, 500 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -302.14286    0  140 -350.00000 -302.14286  13.7%     -    0s
+H    0     0                    -321.0000000 -302.14286  5.87%     -    0s
+     0     0 -302.21429    0  154 -321.00000 -302.21429  5.85%     -    0s
+     0     0 -302.21429    0  159 -321.00000 -302.21429  5.85%     -    0s
+     0     0 -302.38095    0  165 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  187 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  212 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  219 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.66667    0  148 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  186 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  207 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  203 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  152 -321.00000 -302.66667  5.71%     -    0s
+H    0     0                    -315.0000000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  154 -315.00000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  149 -315.00000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  144 -315.00000 -302.66667  3.92%     -    0s
+     0     2 -302.66667    0  123 -315.00000 -302.66667  3.92%     -    0s
+*   21     5              13    -314.0000000 -302.66667  3.61%  81.0    0s
+*   99    19              20    -313.0000000 -302.66667  3.30%  61.0    0s
+*  341    62              22    -312.0000000 -303.75000  2.64%  41.1    1s
+
+Cutting planes:
+  Gomory: 5
+  MIR: 1
+  Zero half: 54
+
+Explored 1391 nodes (41803 simplex iterations) in 2.01 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -312 -313 -314 ... -350
+No other solutions better than -312
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.120000000000e+02, best bound -3.120000000000e+02, gap 0.0000%
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 2.1052892208099365
+obj value -312.0
+obj value -312.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1388 rows, 1131 columns and 10348 nonzeros
+Model fingerprint: 0x6b919d5d
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [4e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 538 rows and 539 columns
+Presolve time: 0.02s
+Presolved: 850 rows, 592 columns, 4693 nonzeros
+Variable types: 12 continuous, 580 integer (576 binary)
+
+Root relaxation: objective -3.021429e+02, 500 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -302.14286    0  140 -350.00000 -302.14286  13.7%     -    0s
+H    0     0                    -321.0000000 -302.14286  5.87%     -    0s
+     0     0 -302.21429    0  154 -321.00000 -302.21429  5.85%     -    0s
+     0     0 -302.21429    0  159 -321.00000 -302.21429  5.85%     -    0s
+     0     0 -302.38095    0  165 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  187 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  212 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  219 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.66667    0  148 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  186 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  207 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  203 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  152 -321.00000 -302.66667  5.71%     -    0s
+H    0     0                    -315.0000000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  154 -315.00000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  149 -315.00000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  144 -315.00000 -302.66667  3.92%     -    0s
+     0     2 -302.66667    0  123 -315.00000 -302.66667  3.92%     -    0s
+*   21     5              13    -314.0000000 -302.66667  3.61%  81.0    0s
+*   99    19              20    -313.0000000 -302.66667  3.30%  61.0    0s
+*  341    62              22    -312.0000000 -303.75000  2.64%  41.1    1s
+
+Cutting planes:
+  Gomory: 5
+  MIR: 1
+  Zero half: 54
+
+Explored 1391 nodes (41803 simplex iterations) in 1.93 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -312 -313 -314 ... -350
+No other solutions better than -312
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.120000000000e+02, best bound -3.120000000000e+02, gap 0.0000%
+{(95, 1, 2): 0.0, (95, 1, 1): 0.0, (95, 2, 2): -0.0, (95, 2, 1): 0.0, (95, 3, 2): -0.0, (95, 3, 1): 0.0, (95, 4, 2): 0.0, (95, 4, 1): 0.0, (95, 5, 2): 0.0, (95, 5, 1): 0.0, (95, 6, 2): -0.0, (95, 6, 1): 0.0, (95, 7, 2): 0.0, (95, 7, 1): 0.0, (1, 1, 2): -0.0, (1, 1, 1): 0.0, (1, 2, 2): -0.0, (1, 2, 1): 0.0, (1, 3, 2): -0.0, (1, 3, 1): -0.0, (1, 4, 2): -0.0, (1, 4, 1): -0.0, (1, 5, 2): -0.0, (1, 5, 1): 1.0, (1, 6, 2): -0.0, (1, 6, 1): 0.0, (1, 7, 2): -0.0, (1, 7, 1): -0.0, (64, 1, 2): 0.0, (64, 1, 1): 0.0, (64, 2, 2): 0.0, (64, 2, 1): 0.0, (64, 3, 2): -0.0, (64, 3, 1): 0.0, (64, 4, 2): 0.0, (64, 4, 1): 0.0, (64, 5, 2): 0.0, (64, 5, 1): 0.0, (64, 6, 2): -0.0, (64, 6, 1): 0.0, (64, 7, 2): -0.0, (64, 7, 1): 0.0, (39, 1, 2): 0.0, (39, 1, 1): 0.0, (39, 2, 2): 0.0, (39, 2, 1): 0.0, (39, 3, 2): -0.0, (39, 3, 1): 0.0, (39, 4, 2): 0.0, (39, 4, 1): 0.0, (39, 5, 2): 0.0, (39, 5, 1): 0.0, (39, 6, 2): -0.0, (39, 6, 1): 0.0, (39, 7, 2): 0.0, (39, 7, 1): 0.0, (69, 1, 2): -0.0, (69, 1, 1): 0.0, (69, 2, 2): -0.0, (69, 2, 1): 0.0, (69, 3, 2): -0.0, (69, 3, 1): -0.0, (69, 4, 2): -0.0, (69, 4, 1): -0.0, (69, 5, 2): -0.0, (69, 5, 1): 1.0, (69, 6, 2): -0.0, (69, 6, 1): 0.0, (69, 7, 2): -0.0, (69, 7, 1): -0.0, (66, 1, 2): -0.0, (66, 1, 1): 0.0, (66, 2, 2): -0.0, (66, 2, 1): 0.0, (66, 3, 2): -0.0, (66, 3, 1): -0.0, (66, 4, 2): -0.0, (66, 4, 1): -0.0, (66, 5, 2): -0.0, (66, 5, 1): 1.0, (66, 6, 2): -0.0, (66, 6, 1): 0.0, (66, 7, 2): -0.0, (66, 7, 1): -0.0, (16, 1, 2): -0.0, (16, 1, 1): 0.0, (16, 2, 2): -0.0, (16, 2, 1): 0.0, (16, 3, 2): -0.0, (16, 3, 1): 0.0, (16, 4, 2): -0.0, (16, 4, 1): 0.0, (16, 5, 2): -0.0, (16, 5, 1): 0.0, (16, 6, 2): -0.0, (16, 6, 1): -0.0, (16, 7, 2): -0.0, (16, 7, 1): -0.0, (13, 1, 2): 0.0, (13, 1, 1): 0.0, (13, 2, 2): -0.0, (13, 2, 1): 0.0, (13, 3, 2): 0.0, (13, 3, 1): -0.0, (13, 4, 2): -0.0, (13, 4, 1): 0.0, (13, 5, 2): 0.0, (13, 5, 1): 1.0, (13, 6, 2): -0.0, (13, 6, 1): -0.0, (13, 7, 2): -0.0, (13, 7, 1): -0.0, (54, 1, 2): -0.0, (54, 1, 1): 0.0, (54, 2, 2): -0.0, (54, 2, 1): 0.0, (54, 3, 2): -0.0, (54, 3, 1): -0.0, (54, 4, 2): -0.0, (54, 4, 1): -0.0, (54, 5, 2): -0.0, (54, 5, 1): 1.0, (54, 6, 2): -0.0, (54, 6, 1): -0.0, (54, 7, 2): -0.0, (54, 7, 1): 0.0, (90, 1, 2): 0.0, (90, 1, 1): 0.0, (90, 2, 2): 0.0, (90, 2, 1): 0.0, (90, 3, 2): 0.0, (90, 3, 1): 0.0, (90, 4, 2): 0.0, (90, 4, 1): 0.0, (90, 5, 2): 0.0, (90, 5, 1): 0.0, (90, 6, 2): -0.0, (90, 6, 1): 0.0, (90, 7, 2): -0.0, (90, 7, 1): 0.0, (47, 1, 2): -0.0, (47, 1, 1): 0.0, (47, 2, 2): -0.0, (47, 2, 1): 0.0, (47, 3, 2): -0.0, (47, 3, 1): -0.0, (47, 4, 2): -0.0, (47, 4, 1): 0.0, (47, 5, 2): -0.0, (47, 5, 1): 1.0, (47, 6, 2): -0.0, (47, 6, 1): 0.0, (47, 7, 2): -0.0, (47, 7, 1): -0.0, (32, 1, 2): -0.0, (32, 1, 1): 0.0, (32, 2, 2): -0.0, (32, 2, 1): 0.0, (32, 3, 2): -0.0, (32, 3, 1): -0.0, (32, 4, 2): -0.0, (32, 4, 1): 0.0, (32, 5, 2): -0.0, (32, 5, 1): 1.0, (32, 6, 2): -0.0, (32, 6, 1): -0.0, (32, 7, 2): -0.0, (32, 7, 1): -0.0, (10, 1, 2): -0.0, (10, 1, 1): 0.0, (10, 2, 2): -0.0, (10, 2, 1): 0.0, (10, 3, 2): -0.0, (10, 3, 1): -0.0, (10, 4, 2): -0.0, (10, 4, 1): -0.0, (10, 5, 2): -0.0, (10, 5, 1): 1.0, (10, 6, 2): -0.0, (10, 6, 1): 0.0, (10, 7, 2): -0.0, (10, 7, 1): -0.0, (78, 1, 2): 0.0, (78, 1, 1): 0.0, (78, 2, 2): 0.0, (78, 2, 1): 0.0, (78, 3, 2): -0.0, (78, 3, 1): 0.0, (78, 4, 2): 0.0, (78, 4, 1): 0.0, (78, 5, 2): 0.0, (78, 5, 1): 0.0, (78, 6, 2): 0.0, (78, 6, 1): 0.0, (78, 7, 2): -0.0, (78, 7, 1): 0.0, (6, 1, 2): -0.0, (6, 1, 1): 0.0, (6, 2, 2): -0.0, (6, 2, 1): 0.0, (6, 3, 2): -0.0, (6, 3, 1): -0.0, (6, 4, 2): -0.0, (6, 4, 1): 0.0, (6, 5, 2): -0.0, (6, 5, 1): 1.0, (6, 6, 2): -0.0, (6, 6, 1): -0.0, (6, 7, 2): -0.0, (6, 7, 1): -0.0, (76, 1, 2): -0.0, (76, 1, 1): 0.0, (76, 2, 2): -0.0, (76, 2, 1): 0.0, (76, 3, 2): -0.0, (76, 3, 1): -0.0, (76, 4, 2): -0.0, (76, 4, 1): 0.0, (76, 5, 2): -0.0, (76, 5, 1): 1.0, (76, 6, 2): -0.0, (76, 6, 1): -0.0, (76, 7, 2): -0.0, (76, 7, 1): 0.0, (41, 1, 2): 0.0, (41, 1, 1): 0.0, (41, 2, 2): 0.0, (41, 2, 1): 0.0, (41, 3, 2): 0.0, (41, 3, 1): 0.0, (41, 4, 2): 1.0, (41, 4, 1): 0.0, (41, 5, 2): 0.0, (41, 5, 1): 0.0, (41, 6, 2): -0.0, (41, 6, 1): 0.0, (41, 7, 2): 0.0, (41, 7, 1): 0.0, (57, 1, 2): 0.0, (57, 1, 1): 0.0, (57, 2, 2): 0.0, (57, 2, 1): 0.0, (57, 3, 2): 0.0, (57, 3, 1): 0.0, (57, 4, 2): 1.0, (57, 4, 1): 0.0, (57, 5, 2): 0.0, (57, 5, 1): 0.0, (57, 6, 2): -0.0, (57, 6, 1): 0.0, (57, 7, 2): 0.0, (57, 7, 1): 0.0, (88, 1, 2): 0.0, (88, 1, 1): 0.0, (88, 2, 2): 0.0, (88, 2, 1): 0.0, (88, 3, 2): 0.0, (88, 3, 1): 0.0, (88, 4, 2): 1.0, (88, 4, 1): 0.0, (88, 5, 2): -0.0, (88, 5, 1): 0.0, (88, 6, 2): -0.0, (88, 6, 1): 0.0, (88, 7, 2): -0.0, (88, 7, 1): 0.0, (51, 1, 2): -0.0, (51, 1, 1): 0.0, (51, 2, 2): -0.0, (51, 2, 1): 0.0, (51, 3, 2): -0.0, (51, 3, 1): -0.0, (51, 4, 2): -0.0, (51, 4, 1): 0.0, (51, 5, 2): -0.0, (51, 5, 1): 0.0, (51, 6, 2): -0.0, (51, 6, 1): -0.0, (51, 7, 2): -0.0, (51, 7, 1): 0.0, (65, 1, 2): -0.0, (65, 1, 1): 0.0, (65, 2, 2): -0.0, (65, 2, 1): 0.0, (65, 3, 2): -0.0, (65, 3, 1): -0.0, (65, 4, 2): -0.0, (65, 4, 1): 0.0, (65, 5, 2): -0.0, (65, 5, 1): 1.0, (65, 6, 2): -0.0, (65, 6, 1): -0.0, (65, 7, 2): -0.0, (65, 7, 1): 0.0, (59, 1, 2): -0.0, (59, 1, 1): 0.0, (59, 2, 2): -0.0, (59, 2, 1): 0.0, (59, 3, 2): -0.0, (59, 3, 1): -0.0, (59, 4, 2): -0.0, (59, 4, 1): 0.0, (59, 5, 2): -0.0, (59, 5, 1): 1.0, (59, 6, 2): -0.0, (59, 6, 1): -0.0, (59, 7, 2): -0.0, (59, 7, 1): 0.0, (53, 1, 2): -0.0, (53, 1, 1): 0.0, (53, 2, 2): -0.0, (53, 2, 1): 0.0, (53, 3, 2): -0.0, (53, 3, 1): 0.0, (53, 4, 2): -0.0, (53, 4, 1): 0.0, (53, 5, 2): -0.0, (53, 5, 1): 1.0, (53, 6, 2): -0.0, (53, 6, 1): -0.0, (53, 7, 2): -0.0, (53, 7, 1): -0.0, (2, 1, 2): -0.0, (2, 1, 1): 0.0, (2, 2, 2): -0.0, (2, 2, 1): 0.0, (2, 3, 2): -0.0, (2, 3, 1): -0.0, (2, 4, 2): -0.0, (2, 4, 1): -0.0, (2, 5, 2): -0.0, (2, 5, 1): 1.0, (2, 6, 2): -0.0, (2, 6, 1): -0.0, (2, 7, 2): -0.0, (2, 7, 1): 0.0, (73, 1, 2): 0.0, (73, 1, 1): 0.0, (73, 2, 2): 0.0, (73, 2, 1): 0.0, (73, 3, 2): 0.0, (73, 3, 1): 0.0, (73, 4, 2): 1.0, (73, 4, 1): 0.0, (73, 5, 2): 0.0, (73, 5, 1): 0.0, (73, 6, 2): -0.0, (73, 6, 1): 0.0, (73, 7, 2): 0.0, (73, 7, 1): 0.0, (31, 1, 2): 0.0, (31, 1, 1): 0.0, (31, 2, 2): 0.0, (31, 2, 1): 0.0, (31, 3, 2): -0.0, (31, 3, 1): 0.0, (31, 4, 2): -0.0, (31, 4, 1): 0.0, (31, 5, 2): -0.0, (31, 5, 1): 0.0, (31, 6, 2): 0.0, (31, 6, 1): 0.0, (31, 7, 2): -0.0, (31, 7, 1): 0.0, (35, 1, 2): 0.0, (35, 1, 1): 0.0, (35, 2, 2): 0.0, (35, 2, 1): 0.0, (35, 3, 2): 0.0, (35, 3, 1): 0.0, (35, 4, 2): 0.0, (35, 4, 1): 0.0, (35, 5, 2): 0.0, (35, 5, 1): 0.0, (35, 6, 2): -0.0, (35, 6, 1): 0.0, (35, 7, 2): 0.0, (35, 7, 1): 0.0, (46, 1, 2): 0.0, (46, 1, 1): 0.0, (46, 2, 2): 0.0, (46, 2, 1): 0.0, (46, 3, 2): 0.0, (46, 3, 1): 0.0, (46, 4, 2): 1.0, (46, 4, 1): 0.0, (46, 5, 2): 0.0, (46, 5, 1): 0.0, (46, 6, 2): -0.0, (46, 6, 1): 0.0, (46, 7, 2): 0.0, (46, 7, 1): 0.0, (30, 1, 2): 0.0, (30, 1, 1): 0.0, (30, 2, 2): -0.0, (30, 2, 1): -0.0, (30, 3, 2): -0.0, (30, 3, 1): 0.0, (30, 4, 2): -0.0, (30, 4, 1): -0.0, (30, 5, 2): -0.0, (30, 5, 1): 0.0, (30, 6, 2): -0.0, (30, 6, 1): 1.0, (30, 7, 2): -0.0, (30, 7, 1): 0.0, (74, 1, 2): 0.0, (74, 1, 1): 0.0, (74, 2, 2): -0.0, (74, 2, 1): 0.0, (74, 3, 2): 0.0, (74, 3, 1): 0.0, (74, 4, 2): 0.0, (74, 4, 1): 0.0, (74, 5, 2): -0.0, (74, 5, 1): 0.0, (74, 6, 2): -0.0, (74, 6, 1): 0.0, (74, 7, 2): 1.0, (74, 7, 1): 0.0, (43, 1, 2): -0.0, (43, 1, 1): 0.0, (43, 2, 2): -0.0, (43, 2, 1): 0.0, (43, 3, 2): -0.0, (43, 3, 1): -0.0, (43, 4, 2): -0.0, (43, 4, 1): 0.0, (43, 5, 2): -0.0, (43, 5, 1): 1.0, (43, 6, 2): -0.0, (43, 6, 1): -0.0, (43, 7, 2): -0.0, (43, 7, 1): 0.0, (33, 1, 2): 0.0, (33, 1, 1): 0.0, (33, 2, 2): 0.0, (33, 2, 1): 0.0, (33, 3, 2): 0.0, (33, 3, 1): 0.0, (33, 4, 2): 1.0, (33, 4, 1): 0.0, (33, 5, 2): 0.0, (33, 5, 1): 0.0, (33, 6, 2): 0.0, (33, 6, 1): 0.0, (33, 7, 2): -0.0, (33, 7, 1): 0.0, (12, 1, 2): -0.0, (12, 1, 1): 0.0, (12, 2, 2): -0.0, (12, 2, 1): 0.0, (12, 3, 2): -0.0, (12, 3, 1): 0.0, (12, 4, 2): -0.0, (12, 4, 1): -0.0, (12, 5, 2): -0.0, (12, 5, 1): 0.0, (12, 6, 2): -0.0, (12, 6, 1): -0.0, (12, 7, 2): -0.0, (12, 7, 1): -0.0, (25, 1, 2): 0.0, (25, 1, 1): 0.0, (25, 2, 2): 0.0, (25, 2, 1): 0.0, (25, 3, 2): 0.0, (25, 3, 1): 0.0, (25, 4, 2): 1.0, (25, 4, 1): 0.0, (25, 5, 2): 0.0, (25, 5, 1): 0.0, (25, 6, 2): -0.0, (25, 6, 1): 0.0, (25, 7, 2): 0.0, (25, 7, 1): 0.0, (4, 1, 2): 0.0, (4, 1, 1): 0.0, (4, 2, 2): 0.0, (4, 2, 1): 0.0, (4, 3, 2): -0.0, (4, 3, 1): 0.0, (4, 4, 2): 1.0, (4, 4, 1): 0.0, (4, 5, 2): 0.0, (4, 5, 1): 0.0, (4, 6, 2): 0.0, (4, 6, 1): 0.0, (4, 7, 2): -0.0, (4, 7, 1): 0.0, (97, 1, 2): -0.0, (97, 1, 1): 0.0, (97, 2, 2): -0.0, (97, 2, 1): 0.0, (97, 3, 2): -0.0, (97, 3, 1): 0.0, (97, 4, 2): -0.0, (97, 4, 1): 0.0, (97, 5, 2): -0.0, (97, 5, 1): 1.0, (97, 6, 2): -0.0, (97, 6, 1): -0.0, (97, 7, 2): -0.0, (97, 7, 1): -0.0, (99, 1, 2): 0.0, (99, 1, 1): 0.0, (99, 2, 2): 0.0, (99, 2, 1): 0.0, (99, 3, 2): 0.0, (99, 3, 1): 0.0, (99, 4, 2): 1.0, (99, 4, 1): 0.0, (99, 5, 2): -0.0, (99, 5, 1): 0.0, (99, 6, 2): 0.0, (99, 6, 1): 0.0, (99, 7, 2): -0.0, (99, 7, 1): 0.0, (18, 1, 2): 0.0, (18, 1, 1): 0.0, (18, 2, 2): 0.0, (18, 2, 1): 0.0, (18, 3, 2): -0.0, (18, 3, 1): 0.0, (18, 4, 2): 0.0, (18, 4, 1): 0.0, (18, 5, 2): -0.0, (18, 5, 1): 0.0, (18, 6, 2): -0.0, (18, 6, 1): 0.0, (18, 7, 2): 0.0, (18, 7, 1): 0.0, (5, 1, 2): 0.0, (5, 1, 1): 0.0, (5, 2, 2): -0.0, (5, 2, 1): 0.0, (5, 3, 2): -0.0, (5, 3, 1): -0.0, (5, 4, 2): -0.0, (5, 4, 1): 0.0, (5, 5, 2): -0.0, (5, 5, 1): -0.0, (5, 6, 2): -0.0, (5, 6, 1): 1.0, (5, 7, 2): -0.0, (5, 7, 1): 0.0, (19, 1, 2): -0.0, (19, 1, 1): 0.0, (19, 2, 2): -0.0, (19, 2, 1): 0.0, (19, 3, 2): -0.0, (19, 3, 1): 0.0, (19, 4, 2): -0.0, (19, 4, 1): 0.0, (19, 5, 2): -0.0, (19, 5, 1): 1.0, (19, 6, 2): -0.0, (19, 6, 1): -0.0, (19, 7, 2): -0.0, (19, 7, 1): -0.0, (61, 1, 2): 0.0, (61, 1, 1): 0.0, (61, 2, 2): 0.0, (61, 2, 1): 0.0, (61, 3, 2): -0.0, (61, 3, 1): -0.0, (61, 4, 2): -0.0, (61, 4, 1): 0.0, (61, 5, 2): 0.0, (61, 5, 1): 1.0, (61, 6, 2): -0.0, (61, 6, 1): -0.0, (61, 7, 2): -0.0, (61, 7, 1): 0.0, (15, 1, 2): 0.0, (15, 1, 1): 0.0, (15, 2, 2): 0.0, (15, 2, 1): 0.0, (15, 3, 2): -0.0, (15, 3, 1): 0.0, (15, 4, 2): 1.0, (15, 4, 1): 0.0, (15, 5, 2): 0.0, (15, 5, 1): 0.0, (15, 6, 2): 0.0, (15, 6, 1): 0.0, (15, 7, 2): -0.0, (15, 7, 1): 0.0, (23, 1, 2): 0.0, (23, 1, 1): 0.0, (23, 2, 2): -0.0, (23, 2, 1): -0.0, (23, 3, 2): -0.0, (23, 3, 1): 0.0, (23, 4, 2): -0.0, (23, 4, 1): -0.0, (23, 5, 2): -0.0, (23, 5, 1): 0.0, (23, 6, 2): -0.0, (23, 6, 1): 1.0, (23, 7, 2): -0.0, (23, 7, 1): 0.0, (62, 1, 2): -0.0, (62, 1, 1): 0.0, (62, 2, 2): -0.0, (62, 2, 1): 0.0, (62, 3, 2): -0.0, (62, 3, 1): -0.0, (62, 4, 2): -0.0, (62, 4, 1): -0.0, (62, 5, 2): -0.0, (62, 5, 1): 1.0, (62, 6, 2): -0.0, (62, 6, 1): -0.0, (62, 7, 2): -0.0, (62, 7, 1): 0.0, (14, 1, 2): 0.0, (14, 1, 1): 0.0, (14, 2, 2): 0.0, (14, 2, 1): 0.0, (14, 3, 2): 0.0, (14, 3, 1): 0.0, (14, 4, 2): -0.0, (14, 4, 1): 0.0, (14, 5, 2): 0.0, (14, 5, 1): 0.0, (14, 6, 2): 0.0, (14, 6, 1): 0.0, (14, 7, 2): -0.0, (14, 7, 1): 0.0, (58, 1, 2): 0.0, (58, 1, 1): 0.0, (58, 2, 2): -0.0, (58, 2, 1): -0.0, (58, 3, 2): -0.0, (58, 3, 1): 0.0, (58, 4, 2): -0.0, (58, 4, 1): 0.0, (58, 5, 2): -0.0, (58, 5, 1): -0.0, (58, 6, 2): -0.0, (58, 6, 1): 1.0, (58, 7, 2): -0.0, (58, 7, 1): 0.0, (56, 1, 2): 0.0, (56, 1, 1): 0.0, (56, 2, 2): 0.0, (56, 2, 1): 0.0, (56, 3, 2): -0.0, (56, 3, 1): 0.0, (56, 4, 2): -0.0, (56, 4, 1): 0.0, (56, 5, 2): 0.0, (56, 5, 1): 1.0, (56, 6, 2): -0.0, (56, 6, 1): -0.0, (56, 7, 2): -0.0, (56, 7, 1): -0.0, (21, 1, 2): 0.0, (21, 1, 1): 0.0, (21, 2, 2): 0.0, (21, 2, 1): 0.0, (21, 3, 2): -0.0, (21, 3, 1): -0.0, (21, 4, 2): -0.0, (21, 4, 1): 0.0, (21, 5, 2): 0.0, (21, 5, 1): 1.0, (21, 6, 2): -0.0, (21, 6, 1): 0.0, (21, 7, 2): -0.0, (21, 7, 1): -0.0, (40, 1, 2): 0.0, (40, 1, 1): 0.0, (40, 2, 2): 0.0, (40, 2, 1): 0.0, (40, 3, 2): 0.0, (40, 3, 1): 0.0, (40, 4, 2): 1.0, (40, 4, 1): 0.0, (40, 5, 2): 0.0, (40, 5, 1): 0.0, (40, 6, 2): -0.0, (40, 6, 1): 0.0, (40, 7, 2): -0.0, (40, 7, 1): 0.0, (70, 1, 2): -0.0, (70, 1, 1): 0.0, (70, 2, 2): -0.0, (70, 2, 1): 0.0, (70, 3, 2): -0.0, (70, 3, 1): -0.0, (70, 4, 2): -0.0, (70, 4, 1): 0.0, (70, 5, 2): -0.0, (70, 5, 1): 1.0, (70, 6, 2): -0.0, (70, 6, 1): -0.0, (70, 7, 2): -0.0, (70, 7, 1): 0.0}
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 2.027108907699585
+obj value -312.0
+obj value -312.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1388 rows, 1131 columns and 10348 nonzeros
+Model fingerprint: 0x6b919d5d
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [4e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 538 rows and 539 columns
+Presolve time: 0.02s
+Presolved: 850 rows, 592 columns, 4693 nonzeros
+Variable types: 12 continuous, 580 integer (576 binary)
+
+Root relaxation: objective -3.021429e+02, 500 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -302.14286    0  140 -350.00000 -302.14286  13.7%     -    0s
+H    0     0                    -321.0000000 -302.14286  5.87%     -    0s
+     0     0 -302.21429    0  154 -321.00000 -302.21429  5.85%     -    0s
+     0     0 -302.21429    0  159 -321.00000 -302.21429  5.85%     -    0s
+     0     0 -302.38095    0  165 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  187 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  212 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.38095    0  219 -321.00000 -302.38095  5.80%     -    0s
+     0     0 -302.66667    0  148 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  186 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  207 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  203 -321.00000 -302.66667  5.71%     -    0s
+     0     0 -302.66667    0  152 -321.00000 -302.66667  5.71%     -    0s
+H    0     0                    -315.0000000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  154 -315.00000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  149 -315.00000 -302.66667  3.92%     -    0s
+     0     0 -302.66667    0  144 -315.00000 -302.66667  3.92%     -    0s
+     0     2 -302.66667    0  123 -315.00000 -302.66667  3.92%     -    0s
+*   21     5              13    -314.0000000 -302.66667  3.61%  81.0    0s
+*   99    19              20    -313.0000000 -302.66667  3.30%  61.0    0s
+*  341    62              22    -312.0000000 -303.75000  2.64%  41.1    1s
+
+Cutting planes:
+  Gomory: 5
+  MIR: 1
+  Zero half: 54
+
+Explored 1391 nodes (41803 simplex iterations) in 1.98 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -312 -313 -314 ... -350
+No other solutions better than -312
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.120000000000e+02, best bound -3.120000000000e+02, gap 0.0000%
+<bound method tupledict.values of {(95, 1, 2): 0.0, (95, 1, 1): 0.0, (95, 2, 2): -0.0, (95, 2, 1): 0.0, (95, 3, 2): -0.0, (95, 3, 1): 0.0, (95, 4, 2): 0.0, (95, 4, 1): 0.0, (95, 5, 2): 0.0, (95, 5, 1): 0.0, (95, 6, 2): -0.0, (95, 6, 1): 0.0, (95, 7, 2): 0.0, (95, 7, 1): 0.0, (1, 1, 2): -0.0, (1, 1, 1): 0.0, (1, 2, 2): -0.0, (1, 2, 1): 0.0, (1, 3, 2): -0.0, (1, 3, 1): -0.0, (1, 4, 2): -0.0, (1, 4, 1): -0.0, (1, 5, 2): -0.0, (1, 5, 1): 1.0, (1, 6, 2): -0.0, (1, 6, 1): 0.0, (1, 7, 2): -0.0, (1, 7, 1): -0.0, (64, 1, 2): 0.0, (64, 1, 1): 0.0, (64, 2, 2): 0.0, (64, 2, 1): 0.0, (64, 3, 2): -0.0, (64, 3, 1): 0.0, (64, 4, 2): 0.0, (64, 4, 1): 0.0, (64, 5, 2): 0.0, (64, 5, 1): 0.0, (64, 6, 2): -0.0, (64, 6, 1): 0.0, (64, 7, 2): -0.0, (64, 7, 1): 0.0, (39, 1, 2): 0.0, (39, 1, 1): 0.0, (39, 2, 2): 0.0, (39, 2, 1): 0.0, (39, 3, 2): -0.0, (39, 3, 1): 0.0, (39, 4, 2): 0.0, (39, 4, 1): 0.0, (39, 5, 2): 0.0, (39, 5, 1): 0.0, (39, 6, 2): -0.0, (39, 6, 1): 0.0, (39, 7, 2): 0.0, (39, 7, 1): 0.0, (69, 1, 2): -0.0, (69, 1, 1): 0.0, (69, 2, 2): -0.0, (69, 2, 1): 0.0, (69, 3, 2): -0.0, (69, 3, 1): -0.0, (69, 4, 2): -0.0, (69, 4, 1): -0.0, (69, 5, 2): -0.0, (69, 5, 1): 1.0, (69, 6, 2): -0.0, (69, 6, 1): 0.0, (69, 7, 2): -0.0, (69, 7, 1): -0.0, (66, 1, 2): -0.0, (66, 1, 1): 0.0, (66, 2, 2): -0.0, (66, 2, 1): 0.0, (66, 3, 2): -0.0, (66, 3, 1): -0.0, (66, 4, 2): -0.0, (66, 4, 1): -0.0, (66, 5, 2): -0.0, (66, 5, 1): 1.0, (66, 6, 2): -0.0, (66, 6, 1): 0.0, (66, 7, 2): -0.0, (66, 7, 1): -0.0, (16, 1, 2): -0.0, (16, 1, 1): 0.0, (16, 2, 2): -0.0, (16, 2, 1): 0.0, (16, 3, 2): -0.0, (16, 3, 1): 0.0, (16, 4, 2): -0.0, (16, 4, 1): 0.0, (16, 5, 2): -0.0, (16, 5, 1): 0.0, (16, 6, 2): -0.0, (16, 6, 1): -0.0, (16, 7, 2): -0.0, (16, 7, 1): -0.0, (13, 1, 2): 0.0, (13, 1, 1): 0.0, (13, 2, 2): -0.0, (13, 2, 1): 0.0, (13, 3, 2): 0.0, (13, 3, 1): -0.0, (13, 4, 2): -0.0, (13, 4, 1): 0.0, (13, 5, 2): 0.0, (13, 5, 1): 1.0, (13, 6, 2): -0.0, (13, 6, 1): -0.0, (13, 7, 2): -0.0, (13, 7, 1): -0.0, (54, 1, 2): -0.0, (54, 1, 1): 0.0, (54, 2, 2): -0.0, (54, 2, 1): 0.0, (54, 3, 2): -0.0, (54, 3, 1): -0.0, (54, 4, 2): -0.0, (54, 4, 1): -0.0, (54, 5, 2): -0.0, (54, 5, 1): 1.0, (54, 6, 2): -0.0, (54, 6, 1): -0.0, (54, 7, 2): -0.0, (54, 7, 1): 0.0, (90, 1, 2): 0.0, (90, 1, 1): 0.0, (90, 2, 2): 0.0, (90, 2, 1): 0.0, (90, 3, 2): 0.0, (90, 3, 1): 0.0, (90, 4, 2): 0.0, (90, 4, 1): 0.0, (90, 5, 2): 0.0, (90, 5, 1): 0.0, (90, 6, 2): -0.0, (90, 6, 1): 0.0, (90, 7, 2): -0.0, (90, 7, 1): 0.0, (47, 1, 2): -0.0, (47, 1, 1): 0.0, (47, 2, 2): -0.0, (47, 2, 1): 0.0, (47, 3, 2): -0.0, (47, 3, 1): -0.0, (47, 4, 2): -0.0, (47, 4, 1): 0.0, (47, 5, 2): -0.0, (47, 5, 1): 1.0, (47, 6, 2): -0.0, (47, 6, 1): 0.0, (47, 7, 2): -0.0, (47, 7, 1): -0.0, (32, 1, 2): -0.0, (32, 1, 1): 0.0, (32, 2, 2): -0.0, (32, 2, 1): 0.0, (32, 3, 2): -0.0, (32, 3, 1): -0.0, (32, 4, 2): -0.0, (32, 4, 1): 0.0, (32, 5, 2): -0.0, (32, 5, 1): 1.0, (32, 6, 2): -0.0, (32, 6, 1): -0.0, (32, 7, 2): -0.0, (32, 7, 1): -0.0, (10, 1, 2): -0.0, (10, 1, 1): 0.0, (10, 2, 2): -0.0, (10, 2, 1): 0.0, (10, 3, 2): -0.0, (10, 3, 1): -0.0, (10, 4, 2): -0.0, (10, 4, 1): -0.0, (10, 5, 2): -0.0, (10, 5, 1): 1.0, (10, 6, 2): -0.0, (10, 6, 1): 0.0, (10, 7, 2): -0.0, (10, 7, 1): -0.0, (78, 1, 2): 0.0, (78, 1, 1): 0.0, (78, 2, 2): 0.0, (78, 2, 1): 0.0, (78, 3, 2): -0.0, (78, 3, 1): 0.0, (78, 4, 2): 0.0, (78, 4, 1): 0.0, (78, 5, 2): 0.0, (78, 5, 1): 0.0, (78, 6, 2): 0.0, (78, 6, 1): 0.0, (78, 7, 2): -0.0, (78, 7, 1): 0.0, (6, 1, 2): -0.0, (6, 1, 1): 0.0, (6, 2, 2): -0.0, (6, 2, 1): 0.0, (6, 3, 2): -0.0, (6, 3, 1): -0.0, (6, 4, 2): -0.0, (6, 4, 1): 0.0, (6, 5, 2): -0.0, (6, 5, 1): 1.0, (6, 6, 2): -0.0, (6, 6, 1): -0.0, (6, 7, 2): -0.0, (6, 7, 1): -0.0, (76, 1, 2): -0.0, (76, 1, 1): 0.0, (76, 2, 2): -0.0, (76, 2, 1): 0.0, (76, 3, 2): -0.0, (76, 3, 1): -0.0, (76, 4, 2): -0.0, (76, 4, 1): 0.0, (76, 5, 2): -0.0, (76, 5, 1): 1.0, (76, 6, 2): -0.0, (76, 6, 1): -0.0, (76, 7, 2): -0.0, (76, 7, 1): 0.0, (41, 1, 2): 0.0, (41, 1, 1): 0.0, (41, 2, 2): 0.0, (41, 2, 1): 0.0, (41, 3, 2): 0.0, (41, 3, 1): 0.0, (41, 4, 2): 1.0, (41, 4, 1): 0.0, (41, 5, 2): 0.0, (41, 5, 1): 0.0, (41, 6, 2): -0.0, (41, 6, 1): 0.0, (41, 7, 2): 0.0, (41, 7, 1): 0.0, (57, 1, 2): 0.0, (57, 1, 1): 0.0, (57, 2, 2): 0.0, (57, 2, 1): 0.0, (57, 3, 2): 0.0, (57, 3, 1): 0.0, (57, 4, 2): 1.0, (57, 4, 1): 0.0, (57, 5, 2): 0.0, (57, 5, 1): 0.0, (57, 6, 2): -0.0, (57, 6, 1): 0.0, (57, 7, 2): 0.0, (57, 7, 1): 0.0, (88, 1, 2): 0.0, (88, 1, 1): 0.0, (88, 2, 2): 0.0, (88, 2, 1): 0.0, (88, 3, 2): 0.0, (88, 3, 1): 0.0, (88, 4, 2): 1.0, (88, 4, 1): 0.0, (88, 5, 2): -0.0, (88, 5, 1): 0.0, (88, 6, 2): -0.0, (88, 6, 1): 0.0, (88, 7, 2): -0.0, (88, 7, 1): 0.0, (51, 1, 2): -0.0, (51, 1, 1): 0.0, (51, 2, 2): -0.0, (51, 2, 1): 0.0, (51, 3, 2): -0.0, (51, 3, 1): -0.0, (51, 4, 2): -0.0, (51, 4, 1): 0.0, (51, 5, 2): -0.0, (51, 5, 1): 0.0, (51, 6, 2): -0.0, (51, 6, 1): -0.0, (51, 7, 2): -0.0, (51, 7, 1): 0.0, (65, 1, 2): -0.0, (65, 1, 1): 0.0, (65, 2, 2): -0.0, (65, 2, 1): 0.0, (65, 3, 2): -0.0, (65, 3, 1): -0.0, (65, 4, 2): -0.0, (65, 4, 1): 0.0, (65, 5, 2): -0.0, (65, 5, 1): 1.0, (65, 6, 2): -0.0, (65, 6, 1): -0.0, (65, 7, 2): -0.0, (65, 7, 1): 0.0, (59, 1, 2): -0.0, (59, 1, 1): 0.0, (59, 2, 2): -0.0, (59, 2, 1): 0.0, (59, 3, 2): -0.0, (59, 3, 1): -0.0, (59, 4, 2): -0.0, (59, 4, 1): 0.0, (59, 5, 2): -0.0, (59, 5, 1): 1.0, (59, 6, 2): -0.0, (59, 6, 1): -0.0, (59, 7, 2): -0.0, (59, 7, 1): 0.0, (53, 1, 2): -0.0, (53, 1, 1): 0.0, (53, 2, 2): -0.0, (53, 2, 1): 0.0, (53, 3, 2): -0.0, (53, 3, 1): 0.0, (53, 4, 2): -0.0, (53, 4, 1): 0.0, (53, 5, 2): -0.0, (53, 5, 1): 1.0, (53, 6, 2): -0.0, (53, 6, 1): -0.0, (53, 7, 2): -0.0, (53, 7, 1): -0.0, (2, 1, 2): -0.0, (2, 1, 1): 0.0, (2, 2, 2): -0.0, (2, 2, 1): 0.0, (2, 3, 2): -0.0, (2, 3, 1): -0.0, (2, 4, 2): -0.0, (2, 4, 1): -0.0, (2, 5, 2): -0.0, (2, 5, 1): 1.0, (2, 6, 2): -0.0, (2, 6, 1): -0.0, (2, 7, 2): -0.0, (2, 7, 1): 0.0, (73, 1, 2): 0.0, (73, 1, 1): 0.0, (73, 2, 2): 0.0, (73, 2, 1): 0.0, (73, 3, 2): 0.0, (73, 3, 1): 0.0, (73, 4, 2): 1.0, (73, 4, 1): 0.0, (73, 5, 2): 0.0, (73, 5, 1): 0.0, (73, 6, 2): -0.0, (73, 6, 1): 0.0, (73, 7, 2): 0.0, (73, 7, 1): 0.0, (31, 1, 2): 0.0, (31, 1, 1): 0.0, (31, 2, 2): 0.0, (31, 2, 1): 0.0, (31, 3, 2): -0.0, (31, 3, 1): 0.0, (31, 4, 2): -0.0, (31, 4, 1): 0.0, (31, 5, 2): -0.0, (31, 5, 1): 0.0, (31, 6, 2): 0.0, (31, 6, 1): 0.0, (31, 7, 2): -0.0, (31, 7, 1): 0.0, (35, 1, 2): 0.0, (35, 1, 1): 0.0, (35, 2, 2): 0.0, (35, 2, 1): 0.0, (35, 3, 2): 0.0, (35, 3, 1): 0.0, (35, 4, 2): 0.0, (35, 4, 1): 0.0, (35, 5, 2): 0.0, (35, 5, 1): 0.0, (35, 6, 2): -0.0, (35, 6, 1): 0.0, (35, 7, 2): 0.0, (35, 7, 1): 0.0, (46, 1, 2): 0.0, (46, 1, 1): 0.0, (46, 2, 2): 0.0, (46, 2, 1): 0.0, (46, 3, 2): 0.0, (46, 3, 1): 0.0, (46, 4, 2): 1.0, (46, 4, 1): 0.0, (46, 5, 2): 0.0, (46, 5, 1): 0.0, (46, 6, 2): -0.0, (46, 6, 1): 0.0, (46, 7, 2): 0.0, (46, 7, 1): 0.0, (30, 1, 2): 0.0, (30, 1, 1): 0.0, (30, 2, 2): -0.0, (30, 2, 1): -0.0, (30, 3, 2): -0.0, (30, 3, 1): 0.0, (30, 4, 2): -0.0, (30, 4, 1): -0.0, (30, 5, 2): -0.0, (30, 5, 1): 0.0, (30, 6, 2): -0.0, (30, 6, 1): 1.0, (30, 7, 2): -0.0, (30, 7, 1): 0.0, (74, 1, 2): 0.0, (74, 1, 1): 0.0, (74, 2, 2): -0.0, (74, 2, 1): 0.0, (74, 3, 2): 0.0, (74, 3, 1): 0.0, (74, 4, 2): 0.0, (74, 4, 1): 0.0, (74, 5, 2): -0.0, (74, 5, 1): 0.0, (74, 6, 2): -0.0, (74, 6, 1): 0.0, (74, 7, 2): 1.0, (74, 7, 1): 0.0, (43, 1, 2): -0.0, (43, 1, 1): 0.0, (43, 2, 2): -0.0, (43, 2, 1): 0.0, (43, 3, 2): -0.0, (43, 3, 1): -0.0, (43, 4, 2): -0.0, (43, 4, 1): 0.0, (43, 5, 2): -0.0, (43, 5, 1): 1.0, (43, 6, 2): -0.0, (43, 6, 1): -0.0, (43, 7, 2): -0.0, (43, 7, 1): 0.0, (33, 1, 2): 0.0, (33, 1, 1): 0.0, (33, 2, 2): 0.0, (33, 2, 1): 0.0, (33, 3, 2): 0.0, (33, 3, 1): 0.0, (33, 4, 2): 1.0, (33, 4, 1): 0.0, (33, 5, 2): 0.0, (33, 5, 1): 0.0, (33, 6, 2): 0.0, (33, 6, 1): 0.0, (33, 7, 2): -0.0, (33, 7, 1): 0.0, (12, 1, 2): -0.0, (12, 1, 1): 0.0, (12, 2, 2): -0.0, (12, 2, 1): 0.0, (12, 3, 2): -0.0, (12, 3, 1): 0.0, (12, 4, 2): -0.0, (12, 4, 1): -0.0, (12, 5, 2): -0.0, (12, 5, 1): 0.0, (12, 6, 2): -0.0, (12, 6, 1): -0.0, (12, 7, 2): -0.0, (12, 7, 1): -0.0, (25, 1, 2): 0.0, (25, 1, 1): 0.0, (25, 2, 2): 0.0, (25, 2, 1): 0.0, (25, 3, 2): 0.0, (25, 3, 1): 0.0, (25, 4, 2): 1.0, (25, 4, 1): 0.0, (25, 5, 2): 0.0, (25, 5, 1): 0.0, (25, 6, 2): -0.0, (25, 6, 1): 0.0, (25, 7, 2): 0.0, (25, 7, 1): 0.0, (4, 1, 2): 0.0, (4, 1, 1): 0.0, (4, 2, 2): 0.0, (4, 2, 1): 0.0, (4, 3, 2): -0.0, (4, 3, 1): 0.0, (4, 4, 2): 1.0, (4, 4, 1): 0.0, (4, 5, 2): 0.0, (4, 5, 1): 0.0, (4, 6, 2): 0.0, (4, 6, 1): 0.0, (4, 7, 2): -0.0, (4, 7, 1): 0.0, (97, 1, 2): -0.0, (97, 1, 1): 0.0, (97, 2, 2): -0.0, (97, 2, 1): 0.0, (97, 3, 2): -0.0, (97, 3, 1): 0.0, (97, 4, 2): -0.0, (97, 4, 1): 0.0, (97, 5, 2): -0.0, (97, 5, 1): 1.0, (97, 6, 2): -0.0, (97, 6, 1): -0.0, (97, 7, 2): -0.0, (97, 7, 1): -0.0, (99, 1, 2): 0.0, (99, 1, 1): 0.0, (99, 2, 2): 0.0, (99, 2, 1): 0.0, (99, 3, 2): 0.0, (99, 3, 1): 0.0, (99, 4, 2): 1.0, (99, 4, 1): 0.0, (99, 5, 2): -0.0, (99, 5, 1): 0.0, (99, 6, 2): 0.0, (99, 6, 1): 0.0, (99, 7, 2): -0.0, (99, 7, 1): 0.0, (18, 1, 2): 0.0, (18, 1, 1): 0.0, (18, 2, 2): 0.0, (18, 2, 1): 0.0, (18, 3, 2): -0.0, (18, 3, 1): 0.0, (18, 4, 2): 0.0, (18, 4, 1): 0.0, (18, 5, 2): -0.0, (18, 5, 1): 0.0, (18, 6, 2): -0.0, (18, 6, 1): 0.0, (18, 7, 2): 0.0, (18, 7, 1): 0.0, (5, 1, 2): 0.0, (5, 1, 1): 0.0, (5, 2, 2): -0.0, (5, 2, 1): 0.0, (5, 3, 2): -0.0, (5, 3, 1): -0.0, (5, 4, 2): -0.0, (5, 4, 1): 0.0, (5, 5, 2): -0.0, (5, 5, 1): -0.0, (5, 6, 2): -0.0, (5, 6, 1): 1.0, (5, 7, 2): -0.0, (5, 7, 1): 0.0, (19, 1, 2): -0.0, (19, 1, 1): 0.0, (19, 2, 2): -0.0, (19, 2, 1): 0.0, (19, 3, 2): -0.0, (19, 3, 1): 0.0, (19, 4, 2): -0.0, (19, 4, 1): 0.0, (19, 5, 2): -0.0, (19, 5, 1): 1.0, (19, 6, 2): -0.0, (19, 6, 1): -0.0, (19, 7, 2): -0.0, (19, 7, 1): -0.0, (61, 1, 2): 0.0, (61, 1, 1): 0.0, (61, 2, 2): 0.0, (61, 2, 1): 0.0, (61, 3, 2): -0.0, (61, 3, 1): -0.0, (61, 4, 2): -0.0, (61, 4, 1): 0.0, (61, 5, 2): 0.0, (61, 5, 1): 1.0, (61, 6, 2): -0.0, (61, 6, 1): -0.0, (61, 7, 2): -0.0, (61, 7, 1): 0.0, (15, 1, 2): 0.0, (15, 1, 1): 0.0, (15, 2, 2): 0.0, (15, 2, 1): 0.0, (15, 3, 2): -0.0, (15, 3, 1): 0.0, (15, 4, 2): 1.0, (15, 4, 1): 0.0, (15, 5, 2): 0.0, (15, 5, 1): 0.0, (15, 6, 2): 0.0, (15, 6, 1): 0.0, (15, 7, 2): -0.0, (15, 7, 1): 0.0, (23, 1, 2): 0.0, (23, 1, 1): 0.0, (23, 2, 2): -0.0, (23, 2, 1): -0.0, (23, 3, 2): -0.0, (23, 3, 1): 0.0, (23, 4, 2): -0.0, (23, 4, 1): -0.0, (23, 5, 2): -0.0, (23, 5, 1): 0.0, (23, 6, 2): -0.0, (23, 6, 1): 1.0, (23, 7, 2): -0.0, (23, 7, 1): 0.0, (62, 1, 2): -0.0, (62, 1, 1): 0.0, (62, 2, 2): -0.0, (62, 2, 1): 0.0, (62, 3, 2): -0.0, (62, 3, 1): -0.0, (62, 4, 2): -0.0, (62, 4, 1): -0.0, (62, 5, 2): -0.0, (62, 5, 1): 1.0, (62, 6, 2): -0.0, (62, 6, 1): -0.0, (62, 7, 2): -0.0, (62, 7, 1): 0.0, (14, 1, 2): 0.0, (14, 1, 1): 0.0, (14, 2, 2): 0.0, (14, 2, 1): 0.0, (14, 3, 2): 0.0, (14, 3, 1): 0.0, (14, 4, 2): -0.0, (14, 4, 1): 0.0, (14, 5, 2): 0.0, (14, 5, 1): 0.0, (14, 6, 2): 0.0, (14, 6, 1): 0.0, (14, 7, 2): -0.0, (14, 7, 1): 0.0, (58, 1, 2): 0.0, (58, 1, 1): 0.0, (58, 2, 2): -0.0, (58, 2, 1): -0.0, (58, 3, 2): -0.0, (58, 3, 1): 0.0, (58, 4, 2): -0.0, (58, 4, 1): 0.0, (58, 5, 2): -0.0, (58, 5, 1): -0.0, (58, 6, 2): -0.0, (58, 6, 1): 1.0, (58, 7, 2): -0.0, (58, 7, 1): 0.0, (56, 1, 2): 0.0, (56, 1, 1): 0.0, (56, 2, 2): 0.0, (56, 2, 1): 0.0, (56, 3, 2): -0.0, (56, 3, 1): 0.0, (56, 4, 2): -0.0, (56, 4, 1): 0.0, (56, 5, 2): 0.0, (56, 5, 1): 1.0, (56, 6, 2): -0.0, (56, 6, 1): -0.0, (56, 7, 2): -0.0, (56, 7, 1): -0.0, (21, 1, 2): 0.0, (21, 1, 1): 0.0, (21, 2, 2): 0.0, (21, 2, 1): 0.0, (21, 3, 2): -0.0, (21, 3, 1): -0.0, (21, 4, 2): -0.0, (21, 4, 1): 0.0, (21, 5, 2): 0.0, (21, 5, 1): 1.0, (21, 6, 2): -0.0, (21, 6, 1): 0.0, (21, 7, 2): -0.0, (21, 7, 1): -0.0, (40, 1, 2): 0.0, (40, 1, 1): 0.0, (40, 2, 2): 0.0, (40, 2, 1): 0.0, (40, 3, 2): 0.0, (40, 3, 1): 0.0, (40, 4, 2): 1.0, (40, 4, 1): 0.0, (40, 5, 2): 0.0, (40, 5, 1): 0.0, (40, 6, 2): -0.0, (40, 6, 1): 0.0, (40, 7, 2): -0.0, (40, 7, 1): 0.0, (70, 1, 2): -0.0, (70, 1, 1): 0.0, (70, 2, 2): -0.0, (70, 2, 1): 0.0, (70, 3, 2): -0.0, (70, 3, 1): -0.0, (70, 4, 2): -0.0, (70, 4, 1): 0.0, (70, 5, 2): -0.0, (70, 5, 1): 1.0, (70, 6, 2): -0.0, (70, 6, 1): -0.0, (70, 7, 2): -0.0, (70, 7, 1): 0.0}>
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 2.0819642543792725
+obj value -312.0
+obj value -312.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1386 rows, 1131 columns and 9074 nonzeros
+Model fingerprint: 0xf526904f
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [7e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 701 rows and 694 columns
+Presolve time: 0.02s
+Presolved: 685 rows, 437 columns, 4079 nonzeros
+Variable types: 12 continuous, 425 integer (425 binary)
+
+Root relaxation: objective -3.007143e+02, 560 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -300.71429    0  106 -350.00000 -300.71429  14.1%     -    0s
+H    0     0                    -329.0000000 -300.71429  8.60%     -    0s
+     0     0 -300.71429    0  206 -329.00000 -300.71429  8.60%     -    0s
+H    0     0                    -320.0000000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  192 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  139 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   94 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  127 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  110 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  105 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  181 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  107 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  160 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  117 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+     0     2 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+H   54    49                    -313.0000000 -300.71429  3.93%  84.0    0s
+H  210    82                    -312.0000000 -301.35714  3.41%  39.3    0s
+*  687    75              21    -311.0000000 -309.00000  0.64%  25.1    1s
+
+Cutting planes:
+  Gomory: 2
+  Zero half: 29
+
+Explored 779 nodes (24700 simplex iterations) in 1.19 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -311 -312 -313 ... -350
+No other solutions better than -311
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.110000000000e+02, best bound -3.110000000000e+02, gap 0.0000%
+<bound method tupledict.values of {(95, 1, 2): 0.0, (95, 1, 1): 0.0, (95, 2, 2): 0.0, (95, 2, 1): 0.0, (95, 3, 2): -0.0, (95, 3, 1): 0.0, (95, 4, 2): 0.0, (95, 4, 1): 0.0, (95, 5, 2): -0.0, (95, 5, 1): 0.0, (95, 6, 2): 0.0, (95, 6, 1): 0.0, (95, 7, 2): -0.0, (95, 7, 1): 0.0, (1, 1, 2): 0.0, (1, 1, 1): 0.0, (1, 2, 2): 0.0, (1, 2, 1): -0.0, (1, 3, 2): 0.0, (1, 3, 1): -0.0, (1, 4, 2): 0.0, (1, 4, 1): 0.0, (1, 5, 2): 0.0, (1, 5, 1): 1.0, (1, 6, 2): 0.0, (1, 6, 1): -0.0, (1, 7, 2): 0.0, (1, 7, 1): 0.0, (64, 1, 2): 0.0, (64, 1, 1): 0.0, (64, 2, 2): 0.0, (64, 2, 1): 0.0, (64, 3, 2): 0.0, (64, 3, 1): 0.0, (64, 4, 2): 0.0, (64, 4, 1): 0.0, (64, 5, 2): -0.0, (64, 5, 1): 0.0, (64, 6, 2): 0.0, (64, 6, 1): 0.0, (64, 7, 2): -0.0, (64, 7, 1): 0.0, (39, 1, 2): 0.0, (39, 1, 1): 0.0, (39, 2, 2): 0.0, (39, 2, 1): 0.0, (39, 3, 2): 0.0, (39, 3, 1): 0.0, (39, 4, 2): 0.0, (39, 4, 1): 0.0, (39, 5, 2): -0.0, (39, 5, 1): 0.0, (39, 6, 2): -0.0, (39, 6, 1): 0.0, (39, 7, 2): 0.0, (39, 7, 1): 0.0, (69, 1, 2): 0.0, (69, 1, 1): 0.0, (69, 2, 2): 0.0, (69, 2, 1): 0.0, (69, 3, 2): 0.0, (69, 3, 1): 0.0, (69, 4, 2): 0.0, (69, 4, 1): 0.0, (69, 5, 2): 0.0, (69, 5, 1): 1.0, (69, 6, 2): 0.0, (69, 6, 1): 0.0, (69, 7, 2): 0.0, (69, 7, 1): 0.0, (66, 1, 2): 0.0, (66, 1, 1): 0.0, (66, 2, 2): 0.0, (66, 2, 1): -0.0, (66, 3, 2): 0.0, (66, 3, 1): 0.0, (66, 4, 2): 0.0, (66, 4, 1): -0.0, (66, 5, 2): 0.0, (66, 5, 1): 1.0, (66, 6, 2): 0.0, (66, 6, 1): 0.0, (66, 7, 2): 0.0, (66, 7, 1): -0.0, (16, 1, 2): 0.0, (16, 1, 1): 0.0, (16, 2, 2): -0.0, (16, 2, 1): 0.0, (16, 3, 2): -0.0, (16, 3, 1): -0.0, (16, 4, 2): -0.0, (16, 4, 1): -0.0, (16, 5, 2): -0.0, (16, 5, 1): 0.0, (16, 6, 2): -0.0, (16, 6, 1): -0.0, (16, 7, 2): -0.0, (16, 7, 1): 0.0, (13, 1, 2): 0.0, (13, 1, 1): 0.0, (13, 2, 2): 0.0, (13, 2, 1): -0.0, (13, 3, 2): 0.0, (13, 3, 1): 0.0, (13, 4, 2): 0.0, (13, 4, 1): -0.0, (13, 5, 2): 0.0, (13, 5, 1): 1.0, (13, 6, 2): 0.0, (13, 6, 1): 0.0, (13, 7, 2): 0.0, (13, 7, 1): -0.0, (54, 1, 2): 0.0, (54, 1, 1): 0.0, (54, 2, 2): 0.0, (54, 2, 1): -0.0, (54, 3, 2): 0.0, (54, 3, 1): 0.0, (54, 4, 2): 0.0, (54, 4, 1): -0.0, (54, 5, 2): 0.0, (54, 5, 1): 1.0, (54, 6, 2): 0.0, (54, 6, 1): 0.0, (54, 7, 2): 0.0, (54, 7, 1): -0.0, (90, 1, 2): 0.0, (90, 1, 1): 0.0, (90, 2, 2): 0.0, (90, 2, 1): 0.0, (90, 3, 2): -0.0, (90, 3, 1): 0.0, (90, 4, 2): 0.0, (90, 4, 1): 0.0, (90, 5, 2): -0.0, (90, 5, 1): 0.0, (90, 6, 2): 0.0, (90, 6, 1): 0.0, (90, 7, 2): -0.0, (90, 7, 1): 0.0, (47, 1, 2): 0.0, (47, 1, 1): 0.0, (47, 2, 2): 0.0, (47, 2, 1): 0.0, (47, 3, 2): 0.0, (47, 3, 1): 0.0, (47, 4, 2): 0.0, (47, 4, 1): 0.0, (47, 5, 2): 0.0, (47, 5, 1): 1.0, (47, 6, 2): 0.0, (47, 6, 1): 0.0, (47, 7, 2): 0.0, (47, 7, 1): 0.0, (32, 1, 2): 0.0, (32, 1, 1): 0.0, (32, 2, 2): -0.0, (32, 2, 1): 0.0, (32, 3, 2): -0.0, (32, 3, 1): 0.0, (32, 4, 2): -0.0, (32, 4, 1): -0.0, (32, 5, 2): -0.0, (32, 5, 1): 1.0, (32, 6, 2): -0.0, (32, 6, 1): -0.0, (32, 7, 2): -0.0, (32, 7, 1): 0.0, (10, 1, 2): 0.0, (10, 1, 1): 0.0, (10, 2, 2): 0.0, (10, 2, 1): 0.0, (10, 3, 2): 0.0, (10, 3, 1): 0.0, (10, 4, 2): 0.0, (10, 4, 1): 0.0, (10, 5, 2): 0.0, (10, 5, 1): 1.0, (10, 6, 2): 0.0, (10, 6, 1): 0.0, (10, 7, 2): 0.0, (10, 7, 1): 0.0, (78, 1, 2): 0.0, (78, 1, 1): 0.0, (78, 2, 2): 0.0, (78, 2, 1): 0.0, (78, 3, 2): -0.0, (78, 3, 1): 0.0, (78, 4, 2): 1.0, (78, 4, 1): 0.0, (78, 5, 2): -0.0, (78, 5, 1): 0.0, (78, 6, 2): -0.0, (78, 6, 1): 0.0, (78, 7, 2): 0.0, (78, 7, 1): 0.0, (6, 1, 2): 0.0, (6, 1, 1): 0.0, (6, 2, 2): -0.0, (6, 2, 1): 0.0, (6, 3, 2): -0.0, (6, 3, 1): -0.0, (6, 4, 2): -0.0, (6, 4, 1): 0.0, (6, 5, 2): -0.0, (6, 5, 1): 1.0, (6, 6, 2): -0.0, (6, 6, 1): 0.0, (6, 7, 2): -0.0, (6, 7, 1): -0.0, (76, 1, 2): 0.0, (76, 1, 1): 0.0, (76, 2, 2): 0.0, (76, 2, 1): -0.0, (76, 3, 2): 0.0, (76, 3, 1): -0.0, (76, 4, 2): 0.0, (76, 4, 1): -0.0, (76, 5, 2): 0.0, (76, 5, 1): 1.0, (76, 6, 2): 0.0, (76, 6, 1): 0.0, (76, 7, 2): 0.0, (76, 7, 1): -0.0, (41, 1, 2): 0.0, (41, 1, 1): 0.0, (41, 2, 2): 0.0, (41, 2, 1): 0.0, (41, 3, 2): 0.0, (41, 3, 1): 0.0, (41, 4, 2): 1.0, (41, 4, 1): 0.0, (41, 5, 2): -0.0, (41, 5, 1): 0.0, (41, 6, 2): 0.0, (41, 6, 1): 0.0, (41, 7, 2): 0.0, (41, 7, 1): 0.0, (57, 1, 2): 0.0, (57, 1, 1): 0.0, (57, 2, 2): 0.0, (57, 2, 1): 0.0, (57, 3, 2): 0.0, (57, 3, 1): 0.0, (57, 4, 2): 1.0, (57, 4, 1): 0.0, (57, 5, 2): -0.0, (57, 5, 1): 0.0, (57, 6, 2): -0.0, (57, 6, 1): 0.0, (57, 7, 2): 0.0, (57, 7, 1): 0.0, (88, 1, 2): 0.0, (88, 1, 1): 0.0, (88, 2, 2): -0.0, (88, 2, 1): 0.0, (88, 3, 2): 0.0, (88, 3, 1): 0.0, (88, 4, 2): 1.0, (88, 4, 1): 0.0, (88, 5, 2): -0.0, (88, 5, 1): 0.0, (88, 6, 2): -0.0, (88, 6, 1): 0.0, (88, 7, 2): 0.0, (88, 7, 1): 0.0, (51, 1, 2): 0.0, (51, 1, 1): 0.0, (51, 2, 2): 0.0, (51, 2, 1): 0.0, (51, 3, 2): 0.0, (51, 3, 1): 0.0, (51, 4, 2): 0.0, (51, 4, 1): 0.0, (51, 5, 2): 0.0, (51, 5, 1): 0.0, (51, 6, 2): 0.0, (51, 6, 1): 0.0, (51, 7, 2): 0.0, (51, 7, 1): -0.0, (65, 1, 2): 0.0, (65, 1, 1): 0.0, (65, 2, 2): 0.0, (65, 2, 1): 0.0, (65, 3, 2): 0.0, (65, 3, 1): -0.0, (65, 4, 2): 0.0, (65, 4, 1): 0.0, (65, 5, 2): 0.0, (65, 5, 1): 1.0, (65, 6, 2): 0.0, (65, 6, 1): -0.0, (65, 7, 2): 0.0, (65, 7, 1): 0.0, (59, 1, 2): 0.0, (59, 1, 1): 0.0, (59, 2, 2): 0.0, (59, 2, 1): -0.0, (59, 3, 2): 0.0, (59, 3, 1): -0.0, (59, 4, 2): 0.0, (59, 4, 1): 0.0, (59, 5, 2): 0.0, (59, 5, 1): 1.0, (59, 6, 2): 0.0, (59, 6, 1): 0.0, (59, 7, 2): 0.0, (59, 7, 1): -0.0, (53, 1, 2): 0.0, (53, 1, 1): 0.0, (53, 2, 2): -0.0, (53, 2, 1): 0.0, (53, 3, 2): -0.0, (53, 3, 1): 0.0, (53, 4, 2): -0.0, (53, 4, 1): 0.0, (53, 5, 2): -0.0, (53, 5, 1): 1.0, (53, 6, 2): -0.0, (53, 6, 1): 0.0, (53, 7, 2): -0.0, (53, 7, 1): -0.0, (2, 1, 2): 0.0, (2, 1, 1): 0.0, (2, 2, 2): 0.0, (2, 2, 1): 0.0, (2, 3, 2): 0.0, (2, 3, 1): 0.0, (2, 4, 2): 0.0, (2, 4, 1): 0.0, (2, 5, 2): 0.0, (2, 5, 1): 1.0, (2, 6, 2): 0.0, (2, 6, 1): 0.0, (2, 7, 2): 0.0, (2, 7, 1): 0.0, (73, 1, 2): 0.0, (73, 1, 1): 0.0, (73, 2, 2): 0.0, (73, 2, 1): 0.0, (73, 3, 2): -0.0, (73, 3, 1): 0.0, (73, 4, 2): 1.0, (73, 4, 1): 0.0, (73, 5, 2): 0.0, (73, 5, 1): 0.0, (73, 6, 2): -0.0, (73, 6, 1): 0.0, (73, 7, 2): 0.0, (73, 7, 1): 0.0, (31, 1, 2): 0.0, (31, 1, 1): 0.0, (31, 2, 2): -0.0, (31, 2, 1): 0.0, (31, 3, 2): 0.0, (31, 3, 1): 0.0, (31, 4, 2): 0.0, (31, 4, 1): 0.0, (31, 5, 2): -0.0, (31, 5, 1): 0.0, (31, 6, 2): 0.0, (31, 6, 1): 0.0, (31, 7, 2): -0.0, (31, 7, 1): 0.0, (35, 1, 2): 0.0, (35, 1, 1): 0.0, (35, 2, 2): 0.0, (35, 2, 1): 0.0, (35, 3, 2): 0.0, (35, 3, 1): 0.0, (35, 4, 2): 0.0, (35, 4, 1): 0.0, (35, 5, 2): -0.0, (35, 5, 1): 0.0, (35, 6, 2): 0.0, (35, 6, 1): 0.0, (35, 7, 2): -0.0, (35, 7, 1): 0.0, (46, 1, 2): 0.0, (46, 1, 1): 0.0, (46, 2, 2): 0.0, (46, 2, 1): 0.0, (46, 3, 2): -0.0, (46, 3, 1): 0.0, (46, 4, 2): 1.0, (46, 4, 1): 0.0, (46, 5, 2): -0.0, (46, 5, 1): 0.0, (46, 6, 2): -0.0, (46, 6, 1): 0.0, (46, 7, 2): 0.0, (46, 7, 1): 0.0, (30, 1, 2): 0.0, (30, 1, 1): 0.0, (30, 2, 2): -0.0, (30, 2, 1): -0.0, (30, 3, 2): -0.0, (30, 3, 1): 0.0, (30, 4, 2): -0.0, (30, 4, 1): 0.0, (30, 5, 2): -0.0, (30, 5, 1): 0.0, (30, 6, 2): -0.0, (30, 6, 1): 1.0, (30, 7, 2): -0.0, (30, 7, 1): -0.0, (74, 1, 2): 0.0, (74, 1, 1): 0.0, (74, 2, 2): -0.0, (74, 2, 1): 0.0, (74, 3, 2): 0.0, (74, 3, 1): 0.0, (74, 4, 2): 0.0, (74, 4, 1): 0.0, (74, 5, 2): -0.0, (74, 5, 1): 0.0, (74, 6, 2): 0.0, (74, 6, 1): 0.0, (74, 7, 2): 1.0, (74, 7, 1): 0.0, (43, 1, 2): 0.0, (43, 1, 1): 0.0, (43, 2, 2): 0.0, (43, 2, 1): 0.0, (43, 3, 2): 0.0, (43, 3, 1): 0.0, (43, 4, 2): 0.0, (43, 4, 1): 0.0, (43, 5, 2): 0.0, (43, 5, 1): 1.0, (43, 6, 2): 0.0, (43, 6, 1): 0.0, (43, 7, 2): 0.0, (43, 7, 1): 0.0, (33, 1, 2): 0.0, (33, 1, 1): 0.0, (33, 2, 2): 0.0, (33, 2, 1): 0.0, (33, 3, 2): -0.0, (33, 3, 1): 0.0, (33, 4, 2): 1.0, (33, 4, 1): 0.0, (33, 5, 2): -0.0, (33, 5, 1): 0.0, (33, 6, 2): -0.0, (33, 6, 1): 0.0, (33, 7, 2): 0.0, (33, 7, 1): 0.0, (12, 1, 2): 0.0, (12, 1, 1): 0.0, (12, 2, 2): 0.0, (12, 2, 1): -0.0, (12, 3, 2): 0.0, (12, 3, 1): 0.0, (12, 4, 2): 0.0, (12, 4, 1): 0.0, (12, 5, 2): 0.0, (12, 5, 1): -0.0, (12, 6, 2): 0.0, (12, 6, 1): -0.0, (12, 7, 2): 0.0, (12, 7, 1): 0.0, (25, 1, 2): 0.0, (25, 1, 1): 0.0, (25, 2, 2): 0.0, (25, 2, 1): 0.0, (25, 3, 2): 0.0, (25, 3, 1): 0.0, (25, 4, 2): 1.0, (25, 4, 1): 0.0, (25, 5, 2): 0.0, (25, 5, 1): 0.0, (25, 6, 2): 0.0, (25, 6, 1): 0.0, (25, 7, 2): 0.0, (25, 7, 1): 0.0, (4, 1, 2): 0.0, (4, 1, 1): 0.0, (4, 2, 2): -0.0, (4, 2, 1): 0.0, (4, 3, 2): -0.0, (4, 3, 1): 0.0, (4, 4, 2): 1.0, (4, 4, 1): 0.0, (4, 5, 2): -0.0, (4, 5, 1): 0.0, (4, 6, 2): -0.0, (4, 6, 1): 0.0, (4, 7, 2): 0.0, (4, 7, 1): 0.0, (97, 1, 2): 0.0, (97, 1, 1): 0.0, (97, 2, 2): 0.0, (97, 2, 1): 0.0, (97, 3, 2): 0.0, (97, 3, 1): 0.0, (97, 4, 2): 0.0, (97, 4, 1): 0.0, (97, 5, 2): 0.0, (97, 5, 1): 1.0, (97, 6, 2): 0.0, (97, 6, 1): 0.0, (97, 7, 2): 0.0, (97, 7, 1): 0.0, (99, 1, 2): 0.0, (99, 1, 1): 0.0, (99, 2, 2): 0.0, (99, 2, 1): 0.0, (99, 3, 2): 0.0, (99, 3, 1): 0.0, (99, 4, 2): 1.0, (99, 4, 1): 0.0, (99, 5, 2): 0.0, (99, 5, 1): 0.0, (99, 6, 2): 0.0, (99, 6, 1): 0.0, (99, 7, 2): 0.0, (99, 7, 1): 0.0, (18, 1, 2): 0.0, (18, 1, 1): 0.0, (18, 2, 2): -0.0, (18, 2, 1): 0.0, (18, 3, 2): 0.0, (18, 3, 1): 0.0, (18, 4, 2): 0.0, (18, 4, 1): 0.0, (18, 5, 2): -0.0, (18, 5, 1): 0.0, (18, 6, 2): -0.0, (18, 6, 1): 0.0, (18, 7, 2): 0.0, (18, 7, 1): 0.0, (5, 1, 2): 0.0, (5, 1, 1): 0.0, (5, 2, 2): -0.0, (5, 2, 1): 0.0, (5, 3, 2): -0.0, (5, 3, 1): 0.0, (5, 4, 2): -0.0, (5, 4, 1): -0.0, (5, 5, 2): -0.0, (5, 5, 1): 0.0, (5, 6, 2): -0.0, (5, 6, 1): 1.0, (5, 7, 2): -0.0, (5, 7, 1): 0.0, (19, 1, 2): 0.0, (19, 1, 1): 0.0, (19, 2, 2): -0.0, (19, 2, 1): 0.0, (19, 3, 2): -0.0, (19, 3, 1): -0.0, (19, 4, 2): -0.0, (19, 4, 1): -0.0, (19, 5, 2): -0.0, (19, 5, 1): 1.0, (19, 6, 2): -0.0, (19, 6, 1): 0.0, (19, 7, 2): -0.0, (19, 7, 1): -0.0, (61, 1, 2): 0.0, (61, 1, 1): 0.0, (61, 2, 2): 0.0, (61, 2, 1): 0.0, (61, 3, 2): 0.0, (61, 3, 1): 0.0, (61, 4, 2): 0.0, (61, 4, 1): -0.0, (61, 5, 2): 0.0, (61, 5, 1): 1.0, (61, 6, 2): 0.0, (61, 6, 1): 0.0, (61, 7, 2): 0.0, (61, 7, 1): -0.0, (15, 1, 2): 0.0, (15, 1, 1): 0.0, (15, 2, 2): 0.0, (15, 2, 1): 0.0, (15, 3, 2): 0.0, (15, 3, 1): 0.0, (15, 4, 2): 1.0, (15, 4, 1): 0.0, (15, 5, 2): -0.0, (15, 5, 1): 0.0, (15, 6, 2): 0.0, (15, 6, 1): 0.0, (15, 7, 2): -0.0, (15, 7, 1): 0.0, (23, 1, 2): 0.0, (23, 1, 1): 0.0, (23, 2, 2): -0.0, (23, 2, 1): -0.0, (23, 3, 2): -0.0, (23, 3, 1): 0.0, (23, 4, 2): -0.0, (23, 4, 1): -0.0, (23, 5, 2): -0.0, (23, 5, 1): 0.0, (23, 6, 2): -0.0, (23, 6, 1): 1.0, (23, 7, 2): -0.0, (23, 7, 1): 0.0, (62, 1, 2): 0.0, (62, 1, 1): 0.0, (62, 2, 2): 0.0, (62, 2, 1): 0.0, (62, 3, 2): 0.0, (62, 3, 1): 0.0, (62, 4, 2): 0.0, (62, 4, 1): 0.0, (62, 5, 2): 0.0, (62, 5, 1): 1.0, (62, 6, 2): 0.0, (62, 6, 1): 0.0, (62, 7, 2): 0.0, (62, 7, 1): -0.0, (14, 1, 2): 0.0, (14, 1, 1): 0.0, (14, 2, 2): 0.0, (14, 2, 1): 0.0, (14, 3, 2): 0.0, (14, 3, 1): 0.0, (14, 4, 2): 0.0, (14, 4, 1): 0.0, (14, 5, 2): -0.0, (14, 5, 1): 0.0, (14, 6, 2): -0.0, (14, 6, 1): 0.0, (14, 7, 2): 0.0, (14, 7, 1): 0.0, (58, 1, 2): 0.0, (58, 1, 1): 0.0, (58, 2, 2): -0.0, (58, 2, 1): 0.0, (58, 3, 2): -0.0, (58, 3, 1): 0.0, (58, 4, 2): -0.0, (58, 4, 1): -0.0, (58, 5, 2): -0.0, (58, 5, 1): 0.0, (58, 6, 2): -0.0, (58, 6, 1): 1.0, (58, 7, 2): -0.0, (58, 7, 1): 0.0, (56, 1, 2): 0.0, (56, 1, 1): 0.0, (56, 2, 2): 0.0, (56, 2, 1): -0.0, (56, 3, 2): 0.0, (56, 3, 1): 0.0, (56, 4, 2): 0.0, (56, 4, 1): 0.0, (56, 5, 2): 0.0, (56, 5, 1): 1.0, (56, 6, 2): 0.0, (56, 6, 1): -0.0, (56, 7, 2): 0.0, (56, 7, 1): -0.0, (21, 1, 2): 0.0, (21, 1, 1): 0.0, (21, 2, 2): 0.0, (21, 2, 1): -0.0, (21, 3, 2): 0.0, (21, 3, 1): 0.0, (21, 4, 2): 0.0, (21, 4, 1): -0.0, (21, 5, 2): 0.0, (21, 5, 1): 1.0, (21, 6, 2): 0.0, (21, 6, 1): -0.0, (21, 7, 2): 0.0, (21, 7, 1): 0.0, (40, 1, 2): 0.0, (40, 1, 1): 0.0, (40, 2, 2): 0.0, (40, 2, 1): 0.0, (40, 3, 2): -0.0, (40, 3, 1): 0.0, (40, 4, 2): 1.0, (40, 4, 1): 0.0, (40, 5, 2): -0.0, (40, 5, 1): 0.0, (40, 6, 2): -0.0, (40, 6, 1): 0.0, (40, 7, 2): 0.0, (40, 7, 1): 0.0, (70, 1, 2): 0.0, (70, 1, 1): 0.0, (70, 2, 2): 0.0, (70, 2, 1): 0.0, (70, 3, 2): 0.0, (70, 3, 1): 0.0, (70, 4, 2): 0.0, (70, 4, 1): 0.0, (70, 5, 2): 0.0, (70, 5, 1): 1.0, (70, 6, 2): 0.0, (70, 6, 1): 0.0, (70, 7, 2): 0.0, (70, 7, 1): 0.0}>
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 1.2954769134521484
+obj value -311.0
+obj value -311.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1372 rows, 1131 columns and 7212 nonzeros
+Model fingerprint: 0x01424040
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [7e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 687 rows and 694 columns
+Presolve time: 0.01s
+Presolved: 685 rows, 437 columns, 4079 nonzeros
+Variable types: 12 continuous, 425 integer (425 binary)
+
+Root relaxation: objective -3.007143e+02, 542 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -300.71429    0  103 -350.00000 -300.71429  14.1%     -    0s
+H    0     0                    -321.0000000 -300.71429  6.32%     -    0s
+     0     0 -300.71429    0  157 -321.00000 -300.71429  6.32%     -    0s
+     0     0 -300.71429    0  146 -321.00000 -300.71429  6.32%     -    0s
+     0     0 -300.71429    0  106 -321.00000 -300.71429  6.32%     -    0s
+     0     0 -300.71429    0   83 -321.00000 -300.71429  6.32%     -    0s
+H    0     0                    -315.0000000 -300.71429  4.54%     -    0s
+     0     0 -300.71429    0  189 -315.00000 -300.71429  4.54%     -    0s
+     0     0 -300.71429    0  190 -315.00000 -300.71429  4.54%     -    0s
+     0     0 -300.71429    0  144 -315.00000 -300.71429  4.54%     -    0s
+     0     0 -300.71429    0  139 -315.00000 -300.71429  4.54%     -    0s
+     0     0 -300.71429    0   85 -315.00000 -300.71429  4.54%     -    0s
+     0     0 -300.71429    0  142 -315.00000 -300.71429  4.54%     -    0s
+     0     0 -300.71429    0  105 -315.00000 -300.71429  4.54%     -    0s
+     0     0 -300.71429    0   92 -315.00000 -300.71429  4.54%     -    0s
+     0     2 -300.71429    0   92 -315.00000 -300.71429  4.54%     -    0s
+*  164    98              33    -313.0000000 -300.71429  3.93%  36.5    0s
+H  370   153                    -312.0000000 -300.71429  3.62%  34.4    0s
+*  646   245               9    -311.0000000 -301.38655  3.09%  31.7    1s
+
+Cutting planes:
+  MIR: 1
+  Zero half: 31
+  Mod-K: 2
+
+Explored 1716 nodes (54513 simplex iterations) in 1.61 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -311 -312 -313 ... -350
+No other solutions better than -311
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.110000000000e+02, best bound -3.110000000000e+02, gap 0.0000%
+<bound method tupledict.values of {(95, 1, 2): 0.0, (95, 1, 1): 0.0, (95, 2, 2): 0.0, (95, 2, 1): 0.0, (95, 3, 2): 0.0, (95, 3, 1): 0.0, (95, 4, 2): 0.0, (95, 4, 1): 0.0, (95, 5, 2): -0.0, (95, 5, 1): 0.0, (95, 6, 2): -0.0, (95, 6, 1): 0.0, (95, 7, 2): 0.0, (95, 7, 1): 0.0, (1, 1, 2): 0.0, (1, 1, 1): 0.0, (1, 2, 2): 0.0, (1, 2, 1): -0.0, (1, 3, 2): 0.0, (1, 3, 1): -0.0, (1, 4, 2): 0.0, (1, 4, 1): 0.0, (1, 5, 2): 0.0, (1, 5, 1): 1.0, (1, 6, 2): 0.0, (1, 6, 1): 0.0, (1, 7, 2): 0.0, (1, 7, 1): -0.0, (64, 1, 2): 0.0, (64, 1, 1): 0.0, (64, 2, 2): 0.0, (64, 2, 1): 0.0, (64, 3, 2): -0.0, (64, 3, 1): 0.0, (64, 4, 2): 0.0, (64, 4, 1): 0.0, (64, 5, 2): -0.0, (64, 5, 1): 0.0, (64, 6, 2): -0.0, (64, 6, 1): 0.0, (64, 7, 2): 0.0, (64, 7, 1): 0.0, (39, 1, 2): 0.0, (39, 1, 1): 0.0, (39, 2, 2): -0.0, (39, 2, 1): 0.0, (39, 3, 2): 0.0, (39, 3, 1): 0.0, (39, 4, 2): 0.0, (39, 4, 1): 0.0, (39, 5, 2): -0.0, (39, 5, 1): 0.0, (39, 6, 2): -0.0, (39, 6, 1): 0.0, (39, 7, 2): 0.0, (39, 7, 1): 0.0, (69, 1, 2): 0.0, (69, 1, 1): 0.0, (69, 2, 2): 0.0, (69, 2, 1): 0.0, (69, 3, 2): 0.0, (69, 3, 1): 0.0, (69, 4, 2): 0.0, (69, 4, 1): 0.0, (69, 5, 2): 0.0, (69, 5, 1): 1.0, (69, 6, 2): 0.0, (69, 6, 1): 0.0, (69, 7, 2): 0.0, (69, 7, 1): 0.0, (66, 1, 2): 0.0, (66, 1, 1): 0.0, (66, 2, 2): 0.0, (66, 2, 1): -0.0, (66, 3, 2): 0.0, (66, 3, 1): -0.0, (66, 4, 2): 0.0, (66, 4, 1): 0.0, (66, 5, 2): 0.0, (66, 5, 1): 1.0, (66, 6, 2): 0.0, (66, 6, 1): 0.0, (66, 7, 2): 0.0, (66, 7, 1): -0.0, (16, 1, 2): 0.0, (16, 1, 1): 0.0, (16, 2, 2): -0.0, (16, 2, 1): -0.0, (16, 3, 2): -0.0, (16, 3, 1): -0.0, (16, 4, 2): -0.0, (16, 4, 1): 0.0, (16, 5, 2): -0.0, (16, 5, 1): 0.0, (16, 6, 2): -0.0, (16, 6, 1): 0.0, (16, 7, 2): -0.0, (16, 7, 1): 0.0, (13, 1, 2): 0.0, (13, 1, 1): 0.0, (13, 2, 2): 0.0, (13, 2, 1): 0.0, (13, 3, 2): 0.0, (13, 3, 1): -0.0, (13, 4, 2): 0.0, (13, 4, 1): 0.0, (13, 5, 2): 0.0, (13, 5, 1): 1.0, (13, 6, 2): 0.0, (13, 6, 1): 0.0, (13, 7, 2): 0.0, (13, 7, 1): -0.0, (54, 1, 2): 0.0, (54, 1, 1): 0.0, (54, 2, 2): 0.0, (54, 2, 1): -0.0, (54, 3, 2): 0.0, (54, 3, 1): -0.0, (54, 4, 2): 0.0, (54, 4, 1): 0.0, (54, 5, 2): 0.0, (54, 5, 1): 1.0, (54, 6, 2): 0.0, (54, 6, 1): -0.0, (54, 7, 2): 0.0, (54, 7, 1): 0.0, (90, 1, 2): 0.0, (90, 1, 1): 0.0, (90, 2, 2): 0.0, (90, 2, 1): 0.0, (90, 3, 2): -0.0, (90, 3, 1): 0.0, (90, 4, 2): 0.0, (90, 4, 1): 0.0, (90, 5, 2): -0.0, (90, 5, 1): 0.0, (90, 6, 2): -0.0, (90, 6, 1): 0.0, (90, 7, 2): 0.0, (90, 7, 1): 0.0, (47, 1, 2): 0.0, (47, 1, 1): 0.0, (47, 2, 2): 0.0, (47, 2, 1): 0.0, (47, 3, 2): 0.0, (47, 3, 1): 0.0, (47, 4, 2): 0.0, (47, 4, 1): 0.0, (47, 5, 2): 0.0, (47, 5, 1): 1.0, (47, 6, 2): 0.0, (47, 6, 1): 0.0, (47, 7, 2): 0.0, (47, 7, 1): 0.0, (32, 1, 2): 0.0, (32, 1, 1): 0.0, (32, 2, 2): -0.0, (32, 2, 1): 0.0, (32, 3, 2): -0.0, (32, 3, 1): -0.0, (32, 4, 2): -0.0, (32, 4, 1): 0.0, (32, 5, 2): -0.0, (32, 5, 1): 1.0, (32, 6, 2): -0.0, (32, 6, 1): 0.0, (32, 7, 2): -0.0, (32, 7, 1): -0.0, (10, 1, 2): 0.0, (10, 1, 1): 0.0, (10, 2, 2): 0.0, (10, 2, 1): 0.0, (10, 3, 2): 0.0, (10, 3, 1): 0.0, (10, 4, 2): 0.0, (10, 4, 1): 0.0, (10, 5, 2): 0.0, (10, 5, 1): 1.0, (10, 6, 2): 0.0, (10, 6, 1): 0.0, (10, 7, 2): 0.0, (10, 7, 1): 0.0, (78, 1, 2): 0.0, (78, 1, 1): 0.0, (78, 2, 2): 0.0, (78, 2, 1): 0.0, (78, 3, 2): 0.0, (78, 3, 1): 0.0, (78, 4, 2): 1.0, (78, 4, 1): 0.0, (78, 5, 2): -0.0, (78, 5, 1): 0.0, (78, 6, 2): -0.0, (78, 6, 1): 0.0, (78, 7, 2): 0.0, (78, 7, 1): 0.0, (6, 1, 2): 0.0, (6, 1, 1): 0.0, (6, 2, 2): -0.0, (6, 2, 1): 0.0, (6, 3, 2): -0.0, (6, 3, 1): 0.0, (6, 4, 2): -0.0, (6, 4, 1): 0.0, (6, 5, 2): -0.0, (6, 5, 1): 1.0, (6, 6, 2): -0.0, (6, 6, 1): -0.0, (6, 7, 2): -0.0, (6, 7, 1): 0.0, (76, 1, 2): 0.0, (76, 1, 1): 0.0, (76, 2, 2): 0.0, (76, 2, 1): 0.0, (76, 3, 2): 0.0, (76, 3, 1): -0.0, (76, 4, 2): 0.0, (76, 4, 1): 0.0, (76, 5, 2): 0.0, (76, 5, 1): 1.0, (76, 6, 2): 0.0, (76, 6, 1): 0.0, (76, 7, 2): 0.0, (76, 7, 1): -0.0, (41, 1, 2): 0.0, (41, 1, 1): 0.0, (41, 2, 2): -0.0, (41, 2, 1): 0.0, (41, 3, 2): 0.0, (41, 3, 1): 0.0, (41, 4, 2): 1.0, (41, 4, 1): 0.0, (41, 5, 2): -0.0, (41, 5, 1): 0.0, (41, 6, 2): 0.0, (41, 6, 1): 0.0, (41, 7, 2): 0.0, (41, 7, 1): 0.0, (57, 1, 2): 0.0, (57, 1, 1): 0.0, (57, 2, 2): 0.0, (57, 2, 1): 0.0, (57, 3, 2): 0.0, (57, 3, 1): 0.0, (57, 4, 2): 1.0, (57, 4, 1): 0.0, (57, 5, 2): -0.0, (57, 5, 1): 0.0, (57, 6, 2): -0.0, (57, 6, 1): 0.0, (57, 7, 2): 0.0, (57, 7, 1): 0.0, (88, 1, 2): 0.0, (88, 1, 1): 0.0, (88, 2, 2): 0.0, (88, 2, 1): 0.0, (88, 3, 2): -0.0, (88, 3, 1): 0.0, (88, 4, 2): 1.0, (88, 4, 1): 0.0, (88, 5, 2): -0.0, (88, 5, 1): 0.0, (88, 6, 2): -0.0, (88, 6, 1): 0.0, (88, 7, 2): 0.0, (88, 7, 1): 0.0, (51, 1, 2): 0.0, (51, 1, 1): 0.0, (51, 2, 2): 0.0, (51, 2, 1): 0.0, (51, 3, 2): 0.0, (51, 3, 1): -0.0, (51, 4, 2): 0.0, (51, 4, 1): 0.0, (51, 5, 2): 0.0, (51, 5, 1): 0.0, (51, 6, 2): 0.0, (51, 6, 1): -0.0, (51, 7, 2): 0.0, (51, 7, 1): 0.0, (65, 1, 2): 0.0, (65, 1, 1): 0.0, (65, 2, 2): 0.0, (65, 2, 1): 0.0, (65, 3, 2): 0.0, (65, 3, 1): -0.0, (65, 4, 2): 0.0, (65, 4, 1): 0.0, (65, 5, 2): 0.0, (65, 5, 1): 1.0, (65, 6, 2): 0.0, (65, 6, 1): -0.0, (65, 7, 2): 0.0, (65, 7, 1): 0.0, (59, 1, 2): 0.0, (59, 1, 1): 0.0, (59, 2, 2): 0.0, (59, 2, 1): -0.0, (59, 3, 2): 0.0, (59, 3, 1): -0.0, (59, 4, 2): 0.0, (59, 4, 1): -0.0, (59, 5, 2): 0.0, (59, 5, 1): 1.0, (59, 6, 2): 0.0, (59, 6, 1): 0.0, (59, 7, 2): 0.0, (59, 7, 1): -0.0, (53, 1, 2): 0.0, (53, 1, 1): 0.0, (53, 2, 2): -0.0, (53, 2, 1): -0.0, (53, 3, 2): -0.0, (53, 3, 1): 0.0, (53, 4, 2): -0.0, (53, 4, 1): 0.0, (53, 5, 2): -0.0, (53, 5, 1): 1.0, (53, 6, 2): -0.0, (53, 6, 1): 0.0, (53, 7, 2): -0.0, (53, 7, 1): -0.0, (2, 1, 2): 0.0, (2, 1, 1): 0.0, (2, 2, 2): 0.0, (2, 2, 1): 0.0, (2, 3, 2): 0.0, (2, 3, 1): 0.0, (2, 4, 2): 0.0, (2, 4, 1): 0.0, (2, 5, 2): 0.0, (2, 5, 1): 1.0, (2, 6, 2): 0.0, (2, 6, 1): 0.0, (2, 7, 2): 0.0, (2, 7, 1): 0.0, (73, 1, 2): 0.0, (73, 1, 1): 0.0, (73, 2, 2): 0.0, (73, 2, 1): 0.0, (73, 3, 2): -0.0, (73, 3, 1): 0.0, (73, 4, 2): 1.0, (73, 4, 1): 0.0, (73, 5, 2): 0.0, (73, 5, 1): 0.0, (73, 6, 2): -0.0, (73, 6, 1): 0.0, (73, 7, 2): 0.0, (73, 7, 1): 0.0, (31, 1, 2): 0.0, (31, 1, 1): 0.0, (31, 2, 2): -0.0, (31, 2, 1): 0.0, (31, 3, 2): -0.0, (31, 3, 1): 0.0, (31, 4, 2): 0.0, (31, 4, 1): 0.0, (31, 5, 2): -0.0, (31, 5, 1): 0.0, (31, 6, 2): -0.0, (31, 6, 1): 0.0, (31, 7, 2): 0.0, (31, 7, 1): 0.0, (35, 1, 2): 0.0, (35, 1, 1): 0.0, (35, 2, 2): -0.0, (35, 2, 1): 0.0, (35, 3, 2): -0.0, (35, 3, 1): 0.0, (35, 4, 2): 0.0, (35, 4, 1): 0.0, (35, 5, 2): -0.0, (35, 5, 1): 0.0, (35, 6, 2): -0.0, (35, 6, 1): 0.0, (35, 7, 2): 0.0, (35, 7, 1): 0.0, (46, 1, 2): 0.0, (46, 1, 1): 0.0, (46, 2, 2): 0.0, (46, 2, 1): 0.0, (46, 3, 2): -0.0, (46, 3, 1): 0.0, (46, 4, 2): 1.0, (46, 4, 1): 0.0, (46, 5, 2): -0.0, (46, 5, 1): 0.0, (46, 6, 2): -0.0, (46, 6, 1): 0.0, (46, 7, 2): 0.0, (46, 7, 1): 0.0, (30, 1, 2): 0.0, (30, 1, 1): 0.0, (30, 2, 2): -0.0, (30, 2, 1): 0.0, (30, 3, 2): -0.0, (30, 3, 1): -0.0, (30, 4, 2): -0.0, (30, 4, 1): -0.0, (30, 5, 2): -0.0, (30, 5, 1): -0.0, (30, 6, 2): -0.0, (30, 6, 1): 1.0, (30, 7, 2): -0.0, (30, 7, 1): -0.0, (74, 1, 2): 0.0, (74, 1, 1): 0.0, (74, 2, 2): -0.0, (74, 2, 1): 0.0, (74, 3, 2): -0.0, (74, 3, 1): 0.0, (74, 4, 2): 0.0, (74, 4, 1): 0.0, (74, 5, 2): -0.0, (74, 5, 1): 0.0, (74, 6, 2): -0.0, (74, 6, 1): 0.0, (74, 7, 2): 1.0, (74, 7, 1): 0.0, (43, 1, 2): 0.0, (43, 1, 1): 0.0, (43, 2, 2): 0.0, (43, 2, 1): -0.0, (43, 3, 2): 0.0, (43, 3, 1): 0.0, (43, 4, 2): 0.0, (43, 4, 1): -0.0, (43, 5, 2): 0.0, (43, 5, 1): 1.0, (43, 6, 2): 0.0, (43, 6, 1): 0.0, (43, 7, 2): 0.0, (43, 7, 1): 0.0, (33, 1, 2): 0.0, (33, 1, 1): 0.0, (33, 2, 2): 0.0, (33, 2, 1): 0.0, (33, 3, 2): -0.0, (33, 3, 1): 0.0, (33, 4, 2): 1.0, (33, 4, 1): 0.0, (33, 5, 2): -0.0, (33, 5, 1): 0.0, (33, 6, 2): -0.0, (33, 6, 1): 0.0, (33, 7, 2): 0.0, (33, 7, 1): 0.0, (12, 1, 2): 0.0, (12, 1, 1): 0.0, (12, 2, 2): 0.0, (12, 2, 1): 0.0, (12, 3, 2): 0.0, (12, 3, 1): -0.0, (12, 4, 2): 0.0, (12, 4, 1): 0.0, (12, 5, 2): 0.0, (12, 5, 1): 0.0, (12, 6, 2): 0.0, (12, 6, 1): 0.0, (12, 7, 2): 0.0, (12, 7, 1): 0.0, (25, 1, 2): 0.0, (25, 1, 1): 0.0, (25, 2, 2): 0.0, (25, 2, 1): 0.0, (25, 3, 2): 0.0, (25, 3, 1): 0.0, (25, 4, 2): 1.0, (25, 4, 1): 0.0, (25, 5, 2): 0.0, (25, 5, 1): 0.0, (25, 6, 2): 0.0, (25, 6, 1): 0.0, (25, 7, 2): 0.0, (25, 7, 1): 0.0, (4, 1, 2): 0.0, (4, 1, 1): 0.0, (4, 2, 2): 0.0, (4, 2, 1): 0.0, (4, 3, 2): -0.0, (4, 3, 1): 0.0, (4, 4, 2): 1.0, (4, 4, 1): 0.0, (4, 5, 2): -0.0, (4, 5, 1): 0.0, (4, 6, 2): -0.0, (4, 6, 1): 0.0, (4, 7, 2): 0.0, (4, 7, 1): 0.0, (97, 1, 2): 0.0, (97, 1, 1): 0.0, (97, 2, 2): 0.0, (97, 2, 1): 0.0, (97, 3, 2): 0.0, (97, 3, 1): 0.0, (97, 4, 2): 0.0, (97, 4, 1): 0.0, (97, 5, 2): 0.0, (97, 5, 1): 1.0, (97, 6, 2): 0.0, (97, 6, 1): 0.0, (97, 7, 2): 0.0, (97, 7, 1): 0.0, (99, 1, 2): 0.0, (99, 1, 1): 0.0, (99, 2, 2): 0.0, (99, 2, 1): 0.0, (99, 3, 2): 0.0, (99, 3, 1): 0.0, (99, 4, 2): 1.0, (99, 4, 1): 0.0, (99, 5, 2): 0.0, (99, 5, 1): 0.0, (99, 6, 2): 0.0, (99, 6, 1): 0.0, (99, 7, 2): 0.0, (99, 7, 1): 0.0, (18, 1, 2): 0.0, (18, 1, 1): 0.0, (18, 2, 2): 0.0, (18, 2, 1): 0.0, (18, 3, 2): -0.0, (18, 3, 1): 0.0, (18, 4, 2): 0.0, (18, 4, 1): 0.0, (18, 5, 2): -0.0, (18, 5, 1): 0.0, (18, 6, 2): -0.0, (18, 6, 1): 0.0, (18, 7, 2): 0.0, (18, 7, 1): 0.0, (5, 1, 2): 0.0, (5, 1, 1): 0.0, (5, 2, 2): -0.0, (5, 2, 1): 0.0, (5, 3, 2): -0.0, (5, 3, 1): -0.0, (5, 4, 2): -0.0, (5, 4, 1): 0.0, (5, 5, 2): -0.0, (5, 5, 1): 0.0, (5, 6, 2): -0.0, (5, 6, 1): 1.0, (5, 7, 2): -0.0, (5, 7, 1): 0.0, (19, 1, 2): 0.0, (19, 1, 1): 0.0, (19, 2, 2): -0.0, (19, 2, 1): -0.0, (19, 3, 2): -0.0, (19, 3, 1): -0.0, (19, 4, 2): -0.0, (19, 4, 1): 0.0, (19, 5, 2): -0.0, (19, 5, 1): 1.0, (19, 6, 2): -0.0, (19, 6, 1): 0.0, (19, 7, 2): -0.0, (19, 7, 1): -0.0, (61, 1, 2): 0.0, (61, 1, 1): 0.0, (61, 2, 2): 0.0, (61, 2, 1): 0.0, (61, 3, 2): 0.0, (61, 3, 1): -0.0, (61, 4, 2): 0.0, (61, 4, 1): 0.0, (61, 5, 2): 0.0, (61, 5, 1): 1.0, (61, 6, 2): 0.0, (61, 6, 1): 0.0, (61, 7, 2): 0.0, (61, 7, 1): -0.0, (15, 1, 2): 0.0, (15, 1, 1): 0.0, (15, 2, 2): 0.0, (15, 2, 1): 0.0, (15, 3, 2): -0.0, (15, 3, 1): 0.0, (15, 4, 2): 1.0, (15, 4, 1): 0.0, (15, 5, 2): -0.0, (15, 5, 1): 0.0, (15, 6, 2): -0.0, (15, 6, 1): 0.0, (15, 7, 2): 0.0, (15, 7, 1): 0.0, (23, 1, 2): 0.0, (23, 1, 1): 0.0, (23, 2, 2): -0.0, (23, 2, 1): 0.0, (23, 3, 2): -0.0, (23, 3, 1): -0.0, (23, 4, 2): -0.0, (23, 4, 1): 0.0, (23, 5, 2): -0.0, (23, 5, 1): 0.0, (23, 6, 2): -0.0, (23, 6, 1): 1.0, (23, 7, 2): -0.0, (23, 7, 1): 0.0, (62, 1, 2): 0.0, (62, 1, 1): 0.0, (62, 2, 2): 0.0, (62, 2, 1): 0.0, (62, 3, 2): 0.0, (62, 3, 1): -0.0, (62, 4, 2): 0.0, (62, 4, 1): 0.0, (62, 5, 2): 0.0, (62, 5, 1): 1.0, (62, 6, 2): 0.0, (62, 6, 1): -0.0, (62, 7, 2): 0.0, (62, 7, 1): 0.0, (14, 1, 2): 0.0, (14, 1, 1): 0.0, (14, 2, 2): 0.0, (14, 2, 1): 0.0, (14, 3, 2): 0.0, (14, 3, 1): 0.0, (14, 4, 2): 0.0, (14, 4, 1): 0.0, (14, 5, 2): -0.0, (14, 5, 1): 0.0, (14, 6, 2): -0.0, (14, 6, 1): 0.0, (14, 7, 2): 0.0, (14, 7, 1): 0.0, (58, 1, 2): 0.0, (58, 1, 1): 0.0, (58, 2, 2): -0.0, (58, 2, 1): 0.0, (58, 3, 2): -0.0, (58, 3, 1): -0.0, (58, 4, 2): -0.0, (58, 4, 1): 0.0, (58, 5, 2): -0.0, (58, 5, 1): 0.0, (58, 6, 2): -0.0, (58, 6, 1): 1.0, (58, 7, 2): -0.0, (58, 7, 1): -0.0, (56, 1, 2): 0.0, (56, 1, 1): 0.0, (56, 2, 2): 0.0, (56, 2, 1): -0.0, (56, 3, 2): 0.0, (56, 3, 1): -0.0, (56, 4, 2): 0.0, (56, 4, 1): 0.0, (56, 5, 2): 0.0, (56, 5, 1): 1.0, (56, 6, 2): 0.0, (56, 6, 1): -0.0, (56, 7, 2): 0.0, (56, 7, 1): 0.0, (21, 1, 2): 0.0, (21, 1, 1): 0.0, (21, 2, 2): 0.0, (21, 2, 1): 0.0, (21, 3, 2): 0.0, (21, 3, 1): -0.0, (21, 4, 2): 0.0, (21, 4, 1): 0.0, (21, 5, 2): 0.0, (21, 5, 1): 1.0, (21, 6, 2): 0.0, (21, 6, 1): 0.0, (21, 7, 2): 0.0, (21, 7, 1): -0.0, (40, 1, 2): 0.0, (40, 1, 1): 0.0, (40, 2, 2): -0.0, (40, 2, 1): 0.0, (40, 3, 2): 0.0, (40, 3, 1): 0.0, (40, 4, 2): 1.0, (40, 4, 1): 0.0, (40, 5, 2): -0.0, (40, 5, 1): 0.0, (40, 6, 2): -0.0, (40, 6, 1): 0.0, (40, 7, 2): 0.0, (40, 7, 1): 0.0, (70, 1, 2): 0.0, (70, 1, 1): 0.0, (70, 2, 2): 0.0, (70, 2, 1): 0.0, (70, 3, 2): 0.0, (70, 3, 1): 0.0, (70, 4, 2): 0.0, (70, 4, 1): 0.0, (70, 5, 2): 0.0, (70, 5, 1): 1.0, (70, 6, 2): 0.0, (70, 6, 1): 0.0, (70, 7, 2): 0.0, (70, 7, 1): 0.0}>
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 1.692375898361206
+obj value -311.0
+obj value -311.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1366 rows, 1131 columns and 6414 nonzeros
+Model fingerprint: 0xcf654074
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [7e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 681 rows and 694 columns
+Presolve time: 0.01s
+Presolved: 685 rows, 437 columns, 4079 nonzeros
+Variable types: 12 continuous, 425 integer (425 binary)
+
+Root relaxation: objective -3.007143e+02, 560 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -300.71429    0  106 -350.00000 -300.71429  14.1%     -    0s
+H    0     0                    -329.0000000 -300.71429  8.60%     -    0s
+     0     0 -300.71429    0  206 -329.00000 -300.71429  8.60%     -    0s
+H    0     0                    -320.0000000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  192 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  139 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   94 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  127 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  110 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  105 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  181 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  107 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  160 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  117 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+     0     2 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+H   54    49                    -313.0000000 -300.71429  3.93%  84.0    0s
+H  210    82                    -312.0000000 -301.35714  3.41%  39.3    0s
+*  687    75              21    -311.0000000 -309.00000  0.64%  25.1    0s
+
+Cutting planes:
+  Gomory: 2
+  Zero half: 29
+
+Explored 779 nodes (24700 simplex iterations) in 0.99 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -311 -312 -313 ... -350
+No other solutions better than -311
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.110000000000e+02, best bound -3.110000000000e+02, gap 0.0000%
+<bound method tupledict.values of {(95, 1, 2): 0.0, (95, 1, 1): 0.0, (95, 2, 2): 0.0, (95, 2, 1): 0.0, (95, 3, 2): -0.0, (95, 3, 1): 0.0, (95, 4, 2): 0.0, (95, 4, 1): 0.0, (95, 5, 2): -0.0, (95, 5, 1): 0.0, (95, 6, 2): 0.0, (95, 6, 1): 0.0, (95, 7, 2): -0.0, (95, 7, 1): 0.0, (1, 1, 2): 0.0, (1, 1, 1): 0.0, (1, 2, 2): 0.0, (1, 2, 1): -0.0, (1, 3, 2): 0.0, (1, 3, 1): -0.0, (1, 4, 2): 0.0, (1, 4, 1): 0.0, (1, 5, 2): 0.0, (1, 5, 1): 1.0, (1, 6, 2): 0.0, (1, 6, 1): -0.0, (1, 7, 2): 0.0, (1, 7, 1): 0.0, (64, 1, 2): 0.0, (64, 1, 1): 0.0, (64, 2, 2): 0.0, (64, 2, 1): 0.0, (64, 3, 2): 0.0, (64, 3, 1): 0.0, (64, 4, 2): 0.0, (64, 4, 1): 0.0, (64, 5, 2): -0.0, (64, 5, 1): 0.0, (64, 6, 2): 0.0, (64, 6, 1): 0.0, (64, 7, 2): -0.0, (64, 7, 1): 0.0, (39, 1, 2): 0.0, (39, 1, 1): 0.0, (39, 2, 2): 0.0, (39, 2, 1): 0.0, (39, 3, 2): 0.0, (39, 3, 1): 0.0, (39, 4, 2): 0.0, (39, 4, 1): 0.0, (39, 5, 2): -0.0, (39, 5, 1): 0.0, (39, 6, 2): -0.0, (39, 6, 1): 0.0, (39, 7, 2): 0.0, (39, 7, 1): 0.0, (69, 1, 2): 0.0, (69, 1, 1): 0.0, (69, 2, 2): 0.0, (69, 2, 1): 0.0, (69, 3, 2): 0.0, (69, 3, 1): 0.0, (69, 4, 2): 0.0, (69, 4, 1): 0.0, (69, 5, 2): 0.0, (69, 5, 1): 1.0, (69, 6, 2): 0.0, (69, 6, 1): 0.0, (69, 7, 2): 0.0, (69, 7, 1): 0.0, (66, 1, 2): 0.0, (66, 1, 1): 0.0, (66, 2, 2): 0.0, (66, 2, 1): -0.0, (66, 3, 2): 0.0, (66, 3, 1): 0.0, (66, 4, 2): 0.0, (66, 4, 1): -0.0, (66, 5, 2): 0.0, (66, 5, 1): 1.0, (66, 6, 2): 0.0, (66, 6, 1): 0.0, (66, 7, 2): 0.0, (66, 7, 1): -0.0, (16, 1, 2): 0.0, (16, 1, 1): 0.0, (16, 2, 2): -0.0, (16, 2, 1): 0.0, (16, 3, 2): -0.0, (16, 3, 1): -0.0, (16, 4, 2): -0.0, (16, 4, 1): -0.0, (16, 5, 2): -0.0, (16, 5, 1): 0.0, (16, 6, 2): -0.0, (16, 6, 1): -0.0, (16, 7, 2): -0.0, (16, 7, 1): 0.0, (13, 1, 2): 0.0, (13, 1, 1): 0.0, (13, 2, 2): 0.0, (13, 2, 1): -0.0, (13, 3, 2): 0.0, (13, 3, 1): 0.0, (13, 4, 2): 0.0, (13, 4, 1): -0.0, (13, 5, 2): 0.0, (13, 5, 1): 1.0, (13, 6, 2): 0.0, (13, 6, 1): 0.0, (13, 7, 2): 0.0, (13, 7, 1): -0.0, (54, 1, 2): 0.0, (54, 1, 1): 0.0, (54, 2, 2): 0.0, (54, 2, 1): -0.0, (54, 3, 2): 0.0, (54, 3, 1): 0.0, (54, 4, 2): 0.0, (54, 4, 1): -0.0, (54, 5, 2): 0.0, (54, 5, 1): 1.0, (54, 6, 2): 0.0, (54, 6, 1): 0.0, (54, 7, 2): 0.0, (54, 7, 1): -0.0, (90, 1, 2): 0.0, (90, 1, 1): 0.0, (90, 2, 2): 0.0, (90, 2, 1): 0.0, (90, 3, 2): -0.0, (90, 3, 1): 0.0, (90, 4, 2): 0.0, (90, 4, 1): 0.0, (90, 5, 2): -0.0, (90, 5, 1): 0.0, (90, 6, 2): 0.0, (90, 6, 1): 0.0, (90, 7, 2): -0.0, (90, 7, 1): 0.0, (47, 1, 2): 0.0, (47, 1, 1): 0.0, (47, 2, 2): 0.0, (47, 2, 1): 0.0, (47, 3, 2): 0.0, (47, 3, 1): 0.0, (47, 4, 2): 0.0, (47, 4, 1): 0.0, (47, 5, 2): 0.0, (47, 5, 1): 1.0, (47, 6, 2): 0.0, (47, 6, 1): 0.0, (47, 7, 2): 0.0, (47, 7, 1): 0.0, (32, 1, 2): 0.0, (32, 1, 1): 0.0, (32, 2, 2): -0.0, (32, 2, 1): 0.0, (32, 3, 2): -0.0, (32, 3, 1): 0.0, (32, 4, 2): -0.0, (32, 4, 1): -0.0, (32, 5, 2): -0.0, (32, 5, 1): 1.0, (32, 6, 2): -0.0, (32, 6, 1): -0.0, (32, 7, 2): -0.0, (32, 7, 1): 0.0, (10, 1, 2): 0.0, (10, 1, 1): 0.0, (10, 2, 2): 0.0, (10, 2, 1): 0.0, (10, 3, 2): 0.0, (10, 3, 1): 0.0, (10, 4, 2): 0.0, (10, 4, 1): 0.0, (10, 5, 2): 0.0, (10, 5, 1): 1.0, (10, 6, 2): 0.0, (10, 6, 1): 0.0, (10, 7, 2): 0.0, (10, 7, 1): 0.0, (78, 1, 2): 0.0, (78, 1, 1): 0.0, (78, 2, 2): 0.0, (78, 2, 1): 0.0, (78, 3, 2): -0.0, (78, 3, 1): 0.0, (78, 4, 2): 1.0, (78, 4, 1): 0.0, (78, 5, 2): -0.0, (78, 5, 1): 0.0, (78, 6, 2): -0.0, (78, 6, 1): 0.0, (78, 7, 2): 0.0, (78, 7, 1): 0.0, (6, 1, 2): 0.0, (6, 1, 1): 0.0, (6, 2, 2): -0.0, (6, 2, 1): 0.0, (6, 3, 2): -0.0, (6, 3, 1): -0.0, (6, 4, 2): -0.0, (6, 4, 1): 0.0, (6, 5, 2): -0.0, (6, 5, 1): 1.0, (6, 6, 2): -0.0, (6, 6, 1): 0.0, (6, 7, 2): -0.0, (6, 7, 1): -0.0, (76, 1, 2): 0.0, (76, 1, 1): 0.0, (76, 2, 2): 0.0, (76, 2, 1): -0.0, (76, 3, 2): 0.0, (76, 3, 1): -0.0, (76, 4, 2): 0.0, (76, 4, 1): -0.0, (76, 5, 2): 0.0, (76, 5, 1): 1.0, (76, 6, 2): 0.0, (76, 6, 1): 0.0, (76, 7, 2): 0.0, (76, 7, 1): -0.0, (41, 1, 2): 0.0, (41, 1, 1): 0.0, (41, 2, 2): 0.0, (41, 2, 1): 0.0, (41, 3, 2): 0.0, (41, 3, 1): 0.0, (41, 4, 2): 1.0, (41, 4, 1): 0.0, (41, 5, 2): -0.0, (41, 5, 1): 0.0, (41, 6, 2): 0.0, (41, 6, 1): 0.0, (41, 7, 2): 0.0, (41, 7, 1): 0.0, (57, 1, 2): 0.0, (57, 1, 1): 0.0, (57, 2, 2): 0.0, (57, 2, 1): 0.0, (57, 3, 2): 0.0, (57, 3, 1): 0.0, (57, 4, 2): 1.0, (57, 4, 1): 0.0, (57, 5, 2): -0.0, (57, 5, 1): 0.0, (57, 6, 2): -0.0, (57, 6, 1): 0.0, (57, 7, 2): 0.0, (57, 7, 1): 0.0, (88, 1, 2): 0.0, (88, 1, 1): 0.0, (88, 2, 2): -0.0, (88, 2, 1): 0.0, (88, 3, 2): 0.0, (88, 3, 1): 0.0, (88, 4, 2): 1.0, (88, 4, 1): 0.0, (88, 5, 2): -0.0, (88, 5, 1): 0.0, (88, 6, 2): -0.0, (88, 6, 1): 0.0, (88, 7, 2): 0.0, (88, 7, 1): 0.0, (51, 1, 2): 0.0, (51, 1, 1): 0.0, (51, 2, 2): 0.0, (51, 2, 1): 0.0, (51, 3, 2): 0.0, (51, 3, 1): 0.0, (51, 4, 2): 0.0, (51, 4, 1): 0.0, (51, 5, 2): 0.0, (51, 5, 1): 0.0, (51, 6, 2): 0.0, (51, 6, 1): 0.0, (51, 7, 2): 0.0, (51, 7, 1): -0.0, (65, 1, 2): 0.0, (65, 1, 1): 0.0, (65, 2, 2): 0.0, (65, 2, 1): 0.0, (65, 3, 2): 0.0, (65, 3, 1): -0.0, (65, 4, 2): 0.0, (65, 4, 1): 0.0, (65, 5, 2): 0.0, (65, 5, 1): 1.0, (65, 6, 2): 0.0, (65, 6, 1): -0.0, (65, 7, 2): 0.0, (65, 7, 1): 0.0, (59, 1, 2): 0.0, (59, 1, 1): 0.0, (59, 2, 2): 0.0, (59, 2, 1): -0.0, (59, 3, 2): 0.0, (59, 3, 1): -0.0, (59, 4, 2): 0.0, (59, 4, 1): 0.0, (59, 5, 2): 0.0, (59, 5, 1): 1.0, (59, 6, 2): 0.0, (59, 6, 1): 0.0, (59, 7, 2): 0.0, (59, 7, 1): -0.0, (53, 1, 2): 0.0, (53, 1, 1): 0.0, (53, 2, 2): -0.0, (53, 2, 1): 0.0, (53, 3, 2): -0.0, (53, 3, 1): 0.0, (53, 4, 2): -0.0, (53, 4, 1): 0.0, (53, 5, 2): -0.0, (53, 5, 1): 1.0, (53, 6, 2): -0.0, (53, 6, 1): 0.0, (53, 7, 2): -0.0, (53, 7, 1): -0.0, (2, 1, 2): 0.0, (2, 1, 1): 0.0, (2, 2, 2): 0.0, (2, 2, 1): 0.0, (2, 3, 2): 0.0, (2, 3, 1): 0.0, (2, 4, 2): 0.0, (2, 4, 1): 0.0, (2, 5, 2): 0.0, (2, 5, 1): 1.0, (2, 6, 2): 0.0, (2, 6, 1): 0.0, (2, 7, 2): 0.0, (2, 7, 1): 0.0, (73, 1, 2): 0.0, (73, 1, 1): 0.0, (73, 2, 2): 0.0, (73, 2, 1): 0.0, (73, 3, 2): -0.0, (73, 3, 1): 0.0, (73, 4, 2): 1.0, (73, 4, 1): 0.0, (73, 5, 2): 0.0, (73, 5, 1): 0.0, (73, 6, 2): -0.0, (73, 6, 1): 0.0, (73, 7, 2): 0.0, (73, 7, 1): 0.0, (31, 1, 2): 0.0, (31, 1, 1): 0.0, (31, 2, 2): -0.0, (31, 2, 1): 0.0, (31, 3, 2): 0.0, (31, 3, 1): 0.0, (31, 4, 2): 0.0, (31, 4, 1): 0.0, (31, 5, 2): -0.0, (31, 5, 1): 0.0, (31, 6, 2): 0.0, (31, 6, 1): 0.0, (31, 7, 2): -0.0, (31, 7, 1): 0.0, (35, 1, 2): 0.0, (35, 1, 1): 0.0, (35, 2, 2): 0.0, (35, 2, 1): 0.0, (35, 3, 2): 0.0, (35, 3, 1): 0.0, (35, 4, 2): 0.0, (35, 4, 1): 0.0, (35, 5, 2): -0.0, (35, 5, 1): 0.0, (35, 6, 2): 0.0, (35, 6, 1): 0.0, (35, 7, 2): -0.0, (35, 7, 1): 0.0, (46, 1, 2): 0.0, (46, 1, 1): 0.0, (46, 2, 2): 0.0, (46, 2, 1): 0.0, (46, 3, 2): -0.0, (46, 3, 1): 0.0, (46, 4, 2): 1.0, (46, 4, 1): 0.0, (46, 5, 2): -0.0, (46, 5, 1): 0.0, (46, 6, 2): -0.0, (46, 6, 1): 0.0, (46, 7, 2): 0.0, (46, 7, 1): 0.0, (30, 1, 2): 0.0, (30, 1, 1): 0.0, (30, 2, 2): -0.0, (30, 2, 1): -0.0, (30, 3, 2): -0.0, (30, 3, 1): 0.0, (30, 4, 2): -0.0, (30, 4, 1): 0.0, (30, 5, 2): -0.0, (30, 5, 1): 0.0, (30, 6, 2): -0.0, (30, 6, 1): 1.0, (30, 7, 2): -0.0, (30, 7, 1): -0.0, (74, 1, 2): 0.0, (74, 1, 1): 0.0, (74, 2, 2): -0.0, (74, 2, 1): 0.0, (74, 3, 2): 0.0, (74, 3, 1): 0.0, (74, 4, 2): 0.0, (74, 4, 1): 0.0, (74, 5, 2): -0.0, (74, 5, 1): 0.0, (74, 6, 2): 0.0, (74, 6, 1): 0.0, (74, 7, 2): 1.0, (74, 7, 1): 0.0, (43, 1, 2): 0.0, (43, 1, 1): 0.0, (43, 2, 2): 0.0, (43, 2, 1): 0.0, (43, 3, 2): 0.0, (43, 3, 1): 0.0, (43, 4, 2): 0.0, (43, 4, 1): 0.0, (43, 5, 2): 0.0, (43, 5, 1): 1.0, (43, 6, 2): 0.0, (43, 6, 1): 0.0, (43, 7, 2): 0.0, (43, 7, 1): 0.0, (33, 1, 2): 0.0, (33, 1, 1): 0.0, (33, 2, 2): 0.0, (33, 2, 1): 0.0, (33, 3, 2): -0.0, (33, 3, 1): 0.0, (33, 4, 2): 1.0, (33, 4, 1): 0.0, (33, 5, 2): -0.0, (33, 5, 1): 0.0, (33, 6, 2): -0.0, (33, 6, 1): 0.0, (33, 7, 2): 0.0, (33, 7, 1): 0.0, (12, 1, 2): 0.0, (12, 1, 1): 0.0, (12, 2, 2): 0.0, (12, 2, 1): -0.0, (12, 3, 2): 0.0, (12, 3, 1): 0.0, (12, 4, 2): 0.0, (12, 4, 1): 0.0, (12, 5, 2): 0.0, (12, 5, 1): -0.0, (12, 6, 2): 0.0, (12, 6, 1): -0.0, (12, 7, 2): 0.0, (12, 7, 1): 0.0, (25, 1, 2): 0.0, (25, 1, 1): 0.0, (25, 2, 2): 0.0, (25, 2, 1): 0.0, (25, 3, 2): 0.0, (25, 3, 1): 0.0, (25, 4, 2): 1.0, (25, 4, 1): 0.0, (25, 5, 2): 0.0, (25, 5, 1): 0.0, (25, 6, 2): 0.0, (25, 6, 1): 0.0, (25, 7, 2): 0.0, (25, 7, 1): 0.0, (4, 1, 2): 0.0, (4, 1, 1): 0.0, (4, 2, 2): -0.0, (4, 2, 1): 0.0, (4, 3, 2): -0.0, (4, 3, 1): 0.0, (4, 4, 2): 1.0, (4, 4, 1): 0.0, (4, 5, 2): -0.0, (4, 5, 1): 0.0, (4, 6, 2): -0.0, (4, 6, 1): 0.0, (4, 7, 2): 0.0, (4, 7, 1): 0.0, (97, 1, 2): 0.0, (97, 1, 1): 0.0, (97, 2, 2): 0.0, (97, 2, 1): 0.0, (97, 3, 2): 0.0, (97, 3, 1): 0.0, (97, 4, 2): 0.0, (97, 4, 1): 0.0, (97, 5, 2): 0.0, (97, 5, 1): 1.0, (97, 6, 2): 0.0, (97, 6, 1): 0.0, (97, 7, 2): 0.0, (97, 7, 1): 0.0, (99, 1, 2): 0.0, (99, 1, 1): 0.0, (99, 2, 2): 0.0, (99, 2, 1): 0.0, (99, 3, 2): 0.0, (99, 3, 1): 0.0, (99, 4, 2): 1.0, (99, 4, 1): 0.0, (99, 5, 2): 0.0, (99, 5, 1): 0.0, (99, 6, 2): 0.0, (99, 6, 1): 0.0, (99, 7, 2): 0.0, (99, 7, 1): 0.0, (18, 1, 2): 0.0, (18, 1, 1): 0.0, (18, 2, 2): -0.0, (18, 2, 1): 0.0, (18, 3, 2): 0.0, (18, 3, 1): 0.0, (18, 4, 2): 0.0, (18, 4, 1): 0.0, (18, 5, 2): -0.0, (18, 5, 1): 0.0, (18, 6, 2): -0.0, (18, 6, 1): 0.0, (18, 7, 2): 0.0, (18, 7, 1): 0.0, (5, 1, 2): 0.0, (5, 1, 1): 0.0, (5, 2, 2): -0.0, (5, 2, 1): 0.0, (5, 3, 2): -0.0, (5, 3, 1): 0.0, (5, 4, 2): -0.0, (5, 4, 1): -0.0, (5, 5, 2): -0.0, (5, 5, 1): 0.0, (5, 6, 2): -0.0, (5, 6, 1): 1.0, (5, 7, 2): -0.0, (5, 7, 1): 0.0, (19, 1, 2): 0.0, (19, 1, 1): 0.0, (19, 2, 2): -0.0, (19, 2, 1): 0.0, (19, 3, 2): -0.0, (19, 3, 1): -0.0, (19, 4, 2): -0.0, (19, 4, 1): -0.0, (19, 5, 2): -0.0, (19, 5, 1): 1.0, (19, 6, 2): -0.0, (19, 6, 1): 0.0, (19, 7, 2): -0.0, (19, 7, 1): -0.0, (61, 1, 2): 0.0, (61, 1, 1): 0.0, (61, 2, 2): 0.0, (61, 2, 1): 0.0, (61, 3, 2): 0.0, (61, 3, 1): 0.0, (61, 4, 2): 0.0, (61, 4, 1): -0.0, (61, 5, 2): 0.0, (61, 5, 1): 1.0, (61, 6, 2): 0.0, (61, 6, 1): 0.0, (61, 7, 2): 0.0, (61, 7, 1): -0.0, (15, 1, 2): 0.0, (15, 1, 1): 0.0, (15, 2, 2): 0.0, (15, 2, 1): 0.0, (15, 3, 2): 0.0, (15, 3, 1): 0.0, (15, 4, 2): 1.0, (15, 4, 1): 0.0, (15, 5, 2): -0.0, (15, 5, 1): 0.0, (15, 6, 2): 0.0, (15, 6, 1): 0.0, (15, 7, 2): -0.0, (15, 7, 1): 0.0, (23, 1, 2): 0.0, (23, 1, 1): 0.0, (23, 2, 2): -0.0, (23, 2, 1): -0.0, (23, 3, 2): -0.0, (23, 3, 1): 0.0, (23, 4, 2): -0.0, (23, 4, 1): -0.0, (23, 5, 2): -0.0, (23, 5, 1): 0.0, (23, 6, 2): -0.0, (23, 6, 1): 1.0, (23, 7, 2): -0.0, (23, 7, 1): 0.0, (62, 1, 2): 0.0, (62, 1, 1): 0.0, (62, 2, 2): 0.0, (62, 2, 1): 0.0, (62, 3, 2): 0.0, (62, 3, 1): 0.0, (62, 4, 2): 0.0, (62, 4, 1): 0.0, (62, 5, 2): 0.0, (62, 5, 1): 1.0, (62, 6, 2): 0.0, (62, 6, 1): 0.0, (62, 7, 2): 0.0, (62, 7, 1): -0.0, (14, 1, 2): 0.0, (14, 1, 1): 0.0, (14, 2, 2): 0.0, (14, 2, 1): 0.0, (14, 3, 2): 0.0, (14, 3, 1): 0.0, (14, 4, 2): 0.0, (14, 4, 1): 0.0, (14, 5, 2): -0.0, (14, 5, 1): 0.0, (14, 6, 2): -0.0, (14, 6, 1): 0.0, (14, 7, 2): 0.0, (14, 7, 1): 0.0, (58, 1, 2): 0.0, (58, 1, 1): 0.0, (58, 2, 2): -0.0, (58, 2, 1): 0.0, (58, 3, 2): -0.0, (58, 3, 1): 0.0, (58, 4, 2): -0.0, (58, 4, 1): -0.0, (58, 5, 2): -0.0, (58, 5, 1): 0.0, (58, 6, 2): -0.0, (58, 6, 1): 1.0, (58, 7, 2): -0.0, (58, 7, 1): 0.0, (56, 1, 2): 0.0, (56, 1, 1): 0.0, (56, 2, 2): 0.0, (56, 2, 1): -0.0, (56, 3, 2): 0.0, (56, 3, 1): 0.0, (56, 4, 2): 0.0, (56, 4, 1): 0.0, (56, 5, 2): 0.0, (56, 5, 1): 1.0, (56, 6, 2): 0.0, (56, 6, 1): -0.0, (56, 7, 2): 0.0, (56, 7, 1): -0.0, (21, 1, 2): 0.0, (21, 1, 1): 0.0, (21, 2, 2): 0.0, (21, 2, 1): -0.0, (21, 3, 2): 0.0, (21, 3, 1): 0.0, (21, 4, 2): 0.0, (21, 4, 1): -0.0, (21, 5, 2): 0.0, (21, 5, 1): 1.0, (21, 6, 2): 0.0, (21, 6, 1): -0.0, (21, 7, 2): 0.0, (21, 7, 1): 0.0, (40, 1, 2): 0.0, (40, 1, 1): 0.0, (40, 2, 2): 0.0, (40, 2, 1): 0.0, (40, 3, 2): -0.0, (40, 3, 1): 0.0, (40, 4, 2): 1.0, (40, 4, 1): 0.0, (40, 5, 2): -0.0, (40, 5, 1): 0.0, (40, 6, 2): -0.0, (40, 6, 1): 0.0, (40, 7, 2): 0.0, (40, 7, 1): 0.0, (70, 1, 2): 0.0, (70, 1, 1): 0.0, (70, 2, 2): 0.0, (70, 2, 1): 0.0, (70, 3, 2): 0.0, (70, 3, 1): 0.0, (70, 4, 2): 0.0, (70, 4, 1): 0.0, (70, 5, 2): 0.0, (70, 5, 1): 1.0, (70, 6, 2): 0.0, (70, 6, 1): 0.0, (70, 7, 2): 0.0, (70, 7, 1): 0.0}>
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 1.0643010139465332
+obj value -311.0
+obj value -311.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1366 rows, 1131 columns and 6414 nonzeros
+Model fingerprint: 0x4d71955c
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [7e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 681 rows and 694 columns
+Presolve time: 0.02s
+Presolved: 685 rows, 437 columns, 4079 nonzeros
+Variable types: 12 continuous, 425 integer (425 binary)
+
+Root relaxation: objective -3.007143e+02, 560 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -300.71429    0  106 -350.00000 -300.71429  14.1%     -    0s
+H    0     0                    -329.0000000 -300.71429  8.60%     -    0s
+     0     0 -300.71429    0  206 -329.00000 -300.71429  8.60%     -    0s
+H    0     0                    -320.0000000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  192 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  139 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   94 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  127 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  110 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  105 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  181 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  107 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  160 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  117 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+     0     2 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+H   54    49                    -313.0000000 -300.71429  3.93%  84.0    0s
+H  210    82                    -312.0000000 -301.35714  3.41%  39.3    0s
+*  687    75              21    -311.0000000 -309.00000  0.64%  25.1    0s
+
+Cutting planes:
+  Gomory: 2
+  Zero half: 29
+
+Explored 779 nodes (24700 simplex iterations) in 0.97 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -311 -312 -313 ... -350
+No other solutions better than -311
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.110000000000e+02, best bound -3.110000000000e+02, gap 0.0000%
+<bound method tupledict.values of {(95, 1, 2): 0.0, (95, 1, 1): 0.0, (95, 2, 2): 0.0, (95, 2, 1): 0.0, (95, 3, 2): -0.0, (95, 3, 1): 0.0, (95, 4, 2): 0.0, (95, 4, 1): 0.0, (95, 5, 2): -0.0, (95, 5, 1): 0.0, (95, 6, 2): 0.0, (95, 6, 1): 0.0, (95, 7, 2): -0.0, (95, 7, 1): 0.0, (1, 1, 2): 0.0, (1, 1, 1): 0.0, (1, 2, 2): 0.0, (1, 2, 1): -0.0, (1, 3, 2): 0.0, (1, 3, 1): -0.0, (1, 4, 2): 0.0, (1, 4, 1): 0.0, (1, 5, 2): 0.0, (1, 5, 1): 1.0, (1, 6, 2): 0.0, (1, 6, 1): -0.0, (1, 7, 2): 0.0, (1, 7, 1): 0.0, (64, 1, 2): 0.0, (64, 1, 1): 0.0, (64, 2, 2): 0.0, (64, 2, 1): 0.0, (64, 3, 2): 0.0, (64, 3, 1): 0.0, (64, 4, 2): 0.0, (64, 4, 1): 0.0, (64, 5, 2): -0.0, (64, 5, 1): 0.0, (64, 6, 2): 0.0, (64, 6, 1): 0.0, (64, 7, 2): -0.0, (64, 7, 1): 0.0, (39, 1, 2): 0.0, (39, 1, 1): 0.0, (39, 2, 2): 0.0, (39, 2, 1): 0.0, (39, 3, 2): 0.0, (39, 3, 1): 0.0, (39, 4, 2): 0.0, (39, 4, 1): 0.0, (39, 5, 2): -0.0, (39, 5, 1): 0.0, (39, 6, 2): -0.0, (39, 6, 1): 0.0, (39, 7, 2): 0.0, (39, 7, 1): 0.0, (69, 1, 2): 0.0, (69, 1, 1): 0.0, (69, 2, 2): 0.0, (69, 2, 1): 0.0, (69, 3, 2): 0.0, (69, 3, 1): 0.0, (69, 4, 2): 0.0, (69, 4, 1): 0.0, (69, 5, 2): 0.0, (69, 5, 1): 1.0, (69, 6, 2): 0.0, (69, 6, 1): 0.0, (69, 7, 2): 0.0, (69, 7, 1): 0.0, (66, 1, 2): 0.0, (66, 1, 1): 0.0, (66, 2, 2): 0.0, (66, 2, 1): -0.0, (66, 3, 2): 0.0, (66, 3, 1): 0.0, (66, 4, 2): 0.0, (66, 4, 1): -0.0, (66, 5, 2): 0.0, (66, 5, 1): 1.0, (66, 6, 2): 0.0, (66, 6, 1): 0.0, (66, 7, 2): 0.0, (66, 7, 1): -0.0, (16, 1, 2): 0.0, (16, 1, 1): 0.0, (16, 2, 2): -0.0, (16, 2, 1): 0.0, (16, 3, 2): -0.0, (16, 3, 1): -0.0, (16, 4, 2): -0.0, (16, 4, 1): -0.0, (16, 5, 2): -0.0, (16, 5, 1): 0.0, (16, 6, 2): -0.0, (16, 6, 1): -0.0, (16, 7, 2): -0.0, (16, 7, 1): 0.0, (13, 1, 2): 0.0, (13, 1, 1): 0.0, (13, 2, 2): 0.0, (13, 2, 1): -0.0, (13, 3, 2): 0.0, (13, 3, 1): 0.0, (13, 4, 2): 0.0, (13, 4, 1): -0.0, (13, 5, 2): 0.0, (13, 5, 1): 1.0, (13, 6, 2): 0.0, (13, 6, 1): 0.0, (13, 7, 2): 0.0, (13, 7, 1): -0.0, (54, 1, 2): 0.0, (54, 1, 1): 0.0, (54, 2, 2): 0.0, (54, 2, 1): -0.0, (54, 3, 2): 0.0, (54, 3, 1): 0.0, (54, 4, 2): 0.0, (54, 4, 1): -0.0, (54, 5, 2): 0.0, (54, 5, 1): 1.0, (54, 6, 2): 0.0, (54, 6, 1): 0.0, (54, 7, 2): 0.0, (54, 7, 1): -0.0, (90, 1, 2): 0.0, (90, 1, 1): 0.0, (90, 2, 2): 0.0, (90, 2, 1): 0.0, (90, 3, 2): -0.0, (90, 3, 1): 0.0, (90, 4, 2): 0.0, (90, 4, 1): 0.0, (90, 5, 2): -0.0, (90, 5, 1): 0.0, (90, 6, 2): 0.0, (90, 6, 1): 0.0, (90, 7, 2): -0.0, (90, 7, 1): 0.0, (47, 1, 2): 0.0, (47, 1, 1): 0.0, (47, 2, 2): 0.0, (47, 2, 1): 0.0, (47, 3, 2): 0.0, (47, 3, 1): 0.0, (47, 4, 2): 0.0, (47, 4, 1): 0.0, (47, 5, 2): 0.0, (47, 5, 1): 1.0, (47, 6, 2): 0.0, (47, 6, 1): 0.0, (47, 7, 2): 0.0, (47, 7, 1): 0.0, (32, 1, 2): 0.0, (32, 1, 1): 0.0, (32, 2, 2): -0.0, (32, 2, 1): 0.0, (32, 3, 2): -0.0, (32, 3, 1): 0.0, (32, 4, 2): -0.0, (32, 4, 1): -0.0, (32, 5, 2): -0.0, (32, 5, 1): 1.0, (32, 6, 2): -0.0, (32, 6, 1): -0.0, (32, 7, 2): -0.0, (32, 7, 1): 0.0, (10, 1, 2): 0.0, (10, 1, 1): 0.0, (10, 2, 2): 0.0, (10, 2, 1): 0.0, (10, 3, 2): 0.0, (10, 3, 1): 0.0, (10, 4, 2): 0.0, (10, 4, 1): 0.0, (10, 5, 2): 0.0, (10, 5, 1): 1.0, (10, 6, 2): 0.0, (10, 6, 1): 0.0, (10, 7, 2): 0.0, (10, 7, 1): 0.0, (78, 1, 2): 0.0, (78, 1, 1): 0.0, (78, 2, 2): 0.0, (78, 2, 1): 0.0, (78, 3, 2): -0.0, (78, 3, 1): 0.0, (78, 4, 2): 1.0, (78, 4, 1): 0.0, (78, 5, 2): -0.0, (78, 5, 1): 0.0, (78, 6, 2): -0.0, (78, 6, 1): 0.0, (78, 7, 2): 0.0, (78, 7, 1): 0.0, (6, 1, 2): 0.0, (6, 1, 1): 0.0, (6, 2, 2): -0.0, (6, 2, 1): 0.0, (6, 3, 2): -0.0, (6, 3, 1): -0.0, (6, 4, 2): -0.0, (6, 4, 1): 0.0, (6, 5, 2): -0.0, (6, 5, 1): 1.0, (6, 6, 2): -0.0, (6, 6, 1): 0.0, (6, 7, 2): -0.0, (6, 7, 1): -0.0, (76, 1, 2): 0.0, (76, 1, 1): 0.0, (76, 2, 2): 0.0, (76, 2, 1): -0.0, (76, 3, 2): 0.0, (76, 3, 1): -0.0, (76, 4, 2): 0.0, (76, 4, 1): -0.0, (76, 5, 2): 0.0, (76, 5, 1): 1.0, (76, 6, 2): 0.0, (76, 6, 1): 0.0, (76, 7, 2): 0.0, (76, 7, 1): -0.0, (41, 1, 2): 0.0, (41, 1, 1): 0.0, (41, 2, 2): 0.0, (41, 2, 1): 0.0, (41, 3, 2): 0.0, (41, 3, 1): 0.0, (41, 4, 2): 1.0, (41, 4, 1): 0.0, (41, 5, 2): -0.0, (41, 5, 1): 0.0, (41, 6, 2): 0.0, (41, 6, 1): 0.0, (41, 7, 2): 0.0, (41, 7, 1): 0.0, (57, 1, 2): 0.0, (57, 1, 1): 0.0, (57, 2, 2): 0.0, (57, 2, 1): 0.0, (57, 3, 2): 0.0, (57, 3, 1): 0.0, (57, 4, 2): 1.0, (57, 4, 1): 0.0, (57, 5, 2): -0.0, (57, 5, 1): 0.0, (57, 6, 2): -0.0, (57, 6, 1): 0.0, (57, 7, 2): 0.0, (57, 7, 1): 0.0, (88, 1, 2): 0.0, (88, 1, 1): 0.0, (88, 2, 2): -0.0, (88, 2, 1): 0.0, (88, 3, 2): 0.0, (88, 3, 1): 0.0, (88, 4, 2): 1.0, (88, 4, 1): 0.0, (88, 5, 2): -0.0, (88, 5, 1): 0.0, (88, 6, 2): -0.0, (88, 6, 1): 0.0, (88, 7, 2): 0.0, (88, 7, 1): 0.0, (51, 1, 2): 0.0, (51, 1, 1): 0.0, (51, 2, 2): 0.0, (51, 2, 1): 0.0, (51, 3, 2): 0.0, (51, 3, 1): 0.0, (51, 4, 2): 0.0, (51, 4, 1): 0.0, (51, 5, 2): 0.0, (51, 5, 1): 0.0, (51, 6, 2): 0.0, (51, 6, 1): 0.0, (51, 7, 2): 0.0, (51, 7, 1): -0.0, (65, 1, 2): 0.0, (65, 1, 1): 0.0, (65, 2, 2): 0.0, (65, 2, 1): 0.0, (65, 3, 2): 0.0, (65, 3, 1): -0.0, (65, 4, 2): 0.0, (65, 4, 1): 0.0, (65, 5, 2): 0.0, (65, 5, 1): 1.0, (65, 6, 2): 0.0, (65, 6, 1): -0.0, (65, 7, 2): 0.0, (65, 7, 1): 0.0, (59, 1, 2): 0.0, (59, 1, 1): 0.0, (59, 2, 2): 0.0, (59, 2, 1): -0.0, (59, 3, 2): 0.0, (59, 3, 1): -0.0, (59, 4, 2): 0.0, (59, 4, 1): 0.0, (59, 5, 2): 0.0, (59, 5, 1): 1.0, (59, 6, 2): 0.0, (59, 6, 1): 0.0, (59, 7, 2): 0.0, (59, 7, 1): -0.0, (53, 1, 2): 0.0, (53, 1, 1): 0.0, (53, 2, 2): -0.0, (53, 2, 1): 0.0, (53, 3, 2): -0.0, (53, 3, 1): 0.0, (53, 4, 2): -0.0, (53, 4, 1): 0.0, (53, 5, 2): -0.0, (53, 5, 1): 1.0, (53, 6, 2): -0.0, (53, 6, 1): 0.0, (53, 7, 2): -0.0, (53, 7, 1): -0.0, (2, 1, 2): 0.0, (2, 1, 1): 0.0, (2, 2, 2): 0.0, (2, 2, 1): 0.0, (2, 3, 2): 0.0, (2, 3, 1): 0.0, (2, 4, 2): 0.0, (2, 4, 1): 0.0, (2, 5, 2): 0.0, (2, 5, 1): 1.0, (2, 6, 2): 0.0, (2, 6, 1): 0.0, (2, 7, 2): 0.0, (2, 7, 1): 0.0, (73, 1, 2): 0.0, (73, 1, 1): 0.0, (73, 2, 2): 0.0, (73, 2, 1): 0.0, (73, 3, 2): -0.0, (73, 3, 1): 0.0, (73, 4, 2): 1.0, (73, 4, 1): 0.0, (73, 5, 2): 0.0, (73, 5, 1): 0.0, (73, 6, 2): -0.0, (73, 6, 1): 0.0, (73, 7, 2): 0.0, (73, 7, 1): 0.0, (31, 1, 2): 0.0, (31, 1, 1): 0.0, (31, 2, 2): -0.0, (31, 2, 1): 0.0, (31, 3, 2): 0.0, (31, 3, 1): 0.0, (31, 4, 2): 0.0, (31, 4, 1): 0.0, (31, 5, 2): -0.0, (31, 5, 1): 0.0, (31, 6, 2): 0.0, (31, 6, 1): 0.0, (31, 7, 2): -0.0, (31, 7, 1): 0.0, (35, 1, 2): 0.0, (35, 1, 1): 0.0, (35, 2, 2): 0.0, (35, 2, 1): 0.0, (35, 3, 2): 0.0, (35, 3, 1): 0.0, (35, 4, 2): 0.0, (35, 4, 1): 0.0, (35, 5, 2): -0.0, (35, 5, 1): 0.0, (35, 6, 2): 0.0, (35, 6, 1): 0.0, (35, 7, 2): -0.0, (35, 7, 1): 0.0, (46, 1, 2): 0.0, (46, 1, 1): 0.0, (46, 2, 2): 0.0, (46, 2, 1): 0.0, (46, 3, 2): -0.0, (46, 3, 1): 0.0, (46, 4, 2): 1.0, (46, 4, 1): 0.0, (46, 5, 2): -0.0, (46, 5, 1): 0.0, (46, 6, 2): -0.0, (46, 6, 1): 0.0, (46, 7, 2): 0.0, (46, 7, 1): 0.0, (30, 1, 2): 0.0, (30, 1, 1): 0.0, (30, 2, 2): -0.0, (30, 2, 1): -0.0, (30, 3, 2): -0.0, (30, 3, 1): 0.0, (30, 4, 2): -0.0, (30, 4, 1): 0.0, (30, 5, 2): -0.0, (30, 5, 1): 0.0, (30, 6, 2): -0.0, (30, 6, 1): 1.0, (30, 7, 2): -0.0, (30, 7, 1): -0.0, (74, 1, 2): 0.0, (74, 1, 1): 0.0, (74, 2, 2): -0.0, (74, 2, 1): 0.0, (74, 3, 2): 0.0, (74, 3, 1): 0.0, (74, 4, 2): 0.0, (74, 4, 1): 0.0, (74, 5, 2): -0.0, (74, 5, 1): 0.0, (74, 6, 2): 0.0, (74, 6, 1): 0.0, (74, 7, 2): 1.0, (74, 7, 1): 0.0, (43, 1, 2): 0.0, (43, 1, 1): 0.0, (43, 2, 2): 0.0, (43, 2, 1): 0.0, (43, 3, 2): 0.0, (43, 3, 1): 0.0, (43, 4, 2): 0.0, (43, 4, 1): 0.0, (43, 5, 2): 0.0, (43, 5, 1): 1.0, (43, 6, 2): 0.0, (43, 6, 1): 0.0, (43, 7, 2): 0.0, (43, 7, 1): 0.0, (33, 1, 2): 0.0, (33, 1, 1): 0.0, (33, 2, 2): 0.0, (33, 2, 1): 0.0, (33, 3, 2): -0.0, (33, 3, 1): 0.0, (33, 4, 2): 1.0, (33, 4, 1): 0.0, (33, 5, 2): -0.0, (33, 5, 1): 0.0, (33, 6, 2): -0.0, (33, 6, 1): 0.0, (33, 7, 2): 0.0, (33, 7, 1): 0.0, (12, 1, 2): 0.0, (12, 1, 1): 0.0, (12, 2, 2): 0.0, (12, 2, 1): -0.0, (12, 3, 2): 0.0, (12, 3, 1): 0.0, (12, 4, 2): 0.0, (12, 4, 1): 0.0, (12, 5, 2): 0.0, (12, 5, 1): -0.0, (12, 6, 2): 0.0, (12, 6, 1): -0.0, (12, 7, 2): 0.0, (12, 7, 1): 0.0, (25, 1, 2): 0.0, (25, 1, 1): 0.0, (25, 2, 2): 0.0, (25, 2, 1): 0.0, (25, 3, 2): 0.0, (25, 3, 1): 0.0, (25, 4, 2): 1.0, (25, 4, 1): 0.0, (25, 5, 2): 0.0, (25, 5, 1): 0.0, (25, 6, 2): 0.0, (25, 6, 1): 0.0, (25, 7, 2): 0.0, (25, 7, 1): 0.0, (4, 1, 2): 0.0, (4, 1, 1): 0.0, (4, 2, 2): -0.0, (4, 2, 1): 0.0, (4, 3, 2): -0.0, (4, 3, 1): 0.0, (4, 4, 2): 1.0, (4, 4, 1): 0.0, (4, 5, 2): -0.0, (4, 5, 1): 0.0, (4, 6, 2): -0.0, (4, 6, 1): 0.0, (4, 7, 2): 0.0, (4, 7, 1): 0.0, (97, 1, 2): 0.0, (97, 1, 1): 0.0, (97, 2, 2): 0.0, (97, 2, 1): 0.0, (97, 3, 2): 0.0, (97, 3, 1): 0.0, (97, 4, 2): 0.0, (97, 4, 1): 0.0, (97, 5, 2): 0.0, (97, 5, 1): 1.0, (97, 6, 2): 0.0, (97, 6, 1): 0.0, (97, 7, 2): 0.0, (97, 7, 1): 0.0, (99, 1, 2): 0.0, (99, 1, 1): 0.0, (99, 2, 2): 0.0, (99, 2, 1): 0.0, (99, 3, 2): 0.0, (99, 3, 1): 0.0, (99, 4, 2): 1.0, (99, 4, 1): 0.0, (99, 5, 2): 0.0, (99, 5, 1): 0.0, (99, 6, 2): 0.0, (99, 6, 1): 0.0, (99, 7, 2): 0.0, (99, 7, 1): 0.0, (18, 1, 2): 0.0, (18, 1, 1): 0.0, (18, 2, 2): -0.0, (18, 2, 1): 0.0, (18, 3, 2): 0.0, (18, 3, 1): 0.0, (18, 4, 2): 0.0, (18, 4, 1): 0.0, (18, 5, 2): -0.0, (18, 5, 1): 0.0, (18, 6, 2): -0.0, (18, 6, 1): 0.0, (18, 7, 2): 0.0, (18, 7, 1): 0.0, (5, 1, 2): 0.0, (5, 1, 1): 0.0, (5, 2, 2): -0.0, (5, 2, 1): 0.0, (5, 3, 2): -0.0, (5, 3, 1): 0.0, (5, 4, 2): -0.0, (5, 4, 1): -0.0, (5, 5, 2): -0.0, (5, 5, 1): 0.0, (5, 6, 2): -0.0, (5, 6, 1): 1.0, (5, 7, 2): -0.0, (5, 7, 1): 0.0, (19, 1, 2): 0.0, (19, 1, 1): 0.0, (19, 2, 2): -0.0, (19, 2, 1): 0.0, (19, 3, 2): -0.0, (19, 3, 1): -0.0, (19, 4, 2): -0.0, (19, 4, 1): -0.0, (19, 5, 2): -0.0, (19, 5, 1): 1.0, (19, 6, 2): -0.0, (19, 6, 1): 0.0, (19, 7, 2): -0.0, (19, 7, 1): -0.0, (61, 1, 2): 0.0, (61, 1, 1): 0.0, (61, 2, 2): 0.0, (61, 2, 1): 0.0, (61, 3, 2): 0.0, (61, 3, 1): 0.0, (61, 4, 2): 0.0, (61, 4, 1): -0.0, (61, 5, 2): 0.0, (61, 5, 1): 1.0, (61, 6, 2): 0.0, (61, 6, 1): 0.0, (61, 7, 2): 0.0, (61, 7, 1): -0.0, (15, 1, 2): 0.0, (15, 1, 1): 0.0, (15, 2, 2): 0.0, (15, 2, 1): 0.0, (15, 3, 2): 0.0, (15, 3, 1): 0.0, (15, 4, 2): 1.0, (15, 4, 1): 0.0, (15, 5, 2): -0.0, (15, 5, 1): 0.0, (15, 6, 2): 0.0, (15, 6, 1): 0.0, (15, 7, 2): -0.0, (15, 7, 1): 0.0, (23, 1, 2): 0.0, (23, 1, 1): 0.0, (23, 2, 2): -0.0, (23, 2, 1): -0.0, (23, 3, 2): -0.0, (23, 3, 1): 0.0, (23, 4, 2): -0.0, (23, 4, 1): -0.0, (23, 5, 2): -0.0, (23, 5, 1): 0.0, (23, 6, 2): -0.0, (23, 6, 1): 1.0, (23, 7, 2): -0.0, (23, 7, 1): 0.0, (62, 1, 2): 0.0, (62, 1, 1): 0.0, (62, 2, 2): 0.0, (62, 2, 1): 0.0, (62, 3, 2): 0.0, (62, 3, 1): 0.0, (62, 4, 2): 0.0, (62, 4, 1): 0.0, (62, 5, 2): 0.0, (62, 5, 1): 1.0, (62, 6, 2): 0.0, (62, 6, 1): 0.0, (62, 7, 2): 0.0, (62, 7, 1): -0.0, (14, 1, 2): 0.0, (14, 1, 1): 0.0, (14, 2, 2): 0.0, (14, 2, 1): 0.0, (14, 3, 2): 0.0, (14, 3, 1): 0.0, (14, 4, 2): 0.0, (14, 4, 1): 0.0, (14, 5, 2): -0.0, (14, 5, 1): 0.0, (14, 6, 2): -0.0, (14, 6, 1): 0.0, (14, 7, 2): 0.0, (14, 7, 1): 0.0, (58, 1, 2): 0.0, (58, 1, 1): 0.0, (58, 2, 2): -0.0, (58, 2, 1): 0.0, (58, 3, 2): -0.0, (58, 3, 1): 0.0, (58, 4, 2): -0.0, (58, 4, 1): -0.0, (58, 5, 2): -0.0, (58, 5, 1): 0.0, (58, 6, 2): -0.0, (58, 6, 1): 1.0, (58, 7, 2): -0.0, (58, 7, 1): 0.0, (56, 1, 2): 0.0, (56, 1, 1): 0.0, (56, 2, 2): 0.0, (56, 2, 1): -0.0, (56, 3, 2): 0.0, (56, 3, 1): 0.0, (56, 4, 2): 0.0, (56, 4, 1): 0.0, (56, 5, 2): 0.0, (56, 5, 1): 1.0, (56, 6, 2): 0.0, (56, 6, 1): -0.0, (56, 7, 2): 0.0, (56, 7, 1): -0.0, (21, 1, 2): 0.0, (21, 1, 1): 0.0, (21, 2, 2): 0.0, (21, 2, 1): -0.0, (21, 3, 2): 0.0, (21, 3, 1): 0.0, (21, 4, 2): 0.0, (21, 4, 1): -0.0, (21, 5, 2): 0.0, (21, 5, 1): 1.0, (21, 6, 2): 0.0, (21, 6, 1): -0.0, (21, 7, 2): 0.0, (21, 7, 1): 0.0, (40, 1, 2): 0.0, (40, 1, 1): 0.0, (40, 2, 2): 0.0, (40, 2, 1): 0.0, (40, 3, 2): -0.0, (40, 3, 1): 0.0, (40, 4, 2): 1.0, (40, 4, 1): 0.0, (40, 5, 2): -0.0, (40, 5, 1): 0.0, (40, 6, 2): -0.0, (40, 6, 1): 0.0, (40, 7, 2): 0.0, (40, 7, 1): 0.0, (70, 1, 2): 0.0, (70, 1, 1): 0.0, (70, 2, 2): 0.0, (70, 2, 1): 0.0, (70, 3, 2): 0.0, (70, 3, 1): 0.0, (70, 4, 2): 0.0, (70, 4, 1): 0.0, (70, 5, 2): 0.0, (70, 5, 1): 1.0, (70, 6, 2): 0.0, (70, 6, 1): 0.0, (70, 7, 2): 0.0, (70, 7, 1): 0.0}>
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 1.052004098892212
+obj value -311.0
+obj value -311.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1366 rows, 1131 columns and 6414 nonzeros
+Model fingerprint: 0x4d71955c
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [7e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 681 rows and 694 columns
+Presolve time: 0.01s
+Presolved: 685 rows, 437 columns, 4079 nonzeros
+Variable types: 12 continuous, 425 integer (425 binary)
+
+Root relaxation: objective -3.007143e+02, 560 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -300.71429    0  106 -350.00000 -300.71429  14.1%     -    0s
+H    0     0                    -329.0000000 -300.71429  8.60%     -    0s
+     0     0 -300.71429    0  206 -329.00000 -300.71429  8.60%     -    0s
+H    0     0                    -320.0000000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  192 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  139 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   94 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  127 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  110 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  105 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  181 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  107 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  160 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  117 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+     0     2 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+H   54    49                    -313.0000000 -300.71429  3.93%  84.0    0s
+H  210    82                    -312.0000000 -301.35714  3.41%  39.3    0s
+*  687    75              21    -311.0000000 -309.00000  0.64%  25.1    0s
+
+Cutting planes:
+  Gomory: 2
+  Zero half: 29
+
+Explored 779 nodes (24700 simplex iterations) in 0.97 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -311 -312 -313 ... -350
+No other solutions better than -311
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.110000000000e+02, best bound -3.110000000000e+02, gap 0.0000%
+<bound method tupledict.values of {(95, 1, 2): 0.0, (95, 1, 1): 0.0, (95, 2, 2): 0.0, (95, 2, 1): 0.0, (95, 3, 2): -0.0, (95, 3, 1): 0.0, (95, 4, 2): 0.0, (95, 4, 1): 0.0, (95, 5, 2): -0.0, (95, 5, 1): 0.0, (95, 6, 2): 0.0, (95, 6, 1): 0.0, (95, 7, 2): -0.0, (95, 7, 1): 0.0, (1, 1, 2): 0.0, (1, 1, 1): 0.0, (1, 2, 2): 0.0, (1, 2, 1): -0.0, (1, 3, 2): 0.0, (1, 3, 1): -0.0, (1, 4, 2): 0.0, (1, 4, 1): 0.0, (1, 5, 2): 0.0, (1, 5, 1): 1.0, (1, 6, 2): 0.0, (1, 6, 1): -0.0, (1, 7, 2): 0.0, (1, 7, 1): 0.0, (64, 1, 2): 0.0, (64, 1, 1): 0.0, (64, 2, 2): 0.0, (64, 2, 1): 0.0, (64, 3, 2): 0.0, (64, 3, 1): 0.0, (64, 4, 2): 0.0, (64, 4, 1): 0.0, (64, 5, 2): -0.0, (64, 5, 1): 0.0, (64, 6, 2): 0.0, (64, 6, 1): 0.0, (64, 7, 2): -0.0, (64, 7, 1): 0.0, (39, 1, 2): 0.0, (39, 1, 1): 0.0, (39, 2, 2): 0.0, (39, 2, 1): 0.0, (39, 3, 2): 0.0, (39, 3, 1): 0.0, (39, 4, 2): 0.0, (39, 4, 1): 0.0, (39, 5, 2): -0.0, (39, 5, 1): 0.0, (39, 6, 2): -0.0, (39, 6, 1): 0.0, (39, 7, 2): 0.0, (39, 7, 1): 0.0, (69, 1, 2): 0.0, (69, 1, 1): 0.0, (69, 2, 2): 0.0, (69, 2, 1): 0.0, (69, 3, 2): 0.0, (69, 3, 1): 0.0, (69, 4, 2): 0.0, (69, 4, 1): 0.0, (69, 5, 2): 0.0, (69, 5, 1): 1.0, (69, 6, 2): 0.0, (69, 6, 1): 0.0, (69, 7, 2): 0.0, (69, 7, 1): 0.0, (66, 1, 2): 0.0, (66, 1, 1): 0.0, (66, 2, 2): 0.0, (66, 2, 1): -0.0, (66, 3, 2): 0.0, (66, 3, 1): 0.0, (66, 4, 2): 0.0, (66, 4, 1): -0.0, (66, 5, 2): 0.0, (66, 5, 1): 1.0, (66, 6, 2): 0.0, (66, 6, 1): 0.0, (66, 7, 2): 0.0, (66, 7, 1): -0.0, (16, 1, 2): 0.0, (16, 1, 1): 0.0, (16, 2, 2): -0.0, (16, 2, 1): 0.0, (16, 3, 2): -0.0, (16, 3, 1): -0.0, (16, 4, 2): -0.0, (16, 4, 1): -0.0, (16, 5, 2): -0.0, (16, 5, 1): 0.0, (16, 6, 2): -0.0, (16, 6, 1): -0.0, (16, 7, 2): -0.0, (16, 7, 1): 0.0, (13, 1, 2): 0.0, (13, 1, 1): 0.0, (13, 2, 2): 0.0, (13, 2, 1): -0.0, (13, 3, 2): 0.0, (13, 3, 1): 0.0, (13, 4, 2): 0.0, (13, 4, 1): -0.0, (13, 5, 2): 0.0, (13, 5, 1): 1.0, (13, 6, 2): 0.0, (13, 6, 1): 0.0, (13, 7, 2): 0.0, (13, 7, 1): -0.0, (54, 1, 2): 0.0, (54, 1, 1): 0.0, (54, 2, 2): 0.0, (54, 2, 1): -0.0, (54, 3, 2): 0.0, (54, 3, 1): 0.0, (54, 4, 2): 0.0, (54, 4, 1): -0.0, (54, 5, 2): 0.0, (54, 5, 1): 1.0, (54, 6, 2): 0.0, (54, 6, 1): 0.0, (54, 7, 2): 0.0, (54, 7, 1): -0.0, (90, 1, 2): 0.0, (90, 1, 1): 0.0, (90, 2, 2): 0.0, (90, 2, 1): 0.0, (90, 3, 2): -0.0, (90, 3, 1): 0.0, (90, 4, 2): 0.0, (90, 4, 1): 0.0, (90, 5, 2): -0.0, (90, 5, 1): 0.0, (90, 6, 2): 0.0, (90, 6, 1): 0.0, (90, 7, 2): -0.0, (90, 7, 1): 0.0, (47, 1, 2): 0.0, (47, 1, 1): 0.0, (47, 2, 2): 0.0, (47, 2, 1): 0.0, (47, 3, 2): 0.0, (47, 3, 1): 0.0, (47, 4, 2): 0.0, (47, 4, 1): 0.0, (47, 5, 2): 0.0, (47, 5, 1): 1.0, (47, 6, 2): 0.0, (47, 6, 1): 0.0, (47, 7, 2): 0.0, (47, 7, 1): 0.0, (32, 1, 2): 0.0, (32, 1, 1): 0.0, (32, 2, 2): -0.0, (32, 2, 1): 0.0, (32, 3, 2): -0.0, (32, 3, 1): 0.0, (32, 4, 2): -0.0, (32, 4, 1): -0.0, (32, 5, 2): -0.0, (32, 5, 1): 1.0, (32, 6, 2): -0.0, (32, 6, 1): -0.0, (32, 7, 2): -0.0, (32, 7, 1): 0.0, (10, 1, 2): 0.0, (10, 1, 1): 0.0, (10, 2, 2): 0.0, (10, 2, 1): 0.0, (10, 3, 2): 0.0, (10, 3, 1): 0.0, (10, 4, 2): 0.0, (10, 4, 1): 0.0, (10, 5, 2): 0.0, (10, 5, 1): 1.0, (10, 6, 2): 0.0, (10, 6, 1): 0.0, (10, 7, 2): 0.0, (10, 7, 1): 0.0, (78, 1, 2): 0.0, (78, 1, 1): 0.0, (78, 2, 2): 0.0, (78, 2, 1): 0.0, (78, 3, 2): -0.0, (78, 3, 1): 0.0, (78, 4, 2): 1.0, (78, 4, 1): 0.0, (78, 5, 2): -0.0, (78, 5, 1): 0.0, (78, 6, 2): -0.0, (78, 6, 1): 0.0, (78, 7, 2): 0.0, (78, 7, 1): 0.0, (6, 1, 2): 0.0, (6, 1, 1): 0.0, (6, 2, 2): -0.0, (6, 2, 1): 0.0, (6, 3, 2): -0.0, (6, 3, 1): -0.0, (6, 4, 2): -0.0, (6, 4, 1): 0.0, (6, 5, 2): -0.0, (6, 5, 1): 1.0, (6, 6, 2): -0.0, (6, 6, 1): 0.0, (6, 7, 2): -0.0, (6, 7, 1): -0.0, (76, 1, 2): 0.0, (76, 1, 1): 0.0, (76, 2, 2): 0.0, (76, 2, 1): -0.0, (76, 3, 2): 0.0, (76, 3, 1): -0.0, (76, 4, 2): 0.0, (76, 4, 1): -0.0, (76, 5, 2): 0.0, (76, 5, 1): 1.0, (76, 6, 2): 0.0, (76, 6, 1): 0.0, (76, 7, 2): 0.0, (76, 7, 1): -0.0, (41, 1, 2): 0.0, (41, 1, 1): 0.0, (41, 2, 2): 0.0, (41, 2, 1): 0.0, (41, 3, 2): 0.0, (41, 3, 1): 0.0, (41, 4, 2): 1.0, (41, 4, 1): 0.0, (41, 5, 2): -0.0, (41, 5, 1): 0.0, (41, 6, 2): 0.0, (41, 6, 1): 0.0, (41, 7, 2): 0.0, (41, 7, 1): 0.0, (57, 1, 2): 0.0, (57, 1, 1): 0.0, (57, 2, 2): 0.0, (57, 2, 1): 0.0, (57, 3, 2): 0.0, (57, 3, 1): 0.0, (57, 4, 2): 1.0, (57, 4, 1): 0.0, (57, 5, 2): -0.0, (57, 5, 1): 0.0, (57, 6, 2): -0.0, (57, 6, 1): 0.0, (57, 7, 2): 0.0, (57, 7, 1): 0.0, (88, 1, 2): 0.0, (88, 1, 1): 0.0, (88, 2, 2): -0.0, (88, 2, 1): 0.0, (88, 3, 2): 0.0, (88, 3, 1): 0.0, (88, 4, 2): 1.0, (88, 4, 1): 0.0, (88, 5, 2): -0.0, (88, 5, 1): 0.0, (88, 6, 2): -0.0, (88, 6, 1): 0.0, (88, 7, 2): 0.0, (88, 7, 1): 0.0, (51, 1, 2): 0.0, (51, 1, 1): 0.0, (51, 2, 2): 0.0, (51, 2, 1): 0.0, (51, 3, 2): 0.0, (51, 3, 1): 0.0, (51, 4, 2): 0.0, (51, 4, 1): 0.0, (51, 5, 2): 0.0, (51, 5, 1): 0.0, (51, 6, 2): 0.0, (51, 6, 1): 0.0, (51, 7, 2): 0.0, (51, 7, 1): -0.0, (65, 1, 2): 0.0, (65, 1, 1): 0.0, (65, 2, 2): 0.0, (65, 2, 1): 0.0, (65, 3, 2): 0.0, (65, 3, 1): -0.0, (65, 4, 2): 0.0, (65, 4, 1): 0.0, (65, 5, 2): 0.0, (65, 5, 1): 1.0, (65, 6, 2): 0.0, (65, 6, 1): -0.0, (65, 7, 2): 0.0, (65, 7, 1): 0.0, (59, 1, 2): 0.0, (59, 1, 1): 0.0, (59, 2, 2): 0.0, (59, 2, 1): -0.0, (59, 3, 2): 0.0, (59, 3, 1): -0.0, (59, 4, 2): 0.0, (59, 4, 1): 0.0, (59, 5, 2): 0.0, (59, 5, 1): 1.0, (59, 6, 2): 0.0, (59, 6, 1): 0.0, (59, 7, 2): 0.0, (59, 7, 1): -0.0, (53, 1, 2): 0.0, (53, 1, 1): 0.0, (53, 2, 2): -0.0, (53, 2, 1): 0.0, (53, 3, 2): -0.0, (53, 3, 1): 0.0, (53, 4, 2): -0.0, (53, 4, 1): 0.0, (53, 5, 2): -0.0, (53, 5, 1): 1.0, (53, 6, 2): -0.0, (53, 6, 1): 0.0, (53, 7, 2): -0.0, (53, 7, 1): -0.0, (2, 1, 2): 0.0, (2, 1, 1): 0.0, (2, 2, 2): 0.0, (2, 2, 1): 0.0, (2, 3, 2): 0.0, (2, 3, 1): 0.0, (2, 4, 2): 0.0, (2, 4, 1): 0.0, (2, 5, 2): 0.0, (2, 5, 1): 1.0, (2, 6, 2): 0.0, (2, 6, 1): 0.0, (2, 7, 2): 0.0, (2, 7, 1): 0.0, (73, 1, 2): 0.0, (73, 1, 1): 0.0, (73, 2, 2): 0.0, (73, 2, 1): 0.0, (73, 3, 2): -0.0, (73, 3, 1): 0.0, (73, 4, 2): 1.0, (73, 4, 1): 0.0, (73, 5, 2): 0.0, (73, 5, 1): 0.0, (73, 6, 2): -0.0, (73, 6, 1): 0.0, (73, 7, 2): 0.0, (73, 7, 1): 0.0, (31, 1, 2): 0.0, (31, 1, 1): 0.0, (31, 2, 2): -0.0, (31, 2, 1): 0.0, (31, 3, 2): 0.0, (31, 3, 1): 0.0, (31, 4, 2): 0.0, (31, 4, 1): 0.0, (31, 5, 2): -0.0, (31, 5, 1): 0.0, (31, 6, 2): 0.0, (31, 6, 1): 0.0, (31, 7, 2): -0.0, (31, 7, 1): 0.0, (35, 1, 2): 0.0, (35, 1, 1): 0.0, (35, 2, 2): 0.0, (35, 2, 1): 0.0, (35, 3, 2): 0.0, (35, 3, 1): 0.0, (35, 4, 2): 0.0, (35, 4, 1): 0.0, (35, 5, 2): -0.0, (35, 5, 1): 0.0, (35, 6, 2): 0.0, (35, 6, 1): 0.0, (35, 7, 2): -0.0, (35, 7, 1): 0.0, (46, 1, 2): 0.0, (46, 1, 1): 0.0, (46, 2, 2): 0.0, (46, 2, 1): 0.0, (46, 3, 2): -0.0, (46, 3, 1): 0.0, (46, 4, 2): 1.0, (46, 4, 1): 0.0, (46, 5, 2): -0.0, (46, 5, 1): 0.0, (46, 6, 2): -0.0, (46, 6, 1): 0.0, (46, 7, 2): 0.0, (46, 7, 1): 0.0, (30, 1, 2): 0.0, (30, 1, 1): 0.0, (30, 2, 2): -0.0, (30, 2, 1): -0.0, (30, 3, 2): -0.0, (30, 3, 1): 0.0, (30, 4, 2): -0.0, (30, 4, 1): 0.0, (30, 5, 2): -0.0, (30, 5, 1): 0.0, (30, 6, 2): -0.0, (30, 6, 1): 1.0, (30, 7, 2): -0.0, (30, 7, 1): -0.0, (74, 1, 2): 0.0, (74, 1, 1): 0.0, (74, 2, 2): -0.0, (74, 2, 1): 0.0, (74, 3, 2): 0.0, (74, 3, 1): 0.0, (74, 4, 2): 0.0, (74, 4, 1): 0.0, (74, 5, 2): -0.0, (74, 5, 1): 0.0, (74, 6, 2): 0.0, (74, 6, 1): 0.0, (74, 7, 2): 1.0, (74, 7, 1): 0.0, (43, 1, 2): 0.0, (43, 1, 1): 0.0, (43, 2, 2): 0.0, (43, 2, 1): 0.0, (43, 3, 2): 0.0, (43, 3, 1): 0.0, (43, 4, 2): 0.0, (43, 4, 1): 0.0, (43, 5, 2): 0.0, (43, 5, 1): 1.0, (43, 6, 2): 0.0, (43, 6, 1): 0.0, (43, 7, 2): 0.0, (43, 7, 1): 0.0, (33, 1, 2): 0.0, (33, 1, 1): 0.0, (33, 2, 2): 0.0, (33, 2, 1): 0.0, (33, 3, 2): -0.0, (33, 3, 1): 0.0, (33, 4, 2): 1.0, (33, 4, 1): 0.0, (33, 5, 2): -0.0, (33, 5, 1): 0.0, (33, 6, 2): -0.0, (33, 6, 1): 0.0, (33, 7, 2): 0.0, (33, 7, 1): 0.0, (12, 1, 2): 0.0, (12, 1, 1): 0.0, (12, 2, 2): 0.0, (12, 2, 1): -0.0, (12, 3, 2): 0.0, (12, 3, 1): 0.0, (12, 4, 2): 0.0, (12, 4, 1): 0.0, (12, 5, 2): 0.0, (12, 5, 1): -0.0, (12, 6, 2): 0.0, (12, 6, 1): -0.0, (12, 7, 2): 0.0, (12, 7, 1): 0.0, (25, 1, 2): 0.0, (25, 1, 1): 0.0, (25, 2, 2): 0.0, (25, 2, 1): 0.0, (25, 3, 2): 0.0, (25, 3, 1): 0.0, (25, 4, 2): 1.0, (25, 4, 1): 0.0, (25, 5, 2): 0.0, (25, 5, 1): 0.0, (25, 6, 2): 0.0, (25, 6, 1): 0.0, (25, 7, 2): 0.0, (25, 7, 1): 0.0, (4, 1, 2): 0.0, (4, 1, 1): 0.0, (4, 2, 2): -0.0, (4, 2, 1): 0.0, (4, 3, 2): -0.0, (4, 3, 1): 0.0, (4, 4, 2): 1.0, (4, 4, 1): 0.0, (4, 5, 2): -0.0, (4, 5, 1): 0.0, (4, 6, 2): -0.0, (4, 6, 1): 0.0, (4, 7, 2): 0.0, (4, 7, 1): 0.0, (97, 1, 2): 0.0, (97, 1, 1): 0.0, (97, 2, 2): 0.0, (97, 2, 1): 0.0, (97, 3, 2): 0.0, (97, 3, 1): 0.0, (97, 4, 2): 0.0, (97, 4, 1): 0.0, (97, 5, 2): 0.0, (97, 5, 1): 1.0, (97, 6, 2): 0.0, (97, 6, 1): 0.0, (97, 7, 2): 0.0, (97, 7, 1): 0.0, (99, 1, 2): 0.0, (99, 1, 1): 0.0, (99, 2, 2): 0.0, (99, 2, 1): 0.0, (99, 3, 2): 0.0, (99, 3, 1): 0.0, (99, 4, 2): 1.0, (99, 4, 1): 0.0, (99, 5, 2): 0.0, (99, 5, 1): 0.0, (99, 6, 2): 0.0, (99, 6, 1): 0.0, (99, 7, 2): 0.0, (99, 7, 1): 0.0, (18, 1, 2): 0.0, (18, 1, 1): 0.0, (18, 2, 2): -0.0, (18, 2, 1): 0.0, (18, 3, 2): 0.0, (18, 3, 1): 0.0, (18, 4, 2): 0.0, (18, 4, 1): 0.0, (18, 5, 2): -0.0, (18, 5, 1): 0.0, (18, 6, 2): -0.0, (18, 6, 1): 0.0, (18, 7, 2): 0.0, (18, 7, 1): 0.0, (5, 1, 2): 0.0, (5, 1, 1): 0.0, (5, 2, 2): -0.0, (5, 2, 1): 0.0, (5, 3, 2): -0.0, (5, 3, 1): 0.0, (5, 4, 2): -0.0, (5, 4, 1): -0.0, (5, 5, 2): -0.0, (5, 5, 1): 0.0, (5, 6, 2): -0.0, (5, 6, 1): 1.0, (5, 7, 2): -0.0, (5, 7, 1): 0.0, (19, 1, 2): 0.0, (19, 1, 1): 0.0, (19, 2, 2): -0.0, (19, 2, 1): 0.0, (19, 3, 2): -0.0, (19, 3, 1): -0.0, (19, 4, 2): -0.0, (19, 4, 1): -0.0, (19, 5, 2): -0.0, (19, 5, 1): 1.0, (19, 6, 2): -0.0, (19, 6, 1): 0.0, (19, 7, 2): -0.0, (19, 7, 1): -0.0, (61, 1, 2): 0.0, (61, 1, 1): 0.0, (61, 2, 2): 0.0, (61, 2, 1): 0.0, (61, 3, 2): 0.0, (61, 3, 1): 0.0, (61, 4, 2): 0.0, (61, 4, 1): -0.0, (61, 5, 2): 0.0, (61, 5, 1): 1.0, (61, 6, 2): 0.0, (61, 6, 1): 0.0, (61, 7, 2): 0.0, (61, 7, 1): -0.0, (15, 1, 2): 0.0, (15, 1, 1): 0.0, (15, 2, 2): 0.0, (15, 2, 1): 0.0, (15, 3, 2): 0.0, (15, 3, 1): 0.0, (15, 4, 2): 1.0, (15, 4, 1): 0.0, (15, 5, 2): -0.0, (15, 5, 1): 0.0, (15, 6, 2): 0.0, (15, 6, 1): 0.0, (15, 7, 2): -0.0, (15, 7, 1): 0.0, (23, 1, 2): 0.0, (23, 1, 1): 0.0, (23, 2, 2): -0.0, (23, 2, 1): -0.0, (23, 3, 2): -0.0, (23, 3, 1): 0.0, (23, 4, 2): -0.0, (23, 4, 1): -0.0, (23, 5, 2): -0.0, (23, 5, 1): 0.0, (23, 6, 2): -0.0, (23, 6, 1): 1.0, (23, 7, 2): -0.0, (23, 7, 1): 0.0, (62, 1, 2): 0.0, (62, 1, 1): 0.0, (62, 2, 2): 0.0, (62, 2, 1): 0.0, (62, 3, 2): 0.0, (62, 3, 1): 0.0, (62, 4, 2): 0.0, (62, 4, 1): 0.0, (62, 5, 2): 0.0, (62, 5, 1): 1.0, (62, 6, 2): 0.0, (62, 6, 1): 0.0, (62, 7, 2): 0.0, (62, 7, 1): -0.0, (14, 1, 2): 0.0, (14, 1, 1): 0.0, (14, 2, 2): 0.0, (14, 2, 1): 0.0, (14, 3, 2): 0.0, (14, 3, 1): 0.0, (14, 4, 2): 0.0, (14, 4, 1): 0.0, (14, 5, 2): -0.0, (14, 5, 1): 0.0, (14, 6, 2): -0.0, (14, 6, 1): 0.0, (14, 7, 2): 0.0, (14, 7, 1): 0.0, (58, 1, 2): 0.0, (58, 1, 1): 0.0, (58, 2, 2): -0.0, (58, 2, 1): 0.0, (58, 3, 2): -0.0, (58, 3, 1): 0.0, (58, 4, 2): -0.0, (58, 4, 1): -0.0, (58, 5, 2): -0.0, (58, 5, 1): 0.0, (58, 6, 2): -0.0, (58, 6, 1): 1.0, (58, 7, 2): -0.0, (58, 7, 1): 0.0, (56, 1, 2): 0.0, (56, 1, 1): 0.0, (56, 2, 2): 0.0, (56, 2, 1): -0.0, (56, 3, 2): 0.0, (56, 3, 1): 0.0, (56, 4, 2): 0.0, (56, 4, 1): 0.0, (56, 5, 2): 0.0, (56, 5, 1): 1.0, (56, 6, 2): 0.0, (56, 6, 1): -0.0, (56, 7, 2): 0.0, (56, 7, 1): -0.0, (21, 1, 2): 0.0, (21, 1, 1): 0.0, (21, 2, 2): 0.0, (21, 2, 1): -0.0, (21, 3, 2): 0.0, (21, 3, 1): 0.0, (21, 4, 2): 0.0, (21, 4, 1): -0.0, (21, 5, 2): 0.0, (21, 5, 1): 1.0, (21, 6, 2): 0.0, (21, 6, 1): -0.0, (21, 7, 2): 0.0, (21, 7, 1): 0.0, (40, 1, 2): 0.0, (40, 1, 1): 0.0, (40, 2, 2): 0.0, (40, 2, 1): 0.0, (40, 3, 2): -0.0, (40, 3, 1): 0.0, (40, 4, 2): 1.0, (40, 4, 1): 0.0, (40, 5, 2): -0.0, (40, 5, 1): 0.0, (40, 6, 2): -0.0, (40, 6, 1): 0.0, (40, 7, 2): 0.0, (40, 7, 1): 0.0, (70, 1, 2): 0.0, (70, 1, 1): 0.0, (70, 2, 2): 0.0, (70, 2, 1): 0.0, (70, 3, 2): 0.0, (70, 3, 1): 0.0, (70, 4, 2): 0.0, (70, 4, 1): 0.0, (70, 5, 2): 0.0, (70, 5, 1): 1.0, (70, 6, 2): 0.0, (70, 6, 1): 0.0, (70, 7, 2): 0.0, (70, 7, 1): 0.0}>
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 1.045583724975586
+obj value -311.0
+obj value -311.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+0.0
+0.3571428571428571
+0.0
+0.16666666666666666
+0.0
+0.09090909090909091
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1366 rows, 1131 columns and 6414 nonzeros
+Model fingerprint: 0x4d71955c
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [7e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 681 rows and 694 columns
+Presolve time: 0.01s
+Presolved: 685 rows, 437 columns, 4079 nonzeros
+Variable types: 12 continuous, 425 integer (425 binary)
+
+Root relaxation: objective -3.007143e+02, 560 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -300.71429    0  106 -350.00000 -300.71429  14.1%     -    0s
+H    0     0                    -329.0000000 -300.71429  8.60%     -    0s
+     0     0 -300.71429    0  206 -329.00000 -300.71429  8.60%     -    0s
+H    0     0                    -320.0000000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  192 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  139 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   94 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  127 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  110 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  105 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  181 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  107 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  160 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  117 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+     0     2 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+H   54    49                    -313.0000000 -300.71429  3.93%  84.0    0s
+H  210    82                    -312.0000000 -301.35714  3.41%  39.3    0s
+*  687    75              21    -311.0000000 -309.00000  0.64%  25.1    0s
+
+Cutting planes:
+  Gomory: 2
+  Zero half: 29
+
+Explored 779 nodes (24700 simplex iterations) in 0.98 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -311 -312 -313 ... -350
+No other solutions better than -311
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.110000000000e+02, best bound -3.110000000000e+02, gap 0.0000%
+<bound method tupledict.values of {(95, 1, 2): 0.0, (95, 1, 1): 0.0, (95, 2, 2): 0.0, (95, 2, 1): 0.0, (95, 3, 2): -0.0, (95, 3, 1): 0.0, (95, 4, 2): 0.0, (95, 4, 1): 0.0, (95, 5, 2): -0.0, (95, 5, 1): 0.0, (95, 6, 2): 0.0, (95, 6, 1): 0.0, (95, 7, 2): -0.0, (95, 7, 1): 0.0, (1, 1, 2): 0.0, (1, 1, 1): 0.0, (1, 2, 2): 0.0, (1, 2, 1): -0.0, (1, 3, 2): 0.0, (1, 3, 1): -0.0, (1, 4, 2): 0.0, (1, 4, 1): 0.0, (1, 5, 2): 0.0, (1, 5, 1): 1.0, (1, 6, 2): 0.0, (1, 6, 1): -0.0, (1, 7, 2): 0.0, (1, 7, 1): 0.0, (64, 1, 2): 0.0, (64, 1, 1): 0.0, (64, 2, 2): 0.0, (64, 2, 1): 0.0, (64, 3, 2): 0.0, (64, 3, 1): 0.0, (64, 4, 2): 0.0, (64, 4, 1): 0.0, (64, 5, 2): -0.0, (64, 5, 1): 0.0, (64, 6, 2): 0.0, (64, 6, 1): 0.0, (64, 7, 2): -0.0, (64, 7, 1): 0.0, (39, 1, 2): 0.0, (39, 1, 1): 0.0, (39, 2, 2): 0.0, (39, 2, 1): 0.0, (39, 3, 2): 0.0, (39, 3, 1): 0.0, (39, 4, 2): 0.0, (39, 4, 1): 0.0, (39, 5, 2): -0.0, (39, 5, 1): 0.0, (39, 6, 2): -0.0, (39, 6, 1): 0.0, (39, 7, 2): 0.0, (39, 7, 1): 0.0, (69, 1, 2): 0.0, (69, 1, 1): 0.0, (69, 2, 2): 0.0, (69, 2, 1): 0.0, (69, 3, 2): 0.0, (69, 3, 1): 0.0, (69, 4, 2): 0.0, (69, 4, 1): 0.0, (69, 5, 2): 0.0, (69, 5, 1): 1.0, (69, 6, 2): 0.0, (69, 6, 1): 0.0, (69, 7, 2): 0.0, (69, 7, 1): 0.0, (66, 1, 2): 0.0, (66, 1, 1): 0.0, (66, 2, 2): 0.0, (66, 2, 1): -0.0, (66, 3, 2): 0.0, (66, 3, 1): 0.0, (66, 4, 2): 0.0, (66, 4, 1): -0.0, (66, 5, 2): 0.0, (66, 5, 1): 1.0, (66, 6, 2): 0.0, (66, 6, 1): 0.0, (66, 7, 2): 0.0, (66, 7, 1): -0.0, (16, 1, 2): 0.0, (16, 1, 1): 0.0, (16, 2, 2): -0.0, (16, 2, 1): 0.0, (16, 3, 2): -0.0, (16, 3, 1): -0.0, (16, 4, 2): -0.0, (16, 4, 1): -0.0, (16, 5, 2): -0.0, (16, 5, 1): 0.0, (16, 6, 2): -0.0, (16, 6, 1): -0.0, (16, 7, 2): -0.0, (16, 7, 1): 0.0, (13, 1, 2): 0.0, (13, 1, 1): 0.0, (13, 2, 2): 0.0, (13, 2, 1): -0.0, (13, 3, 2): 0.0, (13, 3, 1): 0.0, (13, 4, 2): 0.0, (13, 4, 1): -0.0, (13, 5, 2): 0.0, (13, 5, 1): 1.0, (13, 6, 2): 0.0, (13, 6, 1): 0.0, (13, 7, 2): 0.0, (13, 7, 1): -0.0, (54, 1, 2): 0.0, (54, 1, 1): 0.0, (54, 2, 2): 0.0, (54, 2, 1): -0.0, (54, 3, 2): 0.0, (54, 3, 1): 0.0, (54, 4, 2): 0.0, (54, 4, 1): -0.0, (54, 5, 2): 0.0, (54, 5, 1): 1.0, (54, 6, 2): 0.0, (54, 6, 1): 0.0, (54, 7, 2): 0.0, (54, 7, 1): -0.0, (90, 1, 2): 0.0, (90, 1, 1): 0.0, (90, 2, 2): 0.0, (90, 2, 1): 0.0, (90, 3, 2): -0.0, (90, 3, 1): 0.0, (90, 4, 2): 0.0, (90, 4, 1): 0.0, (90, 5, 2): -0.0, (90, 5, 1): 0.0, (90, 6, 2): 0.0, (90, 6, 1): 0.0, (90, 7, 2): -0.0, (90, 7, 1): 0.0, (47, 1, 2): 0.0, (47, 1, 1): 0.0, (47, 2, 2): 0.0, (47, 2, 1): 0.0, (47, 3, 2): 0.0, (47, 3, 1): 0.0, (47, 4, 2): 0.0, (47, 4, 1): 0.0, (47, 5, 2): 0.0, (47, 5, 1): 1.0, (47, 6, 2): 0.0, (47, 6, 1): 0.0, (47, 7, 2): 0.0, (47, 7, 1): 0.0, (32, 1, 2): 0.0, (32, 1, 1): 0.0, (32, 2, 2): -0.0, (32, 2, 1): 0.0, (32, 3, 2): -0.0, (32, 3, 1): 0.0, (32, 4, 2): -0.0, (32, 4, 1): -0.0, (32, 5, 2): -0.0, (32, 5, 1): 1.0, (32, 6, 2): -0.0, (32, 6, 1): -0.0, (32, 7, 2): -0.0, (32, 7, 1): 0.0, (10, 1, 2): 0.0, (10, 1, 1): 0.0, (10, 2, 2): 0.0, (10, 2, 1): 0.0, (10, 3, 2): 0.0, (10, 3, 1): 0.0, (10, 4, 2): 0.0, (10, 4, 1): 0.0, (10, 5, 2): 0.0, (10, 5, 1): 1.0, (10, 6, 2): 0.0, (10, 6, 1): 0.0, (10, 7, 2): 0.0, (10, 7, 1): 0.0, (78, 1, 2): 0.0, (78, 1, 1): 0.0, (78, 2, 2): 0.0, (78, 2, 1): 0.0, (78, 3, 2): -0.0, (78, 3, 1): 0.0, (78, 4, 2): 1.0, (78, 4, 1): 0.0, (78, 5, 2): -0.0, (78, 5, 1): 0.0, (78, 6, 2): -0.0, (78, 6, 1): 0.0, (78, 7, 2): 0.0, (78, 7, 1): 0.0, (6, 1, 2): 0.0, (6, 1, 1): 0.0, (6, 2, 2): -0.0, (6, 2, 1): 0.0, (6, 3, 2): -0.0, (6, 3, 1): -0.0, (6, 4, 2): -0.0, (6, 4, 1): 0.0, (6, 5, 2): -0.0, (6, 5, 1): 1.0, (6, 6, 2): -0.0, (6, 6, 1): 0.0, (6, 7, 2): -0.0, (6, 7, 1): -0.0, (76, 1, 2): 0.0, (76, 1, 1): 0.0, (76, 2, 2): 0.0, (76, 2, 1): -0.0, (76, 3, 2): 0.0, (76, 3, 1): -0.0, (76, 4, 2): 0.0, (76, 4, 1): -0.0, (76, 5, 2): 0.0, (76, 5, 1): 1.0, (76, 6, 2): 0.0, (76, 6, 1): 0.0, (76, 7, 2): 0.0, (76, 7, 1): -0.0, (41, 1, 2): 0.0, (41, 1, 1): 0.0, (41, 2, 2): 0.0, (41, 2, 1): 0.0, (41, 3, 2): 0.0, (41, 3, 1): 0.0, (41, 4, 2): 1.0, (41, 4, 1): 0.0, (41, 5, 2): -0.0, (41, 5, 1): 0.0, (41, 6, 2): 0.0, (41, 6, 1): 0.0, (41, 7, 2): 0.0, (41, 7, 1): 0.0, (57, 1, 2): 0.0, (57, 1, 1): 0.0, (57, 2, 2): 0.0, (57, 2, 1): 0.0, (57, 3, 2): 0.0, (57, 3, 1): 0.0, (57, 4, 2): 1.0, (57, 4, 1): 0.0, (57, 5, 2): -0.0, (57, 5, 1): 0.0, (57, 6, 2): -0.0, (57, 6, 1): 0.0, (57, 7, 2): 0.0, (57, 7, 1): 0.0, (88, 1, 2): 0.0, (88, 1, 1): 0.0, (88, 2, 2): -0.0, (88, 2, 1): 0.0, (88, 3, 2): 0.0, (88, 3, 1): 0.0, (88, 4, 2): 1.0, (88, 4, 1): 0.0, (88, 5, 2): -0.0, (88, 5, 1): 0.0, (88, 6, 2): -0.0, (88, 6, 1): 0.0, (88, 7, 2): 0.0, (88, 7, 1): 0.0, (51, 1, 2): 0.0, (51, 1, 1): 0.0, (51, 2, 2): 0.0, (51, 2, 1): 0.0, (51, 3, 2): 0.0, (51, 3, 1): 0.0, (51, 4, 2): 0.0, (51, 4, 1): 0.0, (51, 5, 2): 0.0, (51, 5, 1): 0.0, (51, 6, 2): 0.0, (51, 6, 1): 0.0, (51, 7, 2): 0.0, (51, 7, 1): -0.0, (65, 1, 2): 0.0, (65, 1, 1): 0.0, (65, 2, 2): 0.0, (65, 2, 1): 0.0, (65, 3, 2): 0.0, (65, 3, 1): -0.0, (65, 4, 2): 0.0, (65, 4, 1): 0.0, (65, 5, 2): 0.0, (65, 5, 1): 1.0, (65, 6, 2): 0.0, (65, 6, 1): -0.0, (65, 7, 2): 0.0, (65, 7, 1): 0.0, (59, 1, 2): 0.0, (59, 1, 1): 0.0, (59, 2, 2): 0.0, (59, 2, 1): -0.0, (59, 3, 2): 0.0, (59, 3, 1): -0.0, (59, 4, 2): 0.0, (59, 4, 1): 0.0, (59, 5, 2): 0.0, (59, 5, 1): 1.0, (59, 6, 2): 0.0, (59, 6, 1): 0.0, (59, 7, 2): 0.0, (59, 7, 1): -0.0, (53, 1, 2): 0.0, (53, 1, 1): 0.0, (53, 2, 2): -0.0, (53, 2, 1): 0.0, (53, 3, 2): -0.0, (53, 3, 1): 0.0, (53, 4, 2): -0.0, (53, 4, 1): 0.0, (53, 5, 2): -0.0, (53, 5, 1): 1.0, (53, 6, 2): -0.0, (53, 6, 1): 0.0, (53, 7, 2): -0.0, (53, 7, 1): -0.0, (2, 1, 2): 0.0, (2, 1, 1): 0.0, (2, 2, 2): 0.0, (2, 2, 1): 0.0, (2, 3, 2): 0.0, (2, 3, 1): 0.0, (2, 4, 2): 0.0, (2, 4, 1): 0.0, (2, 5, 2): 0.0, (2, 5, 1): 1.0, (2, 6, 2): 0.0, (2, 6, 1): 0.0, (2, 7, 2): 0.0, (2, 7, 1): 0.0, (73, 1, 2): 0.0, (73, 1, 1): 0.0, (73, 2, 2): 0.0, (73, 2, 1): 0.0, (73, 3, 2): -0.0, (73, 3, 1): 0.0, (73, 4, 2): 1.0, (73, 4, 1): 0.0, (73, 5, 2): 0.0, (73, 5, 1): 0.0, (73, 6, 2): -0.0, (73, 6, 1): 0.0, (73, 7, 2): 0.0, (73, 7, 1): 0.0, (31, 1, 2): 0.0, (31, 1, 1): 0.0, (31, 2, 2): -0.0, (31, 2, 1): 0.0, (31, 3, 2): 0.0, (31, 3, 1): 0.0, (31, 4, 2): 0.0, (31, 4, 1): 0.0, (31, 5, 2): -0.0, (31, 5, 1): 0.0, (31, 6, 2): 0.0, (31, 6, 1): 0.0, (31, 7, 2): -0.0, (31, 7, 1): 0.0, (35, 1, 2): 0.0, (35, 1, 1): 0.0, (35, 2, 2): 0.0, (35, 2, 1): 0.0, (35, 3, 2): 0.0, (35, 3, 1): 0.0, (35, 4, 2): 0.0, (35, 4, 1): 0.0, (35, 5, 2): -0.0, (35, 5, 1): 0.0, (35, 6, 2): 0.0, (35, 6, 1): 0.0, (35, 7, 2): -0.0, (35, 7, 1): 0.0, (46, 1, 2): 0.0, (46, 1, 1): 0.0, (46, 2, 2): 0.0, (46, 2, 1): 0.0, (46, 3, 2): -0.0, (46, 3, 1): 0.0, (46, 4, 2): 1.0, (46, 4, 1): 0.0, (46, 5, 2): -0.0, (46, 5, 1): 0.0, (46, 6, 2): -0.0, (46, 6, 1): 0.0, (46, 7, 2): 0.0, (46, 7, 1): 0.0, (30, 1, 2): 0.0, (30, 1, 1): 0.0, (30, 2, 2): -0.0, (30, 2, 1): -0.0, (30, 3, 2): -0.0, (30, 3, 1): 0.0, (30, 4, 2): -0.0, (30, 4, 1): 0.0, (30, 5, 2): -0.0, (30, 5, 1): 0.0, (30, 6, 2): -0.0, (30, 6, 1): 1.0, (30, 7, 2): -0.0, (30, 7, 1): -0.0, (74, 1, 2): 0.0, (74, 1, 1): 0.0, (74, 2, 2): -0.0, (74, 2, 1): 0.0, (74, 3, 2): 0.0, (74, 3, 1): 0.0, (74, 4, 2): 0.0, (74, 4, 1): 0.0, (74, 5, 2): -0.0, (74, 5, 1): 0.0, (74, 6, 2): 0.0, (74, 6, 1): 0.0, (74, 7, 2): 1.0, (74, 7, 1): 0.0, (43, 1, 2): 0.0, (43, 1, 1): 0.0, (43, 2, 2): 0.0, (43, 2, 1): 0.0, (43, 3, 2): 0.0, (43, 3, 1): 0.0, (43, 4, 2): 0.0, (43, 4, 1): 0.0, (43, 5, 2): 0.0, (43, 5, 1): 1.0, (43, 6, 2): 0.0, (43, 6, 1): 0.0, (43, 7, 2): 0.0, (43, 7, 1): 0.0, (33, 1, 2): 0.0, (33, 1, 1): 0.0, (33, 2, 2): 0.0, (33, 2, 1): 0.0, (33, 3, 2): -0.0, (33, 3, 1): 0.0, (33, 4, 2): 1.0, (33, 4, 1): 0.0, (33, 5, 2): -0.0, (33, 5, 1): 0.0, (33, 6, 2): -0.0, (33, 6, 1): 0.0, (33, 7, 2): 0.0, (33, 7, 1): 0.0, (12, 1, 2): 0.0, (12, 1, 1): 0.0, (12, 2, 2): 0.0, (12, 2, 1): -0.0, (12, 3, 2): 0.0, (12, 3, 1): 0.0, (12, 4, 2): 0.0, (12, 4, 1): 0.0, (12, 5, 2): 0.0, (12, 5, 1): -0.0, (12, 6, 2): 0.0, (12, 6, 1): -0.0, (12, 7, 2): 0.0, (12, 7, 1): 0.0, (25, 1, 2): 0.0, (25, 1, 1): 0.0, (25, 2, 2): 0.0, (25, 2, 1): 0.0, (25, 3, 2): 0.0, (25, 3, 1): 0.0, (25, 4, 2): 1.0, (25, 4, 1): 0.0, (25, 5, 2): 0.0, (25, 5, 1): 0.0, (25, 6, 2): 0.0, (25, 6, 1): 0.0, (25, 7, 2): 0.0, (25, 7, 1): 0.0, (4, 1, 2): 0.0, (4, 1, 1): 0.0, (4, 2, 2): -0.0, (4, 2, 1): 0.0, (4, 3, 2): -0.0, (4, 3, 1): 0.0, (4, 4, 2): 1.0, (4, 4, 1): 0.0, (4, 5, 2): -0.0, (4, 5, 1): 0.0, (4, 6, 2): -0.0, (4, 6, 1): 0.0, (4, 7, 2): 0.0, (4, 7, 1): 0.0, (97, 1, 2): 0.0, (97, 1, 1): 0.0, (97, 2, 2): 0.0, (97, 2, 1): 0.0, (97, 3, 2): 0.0, (97, 3, 1): 0.0, (97, 4, 2): 0.0, (97, 4, 1): 0.0, (97, 5, 2): 0.0, (97, 5, 1): 1.0, (97, 6, 2): 0.0, (97, 6, 1): 0.0, (97, 7, 2): 0.0, (97, 7, 1): 0.0, (99, 1, 2): 0.0, (99, 1, 1): 0.0, (99, 2, 2): 0.0, (99, 2, 1): 0.0, (99, 3, 2): 0.0, (99, 3, 1): 0.0, (99, 4, 2): 1.0, (99, 4, 1): 0.0, (99, 5, 2): 0.0, (99, 5, 1): 0.0, (99, 6, 2): 0.0, (99, 6, 1): 0.0, (99, 7, 2): 0.0, (99, 7, 1): 0.0, (18, 1, 2): 0.0, (18, 1, 1): 0.0, (18, 2, 2): -0.0, (18, 2, 1): 0.0, (18, 3, 2): 0.0, (18, 3, 1): 0.0, (18, 4, 2): 0.0, (18, 4, 1): 0.0, (18, 5, 2): -0.0, (18, 5, 1): 0.0, (18, 6, 2): -0.0, (18, 6, 1): 0.0, (18, 7, 2): 0.0, (18, 7, 1): 0.0, (5, 1, 2): 0.0, (5, 1, 1): 0.0, (5, 2, 2): -0.0, (5, 2, 1): 0.0, (5, 3, 2): -0.0, (5, 3, 1): 0.0, (5, 4, 2): -0.0, (5, 4, 1): -0.0, (5, 5, 2): -0.0, (5, 5, 1): 0.0, (5, 6, 2): -0.0, (5, 6, 1): 1.0, (5, 7, 2): -0.0, (5, 7, 1): 0.0, (19, 1, 2): 0.0, (19, 1, 1): 0.0, (19, 2, 2): -0.0, (19, 2, 1): 0.0, (19, 3, 2): -0.0, (19, 3, 1): -0.0, (19, 4, 2): -0.0, (19, 4, 1): -0.0, (19, 5, 2): -0.0, (19, 5, 1): 1.0, (19, 6, 2): -0.0, (19, 6, 1): 0.0, (19, 7, 2): -0.0, (19, 7, 1): -0.0, (61, 1, 2): 0.0, (61, 1, 1): 0.0, (61, 2, 2): 0.0, (61, 2, 1): 0.0, (61, 3, 2): 0.0, (61, 3, 1): 0.0, (61, 4, 2): 0.0, (61, 4, 1): -0.0, (61, 5, 2): 0.0, (61, 5, 1): 1.0, (61, 6, 2): 0.0, (61, 6, 1): 0.0, (61, 7, 2): 0.0, (61, 7, 1): -0.0, (15, 1, 2): 0.0, (15, 1, 1): 0.0, (15, 2, 2): 0.0, (15, 2, 1): 0.0, (15, 3, 2): 0.0, (15, 3, 1): 0.0, (15, 4, 2): 1.0, (15, 4, 1): 0.0, (15, 5, 2): -0.0, (15, 5, 1): 0.0, (15, 6, 2): 0.0, (15, 6, 1): 0.0, (15, 7, 2): -0.0, (15, 7, 1): 0.0, (23, 1, 2): 0.0, (23, 1, 1): 0.0, (23, 2, 2): -0.0, (23, 2, 1): -0.0, (23, 3, 2): -0.0, (23, 3, 1): 0.0, (23, 4, 2): -0.0, (23, 4, 1): -0.0, (23, 5, 2): -0.0, (23, 5, 1): 0.0, (23, 6, 2): -0.0, (23, 6, 1): 1.0, (23, 7, 2): -0.0, (23, 7, 1): 0.0, (62, 1, 2): 0.0, (62, 1, 1): 0.0, (62, 2, 2): 0.0, (62, 2, 1): 0.0, (62, 3, 2): 0.0, (62, 3, 1): 0.0, (62, 4, 2): 0.0, (62, 4, 1): 0.0, (62, 5, 2): 0.0, (62, 5, 1): 1.0, (62, 6, 2): 0.0, (62, 6, 1): 0.0, (62, 7, 2): 0.0, (62, 7, 1): -0.0, (14, 1, 2): 0.0, (14, 1, 1): 0.0, (14, 2, 2): 0.0, (14, 2, 1): 0.0, (14, 3, 2): 0.0, (14, 3, 1): 0.0, (14, 4, 2): 0.0, (14, 4, 1): 0.0, (14, 5, 2): -0.0, (14, 5, 1): 0.0, (14, 6, 2): -0.0, (14, 6, 1): 0.0, (14, 7, 2): 0.0, (14, 7, 1): 0.0, (58, 1, 2): 0.0, (58, 1, 1): 0.0, (58, 2, 2): -0.0, (58, 2, 1): 0.0, (58, 3, 2): -0.0, (58, 3, 1): 0.0, (58, 4, 2): -0.0, (58, 4, 1): -0.0, (58, 5, 2): -0.0, (58, 5, 1): 0.0, (58, 6, 2): -0.0, (58, 6, 1): 1.0, (58, 7, 2): -0.0, (58, 7, 1): 0.0, (56, 1, 2): 0.0, (56, 1, 1): 0.0, (56, 2, 2): 0.0, (56, 2, 1): -0.0, (56, 3, 2): 0.0, (56, 3, 1): 0.0, (56, 4, 2): 0.0, (56, 4, 1): 0.0, (56, 5, 2): 0.0, (56, 5, 1): 1.0, (56, 6, 2): 0.0, (56, 6, 1): -0.0, (56, 7, 2): 0.0, (56, 7, 1): -0.0, (21, 1, 2): 0.0, (21, 1, 1): 0.0, (21, 2, 2): 0.0, (21, 2, 1): -0.0, (21, 3, 2): 0.0, (21, 3, 1): 0.0, (21, 4, 2): 0.0, (21, 4, 1): -0.0, (21, 5, 2): 0.0, (21, 5, 1): 1.0, (21, 6, 2): 0.0, (21, 6, 1): -0.0, (21, 7, 2): 0.0, (21, 7, 1): 0.0, (40, 1, 2): 0.0, (40, 1, 1): 0.0, (40, 2, 2): 0.0, (40, 2, 1): 0.0, (40, 3, 2): -0.0, (40, 3, 1): 0.0, (40, 4, 2): 1.0, (40, 4, 1): 0.0, (40, 5, 2): -0.0, (40, 5, 1): 0.0, (40, 6, 2): -0.0, (40, 6, 1): 0.0, (40, 7, 2): 0.0, (40, 7, 1): 0.0, (70, 1, 2): 0.0, (70, 1, 1): 0.0, (70, 2, 2): 0.0, (70, 2, 1): 0.0, (70, 3, 2): 0.0, (70, 3, 1): 0.0, (70, 4, 2): 0.0, (70, 4, 1): 0.0, (70, 5, 2): 0.0, (70, 5, 1): 1.0, (70, 6, 2): 0.0, (70, 6, 1): 0.0, (70, 7, 2): 0.0, (70, 7, 1): 0.0}>
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 1.0620031356811523
+obj value -311.0
+obj value -311.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+LOOK HERE:
+0.0
+0.3571428571428571
+LOOK HERE:
+0.0
+0.16666666666666666
+LOOK HERE:
+0.0
+0.09090909090909091
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1366 rows, 1131 columns and 6414 nonzeros
+Model fingerprint: 0x4d71955c
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [7e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 681 rows and 694 columns
+Presolve time: 0.01s
+Presolved: 685 rows, 437 columns, 4079 nonzeros
+Variable types: 12 continuous, 425 integer (425 binary)
+
+Root relaxation: objective -3.007143e+02, 560 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -300.71429    0  106 -350.00000 -300.71429  14.1%     -    0s
+H    0     0                    -329.0000000 -300.71429  8.60%     -    0s
+     0     0 -300.71429    0  206 -329.00000 -300.71429  8.60%     -    0s
+H    0     0                    -320.0000000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  192 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  139 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   94 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  127 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  110 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  105 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  181 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  107 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  160 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  117 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+     0     2 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+H   54    49                    -313.0000000 -300.71429  3.93%  84.0    0s
+H  210    82                    -312.0000000 -301.35714  3.41%  39.3    0s
+*  687    75              21    -311.0000000 -309.00000  0.64%  25.1    0s
+
+Cutting planes:
+  Gomory: 2
+  Zero half: 29
+
+Explored 779 nodes (24700 simplex iterations) in 0.97 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -311 -312 -313 ... -350
+No other solutions better than -311
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.110000000000e+02, best bound -3.110000000000e+02, gap 0.0000%
+<bound method tupledict.values of {(95, 1, 2): 0.0, (95, 1, 1): 0.0, (95, 2, 2): 0.0, (95, 2, 1): 0.0, (95, 3, 2): -0.0, (95, 3, 1): 0.0, (95, 4, 2): 0.0, (95, 4, 1): 0.0, (95, 5, 2): -0.0, (95, 5, 1): 0.0, (95, 6, 2): 0.0, (95, 6, 1): 0.0, (95, 7, 2): -0.0, (95, 7, 1): 0.0, (1, 1, 2): 0.0, (1, 1, 1): 0.0, (1, 2, 2): 0.0, (1, 2, 1): -0.0, (1, 3, 2): 0.0, (1, 3, 1): -0.0, (1, 4, 2): 0.0, (1, 4, 1): 0.0, (1, 5, 2): 0.0, (1, 5, 1): 1.0, (1, 6, 2): 0.0, (1, 6, 1): -0.0, (1, 7, 2): 0.0, (1, 7, 1): 0.0, (64, 1, 2): 0.0, (64, 1, 1): 0.0, (64, 2, 2): 0.0, (64, 2, 1): 0.0, (64, 3, 2): 0.0, (64, 3, 1): 0.0, (64, 4, 2): 0.0, (64, 4, 1): 0.0, (64, 5, 2): -0.0, (64, 5, 1): 0.0, (64, 6, 2): 0.0, (64, 6, 1): 0.0, (64, 7, 2): -0.0, (64, 7, 1): 0.0, (39, 1, 2): 0.0, (39, 1, 1): 0.0, (39, 2, 2): 0.0, (39, 2, 1): 0.0, (39, 3, 2): 0.0, (39, 3, 1): 0.0, (39, 4, 2): 0.0, (39, 4, 1): 0.0, (39, 5, 2): -0.0, (39, 5, 1): 0.0, (39, 6, 2): -0.0, (39, 6, 1): 0.0, (39, 7, 2): 0.0, (39, 7, 1): 0.0, (69, 1, 2): 0.0, (69, 1, 1): 0.0, (69, 2, 2): 0.0, (69, 2, 1): 0.0, (69, 3, 2): 0.0, (69, 3, 1): 0.0, (69, 4, 2): 0.0, (69, 4, 1): 0.0, (69, 5, 2): 0.0, (69, 5, 1): 1.0, (69, 6, 2): 0.0, (69, 6, 1): 0.0, (69, 7, 2): 0.0, (69, 7, 1): 0.0, (66, 1, 2): 0.0, (66, 1, 1): 0.0, (66, 2, 2): 0.0, (66, 2, 1): -0.0, (66, 3, 2): 0.0, (66, 3, 1): 0.0, (66, 4, 2): 0.0, (66, 4, 1): -0.0, (66, 5, 2): 0.0, (66, 5, 1): 1.0, (66, 6, 2): 0.0, (66, 6, 1): 0.0, (66, 7, 2): 0.0, (66, 7, 1): -0.0, (16, 1, 2): 0.0, (16, 1, 1): 0.0, (16, 2, 2): -0.0, (16, 2, 1): 0.0, (16, 3, 2): -0.0, (16, 3, 1): -0.0, (16, 4, 2): -0.0, (16, 4, 1): -0.0, (16, 5, 2): -0.0, (16, 5, 1): 0.0, (16, 6, 2): -0.0, (16, 6, 1): -0.0, (16, 7, 2): -0.0, (16, 7, 1): 0.0, (13, 1, 2): 0.0, (13, 1, 1): 0.0, (13, 2, 2): 0.0, (13, 2, 1): -0.0, (13, 3, 2): 0.0, (13, 3, 1): 0.0, (13, 4, 2): 0.0, (13, 4, 1): -0.0, (13, 5, 2): 0.0, (13, 5, 1): 1.0, (13, 6, 2): 0.0, (13, 6, 1): 0.0, (13, 7, 2): 0.0, (13, 7, 1): -0.0, (54, 1, 2): 0.0, (54, 1, 1): 0.0, (54, 2, 2): 0.0, (54, 2, 1): -0.0, (54, 3, 2): 0.0, (54, 3, 1): 0.0, (54, 4, 2): 0.0, (54, 4, 1): -0.0, (54, 5, 2): 0.0, (54, 5, 1): 1.0, (54, 6, 2): 0.0, (54, 6, 1): 0.0, (54, 7, 2): 0.0, (54, 7, 1): -0.0, (90, 1, 2): 0.0, (90, 1, 1): 0.0, (90, 2, 2): 0.0, (90, 2, 1): 0.0, (90, 3, 2): -0.0, (90, 3, 1): 0.0, (90, 4, 2): 0.0, (90, 4, 1): 0.0, (90, 5, 2): -0.0, (90, 5, 1): 0.0, (90, 6, 2): 0.0, (90, 6, 1): 0.0, (90, 7, 2): -0.0, (90, 7, 1): 0.0, (47, 1, 2): 0.0, (47, 1, 1): 0.0, (47, 2, 2): 0.0, (47, 2, 1): 0.0, (47, 3, 2): 0.0, (47, 3, 1): 0.0, (47, 4, 2): 0.0, (47, 4, 1): 0.0, (47, 5, 2): 0.0, (47, 5, 1): 1.0, (47, 6, 2): 0.0, (47, 6, 1): 0.0, (47, 7, 2): 0.0, (47, 7, 1): 0.0, (32, 1, 2): 0.0, (32, 1, 1): 0.0, (32, 2, 2): -0.0, (32, 2, 1): 0.0, (32, 3, 2): -0.0, (32, 3, 1): 0.0, (32, 4, 2): -0.0, (32, 4, 1): -0.0, (32, 5, 2): -0.0, (32, 5, 1): 1.0, (32, 6, 2): -0.0, (32, 6, 1): -0.0, (32, 7, 2): -0.0, (32, 7, 1): 0.0, (10, 1, 2): 0.0, (10, 1, 1): 0.0, (10, 2, 2): 0.0, (10, 2, 1): 0.0, (10, 3, 2): 0.0, (10, 3, 1): 0.0, (10, 4, 2): 0.0, (10, 4, 1): 0.0, (10, 5, 2): 0.0, (10, 5, 1): 1.0, (10, 6, 2): 0.0, (10, 6, 1): 0.0, (10, 7, 2): 0.0, (10, 7, 1): 0.0, (78, 1, 2): 0.0, (78, 1, 1): 0.0, (78, 2, 2): 0.0, (78, 2, 1): 0.0, (78, 3, 2): -0.0, (78, 3, 1): 0.0, (78, 4, 2): 1.0, (78, 4, 1): 0.0, (78, 5, 2): -0.0, (78, 5, 1): 0.0, (78, 6, 2): -0.0, (78, 6, 1): 0.0, (78, 7, 2): 0.0, (78, 7, 1): 0.0, (6, 1, 2): 0.0, (6, 1, 1): 0.0, (6, 2, 2): -0.0, (6, 2, 1): 0.0, (6, 3, 2): -0.0, (6, 3, 1): -0.0, (6, 4, 2): -0.0, (6, 4, 1): 0.0, (6, 5, 2): -0.0, (6, 5, 1): 1.0, (6, 6, 2): -0.0, (6, 6, 1): 0.0, (6, 7, 2): -0.0, (6, 7, 1): -0.0, (76, 1, 2): 0.0, (76, 1, 1): 0.0, (76, 2, 2): 0.0, (76, 2, 1): -0.0, (76, 3, 2): 0.0, (76, 3, 1): -0.0, (76, 4, 2): 0.0, (76, 4, 1): -0.0, (76, 5, 2): 0.0, (76, 5, 1): 1.0, (76, 6, 2): 0.0, (76, 6, 1): 0.0, (76, 7, 2): 0.0, (76, 7, 1): -0.0, (41, 1, 2): 0.0, (41, 1, 1): 0.0, (41, 2, 2): 0.0, (41, 2, 1): 0.0, (41, 3, 2): 0.0, (41, 3, 1): 0.0, (41, 4, 2): 1.0, (41, 4, 1): 0.0, (41, 5, 2): -0.0, (41, 5, 1): 0.0, (41, 6, 2): 0.0, (41, 6, 1): 0.0, (41, 7, 2): 0.0, (41, 7, 1): 0.0, (57, 1, 2): 0.0, (57, 1, 1): 0.0, (57, 2, 2): 0.0, (57, 2, 1): 0.0, (57, 3, 2): 0.0, (57, 3, 1): 0.0, (57, 4, 2): 1.0, (57, 4, 1): 0.0, (57, 5, 2): -0.0, (57, 5, 1): 0.0, (57, 6, 2): -0.0, (57, 6, 1): 0.0, (57, 7, 2): 0.0, (57, 7, 1): 0.0, (88, 1, 2): 0.0, (88, 1, 1): 0.0, (88, 2, 2): -0.0, (88, 2, 1): 0.0, (88, 3, 2): 0.0, (88, 3, 1): 0.0, (88, 4, 2): 1.0, (88, 4, 1): 0.0, (88, 5, 2): -0.0, (88, 5, 1): 0.0, (88, 6, 2): -0.0, (88, 6, 1): 0.0, (88, 7, 2): 0.0, (88, 7, 1): 0.0, (51, 1, 2): 0.0, (51, 1, 1): 0.0, (51, 2, 2): 0.0, (51, 2, 1): 0.0, (51, 3, 2): 0.0, (51, 3, 1): 0.0, (51, 4, 2): 0.0, (51, 4, 1): 0.0, (51, 5, 2): 0.0, (51, 5, 1): 0.0, (51, 6, 2): 0.0, (51, 6, 1): 0.0, (51, 7, 2): 0.0, (51, 7, 1): -0.0, (65, 1, 2): 0.0, (65, 1, 1): 0.0, (65, 2, 2): 0.0, (65, 2, 1): 0.0, (65, 3, 2): 0.0, (65, 3, 1): -0.0, (65, 4, 2): 0.0, (65, 4, 1): 0.0, (65, 5, 2): 0.0, (65, 5, 1): 1.0, (65, 6, 2): 0.0, (65, 6, 1): -0.0, (65, 7, 2): 0.0, (65, 7, 1): 0.0, (59, 1, 2): 0.0, (59, 1, 1): 0.0, (59, 2, 2): 0.0, (59, 2, 1): -0.0, (59, 3, 2): 0.0, (59, 3, 1): -0.0, (59, 4, 2): 0.0, (59, 4, 1): 0.0, (59, 5, 2): 0.0, (59, 5, 1): 1.0, (59, 6, 2): 0.0, (59, 6, 1): 0.0, (59, 7, 2): 0.0, (59, 7, 1): -0.0, (53, 1, 2): 0.0, (53, 1, 1): 0.0, (53, 2, 2): -0.0, (53, 2, 1): 0.0, (53, 3, 2): -0.0, (53, 3, 1): 0.0, (53, 4, 2): -0.0, (53, 4, 1): 0.0, (53, 5, 2): -0.0, (53, 5, 1): 1.0, (53, 6, 2): -0.0, (53, 6, 1): 0.0, (53, 7, 2): -0.0, (53, 7, 1): -0.0, (2, 1, 2): 0.0, (2, 1, 1): 0.0, (2, 2, 2): 0.0, (2, 2, 1): 0.0, (2, 3, 2): 0.0, (2, 3, 1): 0.0, (2, 4, 2): 0.0, (2, 4, 1): 0.0, (2, 5, 2): 0.0, (2, 5, 1): 1.0, (2, 6, 2): 0.0, (2, 6, 1): 0.0, (2, 7, 2): 0.0, (2, 7, 1): 0.0, (73, 1, 2): 0.0, (73, 1, 1): 0.0, (73, 2, 2): 0.0, (73, 2, 1): 0.0, (73, 3, 2): -0.0, (73, 3, 1): 0.0, (73, 4, 2): 1.0, (73, 4, 1): 0.0, (73, 5, 2): 0.0, (73, 5, 1): 0.0, (73, 6, 2): -0.0, (73, 6, 1): 0.0, (73, 7, 2): 0.0, (73, 7, 1): 0.0, (31, 1, 2): 0.0, (31, 1, 1): 0.0, (31, 2, 2): -0.0, (31, 2, 1): 0.0, (31, 3, 2): 0.0, (31, 3, 1): 0.0, (31, 4, 2): 0.0, (31, 4, 1): 0.0, (31, 5, 2): -0.0, (31, 5, 1): 0.0, (31, 6, 2): 0.0, (31, 6, 1): 0.0, (31, 7, 2): -0.0, (31, 7, 1): 0.0, (35, 1, 2): 0.0, (35, 1, 1): 0.0, (35, 2, 2): 0.0, (35, 2, 1): 0.0, (35, 3, 2): 0.0, (35, 3, 1): 0.0, (35, 4, 2): 0.0, (35, 4, 1): 0.0, (35, 5, 2): -0.0, (35, 5, 1): 0.0, (35, 6, 2): 0.0, (35, 6, 1): 0.0, (35, 7, 2): -0.0, (35, 7, 1): 0.0, (46, 1, 2): 0.0, (46, 1, 1): 0.0, (46, 2, 2): 0.0, (46, 2, 1): 0.0, (46, 3, 2): -0.0, (46, 3, 1): 0.0, (46, 4, 2): 1.0, (46, 4, 1): 0.0, (46, 5, 2): -0.0, (46, 5, 1): 0.0, (46, 6, 2): -0.0, (46, 6, 1): 0.0, (46, 7, 2): 0.0, (46, 7, 1): 0.0, (30, 1, 2): 0.0, (30, 1, 1): 0.0, (30, 2, 2): -0.0, (30, 2, 1): -0.0, (30, 3, 2): -0.0, (30, 3, 1): 0.0, (30, 4, 2): -0.0, (30, 4, 1): 0.0, (30, 5, 2): -0.0, (30, 5, 1): 0.0, (30, 6, 2): -0.0, (30, 6, 1): 1.0, (30, 7, 2): -0.0, (30, 7, 1): -0.0, (74, 1, 2): 0.0, (74, 1, 1): 0.0, (74, 2, 2): -0.0, (74, 2, 1): 0.0, (74, 3, 2): 0.0, (74, 3, 1): 0.0, (74, 4, 2): 0.0, (74, 4, 1): 0.0, (74, 5, 2): -0.0, (74, 5, 1): 0.0, (74, 6, 2): 0.0, (74, 6, 1): 0.0, (74, 7, 2): 1.0, (74, 7, 1): 0.0, (43, 1, 2): 0.0, (43, 1, 1): 0.0, (43, 2, 2): 0.0, (43, 2, 1): 0.0, (43, 3, 2): 0.0, (43, 3, 1): 0.0, (43, 4, 2): 0.0, (43, 4, 1): 0.0, (43, 5, 2): 0.0, (43, 5, 1): 1.0, (43, 6, 2): 0.0, (43, 6, 1): 0.0, (43, 7, 2): 0.0, (43, 7, 1): 0.0, (33, 1, 2): 0.0, (33, 1, 1): 0.0, (33, 2, 2): 0.0, (33, 2, 1): 0.0, (33, 3, 2): -0.0, (33, 3, 1): 0.0, (33, 4, 2): 1.0, (33, 4, 1): 0.0, (33, 5, 2): -0.0, (33, 5, 1): 0.0, (33, 6, 2): -0.0, (33, 6, 1): 0.0, (33, 7, 2): 0.0, (33, 7, 1): 0.0, (12, 1, 2): 0.0, (12, 1, 1): 0.0, (12, 2, 2): 0.0, (12, 2, 1): -0.0, (12, 3, 2): 0.0, (12, 3, 1): 0.0, (12, 4, 2): 0.0, (12, 4, 1): 0.0, (12, 5, 2): 0.0, (12, 5, 1): -0.0, (12, 6, 2): 0.0, (12, 6, 1): -0.0, (12, 7, 2): 0.0, (12, 7, 1): 0.0, (25, 1, 2): 0.0, (25, 1, 1): 0.0, (25, 2, 2): 0.0, (25, 2, 1): 0.0, (25, 3, 2): 0.0, (25, 3, 1): 0.0, (25, 4, 2): 1.0, (25, 4, 1): 0.0, (25, 5, 2): 0.0, (25, 5, 1): 0.0, (25, 6, 2): 0.0, (25, 6, 1): 0.0, (25, 7, 2): 0.0, (25, 7, 1): 0.0, (4, 1, 2): 0.0, (4, 1, 1): 0.0, (4, 2, 2): -0.0, (4, 2, 1): 0.0, (4, 3, 2): -0.0, (4, 3, 1): 0.0, (4, 4, 2): 1.0, (4, 4, 1): 0.0, (4, 5, 2): -0.0, (4, 5, 1): 0.0, (4, 6, 2): -0.0, (4, 6, 1): 0.0, (4, 7, 2): 0.0, (4, 7, 1): 0.0, (97, 1, 2): 0.0, (97, 1, 1): 0.0, (97, 2, 2): 0.0, (97, 2, 1): 0.0, (97, 3, 2): 0.0, (97, 3, 1): 0.0, (97, 4, 2): 0.0, (97, 4, 1): 0.0, (97, 5, 2): 0.0, (97, 5, 1): 1.0, (97, 6, 2): 0.0, (97, 6, 1): 0.0, (97, 7, 2): 0.0, (97, 7, 1): 0.0, (99, 1, 2): 0.0, (99, 1, 1): 0.0, (99, 2, 2): 0.0, (99, 2, 1): 0.0, (99, 3, 2): 0.0, (99, 3, 1): 0.0, (99, 4, 2): 1.0, (99, 4, 1): 0.0, (99, 5, 2): 0.0, (99, 5, 1): 0.0, (99, 6, 2): 0.0, (99, 6, 1): 0.0, (99, 7, 2): 0.0, (99, 7, 1): 0.0, (18, 1, 2): 0.0, (18, 1, 1): 0.0, (18, 2, 2): -0.0, (18, 2, 1): 0.0, (18, 3, 2): 0.0, (18, 3, 1): 0.0, (18, 4, 2): 0.0, (18, 4, 1): 0.0, (18, 5, 2): -0.0, (18, 5, 1): 0.0, (18, 6, 2): -0.0, (18, 6, 1): 0.0, (18, 7, 2): 0.0, (18, 7, 1): 0.0, (5, 1, 2): 0.0, (5, 1, 1): 0.0, (5, 2, 2): -0.0, (5, 2, 1): 0.0, (5, 3, 2): -0.0, (5, 3, 1): 0.0, (5, 4, 2): -0.0, (5, 4, 1): -0.0, (5, 5, 2): -0.0, (5, 5, 1): 0.0, (5, 6, 2): -0.0, (5, 6, 1): 1.0, (5, 7, 2): -0.0, (5, 7, 1): 0.0, (19, 1, 2): 0.0, (19, 1, 1): 0.0, (19, 2, 2): -0.0, (19, 2, 1): 0.0, (19, 3, 2): -0.0, (19, 3, 1): -0.0, (19, 4, 2): -0.0, (19, 4, 1): -0.0, (19, 5, 2): -0.0, (19, 5, 1): 1.0, (19, 6, 2): -0.0, (19, 6, 1): 0.0, (19, 7, 2): -0.0, (19, 7, 1): -0.0, (61, 1, 2): 0.0, (61, 1, 1): 0.0, (61, 2, 2): 0.0, (61, 2, 1): 0.0, (61, 3, 2): 0.0, (61, 3, 1): 0.0, (61, 4, 2): 0.0, (61, 4, 1): -0.0, (61, 5, 2): 0.0, (61, 5, 1): 1.0, (61, 6, 2): 0.0, (61, 6, 1): 0.0, (61, 7, 2): 0.0, (61, 7, 1): -0.0, (15, 1, 2): 0.0, (15, 1, 1): 0.0, (15, 2, 2): 0.0, (15, 2, 1): 0.0, (15, 3, 2): 0.0, (15, 3, 1): 0.0, (15, 4, 2): 1.0, (15, 4, 1): 0.0, (15, 5, 2): -0.0, (15, 5, 1): 0.0, (15, 6, 2): 0.0, (15, 6, 1): 0.0, (15, 7, 2): -0.0, (15, 7, 1): 0.0, (23, 1, 2): 0.0, (23, 1, 1): 0.0, (23, 2, 2): -0.0, (23, 2, 1): -0.0, (23, 3, 2): -0.0, (23, 3, 1): 0.0, (23, 4, 2): -0.0, (23, 4, 1): -0.0, (23, 5, 2): -0.0, (23, 5, 1): 0.0, (23, 6, 2): -0.0, (23, 6, 1): 1.0, (23, 7, 2): -0.0, (23, 7, 1): 0.0, (62, 1, 2): 0.0, (62, 1, 1): 0.0, (62, 2, 2): 0.0, (62, 2, 1): 0.0, (62, 3, 2): 0.0, (62, 3, 1): 0.0, (62, 4, 2): 0.0, (62, 4, 1): 0.0, (62, 5, 2): 0.0, (62, 5, 1): 1.0, (62, 6, 2): 0.0, (62, 6, 1): 0.0, (62, 7, 2): 0.0, (62, 7, 1): -0.0, (14, 1, 2): 0.0, (14, 1, 1): 0.0, (14, 2, 2): 0.0, (14, 2, 1): 0.0, (14, 3, 2): 0.0, (14, 3, 1): 0.0, (14, 4, 2): 0.0, (14, 4, 1): 0.0, (14, 5, 2): -0.0, (14, 5, 1): 0.0, (14, 6, 2): -0.0, (14, 6, 1): 0.0, (14, 7, 2): 0.0, (14, 7, 1): 0.0, (58, 1, 2): 0.0, (58, 1, 1): 0.0, (58, 2, 2): -0.0, (58, 2, 1): 0.0, (58, 3, 2): -0.0, (58, 3, 1): 0.0, (58, 4, 2): -0.0, (58, 4, 1): -0.0, (58, 5, 2): -0.0, (58, 5, 1): 0.0, (58, 6, 2): -0.0, (58, 6, 1): 1.0, (58, 7, 2): -0.0, (58, 7, 1): 0.0, (56, 1, 2): 0.0, (56, 1, 1): 0.0, (56, 2, 2): 0.0, (56, 2, 1): -0.0, (56, 3, 2): 0.0, (56, 3, 1): 0.0, (56, 4, 2): 0.0, (56, 4, 1): 0.0, (56, 5, 2): 0.0, (56, 5, 1): 1.0, (56, 6, 2): 0.0, (56, 6, 1): -0.0, (56, 7, 2): 0.0, (56, 7, 1): -0.0, (21, 1, 2): 0.0, (21, 1, 1): 0.0, (21, 2, 2): 0.0, (21, 2, 1): -0.0, (21, 3, 2): 0.0, (21, 3, 1): 0.0, (21, 4, 2): 0.0, (21, 4, 1): -0.0, (21, 5, 2): 0.0, (21, 5, 1): 1.0, (21, 6, 2): 0.0, (21, 6, 1): -0.0, (21, 7, 2): 0.0, (21, 7, 1): 0.0, (40, 1, 2): 0.0, (40, 1, 1): 0.0, (40, 2, 2): 0.0, (40, 2, 1): 0.0, (40, 3, 2): -0.0, (40, 3, 1): 0.0, (40, 4, 2): 1.0, (40, 4, 1): 0.0, (40, 5, 2): -0.0, (40, 5, 1): 0.0, (40, 6, 2): -0.0, (40, 6, 1): 0.0, (40, 7, 2): 0.0, (40, 7, 1): 0.0, (70, 1, 2): 0.0, (70, 1, 1): 0.0, (70, 2, 2): 0.0, (70, 2, 1): 0.0, (70, 3, 2): 0.0, (70, 3, 1): 0.0, (70, 4, 2): 0.0, (70, 4, 1): 0.0, (70, 5, 2): 0.0, (70, 5, 1): 1.0, (70, 6, 2): 0.0, (70, 6, 1): 0.0, (70, 7, 2): 0.0, (70, 7, 1): 0.0}>
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 1.0413460731506348
+obj value -311.0
+obj value -311.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 1366 rows, 1131 columns and 6414 nonzeros
+Model fingerprint: 0x4d71955c
+Variable types: 364 continuous, 767 integer (767 binary)
+Coefficient statistics:
+  Matrix range     [7e-02, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [3e-01, 1e+00]
+Found heuristic solution: objective -350.0000000
+Presolve removed 681 rows and 694 columns
+Presolve time: 0.02s
+Presolved: 685 rows, 437 columns, 4079 nonzeros
+Variable types: 12 continuous, 425 integer (425 binary)
+
+Root relaxation: objective -3.007143e+02, 560 iterations, 0.01 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -300.71429    0  106 -350.00000 -300.71429  14.1%     -    0s
+H    0     0                    -329.0000000 -300.71429  8.60%     -    0s
+     0     0 -300.71429    0  206 -329.00000 -300.71429  8.60%     -    0s
+H    0     0                    -320.0000000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  192 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  139 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   94 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  127 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  110 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  105 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  181 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  107 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  160 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0  117 -320.00000 -300.71429  6.03%     -    0s
+     0     0 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+     0     2 -300.71429    0   71 -320.00000 -300.71429  6.03%     -    0s
+H   54    49                    -313.0000000 -300.71429  3.93%  84.0    0s
+H  210    82                    -312.0000000 -301.35714  3.41%  39.3    0s
+*  687    75              21    -311.0000000 -309.00000  0.64%  25.1    1s
+
+Cutting planes:
+  Gomory: 2
+  Zero half: 29
+
+Explored 779 nodes (24700 simplex iterations) in 1.07 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 6: -311 -312 -313 ... -350
+No other solutions better than -311
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -3.110000000000e+02, best bound -3.110000000000e+02, gap 0.0000%
+<bound method tupledict.values of {(95, 1, 2): 0.0, (95, 1, 1): 0.0, (95, 2, 2): 0.0, (95, 2, 1): 0.0, (95, 3, 2): -0.0, (95, 3, 1): 0.0, (95, 4, 2): 0.0, (95, 4, 1): 0.0, (95, 5, 2): -0.0, (95, 5, 1): 0.0, (95, 6, 2): 0.0, (95, 6, 1): 0.0, (95, 7, 2): -0.0, (95, 7, 1): 0.0, (1, 1, 2): 0.0, (1, 1, 1): 0.0, (1, 2, 2): 0.0, (1, 2, 1): -0.0, (1, 3, 2): 0.0, (1, 3, 1): -0.0, (1, 4, 2): 0.0, (1, 4, 1): 0.0, (1, 5, 2): 0.0, (1, 5, 1): 1.0, (1, 6, 2): 0.0, (1, 6, 1): -0.0, (1, 7, 2): 0.0, (1, 7, 1): 0.0, (64, 1, 2): 0.0, (64, 1, 1): 0.0, (64, 2, 2): 0.0, (64, 2, 1): 0.0, (64, 3, 2): 0.0, (64, 3, 1): 0.0, (64, 4, 2): 0.0, (64, 4, 1): 0.0, (64, 5, 2): -0.0, (64, 5, 1): 0.0, (64, 6, 2): 0.0, (64, 6, 1): 0.0, (64, 7, 2): -0.0, (64, 7, 1): 0.0, (39, 1, 2): 0.0, (39, 1, 1): 0.0, (39, 2, 2): 0.0, (39, 2, 1): 0.0, (39, 3, 2): 0.0, (39, 3, 1): 0.0, (39, 4, 2): 0.0, (39, 4, 1): 0.0, (39, 5, 2): -0.0, (39, 5, 1): 0.0, (39, 6, 2): -0.0, (39, 6, 1): 0.0, (39, 7, 2): 0.0, (39, 7, 1): 0.0, (69, 1, 2): 0.0, (69, 1, 1): 0.0, (69, 2, 2): 0.0, (69, 2, 1): 0.0, (69, 3, 2): 0.0, (69, 3, 1): 0.0, (69, 4, 2): 0.0, (69, 4, 1): 0.0, (69, 5, 2): 0.0, (69, 5, 1): 1.0, (69, 6, 2): 0.0, (69, 6, 1): 0.0, (69, 7, 2): 0.0, (69, 7, 1): 0.0, (66, 1, 2): 0.0, (66, 1, 1): 0.0, (66, 2, 2): 0.0, (66, 2, 1): -0.0, (66, 3, 2): 0.0, (66, 3, 1): 0.0, (66, 4, 2): 0.0, (66, 4, 1): -0.0, (66, 5, 2): 0.0, (66, 5, 1): 1.0, (66, 6, 2): 0.0, (66, 6, 1): 0.0, (66, 7, 2): 0.0, (66, 7, 1): -0.0, (16, 1, 2): 0.0, (16, 1, 1): 0.0, (16, 2, 2): -0.0, (16, 2, 1): 0.0, (16, 3, 2): -0.0, (16, 3, 1): -0.0, (16, 4, 2): -0.0, (16, 4, 1): -0.0, (16, 5, 2): -0.0, (16, 5, 1): 0.0, (16, 6, 2): -0.0, (16, 6, 1): -0.0, (16, 7, 2): -0.0, (16, 7, 1): 0.0, (13, 1, 2): 0.0, (13, 1, 1): 0.0, (13, 2, 2): 0.0, (13, 2, 1): -0.0, (13, 3, 2): 0.0, (13, 3, 1): 0.0, (13, 4, 2): 0.0, (13, 4, 1): -0.0, (13, 5, 2): 0.0, (13, 5, 1): 1.0, (13, 6, 2): 0.0, (13, 6, 1): 0.0, (13, 7, 2): 0.0, (13, 7, 1): -0.0, (54, 1, 2): 0.0, (54, 1, 1): 0.0, (54, 2, 2): 0.0, (54, 2, 1): -0.0, (54, 3, 2): 0.0, (54, 3, 1): 0.0, (54, 4, 2): 0.0, (54, 4, 1): -0.0, (54, 5, 2): 0.0, (54, 5, 1): 1.0, (54, 6, 2): 0.0, (54, 6, 1): 0.0, (54, 7, 2): 0.0, (54, 7, 1): -0.0, (90, 1, 2): 0.0, (90, 1, 1): 0.0, (90, 2, 2): 0.0, (90, 2, 1): 0.0, (90, 3, 2): -0.0, (90, 3, 1): 0.0, (90, 4, 2): 0.0, (90, 4, 1): 0.0, (90, 5, 2): -0.0, (90, 5, 1): 0.0, (90, 6, 2): 0.0, (90, 6, 1): 0.0, (90, 7, 2): -0.0, (90, 7, 1): 0.0, (47, 1, 2): 0.0, (47, 1, 1): 0.0, (47, 2, 2): 0.0, (47, 2, 1): 0.0, (47, 3, 2): 0.0, (47, 3, 1): 0.0, (47, 4, 2): 0.0, (47, 4, 1): 0.0, (47, 5, 2): 0.0, (47, 5, 1): 1.0, (47, 6, 2): 0.0, (47, 6, 1): 0.0, (47, 7, 2): 0.0, (47, 7, 1): 0.0, (32, 1, 2): 0.0, (32, 1, 1): 0.0, (32, 2, 2): -0.0, (32, 2, 1): 0.0, (32, 3, 2): -0.0, (32, 3, 1): 0.0, (32, 4, 2): -0.0, (32, 4, 1): -0.0, (32, 5, 2): -0.0, (32, 5, 1): 1.0, (32, 6, 2): -0.0, (32, 6, 1): -0.0, (32, 7, 2): -0.0, (32, 7, 1): 0.0, (10, 1, 2): 0.0, (10, 1, 1): 0.0, (10, 2, 2): 0.0, (10, 2, 1): 0.0, (10, 3, 2): 0.0, (10, 3, 1): 0.0, (10, 4, 2): 0.0, (10, 4, 1): 0.0, (10, 5, 2): 0.0, (10, 5, 1): 1.0, (10, 6, 2): 0.0, (10, 6, 1): 0.0, (10, 7, 2): 0.0, (10, 7, 1): 0.0, (78, 1, 2): 0.0, (78, 1, 1): 0.0, (78, 2, 2): 0.0, (78, 2, 1): 0.0, (78, 3, 2): -0.0, (78, 3, 1): 0.0, (78, 4, 2): 1.0, (78, 4, 1): 0.0, (78, 5, 2): -0.0, (78, 5, 1): 0.0, (78, 6, 2): -0.0, (78, 6, 1): 0.0, (78, 7, 2): 0.0, (78, 7, 1): 0.0, (6, 1, 2): 0.0, (6, 1, 1): 0.0, (6, 2, 2): -0.0, (6, 2, 1): 0.0, (6, 3, 2): -0.0, (6, 3, 1): -0.0, (6, 4, 2): -0.0, (6, 4, 1): 0.0, (6, 5, 2): -0.0, (6, 5, 1): 1.0, (6, 6, 2): -0.0, (6, 6, 1): 0.0, (6, 7, 2): -0.0, (6, 7, 1): -0.0, (76, 1, 2): 0.0, (76, 1, 1): 0.0, (76, 2, 2): 0.0, (76, 2, 1): -0.0, (76, 3, 2): 0.0, (76, 3, 1): -0.0, (76, 4, 2): 0.0, (76, 4, 1): -0.0, (76, 5, 2): 0.0, (76, 5, 1): 1.0, (76, 6, 2): 0.0, (76, 6, 1): 0.0, (76, 7, 2): 0.0, (76, 7, 1): -0.0, (41, 1, 2): 0.0, (41, 1, 1): 0.0, (41, 2, 2): 0.0, (41, 2, 1): 0.0, (41, 3, 2): 0.0, (41, 3, 1): 0.0, (41, 4, 2): 1.0, (41, 4, 1): 0.0, (41, 5, 2): -0.0, (41, 5, 1): 0.0, (41, 6, 2): 0.0, (41, 6, 1): 0.0, (41, 7, 2): 0.0, (41, 7, 1): 0.0, (57, 1, 2): 0.0, (57, 1, 1): 0.0, (57, 2, 2): 0.0, (57, 2, 1): 0.0, (57, 3, 2): 0.0, (57, 3, 1): 0.0, (57, 4, 2): 1.0, (57, 4, 1): 0.0, (57, 5, 2): -0.0, (57, 5, 1): 0.0, (57, 6, 2): -0.0, (57, 6, 1): 0.0, (57, 7, 2): 0.0, (57, 7, 1): 0.0, (88, 1, 2): 0.0, (88, 1, 1): 0.0, (88, 2, 2): -0.0, (88, 2, 1): 0.0, (88, 3, 2): 0.0, (88, 3, 1): 0.0, (88, 4, 2): 1.0, (88, 4, 1): 0.0, (88, 5, 2): -0.0, (88, 5, 1): 0.0, (88, 6, 2): -0.0, (88, 6, 1): 0.0, (88, 7, 2): 0.0, (88, 7, 1): 0.0, (51, 1, 2): 0.0, (51, 1, 1): 0.0, (51, 2, 2): 0.0, (51, 2, 1): 0.0, (51, 3, 2): 0.0, (51, 3, 1): 0.0, (51, 4, 2): 0.0, (51, 4, 1): 0.0, (51, 5, 2): 0.0, (51, 5, 1): 0.0, (51, 6, 2): 0.0, (51, 6, 1): 0.0, (51, 7, 2): 0.0, (51, 7, 1): -0.0, (65, 1, 2): 0.0, (65, 1, 1): 0.0, (65, 2, 2): 0.0, (65, 2, 1): 0.0, (65, 3, 2): 0.0, (65, 3, 1): -0.0, (65, 4, 2): 0.0, (65, 4, 1): 0.0, (65, 5, 2): 0.0, (65, 5, 1): 1.0, (65, 6, 2): 0.0, (65, 6, 1): -0.0, (65, 7, 2): 0.0, (65, 7, 1): 0.0, (59, 1, 2): 0.0, (59, 1, 1): 0.0, (59, 2, 2): 0.0, (59, 2, 1): -0.0, (59, 3, 2): 0.0, (59, 3, 1): -0.0, (59, 4, 2): 0.0, (59, 4, 1): 0.0, (59, 5, 2): 0.0, (59, 5, 1): 1.0, (59, 6, 2): 0.0, (59, 6, 1): 0.0, (59, 7, 2): 0.0, (59, 7, 1): -0.0, (53, 1, 2): 0.0, (53, 1, 1): 0.0, (53, 2, 2): -0.0, (53, 2, 1): 0.0, (53, 3, 2): -0.0, (53, 3, 1): 0.0, (53, 4, 2): -0.0, (53, 4, 1): 0.0, (53, 5, 2): -0.0, (53, 5, 1): 1.0, (53, 6, 2): -0.0, (53, 6, 1): 0.0, (53, 7, 2): -0.0, (53, 7, 1): -0.0, (2, 1, 2): 0.0, (2, 1, 1): 0.0, (2, 2, 2): 0.0, (2, 2, 1): 0.0, (2, 3, 2): 0.0, (2, 3, 1): 0.0, (2, 4, 2): 0.0, (2, 4, 1): 0.0, (2, 5, 2): 0.0, (2, 5, 1): 1.0, (2, 6, 2): 0.0, (2, 6, 1): 0.0, (2, 7, 2): 0.0, (2, 7, 1): 0.0, (73, 1, 2): 0.0, (73, 1, 1): 0.0, (73, 2, 2): 0.0, (73, 2, 1): 0.0, (73, 3, 2): -0.0, (73, 3, 1): 0.0, (73, 4, 2): 1.0, (73, 4, 1): 0.0, (73, 5, 2): 0.0, (73, 5, 1): 0.0, (73, 6, 2): -0.0, (73, 6, 1): 0.0, (73, 7, 2): 0.0, (73, 7, 1): 0.0, (31, 1, 2): 0.0, (31, 1, 1): 0.0, (31, 2, 2): -0.0, (31, 2, 1): 0.0, (31, 3, 2): 0.0, (31, 3, 1): 0.0, (31, 4, 2): 0.0, (31, 4, 1): 0.0, (31, 5, 2): -0.0, (31, 5, 1): 0.0, (31, 6, 2): 0.0, (31, 6, 1): 0.0, (31, 7, 2): -0.0, (31, 7, 1): 0.0, (35, 1, 2): 0.0, (35, 1, 1): 0.0, (35, 2, 2): 0.0, (35, 2, 1): 0.0, (35, 3, 2): 0.0, (35, 3, 1): 0.0, (35, 4, 2): 0.0, (35, 4, 1): 0.0, (35, 5, 2): -0.0, (35, 5, 1): 0.0, (35, 6, 2): 0.0, (35, 6, 1): 0.0, (35, 7, 2): -0.0, (35, 7, 1): 0.0, (46, 1, 2): 0.0, (46, 1, 1): 0.0, (46, 2, 2): 0.0, (46, 2, 1): 0.0, (46, 3, 2): -0.0, (46, 3, 1): 0.0, (46, 4, 2): 1.0, (46, 4, 1): 0.0, (46, 5, 2): -0.0, (46, 5, 1): 0.0, (46, 6, 2): -0.0, (46, 6, 1): 0.0, (46, 7, 2): 0.0, (46, 7, 1): 0.0, (30, 1, 2): 0.0, (30, 1, 1): 0.0, (30, 2, 2): -0.0, (30, 2, 1): -0.0, (30, 3, 2): -0.0, (30, 3, 1): 0.0, (30, 4, 2): -0.0, (30, 4, 1): 0.0, (30, 5, 2): -0.0, (30, 5, 1): 0.0, (30, 6, 2): -0.0, (30, 6, 1): 1.0, (30, 7, 2): -0.0, (30, 7, 1): -0.0, (74, 1, 2): 0.0, (74, 1, 1): 0.0, (74, 2, 2): -0.0, (74, 2, 1): 0.0, (74, 3, 2): 0.0, (74, 3, 1): 0.0, (74, 4, 2): 0.0, (74, 4, 1): 0.0, (74, 5, 2): -0.0, (74, 5, 1): 0.0, (74, 6, 2): 0.0, (74, 6, 1): 0.0, (74, 7, 2): 1.0, (74, 7, 1): 0.0, (43, 1, 2): 0.0, (43, 1, 1): 0.0, (43, 2, 2): 0.0, (43, 2, 1): 0.0, (43, 3, 2): 0.0, (43, 3, 1): 0.0, (43, 4, 2): 0.0, (43, 4, 1): 0.0, (43, 5, 2): 0.0, (43, 5, 1): 1.0, (43, 6, 2): 0.0, (43, 6, 1): 0.0, (43, 7, 2): 0.0, (43, 7, 1): 0.0, (33, 1, 2): 0.0, (33, 1, 1): 0.0, (33, 2, 2): 0.0, (33, 2, 1): 0.0, (33, 3, 2): -0.0, (33, 3, 1): 0.0, (33, 4, 2): 1.0, (33, 4, 1): 0.0, (33, 5, 2): -0.0, (33, 5, 1): 0.0, (33, 6, 2): -0.0, (33, 6, 1): 0.0, (33, 7, 2): 0.0, (33, 7, 1): 0.0, (12, 1, 2): 0.0, (12, 1, 1): 0.0, (12, 2, 2): 0.0, (12, 2, 1): -0.0, (12, 3, 2): 0.0, (12, 3, 1): 0.0, (12, 4, 2): 0.0, (12, 4, 1): 0.0, (12, 5, 2): 0.0, (12, 5, 1): -0.0, (12, 6, 2): 0.0, (12, 6, 1): -0.0, (12, 7, 2): 0.0, (12, 7, 1): 0.0, (25, 1, 2): 0.0, (25, 1, 1): 0.0, (25, 2, 2): 0.0, (25, 2, 1): 0.0, (25, 3, 2): 0.0, (25, 3, 1): 0.0, (25, 4, 2): 1.0, (25, 4, 1): 0.0, (25, 5, 2): 0.0, (25, 5, 1): 0.0, (25, 6, 2): 0.0, (25, 6, 1): 0.0, (25, 7, 2): 0.0, (25, 7, 1): 0.0, (4, 1, 2): 0.0, (4, 1, 1): 0.0, (4, 2, 2): -0.0, (4, 2, 1): 0.0, (4, 3, 2): -0.0, (4, 3, 1): 0.0, (4, 4, 2): 1.0, (4, 4, 1): 0.0, (4, 5, 2): -0.0, (4, 5, 1): 0.0, (4, 6, 2): -0.0, (4, 6, 1): 0.0, (4, 7, 2): 0.0, (4, 7, 1): 0.0, (97, 1, 2): 0.0, (97, 1, 1): 0.0, (97, 2, 2): 0.0, (97, 2, 1): 0.0, (97, 3, 2): 0.0, (97, 3, 1): 0.0, (97, 4, 2): 0.0, (97, 4, 1): 0.0, (97, 5, 2): 0.0, (97, 5, 1): 1.0, (97, 6, 2): 0.0, (97, 6, 1): 0.0, (97, 7, 2): 0.0, (97, 7, 1): 0.0, (99, 1, 2): 0.0, (99, 1, 1): 0.0, (99, 2, 2): 0.0, (99, 2, 1): 0.0, (99, 3, 2): 0.0, (99, 3, 1): 0.0, (99, 4, 2): 1.0, (99, 4, 1): 0.0, (99, 5, 2): 0.0, (99, 5, 1): 0.0, (99, 6, 2): 0.0, (99, 6, 1): 0.0, (99, 7, 2): 0.0, (99, 7, 1): 0.0, (18, 1, 2): 0.0, (18, 1, 1): 0.0, (18, 2, 2): -0.0, (18, 2, 1): 0.0, (18, 3, 2): 0.0, (18, 3, 1): 0.0, (18, 4, 2): 0.0, (18, 4, 1): 0.0, (18, 5, 2): -0.0, (18, 5, 1): 0.0, (18, 6, 2): -0.0, (18, 6, 1): 0.0, (18, 7, 2): 0.0, (18, 7, 1): 0.0, (5, 1, 2): 0.0, (5, 1, 1): 0.0, (5, 2, 2): -0.0, (5, 2, 1): 0.0, (5, 3, 2): -0.0, (5, 3, 1): 0.0, (5, 4, 2): -0.0, (5, 4, 1): -0.0, (5, 5, 2): -0.0, (5, 5, 1): 0.0, (5, 6, 2): -0.0, (5, 6, 1): 1.0, (5, 7, 2): -0.0, (5, 7, 1): 0.0, (19, 1, 2): 0.0, (19, 1, 1): 0.0, (19, 2, 2): -0.0, (19, 2, 1): 0.0, (19, 3, 2): -0.0, (19, 3, 1): -0.0, (19, 4, 2): -0.0, (19, 4, 1): -0.0, (19, 5, 2): -0.0, (19, 5, 1): 1.0, (19, 6, 2): -0.0, (19, 6, 1): 0.0, (19, 7, 2): -0.0, (19, 7, 1): -0.0, (61, 1, 2): 0.0, (61, 1, 1): 0.0, (61, 2, 2): 0.0, (61, 2, 1): 0.0, (61, 3, 2): 0.0, (61, 3, 1): 0.0, (61, 4, 2): 0.0, (61, 4, 1): -0.0, (61, 5, 2): 0.0, (61, 5, 1): 1.0, (61, 6, 2): 0.0, (61, 6, 1): 0.0, (61, 7, 2): 0.0, (61, 7, 1): -0.0, (15, 1, 2): 0.0, (15, 1, 1): 0.0, (15, 2, 2): 0.0, (15, 2, 1): 0.0, (15, 3, 2): 0.0, (15, 3, 1): 0.0, (15, 4, 2): 1.0, (15, 4, 1): 0.0, (15, 5, 2): -0.0, (15, 5, 1): 0.0, (15, 6, 2): 0.0, (15, 6, 1): 0.0, (15, 7, 2): -0.0, (15, 7, 1): 0.0, (23, 1, 2): 0.0, (23, 1, 1): 0.0, (23, 2, 2): -0.0, (23, 2, 1): -0.0, (23, 3, 2): -0.0, (23, 3, 1): 0.0, (23, 4, 2): -0.0, (23, 4, 1): -0.0, (23, 5, 2): -0.0, (23, 5, 1): 0.0, (23, 6, 2): -0.0, (23, 6, 1): 1.0, (23, 7, 2): -0.0, (23, 7, 1): 0.0, (62, 1, 2): 0.0, (62, 1, 1): 0.0, (62, 2, 2): 0.0, (62, 2, 1): 0.0, (62, 3, 2): 0.0, (62, 3, 1): 0.0, (62, 4, 2): 0.0, (62, 4, 1): 0.0, (62, 5, 2): 0.0, (62, 5, 1): 1.0, (62, 6, 2): 0.0, (62, 6, 1): 0.0, (62, 7, 2): 0.0, (62, 7, 1): -0.0, (14, 1, 2): 0.0, (14, 1, 1): 0.0, (14, 2, 2): 0.0, (14, 2, 1): 0.0, (14, 3, 2): 0.0, (14, 3, 1): 0.0, (14, 4, 2): 0.0, (14, 4, 1): 0.0, (14, 5, 2): -0.0, (14, 5, 1): 0.0, (14, 6, 2): -0.0, (14, 6, 1): 0.0, (14, 7, 2): 0.0, (14, 7, 1): 0.0, (58, 1, 2): 0.0, (58, 1, 1): 0.0, (58, 2, 2): -0.0, (58, 2, 1): 0.0, (58, 3, 2): -0.0, (58, 3, 1): 0.0, (58, 4, 2): -0.0, (58, 4, 1): -0.0, (58, 5, 2): -0.0, (58, 5, 1): 0.0, (58, 6, 2): -0.0, (58, 6, 1): 1.0, (58, 7, 2): -0.0, (58, 7, 1): 0.0, (56, 1, 2): 0.0, (56, 1, 1): 0.0, (56, 2, 2): 0.0, (56, 2, 1): -0.0, (56, 3, 2): 0.0, (56, 3, 1): 0.0, (56, 4, 2): 0.0, (56, 4, 1): 0.0, (56, 5, 2): 0.0, (56, 5, 1): 1.0, (56, 6, 2): 0.0, (56, 6, 1): -0.0, (56, 7, 2): 0.0, (56, 7, 1): -0.0, (21, 1, 2): 0.0, (21, 1, 1): 0.0, (21, 2, 2): 0.0, (21, 2, 1): -0.0, (21, 3, 2): 0.0, (21, 3, 1): 0.0, (21, 4, 2): 0.0, (21, 4, 1): -0.0, (21, 5, 2): 0.0, (21, 5, 1): 1.0, (21, 6, 2): 0.0, (21, 6, 1): -0.0, (21, 7, 2): 0.0, (21, 7, 1): 0.0, (40, 1, 2): 0.0, (40, 1, 1): 0.0, (40, 2, 2): 0.0, (40, 2, 1): 0.0, (40, 3, 2): -0.0, (40, 3, 1): 0.0, (40, 4, 2): 1.0, (40, 4, 1): 0.0, (40, 5, 2): -0.0, (40, 5, 1): 0.0, (40, 6, 2): -0.0, (40, 6, 1): 0.0, (40, 7, 2): 0.0, (40, 7, 1): 0.0, (70, 1, 2): 0.0, (70, 1, 1): 0.0, (70, 2, 2): 0.0, (70, 2, 1): 0.0, (70, 3, 2): 0.0, (70, 3, 1): 0.0, (70, 4, 2): 0.0, (70, 4, 1): 0.0, (70, 5, 2): 0.0, (70, 5, 1): 1.0, (70, 6, 2): 0.0, (70, 6, 1): 0.0, (70, 7, 2): 0.0, (70, 7, 1): 0.0}>
+
+
+
+#########node  1
+race_factor.6
+#########node  2
+priors_count.1
+#########node  3
+age_factor.3
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 2
+
+
+Total Solving Time 1.1583750247955322
+obj value -311.0
+obj value -311.0
+train acc 0.78
+test acc 0.72
+calibration acc 0.76
+Number of different races
+[2 1 6]
+3
+LOOK HERE:
+0.0
+0.3571428571428571
+LOOK HERE:
+0.0
+0.16666666666666666
+LOOK HERE:
+0.0
+0.09090909090909091
+1 & 4 has train data SP: 0.6428571428571428
+6 & 1 has train pred SP: 0.3571428571428571
+6 & 2 has test data SP: 0.7272727272727273
+6 & 1 has test pred SP: 0.16666666666666666
+2 & 1 has calibration data SP: 0.2272727272727273
+1 & 4 has calibration pred SP: 0.09090909090909091
+1&2
+0.246031746031746
+1&4
+0.1071428571428571
+1&6
+0.3571428571428571
+2&4
+0.1388888888888889
+2&6
+0.1111111111111111
+4&6
+0.25

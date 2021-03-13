@@ -133,6 +133,7 @@ def main(argv):
     b_value = primal.model.getAttr("X", primal.b)
     beta_value = primal.model.getAttr("X", primal.beta)
     p_value = primal.model.getAttr("X", primal.p)
+    print(primal.model.getAttr("X",primal.zeta))
 
     print("\n\n")
     print_tree(primal,b_value, beta_value, p_value)
@@ -190,13 +191,16 @@ def main(argv):
         for i in data_calibration_reg.index:
             yhat_calib.append(get_predicted_value(primal, data_calibration_enc, b_value, beta_value, p_value, i))
 
+        print("Number of different races")
+        print(data_test_reg[protected_feature].unique())
+
         pd.set_option('mode.chained_assignment', None)
 
         data_train_reg.loc[:,'Predictions'] = pd.Series(yhat_train)
         data_test_reg.loc[:,'Predictions'] = pd.Series(yhat_test)
         data_calibration_reg.loc[:,'Predictions'] = pd.Series(yhat_calib)
 
-
+        print(np.count_nonzero(data_test_reg['Predictions'] == positive_class))
 
         # Loop through all possible combinations of the protected feature
         for combos in combinations(data_reg[protected_feature].unique(), 2):

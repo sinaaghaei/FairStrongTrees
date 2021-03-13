@@ -1,0 +1,81 @@
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 600.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 338 rows, 333 columns and 1550 nonzeros
+Model fingerprint: 0x3bb3eaae
+Variable types: 14 continuous, 319 integer (319 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -84.0000000
+Presolve removed 167 rows and 200 columns
+Presolve time: 0.01s
+Presolved: 171 rows, 133 columns, 906 nonzeros
+Variable types: 0 continuous, 133 integer (133 binary)
+
+Root relaxation: objective -7.200000e+01, 54 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+H    0     0                     -72.0000000   -0.00000   100%     -    0s
+     0     0          -    0       -72.00000  -72.00000  0.00%     -    0s
+
+Explored 0 nodes (114 simplex iterations) in 0.01 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 2: -72 -84 
+No other solutions better than -72
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -7.200000000000e+01, best bound -7.200000000000e+01, gap 0.0000%
+
+
+
+#########node  1
+age_factor.1
+#########node  2
+race_factor.2
+#########node  3
+leaf 1
+#########node  4
+leaf 1
+#########node  5
+leaf 2
+#########node  6
+pruned
+#########node  7
+pruned
+
+
+Total Solving Time 0.03798103332519531
+obj value -72.0
+obj value -72.0
+train acc 1.0
+test acc 0.7142857142857143
+calibration acc 0.6666666666666666
+2 & 4 has train data SP: 0.5
+1 & 4 has train pred SP: 0.2
+2 & 4 has test data SP: 1.0
+1 & 4 has test pred SP: 0.0
+2 & 1 has calibration data SP: 0.5
+2 & 1 has calibration pred SP: 0.5
+1&6
+0.2
+1&2
+0.2
+1&4
+0.2
+6&2
+0.0
+6&4
+0.0
+2&4
+0.0

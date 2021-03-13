@@ -1,0 +1,171 @@
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 600.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 350 rows, 333 columns and 2054 nonzeros
+Model fingerprint: 0x4612bd00
+Variable types: 14 continuous, 319 integer (319 binary)
+Coefficient statistics:
+  Matrix range     [2e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+00]
+Found heuristic solution: objective -84.0000000
+Presolve removed 89 rows and 114 columns
+Presolve time: 0.03s
+Presolved: 261 rows, 219 columns, 1239 nonzeros
+Variable types: 12 continuous, 207 integer (206 binary)
+
+Root relaxation: objective -7.400000e+01, 101 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0     -74.0000000  -74.00000  0.00%     -    0s
+
+Explored 0 nodes (101 simplex iterations) in 0.03 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 2: -74 -84 
+No other solutions better than -74
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -7.400000000000e+01, best bound -7.400000000000e+01, gap 0.0000%
+
+
+
+#########node  1
+race_factor.1
+#########node  2
+leaf 1
+#########node  3
+leaf 1
+#########node  4
+pruned
+#########node  5
+pruned
+#########node  6
+pruned
+#########node  7
+pruned
+
+
+Total Solving Time 0.07647395133972168
+obj value -74.0
+obj value -74.0
+train acc 0.8333333333333334
+test acc 0.5714285714285714
+calibration acc 0.8333333333333334
+2 & 4 has train data SP: 0.5
+1 & 4 has train pred SP: 0.0
+2 & 4 has test data SP: 1.0
+1 & 4 has test pred SP: 0.0
+2 & 1 has calibration data SP: 0.5
+1 & 4 has calibration pred SP: 0
+1&6
+0.0
+1&2
+0.0
+1&4
+0.0
+6&2
+0.0
+6&4
+0.0
+2&4
+0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 600.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 674 rows, 585 columns and 4010 nonzeros
+Model fingerprint: 0x72858b91
+Variable types: 14 continuous, 571 integer (571 binary)
+Coefficient statistics:
+  Matrix range     [1e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-02, 1e+00]
+Found heuristic solution: objective -168.0000000
+Presolve removed 178 rows and 210 columns
+Presolve time: 0.01s
+Presolved: 496 rows, 375 columns, 2501 nonzeros
+Variable types: 14 continuous, 361 integer (360 binary)
+
+Root relaxation: objective -1.466667e+02, 188 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -146.66667    0   82 -168.00000 -146.66667  12.7%     -    0s
+H    0     0                    -152.0000000 -146.66667  3.51%     -    0s
+     0     0 -149.00000    0   83 -152.00000 -149.00000  1.97%     -    0s
+     0     0 -150.00000    0  151 -152.00000 -150.00000  1.32%     -    0s
+     0     0 -150.00000    0  151 -152.00000 -150.00000  1.32%     -    0s
+     0     0 infeasible    0      -152.00000 -152.00000  0.00%     -    0s
+
+Cutting planes:
+  Gomory: 3
+  GUB cover: 5
+  Zero half: 6
+  RLT: 3
+
+Explored 1 nodes (789 simplex iterations) in 0.07 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 2: -152 -168 
+No other solutions better than -152
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -1.520000000000e+02, best bound -1.520000000000e+02, gap 0.0000%
+
+
+
+#########node  1
+priors_count.2
+#########node  2
+leaf 1
+#########node  3
+leaf 1
+#########node  4
+pruned
+#########node  5
+pruned
+#########node  6
+pruned
+#########node  7
+pruned
+
+
+Total Solving Time 0.12751102447509766
+obj value -152.0
+obj value -152.0
+train acc 0.6666666666666666
+test acc 0.5384615384615384
+calibration acc 0.6923076923076923
+6 & 4 has train data SP: 0.5
+1 & 4 has train pred SP: 0.0
+2 & 4 has test data SP: 0.75
+1 & 4 has test pred SP: 0.0
+6 & 2 has calibration data SP: 0.4
+1 & 4 has calibration pred SP: 0
+2&1
+0.0
+2&6
+0.0
+2&4
+0.0
+1&6
+0.0
+1&4
+0.0
+6&4
+0.0

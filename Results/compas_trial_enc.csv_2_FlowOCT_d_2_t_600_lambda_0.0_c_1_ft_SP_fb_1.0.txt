@@ -1,0 +1,192 @@
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 600.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 674 rows, 585 columns and 4010 nonzeros
+Model fingerprint: 0x5f63b43f
+Variable types: 182 continuous, 403 integer (403 binary)
+Coefficient statistics:
+  Matrix range     [1e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -168.0000000
+Presolve removed 241 rows and 257 columns
+Presolve time: 0.02s
+Presolved: 433 rows, 328 columns, 2341 nonzeros
+Variable types: 12 continuous, 316 integer (313 binary)
+
+Root relaxation: objective -1.440000e+02, 211 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -144.00000    0   46 -168.00000 -144.00000  14.3%     -    0s
+H    0     0                    -149.0000000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   78 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   55 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   52 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   75 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   85 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   42 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   42 -149.00000 -144.00000  3.36%     -    0s
+     0     2 -144.00000    0   42 -149.00000 -144.00000  3.36%     -    0s
+*  141    37              25    -148.0000000 -144.00000  2.70%  19.8    0s
+
+Cutting planes:
+  Zero half: 24
+
+Explored 465 nodes (8579 simplex iterations) in 0.53 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 3: -148 -149 -168 
+No other solutions better than -148
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -1.480000000000e+02, best bound -1.480000000000e+02, gap 0.0000%
+
+
+
+#########node  1
+gender_factor.1
+#########node  2
+two_year_recid.0
+#########node  3
+priors_count.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 2
+#########node  7
+leaf 1
+
+
+Total Solving Time 0.5954158306121826
+obj value -148.0
+obj value -148.0
+train acc 0.8333333333333334
+test acc 0.6923076923076923
+calibration acc 0.6153846153846154
+Number of different races
+3
+0
+6 & 4 has train data SP: 0.5
+2 & 4 has train pred SP: 0.5
+2 & 4 has test data SP: 0.75
+1 & 4 has test pred SP: 0.0
+6 & 2 has calibration data SP: 0.4
+2 & 1 has calibration pred SP: 0.2
+2&1
+0.2222222222222222
+2&6
+0.0
+2&4
+0.5
+1&6
+0.2222222222222222
+1&4
+0.2777777777777778
+6&4
+0.5
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 600.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 674 rows, 585 columns and 4010 nonzeros
+Model fingerprint: 0x5f63b43f
+Variable types: 182 continuous, 403 integer (403 binary)
+Coefficient statistics:
+  Matrix range     [1e-01, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Found heuristic solution: objective -168.0000000
+Presolve removed 241 rows and 257 columns
+Presolve time: 0.01s
+Presolved: 433 rows, 328 columns, 2341 nonzeros
+Variable types: 12 continuous, 316 integer (313 binary)
+
+Root relaxation: objective -1.440000e+02, 211 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -144.00000    0   46 -168.00000 -144.00000  14.3%     -    0s
+H    0     0                    -149.0000000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   78 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   55 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   52 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   75 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   85 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   42 -149.00000 -144.00000  3.36%     -    0s
+     0     0 -144.00000    0   42 -149.00000 -144.00000  3.36%     -    0s
+     0     2 -144.00000    0   42 -149.00000 -144.00000  3.36%     -    0s
+*  141    37              25    -148.0000000 -144.00000  2.70%  19.8    0s
+
+Cutting planes:
+  Zero half: 24
+
+Explored 465 nodes (8579 simplex iterations) in 0.41 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 3: -148 -149 -168 
+No other solutions better than -148
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective -1.480000000000e+02, best bound -1.480000000000e+02, gap 0.0000%
+
+
+
+#########node  1
+gender_factor.1
+#########node  2
+two_year_recid.0
+#########node  3
+priors_count.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 2
+#########node  7
+leaf 1
+
+
+Total Solving Time 0.46107006072998047
+obj value -148.0
+obj value -148.0
+train acc 0.8333333333333334
+test acc 0.6923076923076923
+calibration acc 0.6153846153846154
+Number of different races
+[2 1 4]
+0
+6 & 4 has train data SP: 0.5
+2 & 4 has train pred SP: 0.5
+2 & 4 has test data SP: 0.75
+1 & 4 has test pred SP: 0.0
+6 & 2 has calibration data SP: 0.4
+2 & 1 has calibration pred SP: 0.2
+2&1
+0.2222222222222222
+2&6
+0.0
+2&4
+0.5
+1&6
+0.2222222222222222
+1&4
+0.2777777777777778
+6&4
+0.5
