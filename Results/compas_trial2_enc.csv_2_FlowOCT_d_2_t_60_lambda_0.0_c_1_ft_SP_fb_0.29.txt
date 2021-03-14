@@ -883,3 +883,21 @@ Indices
 0.1111111111111111
 4&6
 0.25
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf

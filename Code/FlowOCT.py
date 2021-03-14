@@ -213,7 +213,7 @@ class FlowOCT:
                                   (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
                                                                      self.tree.Leaves + self.tree.Nodes)
                                                             for i in protected_prime_df.index)) >= -1*self.fairness_bound)
-                    #     break
+
                     # else:
                     #     continue
 
