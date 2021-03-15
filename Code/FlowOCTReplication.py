@@ -114,7 +114,10 @@ def main(argv):
         data_train_enc = data_train_calibration_enc
         data_train_reg = data_train_calibration_reg
 
+    #data_train_enc = data_enc
+    #data_train_reg = data_reg
     train_len = len(data_train_enc.index)
+
     ##########################################################
     # Creating and Solving the problem
     ##########################################################
@@ -194,11 +197,19 @@ def main(argv):
         print("Number of different races")
         print(data_test_reg[protected_feature].unique())
 
+
         pd.set_option('mode.chained_assignment', None)
 
         data_train_reg.loc[:,'Predictions'] = pd.Series(yhat_train)
         data_test_reg.loc[:,'Predictions'] = pd.Series(yhat_test)
         data_calibration_reg.loc[:,'Predictions'] = pd.Series(yhat_calib)
+
+        print("Data")
+        print(data_train_reg)
+        print(data_train_enc)
+
+        print("Data Length")
+        print(len(data_reg.index))
 
         print(np.count_nonzero(data_test_reg['Predictions'] == positive_class))
 

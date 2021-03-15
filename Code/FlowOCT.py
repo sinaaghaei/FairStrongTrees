@@ -150,6 +150,10 @@ class FlowOCT:
         for n in self.tree.Leaves:
             self.model.addConstrs(quicksum(self.zeta[i, n, k] for k in self.labels) == self.z[i, n] for i in self.datapoints)
 
+        # Constraint 9f
+        # z[i,1] = 1 for all i datapoints
+        self.model.addConstrs(self.z[i, 1] == 1 for i in self.datapoints)
+
         # Constraint Statistical Parity
 
         # if self.fairness_type == "SP":
