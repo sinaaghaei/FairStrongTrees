@@ -5,10 +5,10 @@ datasets = ["monk1.csv", 'monk1_enc.csv', 'monk2_enc.csv', 'monk3_enc.csv', 'car
             'balance-scale_enc.csv', 'kr-vs-kp_enc.csv', 'house-votes-84_enc.csv', 'tic-tac-toe_enc.csv',
             'breast-cancer_enc.csv', 'hayes-roth_enc.csv', 'spect_enc.csv', 'soybean-small_enc.csv',
             'compas.csv', 'compas_enc.csv','compas__short.csv','compas__short_enc.csv', 'compas_trial.csv',
-            'compas_trial_enc.csv','compas_trial2.csv','compas_trial_enc.csv']
+            'compas_trial_enc.csv','compas_trial2.csv','compas_trial2_enc.csv','compas_trial3.csv','compas_trial3_enc.csv']
 samples = [1, 2, 3, 4, 5]
 
-FlowOCTReplication.main(["-r", 'compas_trial.csv', "-f", 'compas_trial_enc.csv', "-d", 2, "-t", 60, "-l", 0, "-i", 2, "-c", 1, "-a", 'None', "-b", 0.2, "-e", 'race_factor', "-g", 2])
+FlowOCTReplication.main(["-r", 'compas_trial3.csv', "-f", 'compas_trial3_enc.csv', "-d", 2, "-t", 60, "-l", 0, "-i", 2, "-c", 1, "-a", 'None', "-b", 0.2, "-e", 'race_factor', "-g", 2])
 
 
 # for s in samples:
