@@ -114,8 +114,8 @@ def main(argv):
         data_train_enc = data_train_calibration_enc
         data_train_reg = data_train_calibration_reg
 
-    #data_train_enc = data_enc
-    #data_train_reg = data_reg
+    # data_train_enc = data_enc
+    # data_train_reg = data_reg
     train_len = len(data_train_enc.index)
 
     ##########################################################
