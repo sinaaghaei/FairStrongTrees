@@ -195,7 +195,7 @@ def main(argv):
             yhat_calib.append(get_predicted_value(primal, data_calibration_enc, b_value, beta_value, p_value, i))
 
 
-        # pd.set_option('mode.chained_assignment', None)
+        pd.set_option('mode.chained_assignment', None)
         #
         # data_train_reg.loc[:,'Predictions'] = pd.Series(yhat_train)
         # data_test_reg.loc[:,'Predictions'] = pd.Series(yhat_test)
@@ -262,6 +262,108 @@ def main(argv):
         print(str(max_sp_calib_data_protection) + " & " + str(max_sp_calib_data_protection_prime) + " has calibration data SP: " + str(max_sp_calib_data))
         print(str(max_sp_calib_pred_protection) + " & " + str(max_sp_calib_pred_protection_prime) + " has calibration pred SP: " + str(max_sp_calib_pred))
 
+    if fairness_type == "CSP":
+
+        # Define variables for maximum statistical parity for each dataset
+        max_csp_train_data = 0
+        max_csp_train_pred = 0
+        max_csp_test_data = 0
+        max_csp_test_pred = 0
+        max_csp_calib_data = 0
+        max_csp_calib_pred = 0
+
+        # Let's pass in the predicted values for data's predicted values
+        yhat_train = []
+        yhat_test = []
+        yhat_calib = []
+        for i in data_train_reg.index:
+            yhat_train.append(get_predicted_value(primal, data_train_enc, b_value, beta_value, p_value, i))
+        for i in data_test_reg.index:
+            yhat_test.append(get_predicted_value(primal, data_test_enc, b_value, beta_value, p_value, i))
+        for i in data_calibration_reg.index:
+            yhat_calib.append(get_predicted_value(primal, data_calibration_enc, b_value, beta_value, p_value, i))
+
+
+        pd.set_option('mode.chained_assignment', None)
+        #
+        # data_train_reg.loc[:,'Predictions'] = pd.Series(yhat_train)
+        # data_test_reg.loc[:,'Predictions'] = pd.Series(yhat_test)
+        # data_calibration_reg.loc[:,'Predictions'] = pd.Series(yhat_calib)
+        data_train_reg['Predictions'] = yhat_train
+        data_test_reg['Predictions'] = yhat_test
+        data_calibration_reg['Predictions'] = yhat_calib
+
+
+        print("Data")
+        print(data_train_reg)
+
+        # Let's get the features of data_enc
+        features = data_reg.columns[data_reg.columns != label]
+
+        # Loop through all possible combinations of the protected feature
+        for combos in combinations(data_reg[protected_feature].unique(), 2):
+            protection = combos[0]
+            protection_prime = combos[1]
+            for feature in features:
+                    for feature_value in data_reg[feature].unique():
+
+                        csp_train_data = get_csp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, feature, feature_value, positive_class, 'Data')
+                        if csp_train_data >= max_csp_train_data:
+                            max_csp_train_data = csp_train_data
+                            max_csp_train_data_protection = protection
+                            max_csp_train_data_protection_prime = protection_prime
+                            max_csp_train_data_feature = feature
+                            max_csp_train_data_feature_value = feature_value
+
+                        csp_train_pred = get_csp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, feature, feature_value, 'Predictions')
+                        if csp_train_pred >= max_csp_train_pred:
+                            max_csp_train_pred = csp_train_pred
+                            max_csp_train_pred_protection = protection
+                            max_csp_train_pred_protection_prime = protection_prime
+                            max_csp_train_pred_feature = feature
+                            max_csp_train_pred_feature_value = feature_value
+
+                        csp_test_data = get_csp(primal, data_test_enc, data_test_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, feature, feature_value, 'Data')
+                        if csp_test_data >= max_csp_test_data:
+                            max_csp_test_data = csp_test_data
+                            max_csp_test_data_protection = protection
+                            max_csp_test_data_protection_prime = protection_prime
+                            max_csp_test_data_feature = feature
+                            max_csp_test_data_feature_value = feature_value
+
+                        csp_test_pred = get_csp(primal, data_test_enc, data_test_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, feature, feature_value, 'Predictions')
+                        if csp_test_pred >= max_csp_test_pred:
+                            max_csp_test_pred = csp_test_pred
+                            max_csp_test_pred_protection = protection
+                            max_csp_test_pred_protection_prime = protection_prime
+                            max_csp_test_pred_feature = feature
+                            max_csp_test_pred_feature_value = feature_value
+
+                        csp_calib_data = get_csp(primal, data_calibration_enc, data_calibration_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, feature, feature_value, 'Data')
+                        if csp_calib_data >= max_csp_calib_data:
+                           max_csp_calib_data = csp_calib_data
+                           max_csp_calib_data_protection = protection
+                           max_csp_calib_data_protection_prime = protection_prime
+                           max_csp_calib_data_feature = feature
+                           max_csp_calib_data_feature_value = feature_value
+
+                        csp_calib_pred = get_csp(primal, data_calibration_enc, data_calibration_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, feature, feature_value, 'Predictions')
+                        if csp_calib_pred >= max_csp_calib_pred:
+                           max_csp_calib_pred = csp_calib_pred
+                           max_csp_calib_pred_protection = protection
+                           max_csp_calib_pred_protection_prime = protection_prime
+                           max_csp_calib_pred_feature = feature
+                           max_csp_calib_pred_feature_value = feature_value
+
+        print(str(max_csp_train_data_protection) + " & " + str(max_csp_train_data_protection_prime) + " with feature and feature value: " + str(max_csp_train_data_feature) + "&" + str(max_csp_train_data_feature_value) + " has train data SP: " + str(max_csp_train_data))
+        print(str(max_csp_train_pred_protection) + " & " + str(max_csp_train_pred_protection_prime) + " with feature and feature value: " + str(max_csp_train_pred_feature) + "&" + str(max_csp_train_pred_feature_value) + " has train data SP: " + str(max_csp_train_pred))
+        print(str(max_csp_test_data_protection) + " & " + str(max_csp_test_data_protection_prime) + " with feature and feature value: " + str(max_csp_test_data_feature) + "&" + str(max_csp_test_data_feature_value) + " has train data SP: " + str(max_csp_test_data))
+        print(str(max_csp_test_pred_protection) + " & " + str(max_csp_test_pred_protection_prime) + " with feature and feature value: " + str(max_csp_test_pred_feature) + "&" + str(max_csp_test_pred_feature_value) + " has train data SP: " + str(max_csp_test_pred))
+        print(str(max_csp_calib_data_protection) + " & " + str(max_csp_calib_data_protection_prime) + " with feature and feature value: " + str(max_csp_calib_data_feature) + "&" + str(max_csp_calib_data_feature_value) + " has train data SP: " + str(max_csp_calib_data))
+        print(str(max_csp_calib_pred_protection) + " & " + str(max_csp_calib_pred_protection_prime) + " with feature and feature value: " + str(max_csp_calib_pred_feature) + "&" + str(max_csp_calib_pred_feature_value) + " has train data SP: " + str(max_csp_calib_pred))
+
+
+
     ##########################################################
     # writing info to the file
     ##########################################################
@@ -271,11 +373,20 @@ def main(argv):
     with open(out_put_path + result_file, mode='a') as results:
         results_writer = csv.writer(results, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
 
-        results_writer.writerow(
-            [approach_name, input_file_enc, fairness_type, fairness_bound, train_len, depth, _lambda, time_limit,
-             primal.model.getAttr("Status"), primal.model.getAttr("ObjVal"), train_acc,
-             primal.model.getAttr("MIPGap") * 100, primal.model.getAttr("NodeCount"), solving_time,
-             test_acc, calibration_acc, input_sample, max_sp_train_data, max_sp_train_pred,max_sp_test_data,max_sp_test_pred,max_sp_calib_data,max_sp_calib_pred])
+        if fairness_type != "CSP":
+            results_writer.writerow(
+                [approach_name, input_file_enc, fairness_type, fairness_bound, train_len, depth, _lambda, time_limit,
+                 primal.model.getAttr("Status"), primal.model.getAttr("ObjVal"), train_acc,
+                 primal.model.getAttr("MIPGap") * 100, primal.model.getAttr("NodeCount"), solving_time,
+                 test_acc, calibration_acc, input_sample, max_sp_train_data, max_sp_train_pred,max_sp_test_data,max_sp_test_pred,max_sp_calib_data,max_sp_calib_pred])
+        else:
+            results_writer.writerow(
+                [approach_name, input_file_enc, fairness_type, fairness_bound, train_len, depth, _lambda, time_limit,
+                 primal.model.getAttr("Status"), primal.model.getAttr("ObjVal"), train_acc,
+                 primal.model.getAttr("MIPGap") * 100, primal.model.getAttr("NodeCount"), solving_time,
+                 test_acc, calibration_acc, input_sample,
+                 max_csp_train_data, max_csp_train_pred,max_csp_test_data,max_csp_test_pred,max_csp_calib_data,max_csp_calib_pred])
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])

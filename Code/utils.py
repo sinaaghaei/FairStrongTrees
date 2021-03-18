@@ -109,25 +109,24 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
         '''
     # If source == "Predictions", then we will use prediction values
     # If source == "Data", then we will use data values
-
-    # Get the protected feature for the Gurobi model
     protected_feature = grb_model.protected_feature
 
+    # The label here will then be the true label of the data
+    label = grb_model.label
+
+    # For our purposes, we only want to look at values of protected group and non-protected group hence
+    # we are creating 2 new df's with only the groups of interest
+    df_protected = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
+    df_protected_prime = local_data_reg[local_data_reg[protected_feature] == protectedGroup_prime]
+
     # Create dataframe for the protected group only, then count how many rows exist
-    countProtected = np.count_nonzero(local_data_reg[protected_feature] == protectedGroup)
+    countProtected = df_protected.count()[label]
     # Create dataframe for the protected group prime only, then count how many rows exist
-    countProtected_prime = np.count_nonzero(local_data_reg[protected_feature] == protectedGroup_prime)
+    countProtected_prime = df_protected_prime.count()[label]
 
     # Looking at the statistical parity for the true label between groups
     # Akin to looking at data bias
     if source == "Data":
-        # The label here will then be the true label of the data
-        label = grb_model.label
-
-        # For our purposes, we only want to look at values of protected group and non-protected group hence
-        # we are creating 2 new df's with only the groups of interest
-        df_protected = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
-        df_protected_prime = local_data_reg[local_data_reg[protected_feature] == protectedGroup_prime]
 
         # Let's count number of positive values from protected group, then divide by the total to get the SP for
         # both groups
@@ -145,15 +144,85 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
     # Akin to measuring our model's bias
     elif source == "Predictions":
 
-        # Let's take a look at the protected group and non-protected group here, so we can create two new df's
-        df_protected_predictions = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
-        df_protected_prime_predictions = local_data_reg[local_data_reg[protected_feature] == protectedGroup_prime]
+        # Define statistical parity for both groups
+        if countProtected != 0 and countProtected_prime != 0:
+            sp_protected_predictions = (1 / countProtected) * df_protected[df_protected['Predictions'] == positive_class].count()[label]
+            sp_protected_prime_predictions = (1 / countProtected_prime) * df_protected_prime[df_protected_prime['Predictions'] == positive_class].count()[label]
+        else:
+            sp_protected_predictions = 0
+            sp_protected_prime_predictions = 0
+        # Return sp between both groups
 
+        return abs(sp_protected_predictions - sp_protected_prime_predictions)
+
+    # If no source is given, then we will return an error
+    else:
+        print('No valid source passed')
+
+def get_csp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup, protectedGroup_prime, positive_class, feature, feature_value, source):
+    '''
+        This function returns the statistical parity for a given combination of the protected feature
+        :param grb_model: The gurobi model we solved
+        :param local_data: The dataset we want to compute accuracy for
+        :param b: The value of decision variable b
+        :param beta: The value of decision variable beta
+        :param p: The value of decision variable p
+        :param protectedGroup: Protected Group
+        :param protectedGroup_prime: Another Protected Group to be compared against Protected Group
+        :param source: Statistical parity for given data label or predicted label
+        :param feature_value: Condition on this feature_value for conditional statistical parity
+        :return: The predicted value for datapoint i in dataset local_data
+        '''
+    # If source == "Predictions", then we will use prediction values
+    # If source == "Data", then we will use data values
+    protected_feature = grb_model.protected_feature
+
+    # The label here will then be the true label of the data
+    label = grb_model.label
+
+    # Let's create our dataframes for CSP
+    df_protected_old = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
+    try: 
+        df_protected = df_protected_old[df_protected_old[feature] == feature_value]
+    except KeyError:
+        return 0 
+    
+    df_protected_prime_old = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
+    
+    try:
+        df_protected_prime = df_protected_old[df_protected_old[feature] == feature_value]
+    except KeyError:
+        return 0
+
+    # Create dataframe for the protected group only, then count how many rows exist
+    countProtected = df_protected.count()[label]
+    # Create dataframe for the protected group prime only, then count how many rows exist
+    countProtected_prime = df_protected_prime.count()[label]
+
+    # Looking at the statistical parity for the true label between groups
+    # Akin to looking at data bias
+    if source == "Data":
+
+        # Let's count number of positive values from protected group, then divide by the total to get the SP for
+        # both groups
+        if countProtected != 0 and countProtected_prime != 0:
+            sp_protected = (1/countProtected) * df_protected[df_protected[label] == positive_class].count()[label]
+            sp_protected_prime = (1/countProtected_prime) * df_protected_prime[df_protected_prime[label] == positive_class].count()[label]
+        else:
+            sp_protected = 0
+            sp_protected_prime = 0
+
+        # Return SP between two groups
+        return abs(sp_protected - sp_protected_prime)
+
+    # Looking at the statistcal parity between the two groups relative to predicted values
+    # Akin to measuring our model's bias
+    elif source == "Predictions":
 
         # Define statistical parity for both groups
         if countProtected != 0 and countProtected_prime != 0:
-            sp_protected_predictions = (1 / countProtected) * np.count_nonzero(df_protected_predictions['Predictions'] == positive_class)
-            sp_protected_prime_predictions = (1 / countProtected_prime) * np.count_nonzero(df_protected_prime_predictions['Predictions'] == positive_class)
+            sp_protected_predictions = (1 / countProtected) * df_protected[df_protected['Predictions'] == positive_class].count()[label]
+            sp_protected_prime_predictions = (1 / countProtected_prime) * df_protected_prime[df_protected_prime['Predictions'] == positive_class].count()[label]
         else:
             sp_protected_predictions = 0
             sp_protected_prime_predictions = 0
