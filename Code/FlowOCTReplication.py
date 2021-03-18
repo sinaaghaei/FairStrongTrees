@@ -114,10 +114,12 @@ def main(argv):
         data_train_enc = data_train_calibration_enc
         data_train_reg = data_train_calibration_reg
 
+    # data_train_enc = data_enc.iloc[:50,:]
+    # data_train_reg = data_reg.iloc[:50,:]
     # data_train_enc = data_enc
     # data_train_reg = data_reg
-    train_len = len(data_train_enc.index)
 
+    train_len = len(data_train_enc.index)
     ##########################################################
     # Creating and Solving the problem
     ##########################################################
@@ -136,7 +138,6 @@ def main(argv):
     b_value = primal.model.getAttr("X", primal.b)
     beta_value = primal.model.getAttr("X", primal.beta)
     p_value = primal.model.getAttr("X", primal.p)
-    print(primal.model.getAttr("X",primal.zeta))
 
     print("\n\n")
     print_tree(primal,b_value, beta_value, p_value)
@@ -183,7 +184,6 @@ def main(argv):
         max_sp_calib_pred = 0
 
         # Let's pass in the predicted values for data's predicted values
-
         yhat_train = []
         yhat_test = []
         yhat_calib = []
@@ -194,25 +194,19 @@ def main(argv):
         for i in data_calibration_reg.index:
             yhat_calib.append(get_predicted_value(primal, data_calibration_enc, b_value, beta_value, p_value, i))
 
-        print("Number of different races")
-        print(data_test_reg[protected_feature].unique())
 
+        # pd.set_option('mode.chained_assignment', None)
+        #
+        # data_train_reg.loc[:,'Predictions'] = pd.Series(yhat_train)
+        # data_test_reg.loc[:,'Predictions'] = pd.Series(yhat_test)
+        # data_calibration_reg.loc[:,'Predictions'] = pd.Series(yhat_calib)
+        data_train_reg['Predictions'] = yhat_train
+        data_test_reg['Predictions'] = yhat_test
+        data_calibration_reg['Predictions'] = yhat_calib
 
-        pd.set_option('mode.chained_assignment', None)
-
-        data_train_reg.loc[:,'Predictions'] = pd.Series(yhat_train)
-        data_test_reg.loc[:,'Predictions'] = pd.Series(yhat_test)
-        data_calibration_reg.loc[:,'Predictions'] = pd.Series(yhat_calib)
 
         print("Data")
         print(data_train_reg)
-        print(data_train_enc)
-
-        print("Data Length")
-        print(len(data_reg.index))
-
-        print(np.count_nonzero(data_test_reg['Predictions'] == positive_class))
-
         # Loop through all possible combinations of the protected feature
         for combos in combinations(data_reg[protected_feature].unique(), 2):
             protection = combos[0]
@@ -267,10 +261,6 @@ def main(argv):
         print(str(max_sp_test_pred_protection) + " & " + str(max_sp_test_pred_protection_prime) + " has test pred SP: " + str(max_sp_test_pred))
         print(str(max_sp_calib_data_protection) + " & " + str(max_sp_calib_data_protection_prime) + " has calibration data SP: " + str(max_sp_calib_data))
         print(str(max_sp_calib_pred_protection) + " & " + str(max_sp_calib_pred_protection_prime) + " has calibration pred SP: " + str(max_sp_calib_pred))
-
-        for combo in combinations(data_train_reg[protected_feature].unique(),2):
-            print(str(combo[0]) + "&" + str(combo[1]))
-            print(get_sp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, combo[0], combo[1], positive_class, 'Predictions'))
 
     ##########################################################
     # writing info to the file
