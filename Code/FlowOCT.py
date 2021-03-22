@@ -8,7 +8,7 @@ from itertools import combinations
 
 
 class FlowOCT:
-    def __init__(self, data_enc, data_reg, label, tree, _lambda, time_limit, fairness_type, fairness_bound, protected_feature, positive_class):
+    def __init__(self, data_enc, data_reg, label, tree, _lambda, time_limit, fairness_type, fairness_bound, protected_feature, positive_class, conditional_feature):
         '''
 
         :param data_enc: The encoded training data
@@ -33,6 +33,7 @@ class FlowOCT:
         self.fairness_bound = fairness_bound
         self.protected_feature = protected_feature
         self.positive_class = positive_class
+        self.conditional_feature = conditional_feature
 
         '''
         cat_features is the set of all categorical features.
@@ -153,6 +154,7 @@ class FlowOCT:
         # Constraint 9f
         # z[i,1] = 1 for all i datapoints
         self.model.addConstrs(self.z[i, 1] == 1 for i in self.datapoints)
+        
 
         # Constraint Statistical Parity
 
@@ -217,37 +219,36 @@ class FlowOCT:
 
             # Loop through all possible combinations of the protected feature
             for combo in combinations(self.data_reg[self.protected_feature].unique(), 2):
-                for feature in self.data_reg.columns[self.data_reg.columns != self.label]:
-                    for feature_value in self.data_reg[feature].unique():
+                for feature_value in self.data_reg[self.conditional_feature].unique():
 
-                        protected = combo[0]
-                        protected_prime = combo[1]
+                    protected = combo[0]
+                    protected_prime = combo[1]
 
-                        # Let's make our dataframe
-                        protected_df_old = self.data_reg[self.data_reg[self.protected_feature] == protected]
-                        protected_prime_df_old = self.data_reg[self.data_reg[self.protected_feature] == protected_prime]
-                        protected_df = protected_df_old[protected_df_old[feature] == feature_value]
-                        protected_prime_df = protected_prime_df_old[protected_prime_df_old[feature] == feature_value]
+                    # Let's make our dataframe
+                    protected_df_old = self.data_reg[self.data_reg[self.protected_feature] == protected]
+                    protected_prime_df_old = self.data_reg[self.data_reg[self.protected_feature] == protected_prime]
+                    protected_df = protected_df_old[protected_df_old[self.conditional_feature] == feature_value]
+                    protected_prime_df = protected_prime_df_old[protected_prime_df_old[self.conditional_feature] == feature_value]
 
-                        # Count how many samples correspond to each protected feature
-                        countProtected = protected_df.count()[self.label]
-                        countProtected_prime = protected_prime_df.count()[self.label]
+                    # Count how many samples correspond to each protected feature
+                    countProtected = protected_df.count()[self.label]
+                    countProtected_prime = protected_prime_df.count()[self.label]
 
-                        if countProtected != 0 and countProtected_prime != 0:
-                            # Sum(Sum(zeta(i,n,positive_class) for n in nodes) for i in datapoints) * 1 / (Count of Protected)
-                            self.model.addConstr(((1/countProtected) * quicksum(quicksum(self.zeta[i,n, self.positive_class] for n in
-                                                                                     self.tree.Leaves + self.tree.Nodes)
-                                                                            for i in protected_df.index) -
-                                                  ((1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
-                                                                                     self.tree.Leaves + self.tree.Nodes)
-                                                                            for i in protected_prime_df.index))) <= self.fairness_bound)
+                    if countProtected != 0 and countProtected_prime != 0:
+                        # Sum(Sum(zeta(i,n,positive_class) for n in nodes) for i in datapoints) * 1 / (Count of Protected)
+                        self.model.addConstr(((1/countProtected) * quicksum(quicksum(self.zeta[i,n, self.positive_class] for n in
+                                                                                 self.tree.Leaves + self.tree.Nodes)
+                                                                        for i in protected_df.index) -
+                                              ((1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
+                                                                                 self.tree.Leaves + self.tree.Nodes)
+                                                                        for i in protected_prime_df.index))) <= self.fairness_bound)
 
-                            self.model.addConstr(((1/countProtected) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
-                                                                                     (self.tree.Leaves + self.tree.Nodes))
-                                                                            for i in protected_df.index)) - (
-                                                  (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
-                                                                                     self.tree.Leaves + self.tree.Nodes)
-                                                                            for i in protected_prime_df.index)) >= -1*self.fairness_bound)
+                        self.model.addConstr(((1/countProtected) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
+                                                                                 (self.tree.Leaves + self.tree.Nodes))
+                                                                        for i in protected_df.index)) - (
+                                              (1/countProtected_prime) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
+                                                                                 self.tree.Leaves + self.tree.Nodes)
+                                                                        for i in protected_prime_df.index)) >= -1*self.fairness_bound)
 
 
 
