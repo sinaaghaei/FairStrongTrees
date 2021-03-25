@@ -5,12 +5,12 @@ path = '/Users/sina/Documents/GitHub/FairStrongTrees/'
 approach_name = 'FairOCT' #
 samples = [1,2,3,4,5]
 depths = [1, 2]
-time_limit = 3600
+time_limit = 7200
 datasets = ['compas']
 protected_feature = ['race_factor']
 condition_feature = ['gender_factor']
 bounds = [0.01, 0.05, 0.1 , 0.2, 0.3]
-fairness_type = ["SP","None"]
+fairness_type = ["SP", "None"]
 
 
 def put_qmark(s):
@@ -42,8 +42,8 @@ def generate():
                                             sample_list.append(s)
                                             fairness_type_list.append(f)
                                             bounds_list.append(0)
-                                            protected_feature_list.append('None')
-                                            condition_feature_list.append('None')
+                                            protected_feature_list.append(protected_feature[dset_index])
+                                            condition_feature_list.append(condition_feature[dset_index])
                                 else:
                                     for bound in bounds:
                                             dataset_enc_list.append(dset + '_enc' + '.csv')
@@ -60,18 +60,17 @@ def generate():
         S+="#SBATCH --ntasks=1\n"
         S+="#SBATCH --cpus-per-task=4\n"
         S+="#SBATCH --mem-per-cpu=4GB\n"
-        S+="#SBATCH --time=02:00:00\n"
+        S+="#SBATCH --time=03:00:00\n"
         S+="#SBATCH --export=NONE\n"
         S+="#SBATCH --constraint=\"xeon-2640v4\"\n"
-        S+="#SBATCH --array=0-149\n"
-        S+="\n"
-        S+="cd "+dir+"\n"
+        S+="#SBATCH --array=0-59\n"
         S+="\n"
         S+="\n"
         S+="module load gcc\n"
         S+="module load gurobi\n"
         S+="module load python\n"
         S+="\n"
+        S+="export PYTHONPATH=/project/vayanou_651/python/pkgs:${PYTHONPATH}"+"\n"
         S+="\n"
 
         S+="dataset_enc_list=" + put_qmark(" ".join(str(item) for item in dataset_enc_list) + "\n")
@@ -101,7 +100,7 @@ def generate():
 
         S+="\n"
         S+="\n"
-        command = 'python main.py ' + '-r ' +'${dataset_reg_list[$SLURM_ARRAY_TASK_ID]}' + ' -f ' +'${dataset_enc_list[$SLURM_ARRAY_TASK_ID]}' + " -d " + '${depth_list[$SLURM_ARRAY_TASK_ID]}' + " -t " + str(time_limit) + " -l " + str(0)+ " -i " + '${sample_list[$SLURM_ARRAY_TASK_ID]}'+ " -c " + str(1) + " -a " + '${fairness_type_list[$SLURM_ARRAY_TASK_ID]}'+ " -b " + '${bounds_list[$SLURM_ARRAY_TASK_ID]}'+" -e " + '${protected_feature_list[$SLURM_ARRAY_TASK_ID]}'+" -g " + str(2) + " -h " + '${condition_feature_list[$SLURM_ARRAY_TASK_ID]}'
+        command = 'python FlowOCTReplication.py ' + '-r ' +'${dataset_reg_list[$SLURM_ARRAY_TASK_ID]}' + ' -f ' +'${dataset_enc_list[$SLURM_ARRAY_TASK_ID]}' + " -d " + '${depth_list[$SLURM_ARRAY_TASK_ID]}' + " -t " + str(time_limit) + " -l " + str(0)+ " -i " + '${sample_list[$SLURM_ARRAY_TASK_ID]}'+ " -c " + str(1) + " -a " + '${fairness_type_list[$SLURM_ARRAY_TASK_ID]}'+ " -b " + '${bounds_list[$SLURM_ARRAY_TASK_ID]}'+" -e " + '${protected_feature_list[$SLURM_ARRAY_TASK_ID]}'+" -g " + str(2) + " -h " + '${condition_feature_list[$SLURM_ARRAY_TASK_ID]}'
         S+=command
         S+="\n"
 
