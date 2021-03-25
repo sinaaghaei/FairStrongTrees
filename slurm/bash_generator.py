@@ -10,7 +10,7 @@ datasets = ['compas']
 protected_feature = ['race_factor']
 condition_feature = ['gender_factor']
 bounds = [0.01, 0.05, 0.1 , 0.2, 0.3]
-fairness_type = ["None"]#"SP"
+fairness_type = ["SP", "None"]
 
 
 def put_qmark(s):
@@ -63,15 +63,14 @@ def generate():
         S+="#SBATCH --time=03:00:00\n"
         S+="#SBATCH --export=NONE\n"
         S+="#SBATCH --constraint=\"xeon-2640v4\"\n"
-        S+="#SBATCH --array=0-9\n"
-        S+="\n"
-        S+="export PYTHONPATH=/project/vayanou_651/python/pkgs:${PYTHONPATH}"+"\n"
+        S+="#SBATCH --array=0-59\n"
         S+="\n"
         S+="\n"
         S+="module load gcc\n"
         S+="module load gurobi\n"
         S+="module load python\n"
         S+="\n"
+        S+="export PYTHONPATH=/project/vayanou_651/python/pkgs:${PYTHONPATH}"+"\n"
         S+="\n"
 
         S+="dataset_enc_list=" + put_qmark(" ".join(str(item) for item in dataset_enc_list) + "\n")
@@ -101,7 +100,7 @@ def generate():
 
         S+="\n"
         S+="\n"
-        command = 'python main.py ' + '-r ' +'${dataset_reg_list[$SLURM_ARRAY_TASK_ID]}' + ' -f ' +'${dataset_enc_list[$SLURM_ARRAY_TASK_ID]}' + " -d " + '${depth_list[$SLURM_ARRAY_TASK_ID]}' + " -t " + str(time_limit) + " -l " + str(0)+ " -i " + '${sample_list[$SLURM_ARRAY_TASK_ID]}'+ " -c " + str(1) + " -a " + '${fairness_type_list[$SLURM_ARRAY_TASK_ID]}'+ " -b " + '${bounds_list[$SLURM_ARRAY_TASK_ID]}'+" -e " + '${protected_feature_list[$SLURM_ARRAY_TASK_ID]}'+" -g " + str(2) + " -h " + '${condition_feature_list[$SLURM_ARRAY_TASK_ID]}'
+        command = 'python FlowOCTReplication.py ' + '-r ' +'${dataset_reg_list[$SLURM_ARRAY_TASK_ID]}' + ' -f ' +'${dataset_enc_list[$SLURM_ARRAY_TASK_ID]}' + " -d " + '${depth_list[$SLURM_ARRAY_TASK_ID]}' + " -t " + str(time_limit) + " -l " + str(0)+ " -i " + '${sample_list[$SLURM_ARRAY_TASK_ID]}'+ " -c " + str(1) + " -a " + '${fairness_type_list[$SLURM_ARRAY_TASK_ID]}'+ " -b " + '${bounds_list[$SLURM_ARRAY_TASK_ID]}'+" -e " + '${protected_feature_list[$SLURM_ARRAY_TASK_ID]}'+" -g " + str(2) + " -h " + '${condition_feature_list[$SLURM_ARRAY_TASK_ID]}'
         S+=command
         S+="\n"
 

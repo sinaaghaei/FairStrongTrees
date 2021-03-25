@@ -7,13 +7,12 @@
 #SBATCH --constraint="xeon-2640v4"
 #SBATCH --array=0-9
 
-export PYTHONPATH=/project/vayanou_651/python/pkgs:${PYTHONPATH}
-
 
 module load gcc
 module load gurobi
 module load python
 
+export PYTHONPATH=/project/vayanou_651/python/pkgs:${PYTHONPATH}
 
 dataset_enc_list="compas_enc.csv compas_enc.csv compas_enc.csv compas_enc.csv compas_enc.csv compas_enc.csv compas_enc.csv compas_enc.csv compas_enc.csv compas_enc.csv
 "
@@ -41,4 +40,4 @@ protected_feature_list=($protected_feature_list)
 condition_feature_list=($condition_feature_list)
 
 
-python main.py -r ${dataset_reg_list[$SLURM_ARRAY_TASK_ID]} -f ${dataset_enc_list[$SLURM_ARRAY_TASK_ID]} -d ${depth_list[$SLURM_ARRAY_TASK_ID]} -t 7200 -l 0 -i ${sample_list[$SLURM_ARRAY_TASK_ID]} -c 1 -a ${fairness_type_list[$SLURM_ARRAY_TASK_ID]} -b ${bounds_list[$SLURM_ARRAY_TASK_ID]} -e ${protected_feature_list[$SLURM_ARRAY_TASK_ID]} -g 2 -h ${condition_feature_list[$SLURM_ARRAY_TASK_ID]}
+python FlowOCTReplication.py -r ${dataset_reg_list[$SLURM_ARRAY_TASK_ID]} -f ${dataset_enc_list[$SLURM_ARRAY_TASK_ID]} -d ${depth_list[$SLURM_ARRAY_TASK_ID]} -t 7200 -l 0 -i ${sample_list[$SLURM_ARRAY_TASK_ID]} -c 1 -a ${fairness_type_list[$SLURM_ARRAY_TASK_ID]} -b ${bounds_list[$SLURM_ARRAY_TASK_ID]} -e ${protected_feature_list[$SLURM_ARRAY_TASK_ID]} -g 2 -h ${condition_feature_list[$SLURM_ARRAY_TASK_ID]}
