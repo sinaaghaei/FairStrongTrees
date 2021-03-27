@@ -301,16 +301,13 @@ def main(argv):
         print("Data")
         print(data_train_reg)
 
-        # Let's get the features of data_enc
-        features = data_reg.columns[data_reg.columns != label]
-
         # Loop through all possible combinations of the protected feature
         for combos in combinations(data_reg[protected_feature].unique(), 2):
             protection = combos[0]
             protection_prime = combos[1]
             for feature_value in data_reg[conditional_feature].unique():
 
-                csp_train_data = get_csp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, conditional_feature, feature_value, positive_class, 'Data')
+                csp_train_data = get_csp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, conditional_feature, feature_value, 'Data')
                 if csp_train_data >= max_csp_train_data:
                     max_csp_train_data = csp_train_data
                     max_csp_train_data_protection = protection
@@ -358,12 +355,12 @@ def main(argv):
                    max_csp_calib_pred_feature = conditional_feature
                    max_csp_calib_pred_feature_value = feature_value
 
-        print(str(max_csp_train_data_protection) + " & " + str(max_csp_train_data_protection_prime) + " with feature and feature value: " + str(max_csp_train_data_feature) + "=" + str(max_csp_train_data_feature_value) + " has train data CSP: " + str(max_csp_train_data))
-        print(str(max_csp_train_pred_protection) + " & " + str(max_csp_train_pred_protection_prime) + " with feature and feature value: " + str(max_csp_train_pred_feature) + "=" + str(max_csp_train_pred_feature_value) + " has train data CSP: " + str(max_csp_train_pred))
-        print(str(max_csp_test_data_protection) + " & " + str(max_csp_test_data_protection_prime) + " with feature and feature value: " + str(max_csp_test_data_feature) + "=" + str(max_csp_test_data_feature_value) + " has train data CSP: " + str(max_csp_test_data))
-        print(str(max_csp_test_pred_protection) + " & " + str(max_csp_test_pred_protection_prime) + " with feature and feature value: " + str(max_csp_test_pred_feature) + "=" + str(max_csp_test_pred_feature_value) + " has train data CSP: " + str(max_csp_test_pred))
-        print(str(max_csp_calib_data_protection) + " & " + str(max_csp_calib_data_protection_prime) + " with feature and feature value: " + str(max_csp_calib_data_feature) + "=" + str(max_csp_calib_data_feature_value) + " has train data CSP: " + str(max_csp_calib_data))
-        print(str(max_csp_calib_pred_protection) + " & " + str(max_csp_calib_pred_protection_prime) + " with feature and feature value: " + str(max_csp_calib_pred_feature) + "=" + str(max_csp_calib_pred_feature_value) + " has train data CSP: " + str(max_csp_calib_pred))
+        print(str(max_csp_train_data_protection) + " & " + str(max_csp_train_data_protection_prime) + " with feature and feature value: " + str(max_csp_train_data_feature) + " = " + str(max_csp_train_data_feature_value) + " has train data CSP: " + str(max_csp_train_data))
+        print(str(max_csp_train_pred_protection) + " & " + str(max_csp_train_pred_protection_prime) + " with feature and feature value: " + str(max_csp_train_pred_feature) + " = " + str(max_csp_train_pred_feature_value) + " has train pred CSP: " + str(max_csp_train_pred))
+        print(str(max_csp_test_data_protection) + " & " + str(max_csp_test_data_protection_prime) + " with feature and feature value: " + str(max_csp_test_data_feature) + " = " + str(max_csp_test_data_feature_value) + " has test data CSP: " + str(max_csp_test_data))
+        print(str(max_csp_test_pred_protection) + " & " + str(max_csp_test_pred_protection_prime) + " with feature and feature value: " + str(max_csp_test_pred_feature) + " = " + str(max_csp_test_pred_feature_value) + " has test pred CSP: " + str(max_csp_test_pred))
+        print(str(max_csp_calib_data_protection) + " & " + str(max_csp_calib_data_protection_prime) + " with feature and feature value: " + str(max_csp_calib_data_feature) + " = " + str(max_csp_calib_data_feature_value) + " has calib data CSP: " + str(max_csp_calib_data))
+        print(str(max_csp_calib_pred_protection) + " & " + str(max_csp_calib_pred_protection_prime) + " with feature and feature value: " + str(max_csp_calib_pred_feature) + " = " + str(max_csp_calib_pred_feature_value) + " has calib pred CSP: " + str(max_csp_calib_pred))
 
 
 

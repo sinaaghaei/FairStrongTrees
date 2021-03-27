@@ -1,0 +1,158 @@
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 86854 rows, 65202 columns and 465248 nonzeros
+Model fingerprint: 0xfd824dc3
+Variable types: 14 continuous, 65188 integer (65188 binary)
+Coefficient statistics:
+  Matrix range     [7e-04, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [5e-01, 1e+00]
+Presolve removed 18604 rows and 18604 columns
+Presolve time: 2.13s
+Presolved: 68250 rows, 46598 columns, 381543 nonzeros
+Variable types: 14 continuous, 46584 integer (46578 binary)
+Found heuristic solution: objective -19995.00000
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   17769   -1.8489215e+04   1.077815e+05   0.000000e+00      5s
+   24629   -1.8611215e+04   4.729011e+04   0.000000e+00     10s
+   27869   -1.8611216e+04   5.067276e+03   0.000000e+00     15s
+   28161   -1.8611214e+04   0.000000e+00   0.000000e+00     16s
+   28161   -1.8611214e+04   0.000000e+00   0.000000e+00     16s
+
+Root relaxation: objective -1.861121e+04, 28161 iterations, 12.88 seconds
+Total elapsed time = 23.68s
+Total elapsed time = 31.94s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -18611.214    0 6209 -19995.000 -18611.214  6.92%     -   48s
+     0     0          -    0      -19995.000 -18611.214  6.92%     -   60s
+
+Cutting planes:
+  Gomory: 3
+  Zero half: 15
+
+Explored 1 nodes (78050 simplex iterations) in 60.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 1: -19995 
+
+Time limit reached
+Best objective -1.999500000000e+04, best bound -1.861200000000e+04, gap 6.9167%
+
+
+
+#########node  1
+priors_count.1
+#########node  2
+priors_count.1
+#########node  3
+priors_count.1
+#########node  4
+leaf 1
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 1
+
+
+Total Solving Time 63.820998191833496
+obj value -19995.0
+obj value -19995.0
+train acc 0.5520799742018704
+test acc 0.5456902138690862
+calibration acc 0.5674083769633508
+Data
+      priors_count  two_year_recid  gender_factor  age_factor  race_factor  crime_factor  target  Predictions
+4929             1               0              1           2            4             2       1            1
+2399             0               0              1           1            4             2       1            1
+5460             0               1              2           1            2             1       2            1
+2097             1               1              1           1            2             1       2            1
+2750             0               1              1           3            2             1       2            1
+...            ...             ...            ...         ...          ...           ...     ...          ...
+1744             8               1              1           1            4             1       2            1
+1047             1               1              1           3            1             1       2            1
+2269             6               0              1           1            2             1       2            1
+1096             0               0              1           2            3             2       1            1
+1872             3               1              2           1            2             1       1            1
+
+[3101 rows x 8 columns]
+528
+528
+261
+261
+261
+261
+264
+264
+264
+264
+117
+117
+67
+67
+67
+67
+56
+56
+56
+56
+528
+528
+261
+261
+261
+261
+264
+264
+264
+264
+117
+117
+67
+67
+67
+67
+56
+56
+56
+56
+1431
+1431
+701
+701
+701
+701
+711
+711
+711
+711
+341
+341
+178
+178
+178
+178
+170
+170
+170
+170
+1 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0
+1 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0.0
+1 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0.0
+1 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0.0
+1 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0.0
+1 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0.0

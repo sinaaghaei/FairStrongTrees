@@ -1,0 +1,569 @@
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 86854 rows, 65202 columns and 465248 nonzeros
+Model fingerprint: 0x0aec1dfa
+Variable types: 14 continuous, 65188 integer (65188 binary)
+Coefficient statistics:
+  Matrix range     [7e-04, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [2e-01, 1e+00]
+Presolve removed 18604 rows and 18604 columns
+Presolve time: 2.19s
+Presolved: 68250 rows, 46598 columns, 381543 nonzeros
+Variable types: 14 continuous, 46584 integer (46578 binary)
+Found heuristic solution: objective -19995.00000
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   17224   -1.8750844e+04   8.327386e+04   0.000000e+00      5s
+   20284   -1.8750844e+04   6.392416e+03   0.000000e+00     10s
+   22904   -1.8751556e+04   2.414985e+04   0.000000e+00     15s
+   25364   -1.8751556e+04   6.174766e+04   0.000000e+00     20s
+   27744   -1.8751556e+04   2.779828e+05   0.000000e+00     25s
+   30324   -1.8751556e+04   1.356182e+02   0.000000e+00     30s
+   30856   -1.8751555e+04   0.000000e+00   0.000000e+00     31s
+   30856   -1.8751555e+04   0.000000e+00   0.000000e+00     31s
+
+Root relaxation: objective -1.875155e+04, 30856 iterations, 28.18 seconds
+Total elapsed time = 46.40s
+Total elapsed time = 51.12s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -18751.555    0 6209 -19995.000 -18751.555  6.22%     -   60s
+
+Explored 0 nodes (85175 simplex iterations) in 60.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 1: -19995 
+
+Time limit reached
+Best objective -1.999500000000e+04, best bound -1.875200000000e+04, gap 6.2166%
+
+
+
+#########node  1
+priors_count.1
+#########node  2
+priors_count.1
+#########node  3
+priors_count.1
+#########node  4
+leaf 1
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 1
+
+
+Total Solving Time 63.83320903778076
+obj value -19995.0
+obj value -19995.0
+train acc 0.5520799742018704
+test acc 0.5456902138690862
+calibration acc 0.5674083769633508
+Data
+      priors_count  two_year_recid  gender_factor  age_factor  race_factor  crime_factor  target  Predictions
+4929             1               0              1           2            4             2       1            1
+2399             0               0              1           1            4             2       1            1
+5460             0               1              2           1            2             1       2            1
+2097             1               1              1           1            2             1       2            1
+2750             0               1              1           3            2             1       2            1
+...            ...             ...            ...         ...          ...           ...     ...          ...
+1744             8               1              1           1            4             1       2            1
+1047             1               1              1           3            1             1       2            1
+2269             6               0              1           1            2             1       2            1
+1096             0               0              1           2            3             2       1            1
+1872             3               1              2           1            2             1       1            1
+
+[3101 rows x 8 columns]
+1 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0
+1 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0.0
+2 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0.4626865671641791
+1 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0.0
+2 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0.5710916442048517
+1 & 3 with feature and feature value: gender_factor=2 has train data CSP: 0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 86842 rows, 65202 columns and 378420 nonzeros
+Model fingerprint: 0xc7b6847b
+Variable types: 14 continuous, 65188 integer (65188 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 18610 rows and 18610 columns
+Presolve time: 1.79s
+Presolved: 68232 rows, 46592 columns, 359806 nonzeros
+Variable types: 14 continuous, 46578 integer (46578 binary)
+Found heuristic solution: objective -19589.00000
+
+Root relaxation: objective -1.860600e+04, 15785 iterations, 2.32 seconds
+Total elapsed time = 7.89s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -18606.000    0 6209 -19589.000 -18606.000  5.02%     -   30s
+     0     0 -18606.000    0 13462 -19589.000 -18606.000  5.02%     -   60s
+
+Cutting planes:
+  Gomory: 2
+  Zero half: 5
+
+Explored 1 nodes (44686 simplex iterations) in 60.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 1: -19589 
+
+Time limit reached
+Best objective -1.958900000000e+04, best bound -1.860600000000e+04, gap 5.0181%
+
+
+
+#########node  1
+priors_count.1
+#########node  2
+priors_count.1
+#########node  3
+priors_count.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 1
+
+
+Total Solving Time 63.5879921913147
+obj value -19589.0
+obj value -19589.0
+train acc 0.6830054821025475
+test acc 0.6688269604666235
+calibration acc 0.68782722513089
+Data
+      priors_count  two_year_recid  gender_factor  age_factor  race_factor  crime_factor  target  Predictions
+4929             1               0              1           2            4             2       1            1
+2399             0               0              1           1            4             2       1            1
+5460             0               1              2           1            2             1       2            1
+2097             1               1              1           1            2             1       2            1
+2750             0               1              1           3            2             1       2            1
+...            ...             ...            ...         ...          ...           ...     ...          ...
+1744             8               1              1           1            4             1       2            2
+1047             1               1              1           3            1             1       2            1
+2269             6               0              1           1            2             1       2            2
+1096             0               0              1           2            3             2       1            1
+1872             3               1              2           1            2             1       1            1
+
+[3101 rows x 8 columns]
+1 & 2 with feature and feature value: gender_factor=2 has train data CSP: 0
+1 & 2 with feature and feature value: gender_factor=2 has train data CSP: 0
+1 & 2 with feature and feature value: gender_factor=2 has train data CSP: 0
+1 & 2 with feature and feature value: gender_factor=2 has train data CSP: 0
+1 & 2 with feature and feature value: gender_factor=2 has train data CSP: 0
+1 & 2 with feature and feature value: gender_factor=2 has train data CSP: 0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 86922 rows, 65202 columns and 585914 nonzeros
+Model fingerprint: 0x24237835
+Variable types: 14 continuous, 65188 integer (65188 binary)
+Coefficient statistics:
+  Matrix range     [1e-03, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [2e-01, 1e+00]
+Presolve removed 18594 rows and 18594 columns
+Presolve time: 2.67s
+Presolved: 68328 rows, 46608 columns, 381805 nonzeros
+Variable types: 14 continuous, 46594 integer (46578 binary)
+Found heuristic solution: objective -19995.00000
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   15640   -1.8625005e+04   4.311287e+03   0.000000e+00      5s
+   19210   -1.8653975e+04   1.201625e+05   0.000000e+00     10s
+   22150   -1.8674754e+04   7.775114e+03   0.000000e+00     15s
+   24560   -1.8674754e+04   4.781442e+03   0.000000e+00     20s
+   26880   -1.8674754e+04   9.835968e+04   0.000000e+00     25s
+   29520   -1.8679576e+04   5.169274e+04   0.000000e+00     30s
+   31920   -1.8679576e+04   2.148973e+03   0.000000e+00     35s
+   34310   -1.8679576e+04   2.833642e+03   0.000000e+00     40s
+   36870   -1.8698399e+04   4.842926e+03   0.000000e+00     45s
+   39760   -1.8698446e+04   7.888628e+01   0.000000e+00     50s
+   39959   -1.8698444e+04   0.000000e+00   0.000000e+00     50s
+   39959   -1.8698444e+04   0.000000e+00   0.000000e+00     51s
+
+Root relaxation: objective -1.869844e+04, 39959 iterations, 47.30 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -18698.444    0 9628 -19995.000 -18698.444  6.48%     -   60s
+
+Explored 0 nodes (62512 simplex iterations) in 60.04 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 1: -19995 
+
+Time limit reached
+Best objective -1.999500000000e+04, best bound -1.869900000000e+04, gap 6.4816%
+
+
+
+#########node  1
+priors_count.1
+#########node  2
+priors_count.1
+#########node  3
+priors_count.1
+#########node  4
+leaf 1
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 1
+
+
+Total Solving Time 64.05678200721741
+obj value -19995.0
+obj value -19995.0
+train acc 0.5520799742018704
+test acc 0.5456902138690862
+calibration acc 0.5674083769633508
+Data
+      priors_count  two_year_recid  gender_factor  age_factor  race_factor  crime_factor  target  Predictions
+4929             1               0              1           2            4             2       1            1
+2399             0               0              1           1            4             2       1            1
+5460             0               1              2           1            2             1       2            1
+2097             1               1              1           1            2             1       2            1
+2750             0               1              1           3            2             1       2            1
+...            ...             ...            ...         ...          ...           ...     ...          ...
+1744             8               1              1           1            4             1       2            1
+1047             1               1              1           3            1             1       2            1
+2269             6               0              1           1            2             1       2            1
+1096             0               0              1           2            3             2       1            1
+1872             3               1              2           1            2             1       1            1
+
+[3101 rows x 8 columns]
+3 & 5 with feature and feature value: age_factor=3 has train data CSP: 0
+3 & 5 with feature and feature value: age_factor=3 has train data CSP: 0
+2 & 5 with feature and feature value: age_factor=1 has train data CSP: 0.5865800865800865
+3 & 5 with feature and feature value: age_factor=3 has train data CSP: 0
+6 & 5 with feature and feature value: age_factor=3 has train data CSP: 0.6470588235294118
+3 & 5 with feature and feature value: age_factor=3 has train data CSP: 0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 86922 rows, 65202 columns and 585914 nonzeros
+Model fingerprint: 0x24237835
+Variable types: 14 continuous, 65188 integer (65188 binary)
+Coefficient statistics:
+  Matrix range     [1e-03, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [2e-01, 1e+00]
+Presolve removed 18594 rows and 18594 columns
+Presolve time: 3.35s
+Presolved: 68328 rows, 46608 columns, 381805 nonzeros
+Variable types: 14 continuous, 46594 integer (46578 binary)
+Found heuristic solution: objective -19995.00000
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   14400   -1.8595671e+04   9.320032e+03   0.000000e+00      5s
+   18550   -1.8653975e+04   9.508145e+03   0.000000e+00     10s
+   21620   -1.8674754e+04   1.540145e+04   0.000000e+00     15s
+   24300   -1.8674754e+04   1.960121e+04   0.000000e+00     20s
+   26790   -1.8674754e+04   1.183921e+04   0.000000e+00     25s
+   29100   -1.8679576e+04   9.599794e+04   0.000000e+00     30s
+   31410   -1.8679576e+04   5.558042e+03   0.000000e+00     35s
+   33900   -1.8679576e+04   2.477365e+04   0.000000e+00     40s
+   36010   -1.8679576e+04   7.918341e+03   0.000000e+00     45s
+   38500   -1.8698399e+04   1.485200e+02   0.000000e+00     50s
+   39959   -1.8698444e+04   0.000000e+00   0.000000e+00     53s
+   39959   -1.8698444e+04   0.000000e+00   0.000000e+00     53s
+
+Root relaxation: objective -1.869844e+04, 39959 iterations, 48.65 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -18698.444    0 9628 -19995.000 -18698.444  6.48%     -   60s
+
+Explored 0 nodes (58529 simplex iterations) in 60.02 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 1: -19995 
+
+Time limit reached
+Best objective -1.999500000000e+04, best bound -1.869900000000e+04, gap 6.4816%
+
+
+
+#########node  1
+priors_count.1
+#########node  2
+priors_count.1
+#########node  3
+priors_count.1
+#########node  4
+leaf 1
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 1
+
+
+Total Solving Time 64.46055006980896
+obj value -19995.0
+obj value -19995.0
+train acc 0.5520799742018704
+test acc 0.5456902138690862
+calibration acc 0.5674083769633508
+Data
+      priors_count  two_year_recid  gender_factor  age_factor  race_factor  crime_factor  target  Predictions
+4929             1               0              1           2            4             2       1            1
+2399             0               0              1           1            4             2       1            1
+5460             0               1              2           1            2             1       2            1
+2097             1               1              1           1            2             1       2            1
+2750             0               1              1           3            2             1       2            1
+...            ...             ...            ...         ...          ...           ...     ...          ...
+1744             8               1              1           1            4             1       2            1
+1047             1               1              1           3            1             1       2            1
+2269             6               0              1           1            2             1       2            1
+1096             0               0              1           2            3             2       1            1
+1872             3               1              2           1            2             1       1            1
+
+[3101 rows x 8 columns]
+3 & 5 with feature and feature value: age_factor = 3 has train data CSP: 0
+3 & 5 with feature and feature value: age_factor = 3 has train pred CSP: 0
+2 & 5 with feature and feature value: age_factor = 1 has test data CSP: 0.5865800865800865
+3 & 5 with feature and feature value: age_factor = 3 has test pred CSP: 0
+6 & 5 with feature and feature value: age_factor = 3 has calib data CSP: 0.6470588235294118
+3 & 5 with feature and feature value: age_factor = 3 has calib pred CSP: 0.0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 86902 rows, 65202 columns and 595490 nonzeros
+Model fingerprint: 0x63b1ecaf
+Variable types: 14 continuous, 65188 integer (65188 binary)
+Coefficient statistics:
+  Matrix range     [8e-04, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [2e-01, 1e+00]
+Presolve removed 18601 rows and 18600 columns
+Presolve time: 2.85s
+Presolved: 68301 rows, 46602 columns, 381847 nonzeros
+Variable types: 14 continuous, 46588 integer (46578 binary)
+Found heuristic solution: objective -19995.00000
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   14911   -1.8608376e+04   6.809945e+03   0.000000e+00      5s
+   21591   -1.8628469e+04   2.635956e+03   0.000000e+00     10s
+   26041   -1.8761283e+04   1.836279e+04   0.000000e+00     15s
+   29071   -1.8761283e+04   7.793540e+03   0.000000e+00     20s
+   31871   -1.8761283e+04   2.476481e+04   0.000000e+00     25s
+   34991   -1.8761283e+04   2.156136e+03   0.000000e+00     30s
+   36455   -1.8761281e+04   0.000000e+00   0.000000e+00     32s
+   36455   -1.8761281e+04   0.000000e+00   0.000000e+00     32s
+
+Root relaxation: objective -1.876128e+04, 36455 iterations, 28.94 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -18761.281    0 9634 -19995.000 -18761.281  6.17%     -   40s
+
+Explored 0 nodes (58629 simplex iterations) in 40.16 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 1: -19995 
+
+Solve interrupted
+Best objective -1.999500000000e+04, best bound -1.876200000000e+04, gap 6.1665%
+
+
+
+#########node  1
+priors_count.1
+#########node  2
+priors_count.1
+#########node  3
+priors_count.1
+#########node  4
+leaf 1
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 1
+
+
+Total Solving Time 44.417587995529175
+obj value -19995.0
+obj value -19995.0
+train acc 0.5520799742018704
+test acc 0.5456902138690862
+calibration acc 0.5674083769633508
+Data
+      priors_count  two_year_recid  gender_factor  age_factor  race_factor  crime_factor  target  Predictions
+4929             1               0              1           2            4             2       1            1
+2399             0               0              1           1            4             2       1            1
+5460             0               1              2           1            2             1       2            1
+2097             1               1              1           1            2             1       2            1
+2750             0               1              1           3            2             1       2            1
+...            ...             ...            ...         ...          ...           ...     ...          ...
+1744             8               1              1           1            4             1       2            1
+1047             1               1              1           3            1             1       2            1
+2269             6               0              1           1            2             1       2            1
+1096             0               0              1           2            3             2       1            1
+1872             3               1              2           1            2             1       1            1
+
+[3101 rows x 8 columns]
+3 & 5 with feature and feature value: gender_factor = 2 has train data CSP: 0
+3 & 5 with feature and feature value: gender_factor = 2 has train pred CSP: 0.0
+6 & 2 with feature and feature value: gender_factor = 1 has test data CSP: 0.4292609351432881
+3 & 5 with feature and feature value: gender_factor = 2 has test pred CSP: 0
+6 & 5 with feature and feature value: gender_factor = 1 has calib data CSP: 0.5292207792207793
+3 & 5 with feature and feature value: gender_factor = 2 has calib pred CSP: 0
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 60.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 86902 rows, 65202 columns and 595490 nonzeros
+Model fingerprint: 0x63b1ecaf
+Variable types: 14 continuous, 65188 integer (65188 binary)
+Coefficient statistics:
+  Matrix range     [8e-04, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [2e-01, 1e+00]
+Presolve removed 18601 rows and 18600 columns
+Presolve time: 2.59s
+Presolved: 68301 rows, 46602 columns, 381847 nonzeros
+Variable types: 14 continuous, 46588 integer (46578 binary)
+Found heuristic solution: objective -19995.00000
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   15611   -1.8608377e+04   3.647261e+03   0.000000e+00      5s
+   22871   -1.8684892e+04   1.063295e+04   0.000000e+00     10s
+   26811   -1.8761283e+04   2.191554e+03   0.000000e+00     15s
+   29511   -1.8761283e+04   2.573103e+04   0.000000e+00     20s
+   32471   -1.8761283e+04   6.446503e+03   0.000000e+00     25s
+   35521   -1.8761283e+04   3.825609e+03   0.000000e+00     30s
+   36455   -1.8761281e+04   0.000000e+00   0.000000e+00     32s
+   36455   -1.8761281e+04   0.000000e+00   0.000000e+00     32s
+
+Root relaxation: objective -1.876128e+04, 36455 iterations, 28.86 seconds
+Total elapsed time = 43.97s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -18761.281    0 7764 -19995.000 -18761.281  6.17%     -   60s
+
+Explored 0 nodes (90502 simplex iterations) in 60.04 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 1: -19995 
+
+Time limit reached
+Best objective -1.999500000000e+04, best bound -1.876200000000e+04, gap 6.1665%
+
+
+
+#########node  1
+priors_count.1
+#########node  2
+priors_count.1
+#########node  3
+priors_count.1
+#########node  4
+leaf 1
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 1
+
+
+Total Solving Time 64.36470770835876
+obj value -19995.0
+obj value -19995.0
+train acc 0.5520799742018704
+test acc 0.5456902138690862
+calibration acc 0.5674083769633508
+Data
+      priors_count  two_year_recid  gender_factor  age_factor  race_factor  crime_factor  target  Predictions
+4929             1               0              1           2            4             2       1            1
+2399             0               0              1           1            4             2       1            1
+5460             0               1              2           1            2             1       2            1
+2097             1               1              1           1            2             1       2            1
+2750             0               1              1           3            2             1       2            1
+...            ...             ...            ...         ...          ...           ...     ...          ...
+1744             8               1              1           1            4             1       2            1
+1047             1               1              1           3            1             1       2            1
+2269             6               0              1           1            2             1       2            1
+1096             0               0              1           2            3             2       1            1
+1872             3               1              2           1            2             1       1            1
+
+[3101 rows x 8 columns]
+3 & 5 with feature and feature value: gender_factor = 2 has train data CSP: 1.0
+3 & 5 with feature and feature value: gender_factor = 2 has train pred CSP: 0.0
+6 & 2 with feature and feature value: gender_factor = 1 has test data CSP: 0.4292609351432881
+3 & 5 with feature and feature value: gender_factor = 2 has test pred CSP: 0
+6 & 5 with feature and feature value: gender_factor = 1 has calib data CSP: 0.5292207792207793
+3 & 5 with feature and feature value: gender_factor = 2 has calib pred CSP: 0

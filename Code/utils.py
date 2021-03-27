@@ -187,10 +187,10 @@ def get_csp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGrou
     except KeyError:
         return 0 
     
-    df_protected_prime_old = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
+    df_protected_prime_old = local_data_reg[local_data_reg[protected_feature] == protectedGroup_prime]
     
     try:
-        df_protected_prime = df_protected_old[df_protected_old[feature] == feature_value]
+        df_protected_prime = df_protected_prime_old[df_protected_prime_old[feature] == feature_value]
     except KeyError:
         return 0
 
