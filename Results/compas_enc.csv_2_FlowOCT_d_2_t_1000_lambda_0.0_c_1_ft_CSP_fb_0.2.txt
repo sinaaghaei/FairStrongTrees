@@ -1,0 +1,125 @@
+Academic license - for non-commercial use only - expires 2021-04-23
+Using license file /Users/jackbenson/gurobi.lic
+Changed value of parameter Threads to 1
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter TimeLimit to 1000.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 1 threads
+Optimize a model with 87118 rows, 65202 columns and 555604 nonzeros
+Model fingerprint: 0x695fe694
+Variable types: 14 continuous, 65188 integer (65188 binary)
+Coefficient statistics:
+  Matrix range     [2e-03, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [2e-01, 1e+00]
+Presolve removed 18581 rows and 18559 columns
+Presolve time: 2.83s
+Presolved: 68537 rows, 46643 columns, 383159 nonzeros
+Variable types: 14 continuous, 46629 integer (46578 binary)
+Found heuristic solution: objective -19589.00000
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   16910   -1.8513196e+04   1.374727e+04   0.000000e+00      5s
+   23638   -1.8638001e+04   7.410418e+03   0.000000e+00     10s
+   26548   -1.8655172e+04   8.208127e+03   0.000000e+00     15s
+   29418   -1.8655172e+04   1.946244e+04   0.000000e+00     20s
+   32018   -1.8655172e+04   4.442541e+04   0.000000e+00     25s
+   34878   -1.8655172e+04   3.573425e+03   0.000000e+00     30s
+   37978   -1.8666761e+04   1.086637e+04   0.000000e+00     35s
+   40908   -1.8671354e+04   2.669970e+02   0.000000e+00     40s
+   42627   -1.8671352e+04   0.000000e+00   0.000000e+00     43s
+   42627   -1.8671352e+04   0.000000e+00   0.000000e+00     43s
+
+Root relaxation: objective -1.867135e+04, 42627 iterations, 39.47 seconds
+Total elapsed time = 54.56s
+Total elapsed time = 92.46s
+Total elapsed time = 97.81s
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 -18671.352    0 6260 -19589.000 -18671.352  4.68%     -  111s
+     0     0 -18671.615    0 10464 -19589.000 -18671.615  4.68%     -  188s
+     0     0 -18671.616    0 11236 -19589.000 -18671.616  4.68%     -  228s
+     0     0 -18672.926    0 13873 -19589.000 -18672.926  4.68%     -  259s
+     0     0 -18672.926    0 14078 -19589.000 -18672.926  4.68%     -  262s
+     0     0 -18673.401    0 14739 -19589.000 -18673.401  4.67%     -  298s
+     0     0 -18673.401    0 14562 -19589.000 -18673.401  4.67%     -  305s
+     0     0 -18673.416    0 15934 -19589.000 -18673.416  4.67%     -  331s
+     0     0 -18673.416    0 16049 -19589.000 -18673.416  4.67%     -  344s
+     0     0 -18673.416    0 18592 -19589.000 -18673.416  4.67%     -  412s
+     0     0 -18673.426    0 18434 -19589.000 -18673.426  4.67%     -  431s
+     0     0 -18673.426    0 18283 -19589.000 -18673.426  4.67%     -  434s
+     0     0 -18673.676    0 11357 -19589.000 -18673.676  4.67%     -  587s
+     0     0 -18673.676    0 11357 -19589.000 -18673.676  4.67%     -  635s
+     0     0 -18673.728    0 16814 -19589.000 -18673.728  4.67%     -  741s
+     0     0 -18673.728    0 16522 -19589.000 -18673.728  4.67%     -  743s
+     0     0 -18673.728    0 16338 -19589.000 -18673.728  4.67%     -  756s
+     0     0 -18673.728    0 16338 -19589.000 -18673.728  4.67%     -  759s
+     0     0 -18673.728    0 13839 -19589.000 -18673.728  4.67%     -  876s
+     0     0 -18673.728    0 16826 -19589.000 -18673.728  4.67%     -  932s
+     0     0 -18673.728    0 17168 -19589.000 -18673.728  4.67%     - 1000s
+
+Cutting planes:
+  Cover: 1
+  MIR: 66
+  Zero half: 293
+  Relax-and-lift: 6
+
+Explored 1 nodes (574812 simplex iterations) in 1000.03 seconds
+Thread count was 1 (of 4 available processors)
+
+Solution count 1: -19589 
+
+Time limit reached
+Best objective -1.958900000000e+04, best bound -1.867400000000e+04, gap 4.6710%
+
+
+
+#########node  1
+priors_count.1
+#########node  2
+priors_count.1
+#########node  3
+priors_count.1
+#########node  4
+leaf 2
+#########node  5
+leaf 1
+#########node  6
+leaf 1
+#########node  7
+leaf 1
+
+
+Total Solving Time 1004.6573948860168
+obj value -19589.0
+obj value -19589.0
+train acc 0.6830054821025475
+test acc 0.6688269604666235
+calibration acc 0.68782722513089
+Data
+      priors_count  two_year_recid  ...  target  Predictions
+4929             1               0  ...       1            1
+2399             0               0  ...       1            1
+5460             0               1  ...       2            1
+2097             1               1  ...       2            1
+2750             0               1  ...       2            1
+...            ...             ...  ...     ...          ...
+1744             8               1  ...       2            2
+1047             1               1  ...       2            1
+2269             6               0  ...       2            2
+1096             0               0  ...       1            1
+1872             3               1  ...       1            1
+
+[3101 rows x 8 columns]
+3 & 5 with feature and feature value: priors_count = 2 has train data CSP: 1.0
+3 & 5 with feature and feature value: priors_count = 38 has train pred CSP: 0
+3 & 5 with feature and feature value: priors_count = 1 has test data CSP: 1.0
+3 & 5 with feature and feature value: priors_count = 38 has test pred CSP: 0
+3 & 5 with feature and feature value: priors_count = 2 has calib data CSP: 1.0
+3 & 5 with feature and feature value: priors_count = 38 has calib pred CSP: 0
