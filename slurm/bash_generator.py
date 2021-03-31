@@ -8,9 +8,9 @@ depths = [1, 2]
 time_limit = 7200
 datasets = ['compas']
 protected_feature = ['race_factor']
-condition_feature = ['gender_factor']
-bounds = [0.01, 0.05, 0.1 , 0.2, 0.3]
-fairness_type = ["SP", "None"]
+condition_feature = ['priors_count']
+bounds = [0.01, 0.05, 0.1 , 0.2, 0.3, 0.5]
+fairness_type = ["CSP", "None"]
 
 
 def put_qmark(s):
@@ -41,7 +41,7 @@ def generate():
                                             depth_list.append(d)
                                             sample_list.append(s)
                                             fairness_type_list.append(f)
-                                            bounds_list.append(0)
+                                            bounds_list.append(1)
                                             protected_feature_list.append(protected_feature[dset_index])
                                             condition_feature_list.append(condition_feature[dset_index])
                                 else:
