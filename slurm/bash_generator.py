@@ -8,7 +8,7 @@ depths = [1, 2]
 time_limit = 7200
 datasets = ['compas']
 protected_feature = ['race_factor']
-condition_feature = ['priors_count']
+condition_feature = ['priors_buckets']
 bounds = [0.01, 0.05, 0.1 , 0.2, 0.3, 0.5]
 fairness_type = ["CSP", "None"]
 

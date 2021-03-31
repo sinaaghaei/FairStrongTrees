@@ -5,7 +5,7 @@
 #SBATCH --time=03:00:00
 #SBATCH --export=NONE
 #SBATCH --constraint="xeon-2640v4"
-#SBATCH --array=0-69
+#SBATCH --array=0-59
 
 
 module load gcc
@@ -28,7 +28,7 @@ bounds_list="0.01 0.05 0.1 0.2 0.3 0.5 1 0.01 0.05 0.1 0.2 0.3 0.5 1 0.01 0.05 0
 "
 protected_feature_list="race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor race_factor
 "
-condition_feature_list="priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count priors_count
+condition_feature_list="priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets priors_buckets
 "
 dataset_enc_list=($dataset_enc_list)
 dataset_reg_list=($dataset_reg_list)
