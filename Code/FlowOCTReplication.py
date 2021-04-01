@@ -177,7 +177,7 @@ def main(argv):
     # Call get_SP
 
     # Get statistical parity for all different combinations of two groups from protected feature
-    if fairness_type == "SP" or fairness_type == "None":
+    if fairness_type == "SP":
 
         # Define variables for maximum statistical parity for each dataset
         max_sp_train_data = 0
@@ -266,7 +266,7 @@ def main(argv):
         print(str(max_sp_calib_data_protection) + " & " + str(max_sp_calib_data_protection_prime) + " has calibration data SP: " + str(max_sp_calib_data))
         print(str(max_sp_calib_pred_protection) + " & " + str(max_sp_calib_pred_protection_prime) + " has calibration pred SP: " + str(max_sp_calib_pred))
 
-    if fairness_type == "CSP":
+    if fairness_type == "CSP" or fairness_type == "None":
 
         # Define variables for maximum statistical parity for each dataset
         max_csp_train_data = 0
@@ -373,7 +373,7 @@ def main(argv):
     with open(out_put_path + result_file, mode='a') as results:
         results_writer = csv.writer(results, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
 
-        if fairness_type != "CSP":
+        if fairness_type == "SP":
             results_writer.writerow(
                 [approach_name, input_file_enc, fairness_type, fairness_bound, train_len, depth, _lambda, time_limit,
                  primal.model.getAttr("Status"), primal.model.getAttr("ObjVal"), train_acc,
