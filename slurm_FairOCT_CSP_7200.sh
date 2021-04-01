@@ -5,7 +5,7 @@
 #SBATCH --time=03:00:00
 #SBATCH --export=NONE
 #SBATCH --constraint="xeon-2640v4"
-#SBATCH --array=0-59
+#SBATCH --array=0-69
 
 
 module load gcc

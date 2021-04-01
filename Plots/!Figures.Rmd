@@ -32,7 +32,7 @@ library(MASS)
 require(scales)
 rm(list=ls())
 
-data_train= read.csv('./../resupd.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data_train= read.csv('./../res41.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 forpres=FALSE
 if (forpres){

@@ -10,7 +10,7 @@ datasets = ['compas']
 protected_feature = ['race_factor']
 condition_feature = ['priors_buckets']
 bounds = [0.01, 0.05, 0.1 , 0.2, 0.3, 0.5]
-fairness_type = ["CSP", "None"]
+fairness_type = ["None"]#"CSP", 
 
 
 def put_qmark(s):
