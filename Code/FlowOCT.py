@@ -331,10 +331,12 @@ class FlowOCT:
 
         # define objective function
         # Max sum(sum(zeta[i,n,y(i)]))
+
+        # Add negative one #
         obj = LinExpr(0)
         for i in self.datapoints:
             for n in self.tree.Nodes + self.tree.Leaves:
-                obj.add((1 - self._lambda) * (self.zeta[i, n, self.data_enc.at[i, self.label]] - 1))
+                obj.add((1 - self._lambda) * (self.zeta[i, n, self.data_enc.at[i, self.label]]))
 
         for n in self.tree.Nodes:
             for f in self.cat_features:
