@@ -409,7 +409,8 @@ def main(argv):
              primal.model.getAttr("Status"), primal.model.getAttr("ObjVal"), train_acc,
              primal.model.getAttr("MIPGap") * 100, primal.model.getAttr("NodeCount"), solving_time,
              test_acc, calibration_acc, input_sample, max_sp_train_data, max_sp_train_pred,max_sp_test_data,max_sp_test_pred,max_sp_calib_data,max_sp_calib_pred, 
-             max_csp_train_data, max_csp_train_pred,max_csp_test_data,max_csp_test_pred,max_csp_calib_data,max_csp_calib_pred])
+             max_csp_train_data, max_csp_train_pred,max_csp_test_data,max_csp_test_pred,max_csp_calib_data,max_csp_calib_pred,
+             max_pe_train_data, max_pe_train_pred,max_pe_test_data,max_pe_test_pred,max_pe_calib_data,max_pe_calib_pred])
 
 
 if __name__ == "__main__":
