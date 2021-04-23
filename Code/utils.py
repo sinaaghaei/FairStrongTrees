@@ -234,6 +234,72 @@ def get_csp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGrou
     else:
         print('No valid source passed')
 
+def get_pe(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup, protectedGroup_prime, positive_class, source):
+    '''
+        This function returns the statistical parity for a given combination of the protected feature
+        :param grb_model: The gurobi model we solved
+        :param local_data: The dataset we want to compute accuracy for
+        :param b: The value of decision variable b
+        :param beta: The value of decision variable beta
+        :param p: The value of decision variable p
+        :param protectedGroup: Protected Group
+        :param protectedGroup_prime: Another Protected Group to be compared against Protected Group
+        :param source: Predictive Equality for given data label or predicted label
+        :return: The predicted value for datapoint i in dataset local_data
+        '''
+    # If source == "Predictions", then we will use prediction values
+    # If source == "Data", then we will use data values
+    protected_feature = grb_model.protected_feature
+
+    # The label here will then be the true label of the data
+    label = grb_model.label
+
+    # Let's create our dataframes for PE
+    df_protected_old = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
+    df_protected = df_protected_old[df_protected_old[label] != positive_class]
+    
+    df_protected_prime_old = local_data_reg[local_data_reg[protected_feature] == protectedGroup_prime]
+    df_protected_prime = df_protected_prime_old[df_protected_prime_old[label] != positive_class]
+
+    # Create dataframe for the protected group only, then count how many rows exist
+    countProtected = df_protected.count()[label]
+    # Create dataframe for the protected group prime only, then count how many rows exist
+    countProtected_prime = df_protected_prime.count()[label]
+
+    # Looking at the Predictive Equality for the true label between groups
+    # Akin to looking at data bias
+    if source == "Data":
+
+        # Let's count number of positive values from protected group, then divide by the total to get the PE for
+        # both groups
+        if countProtected != 0 and countProtected_prime != 0:
+            pe_protected = (1/countProtected) * df_protected[df_protected[label] == positive_class].count()[label]
+            pe_protected_prime = (1/countProtected_prime) * df_protected_prime[df_protected_prime[label] == positive_class].count()[label]
+        else:
+            pe_protected = 0
+            pe_protected_prime = 0
+
+        # Return PE between two groups
+        return abs(pe_protected - pe_protected_prime)
+
+    # Looking at the Predictive Equality between the two groups relative to predicted values
+    # Akin to measuring our model's bias
+    elif source == "Predictions":
+
+        # Define Predictive Equality for both groups
+        if countProtected != 0 and countProtected_prime != 0:
+            pe_protected_predictions = (1 / countProtected) * df_protected[df_protected['Predictions'] == positive_class].count()[label]
+            pe_protected_prime_predictions = (1 / countProtected_prime) * df_protected_prime[df_protected_prime['Predictions'] == positive_class].count()[label]
+        else:
+            pe_protected_predictions = 0
+            pe_protected_prime_predictions = 0
+        # Return PE between both groups
+
+        return abs(pe_protected_predictions - pe_protected_prime_predictions)
+
+    # If no source is given, then we will return an error
+    else:
+        print('No valid source passed')
 
 def get_acc(grb_model, local_data, b, beta, p):
     '''

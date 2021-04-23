@@ -335,6 +335,65 @@ def main(argv):
     print(str(max_csp_calib_pred_protection) + " & " + str(max_csp_calib_pred_protection_prime) + " with feature and feature value: " + str(max_csp_calib_pred_feature) + " = " + str(max_csp_calib_pred_feature_value) + " has calib pred CSP: " + str(max_csp_calib_pred))
 
 
+    # Predictive Equality Begins Here
+    
+    # Define variables for maximum Predictive Equality for each dataset
+    max_pe_train_data = 0
+    max_pe_train_pred = 0
+    max_pe_test_data = 0
+    max_pe_test_pred = 0
+    max_pe_calib_data = 0
+    max_pe_calib_pred = 0
+
+    # Loop through all possible combinations of the protected feature
+    for combos in combinations(data_reg[protected_feature].unique(), 2):
+        protection = combos[0]
+        protection_prime = combos[1]
+        for feature_value in data_reg[conditional_feature].unique():
+
+            pe_train_data = get_pe(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Data')
+            if pe_train_data >= max_pe_train_data:
+                max_pe_train_data = pe_train_data
+                max_pe_train_data_protection = protection
+                max_pe_train_data_protection_prime = protection_prime
+
+            pe_train_pred = get_pe(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Predictions')
+            if pe_train_pred >= max_pe_train_pred:
+                max_pe_train_pred = pe_train_pred
+                max_pe_train_pred_protection = protection
+                max_pe_train_pred_protection_prime = protection_prime
+
+            pe_test_data = get_pe(primal, data_test_enc, data_test_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Data')
+            if pe_test_data >= max_pe_test_data:
+                max_pe_test_data = pe_test_data
+                max_pe_test_data_protection = protection
+                max_pe_test_data_protection_prime = protection_prime
+
+            pe_test_pred = get_pe(primal, data_test_enc, data_test_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Predictions')
+            if pe_test_pred >= max_pe_test_pred:
+                max_pe_test_pred = pe_test_pred
+                max_pe_test_pred_protection = protection
+                max_pe_test_pred_protection_prime = protection_prime
+
+            pe_calib_data = get_pe(primal, data_calibration_enc, data_calibration_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Data')
+            if pe_calib_data >= max_pe_calib_data:
+               max_pe_calib_data = pe_calib_data
+               max_pe_calib_data_protection = protection
+               max_pe_calib_data_protection_prime = protection_prime
+
+            pe_calib_pred = get_pe(primal, data_calibration_enc, data_calibration_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Predictions')
+            if pe_calib_pred >= max_pe_calib_pred:
+               max_pe_calib_pred = pe_calib_pred
+               max_pe_calib_pred_protection = protection
+               max_pe_calib_pred_protection_prime = protection_prime
+
+    print(str(max_pe_train_data_protection) + " & " + str(max_pe_train_data_protection_prime) + " has train data pe: " + str(max_pe_train_data))
+    print(str(max_pe_train_pred_protection) + " & " + str(max_pe_train_pred_protection_prime) + " has train pred pe: " + str(max_pe_train_pred))
+    print(str(max_pe_test_data_protection) + " & " + str(max_pe_test_data_protection_prime) + " has test data pe: " + str(max_pe_test_data))
+    print(str(max_pe_test_pred_protection) + " & " + str(max_pe_test_pred_protection_prime) + " has test pred pe: " + str(max_pe_test_pred))
+    print(str(max_pe_calib_data_protection) + " & " + str(max_pe_calib_data_protection_prime) + " has calib data pe: " + str(max_pe_calib_data))
+    print(str(max_pe_calib_pred_protection) + " & " + str(max_pe_calib_pred_protection_prime) + " has calib pred pe: " + str(max_pe_calib_pred))
+
 
     ##########################################################
     # writing info to the file
