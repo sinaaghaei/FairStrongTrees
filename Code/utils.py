@@ -273,8 +273,8 @@ def get_pe(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
         # Let's count number of positive values from protected group, then divide by the total to get the PE for
         # both groups
         if countProtected != 0 and countProtected_prime != 0:
-            pe_protected = (1/countProtected) * df_protected[df_protected[label] == positive_class].count()[label]
-            pe_protected_prime = (1/countProtected_prime) * df_protected_prime[df_protected_prime[label] == positive_class].count()[label]
+            pe_protected = (1/countProtected) * df_protected[df_protected[label] != positive_class].count()[label]
+            pe_protected_prime = (1/countProtected_prime) * df_protected_prime[df_protected_prime[label] != positive_class].count()[label]
         else:
             pe_protected = 0
             pe_protected_prime = 0

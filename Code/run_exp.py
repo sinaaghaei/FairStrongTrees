@@ -8,7 +8,7 @@ datasets = ["monk1.csv", 'monk1_enc.csv', 'monk2_enc.csv', 'monk3_enc.csv', 'car
             'compas_trial_enc.csv','compas_trial2.csv','compas_trial2_enc.csv','compas_trial3.csv','compas_trial3_enc.csv']
 samples = [1, 2, 3, 4, 5]
 
-FlowOCTReplication.main(["-r", 'compas.csv', "-f", 'compas_enc.csv', "-d", 2, "-t", 60, "-l", 0, "-i", 2, "-c", 1, "-a", 'PE', "-b", 0.2, "-e", 'race_factor', "-g", 2, "-h", 'priors_buckets'])
+FlowOCTReplication.main(["-r", 'compas.csv', "-f", 'compas_enc.csv', "-d", 2, "-t", 60, "-l", 0, "-i", 2, "-c", 1, "-a", 'EOpp', "-b", 0.2, "-e", 'race_factor', "-g", 2, "-h", 'priors_buckets'])
 
 
 # for s in [2]:
