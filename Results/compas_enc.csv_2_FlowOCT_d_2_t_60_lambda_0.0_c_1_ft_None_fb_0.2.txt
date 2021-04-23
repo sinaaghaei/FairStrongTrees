@@ -15,25 +15,25 @@ Coefficient statistics:
   Bounds range     [1e+00, 1e+00]
   RHS range        [1e+00, 1e+00]
 Presolve removed 18610 rows and 18610 columns
-Presolve time: 1.90s
+Presolve time: 1.78s
 Presolved: 68232 rows, 46592 columns, 359806 nonzeros
 Variable types: 14 continuous, 46578 integer (46578 binary)
 Found heuristic solution: objective -19589.00000
 
-Root relaxation: objective -1.860600e+04, 15785 iterations, 2.26 seconds
-Total elapsed time = 8.17s
+Root relaxation: objective -1.860600e+04, 15785 iterations, 2.04 seconds
+Total elapsed time = 7.40s
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
 
-     0     0 -18606.000    0 6209 -19589.000 -18606.000  5.02%     -   31s
+     0     0 -18606.000    0 6209 -19589.000 -18606.000  5.02%     -   26s
      0     0 -18606.000    0 13462 -19589.000 -18606.000  5.02%     -   60s
 
 Cutting planes:
   Gomory: 2
   Zero half: 5
 
-Explored 1 nodes (44686 simplex iterations) in 60.02 seconds
+Explored 1 nodes (44686 simplex iterations) in 60.03 seconds
 Thread count was 1 (of 4 available processors)
 
 Solution count 1: -19589 
@@ -59,7 +59,7 @@ leaf 1
 leaf 1
 
 
-Total Solving Time 64.52813863754272
+Total Solving Time 63.731067180633545
 obj value -19589.0
 obj value -19589.0
 train acc 0.6830054821025475
@@ -80,6 +80,12 @@ Data
 1872             3               2  ...       1            1
 
 [3101 rows x 9 columns]
+3 & 5 has train data SP: 0.6888888888888889
+3 & 5 has train pred SP: 0.488888888888889
+6 & 2 has test data SP: 0.4039496180571895
+2 & 5 has test pred SP: 0.3358116480793061
+6 & 5 has calibration data SP: 0.5265957446808511
+6 & 2 has calibration pred SP: 0.20387660100465504
 3 & 5 with feature and feature value: priors_buckets = 1 has train data CSP: 1.0
 3 & 5 with feature and feature value: priors_buckets = 1 has train pred CSP: 0.0
 6 & 5 with feature and feature value: priors_buckets = 1 has test data CSP: 0.962962962962963
