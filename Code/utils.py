@@ -94,7 +94,7 @@ def get_predicted_value(grb_model, local_data, b, beta, p, i):
             else:  # going left on the branch
                 current = tree.get_left_children(current)
 
-def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup, protectedGroup_prime, positive_class, source):
+def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup, protectedGroup_prime, positive_class, source, conditional_feature = None, feature_value = None):
     '''
         This function returns the statistical parity for a given combination of the protected feature
         :param grb_model: The gurobi model we solved
@@ -159,7 +159,7 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
     else:
         print('No valid source passed')
 
-def get_csp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup, protectedGroup_prime, positive_class, feature, feature_value, source):
+def get_csp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup, protectedGroup_prime, positive_class, source, feature, feature_value):
     '''
         This function returns the statistical parity for a given combination of the protected feature
         :param grb_model: The gurobi model we solved
@@ -182,13 +182,13 @@ def get_csp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGrou
 
     # Let's create our dataframes for CSP
     df_protected_old = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
-    try: 
+    try:
         df_protected = df_protected_old[df_protected_old[feature] == feature_value]
     except KeyError:
-        return 0 
-    
+        return 0
+
     df_protected_prime_old = local_data_reg[local_data_reg[protected_feature] == protectedGroup_prime]
-    
+
     try:
         df_protected_prime = df_protected_prime_old[df_protected_prime_old[feature] == feature_value]
     except KeyError:
@@ -234,7 +234,7 @@ def get_csp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGrou
     else:
         print('No valid source passed')
 
-def get_pe(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup, protectedGroup_prime, positive_class, source):
+def get_pe(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup, protectedGroup_prime, positive_class, source, conditional_feature = None, feature_value = None):
     '''
         This function returns the statistical parity for a given combination of the protected feature
         :param grb_model: The gurobi model we solved
@@ -257,7 +257,7 @@ def get_pe(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
     # Let's create our dataframes for PE
     df_protected_old = local_data_reg[local_data_reg[protected_feature] == protectedGroup]
     df_protected = df_protected_old[df_protected_old[label] != positive_class]
-    
+
     df_protected_prime_old = local_data_reg[local_data_reg[protected_feature] == protectedGroup_prime]
     df_protected_prime = df_protected_prime_old[df_protected_prime_old[label] != positive_class]
 

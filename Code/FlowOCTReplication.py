@@ -198,202 +198,64 @@ def main(argv):
         yhat_calib.append(get_predicted_value(primal, data_calibration_enc, b_value, beta_value, p_value, i))
 
 
-    pd.set_option('mode.chained_assignment', None)
-    #
-    # data_train_reg.loc[:,'Predictions'] = pd.Series(yhat_train)
-    # data_test_reg.loc[:,'Predictions'] = pd.Series(yhat_test)
-    # data_calibration_reg.loc[:,'Predictions'] = pd.Series(yhat_calib)
     data_train_reg['Predictions'] = yhat_train
     data_test_reg['Predictions'] = yhat_test
     data_calibration_reg['Predictions'] = yhat_calib
 
 
-    print("Data")
-    print(data_train_reg)
-    # Loop through all possible combinations of the protected feature
-    for combos in combinations(data_reg[protected_feature].unique(), 2):
-        protection = combos[0]
-        protection_prime = combos[1]
 
-        # Print results
-        # print(str(protection) + " and " + str(protection_prime) + " Statistical Parity:")
 
-        # Let's construct the max SP for train, test, and calibration
-        # We use an if statement to determine if there is a higher maximum
 
-        sp_train_data = get_sp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Data')
-        if sp_train_data >= max_sp_train_data:
-            max_sp_train_data = sp_train_data
-            max_sp_train_data_protection = protection
-            max_sp_train_data_protection_prime = protection_prime
+    data_dict = {'train':(data_train_enc,data_train_reg),
+                 'test':(data_test_enc,data_test_reg),
+                 'calib':(data_calibration_enc,data_calibration_reg)}
+    protected_levels = data_reg[protected_feature].unique()
+    conditional_feature_levels = data_reg[conditional_feature].unique()
+    fairness_metrics_dict = {}
+    # fairness_metrics_dict[('SP','train','pred','max_diff')] = (max_val, p, p_prime)
+    #fairness_metrics_dict[('SP','train','pred','max_diff')] = (max_val, p, p_prime, L_name, L_level)
+    def getFairnessResults(fairness_const_type):
+        if fairness_const_type == 'SP':
+            var_func = get_sp
+        elif fairness_const_type == 'CSP':
+            var_func = get_csp
+        elif fairness_const_type == 'PE':
+            var_func = get_pe
 
-        sp_train_pred = get_sp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Predictions')
-        if sp_train_pred >= max_sp_train_pred:
-            max_sp_train_pred = sp_train_pred
-            max_sp_train_pred_protection = protection
-            max_sp_train_pred_protection_prime = protection_prime
+        for data_set in ['train','test','calib']:
+            data_set_enc, data_set_reg = data_dict[data_set]
+            for source in ['Data','Predictions']:
+                max_value = 0
+                argmax_p = None
+                argmax_p_prime = None
+                for combos in combinations(protected_levels, 2):
+                    p = combos[0]
+                    p_prime = combos[1]
+                    if fairness_const_type != 'CSP':
+                        tmp_value = var_func(primal, data_set_enc, data_set_reg, b_value, beta_value, p_value, p, p_prime, positive_class, source, None, None)
+                        if tmp_value >= max_value:
+                            max_value = tmp_value
+                            fairness_metrics_dict[(fairness_const_type,data_set,source,'max_diff')] = (max_value, p, p_prime)
+                    else:
+                        for feature_value in conditional_feature_levels:
+                            tmp_value = var_func(primal, data_set_enc, data_set_reg, b_value, beta_value, p_value, p, p_prime, positive_class, source, conditional_feature, feature_value)
+                            if tmp_value >= max_value:
+                                max_value = tmp_value
+                                fairness_metrics_dict[(fairness_const_type,data_set,source,'max_diff')] = (max_value, p, p_prime, conditional_feature, feature_value)
 
-        sp_test_data = get_sp(primal, data_test_enc, data_test_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Data')
-        if sp_test_data >= max_sp_test_data:
-            max_sp_test_data = sp_test_data
-            max_sp_test_data_protection = protection
-            max_sp_test_data_protection_prime = protection_prime
-
-        sp_test_pred = get_sp(primal, data_test_enc, data_test_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Predictions')
-        if sp_test_pred >= max_sp_test_pred:
-            max_sp_test_pred = sp_test_pred
-            max_sp_test_pred_protection = protection
-            max_sp_test_pred_protection_prime = protection_prime
-
-        sp_calib_data = get_sp(primal, data_calibration_enc, data_calibration_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Data')
-        if sp_calib_data >= max_sp_calib_data:
-           max_sp_calib_data = sp_calib_data
-           max_sp_calib_data_protection = protection
-           max_sp_calib_data_protection_prime = protection_prime
-
-        sp_calib_pred = get_sp(primal, data_calibration_enc, data_calibration_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Predictions')
-        if sp_calib_pred >= max_sp_calib_pred:
-           max_sp_calib_pred = sp_calib_pred
-           max_sp_calib_pred_protection = protection
-           max_sp_calib_pred_protection_prime = protection_prime
 
     # Print all maximum values with the corresponding protected varibles
-    print(str(max_sp_train_data_protection) + " & " + str(max_sp_train_data_protection_prime) + " has train data SP: " + str(max_sp_train_data))
-    print(str(max_sp_train_pred_protection) + " & " + str(max_sp_train_pred_protection_prime) + " has train pred SP: " + str(max_sp_train_pred))
-    print(str(max_sp_test_data_protection) + " & " + str(max_sp_test_data_protection_prime) + " has test data SP: " + str(max_sp_test_data))
-    print(str(max_sp_test_pred_protection) + " & " + str(max_sp_test_pred_protection_prime) + " has test pred SP: " + str(max_sp_test_pred))
-    print(str(max_sp_calib_data_protection) + " & " + str(max_sp_calib_data_protection_prime) + " has calibration data SP: " + str(max_sp_calib_data))
-    print(str(max_sp_calib_pred_protection) + " & " + str(max_sp_calib_pred_protection_prime) + " has calibration pred SP: " + str(max_sp_calib_pred))
-
-    # Define variables for maximum statistical parity for each dataset
-    max_csp_train_data = 0
-    max_csp_train_pred = 0
-    max_csp_test_data = 0
-    max_csp_test_pred = 0
-    max_csp_calib_data = 0
-    max_csp_calib_pred = 0
-
-    # Loop through all possible combinations of the protected feature
-    for combos in combinations(data_reg[protected_feature].unique(), 2):
-        protection = combos[0]
-        protection_prime = combos[1]
-        for feature_value in data_reg[conditional_feature].unique():
-
-            csp_train_data = get_csp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, conditional_feature, feature_value, 'Data')
-            if csp_train_data >= max_csp_train_data:
-                max_csp_train_data = csp_train_data
-                max_csp_train_data_protection = protection
-                max_csp_train_data_protection_prime = protection_prime
-                max_csp_train_data_feature = conditional_feature
-                max_csp_train_data_feature_value = feature_value
-
-            csp_train_pred = get_csp(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, conditional_feature, feature_value, 'Predictions')
-            if csp_train_pred >= max_csp_train_pred:
-                max_csp_train_pred = csp_train_pred
-                max_csp_train_pred_protection = protection
-                max_csp_train_pred_protection_prime = protection_prime
-                max_csp_train_pred_feature = conditional_feature
-                max_csp_train_pred_feature_value = feature_value
-
-            csp_test_data = get_csp(primal, data_test_enc, data_test_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, conditional_feature, feature_value, 'Data')
-            if csp_test_data >= max_csp_test_data:
-                max_csp_test_data = csp_test_data
-                max_csp_test_data_protection = protection
-                max_csp_test_data_protection_prime = protection_prime
-                max_csp_test_data_feature = conditional_feature
-                max_csp_test_data_feature_value = feature_value
-
-            csp_test_pred = get_csp(primal, data_test_enc, data_test_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, conditional_feature, feature_value, 'Predictions')
-            if csp_test_pred >= max_csp_test_pred:
-                max_csp_test_pred = csp_test_pred
-                max_csp_test_pred_protection = protection
-                max_csp_test_pred_protection_prime = protection_prime
-                max_csp_test_pred_feature = conditional_feature
-                max_csp_test_pred_feature_value = feature_value
-
-            csp_calib_data = get_csp(primal, data_calibration_enc, data_calibration_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, conditional_feature, feature_value, 'Data')
-            if csp_calib_data >= max_csp_calib_data:
-               max_csp_calib_data = csp_calib_data
-               max_csp_calib_data_protection = protection
-               max_csp_calib_data_protection_prime = protection_prime
-               max_csp_calib_data_feature = conditional_feature
-               max_csp_calib_data_feature_value = feature_value
-
-            csp_calib_pred = get_csp(primal, data_calibration_enc, data_calibration_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, conditional_feature, feature_value, 'Predictions')
-            if csp_calib_pred >= max_csp_calib_pred:
-               max_csp_calib_pred = csp_calib_pred
-               max_csp_calib_pred_protection = protection
-               max_csp_calib_pred_protection_prime = protection_prime
-               max_csp_calib_pred_feature = conditional_feature
-               max_csp_calib_pred_feature_value = feature_value
-
-    print(str(max_csp_train_data_protection) + " & " + str(max_csp_train_data_protection_prime) + " with feature and feature value: " + str(max_csp_train_data_feature) + " = " + str(max_csp_train_data_feature_value) + " has train data CSP: " + str(max_csp_train_data))
-    print(str(max_csp_train_pred_protection) + " & " + str(max_csp_train_pred_protection_prime) + " with feature and feature value: " + str(max_csp_train_pred_feature) + " = " + str(max_csp_train_pred_feature_value) + " has train pred CSP: " + str(max_csp_train_pred))
-    print(str(max_csp_test_data_protection) + " & " + str(max_csp_test_data_protection_prime) + " with feature and feature value: " + str(max_csp_test_data_feature) + " = " + str(max_csp_test_data_feature_value) + " has test data CSP: " + str(max_csp_test_data))
-    print(str(max_csp_test_pred_protection) + " & " + str(max_csp_test_pred_protection_prime) + " with feature and feature value: " + str(max_csp_test_pred_feature) + " = " + str(max_csp_test_pred_feature_value) + " has test pred CSP: " + str(max_csp_test_pred))
-    print(str(max_csp_calib_data_protection) + " & " + str(max_csp_calib_data_protection_prime) + " with feature and feature value: " + str(max_csp_calib_data_feature) + " = " + str(max_csp_calib_data_feature_value) + " has calib data CSP: " + str(max_csp_calib_data))
-    print(str(max_csp_calib_pred_protection) + " & " + str(max_csp_calib_pred_protection_prime) + " with feature and feature value: " + str(max_csp_calib_pred_feature) + " = " + str(max_csp_calib_pred_feature_value) + " has calib pred CSP: " + str(max_csp_calib_pred))
-
-
-    # Predictive Equality Begins Here
-    
-    # Define variables for maximum Predictive Equality for each dataset
-    max_pe_train_data = 0
-    max_pe_train_pred = 0
-    max_pe_test_data = 0
-    max_pe_test_pred = 0
-    max_pe_calib_data = 0
-    max_pe_calib_pred = 0
-
-    # Loop through all possible combinations of the protected feature
-    for combos in combinations(data_reg[protected_feature].unique(), 2):
-        protection = combos[0]
-        protection_prime = combos[1]
-        for feature_value in data_reg[conditional_feature].unique():
-
-            pe_train_data = get_pe(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Data')
-            if pe_train_data >= max_pe_train_data:
-                max_pe_train_data = pe_train_data
-                max_pe_train_data_protection = protection
-                max_pe_train_data_protection_prime = protection_prime
-
-            pe_train_pred = get_pe(primal, data_train_enc, data_train_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Predictions')
-            if pe_train_pred >= max_pe_train_pred:
-                max_pe_train_pred = pe_train_pred
-                max_pe_train_pred_protection = protection
-                max_pe_train_pred_protection_prime = protection_prime
-
-            pe_test_data = get_pe(primal, data_test_enc, data_test_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Data')
-            if pe_test_data >= max_pe_test_data:
-                max_pe_test_data = pe_test_data
-                max_pe_test_data_protection = protection
-                max_pe_test_data_protection_prime = protection_prime
-
-            pe_test_pred = get_pe(primal, data_test_enc, data_test_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Predictions')
-            if pe_test_pred >= max_pe_test_pred:
-                max_pe_test_pred = pe_test_pred
-                max_pe_test_pred_protection = protection
-                max_pe_test_pred_protection_prime = protection_prime
-
-            pe_calib_data = get_pe(primal, data_calibration_enc, data_calibration_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Data')
-            if pe_calib_data >= max_pe_calib_data:
-               max_pe_calib_data = pe_calib_data
-               max_pe_calib_data_protection = protection
-               max_pe_calib_data_protection_prime = protection_prime
-
-            pe_calib_pred = get_pe(primal, data_calibration_enc, data_calibration_reg, b_value, beta_value, p_value, protection, protection_prime, positive_class, 'Predictions')
-            if pe_calib_pred >= max_pe_calib_pred:
-               max_pe_calib_pred = pe_calib_pred
-               max_pe_calib_pred_protection = protection
-               max_pe_calib_pred_protection_prime = protection_prime
-
-    print(str(max_pe_train_data_protection) + " & " + str(max_pe_train_data_protection_prime) + " has train data pe: " + str(max_pe_train_data))
-    print(str(max_pe_train_pred_protection) + " & " + str(max_pe_train_pred_protection_prime) + " has train pred pe: " + str(max_pe_train_pred))
-    print(str(max_pe_test_data_protection) + " & " + str(max_pe_test_data_protection_prime) + " has test data pe: " + str(max_pe_test_data))
-    print(str(max_pe_test_pred_protection) + " & " + str(max_pe_test_pred_protection_prime) + " has test pred pe: " + str(max_pe_test_pred))
-    print(str(max_pe_calib_data_protection) + " & " + str(max_pe_calib_data_protection_prime) + " has calib data pe: " + str(max_pe_calib_data))
-    print(str(max_pe_calib_pred_protection) + " & " + str(max_pe_calib_pred_protection_prime) + " has calib pred pe: " + str(max_pe_calib_pred))
-
+    for fairness_const_type in ['SP','CSP','PE']:
+        getFairnessResults(fairness_const_type)
+        print('###################{} Results'.format(fairness_const_type))
+        for data_set in ['train','test','calib']:
+            for source in ['Data','Predictions']:
+                if fairness_const_type != 'CSP':
+                    max_value, p, p_prime = fairness_metrics_dict[(fairness_const_type,data_set,source,'max_diff')]
+                    print('{} & {} has {} {} {}: {} '.format(p,p_prime, data_set,source,fairness_const_type, max_value))
+                else:
+                    max_value, p, p_prime, conditional_feature, feature_value = fairness_metrics_dict[(fairness_const_type,data_set,source,'max_diff')]
+                    print('{} & {} with feature and feature value: {} = {} has {} {} {}: {} '.format(p,p_prime,conditional_feature, feature_value, data_set,source,fairness_const_type, max_value))
 
     ##########################################################
     # writing info to the file
@@ -408,9 +270,16 @@ def main(argv):
             [approach_name, input_file_enc, fairness_type, fairness_bound, train_len, depth, _lambda, time_limit,
              primal.model.getAttr("Status"), primal.model.getAttr("ObjVal"), train_acc,
              primal.model.getAttr("MIPGap") * 100, primal.model.getAttr("NodeCount"), solving_time,
-             test_acc, calibration_acc, input_sample, max_sp_train_data, max_sp_train_pred,max_sp_test_data,max_sp_test_pred,max_sp_calib_data,max_sp_calib_pred, 
-             max_csp_train_data, max_csp_train_pred,max_csp_test_data,max_csp_test_pred,max_csp_calib_data,max_csp_calib_pred,
-             max_pe_train_data, max_pe_train_pred,max_pe_test_data,max_pe_test_pred,max_pe_calib_data,max_pe_calib_pred])
+             test_acc, calibration_acc, input_sample,
+             fairness_metrics_dict[('SP','train','Data','max_diff')], fairness_metrics_dict[('SP','train','Predictions','max_diff')],
+             fairness_metrics_dict[('SP','test','Data','max_diff')], fairness_metrics_dict[('SP','test','Predictions','max_diff')],
+             fairness_metrics_dict[('SP','calib','Data','max_diff')], fairness_metrics_dict[('SP','calib','Predictions','max_diff')],
+             fairness_metrics_dict[('CSP','train','Data','max_diff')], fairness_metrics_dict[('CSP','train','Predictions','max_diff')],
+             fairness_metrics_dict[('CSP','test','Data','max_diff')], fairness_metrics_dict[('CSP','test','Predictions','max_diff')],
+             fairness_metrics_dict[('CSP','calib','Data','max_diff')], fairness_metrics_dict[('CSP','calib','Predictions','max_diff')],
+             fairness_metrics_dict[('PE','train','Data','max_diff')], fairness_metrics_dict[('PE','train','Predictions','max_diff')],
+             fairness_metrics_dict[('PE','test','Data','max_diff')], fairness_metrics_dict[('PE','test','Predictions','max_diff')],
+             fairness_metrics_dict[('PE','calib','Data','max_diff')], fairness_metrics_dict[('PE','calib','Predictions','max_diff')]])
 
 
 if __name__ == "__main__":
