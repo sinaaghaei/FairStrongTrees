@@ -4,13 +4,13 @@ import sys
 path = '/Users/sina/Documents/GitHub/FairStrongTrees/'
 approach_name = 'FairOCT' #
 samples = [1,2,3,4,5]
-depths = [1, 2]
-time_limit = 7200
+depths = [1, 2, 3]
+time_limit = 10800
 datasets = ['compas']
 protected_feature = ['race_factor']
 condition_feature = ['priors_buckets']
-bounds = [0.01, 0.05, 0.1 , 0.2, 0.3, 0.5]
-fairness_type = ["None"]#"CSP", 
+bounds = [0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
+fairness_type = ['None', 'SP', 'CSP', 'PE', 'EOdds', 'EOpp']
 
 
 def put_qmark(s):
@@ -19,9 +19,9 @@ def put_qmark(s):
 
 
 def generate():
-        global time_limit, depths, samples, approach_name, datasets, protected_feature, bounds, fairness_type
-        slurm_file = 'slurm_'+approach_name + '_' + str(time_limit)+".sh"
-        dir="/scratch2/saghaei/FairStrongTrees/"+approach_name+"/"
+        global time_limit, depths, samples, approach_name, datasets, protected_feature, bounds, fairness_type, condition_feature
+        slurm_file = f'slurm_{approach_name}_{time_limit}.sh'
+        dir=f"/project/vayanou_651/FairStrongTrees/{approach_name}/"
 
         dataset_reg_list=[]
         dataset_enc_list=[]
@@ -60,10 +60,13 @@ def generate():
         S+="#SBATCH --ntasks=1\n"
         S+="#SBATCH --cpus-per-task=4\n"
         S+="#SBATCH --mem-per-cpu=4GB\n"
-        S+="#SBATCH --time=03:00:00\n"
+        S+="#SBATCH --time=04:00:00\n"
         S+="#SBATCH --export=NONE\n"
         S+="#SBATCH --constraint=\"xeon-2640v4\"\n"
-        S+="#SBATCH --array=0-59\n"
+        S+=f"#SBATCH --array=0-{len(dataset_enc_list)}\n"
+        S+="\n"
+        S+="\n"
+        S+=f"cd {dir}"
         S+="\n"
         S+="\n"
         S+="module load gcc\n"
