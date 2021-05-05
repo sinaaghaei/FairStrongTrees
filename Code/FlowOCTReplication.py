@@ -70,7 +70,6 @@ def main(argv):
             conditional_feature = arg
 
 
-    start_time = time.time()
     data_path = os.getcwd() + '/../DataSets/'
     data_reg = pd.read_csv(data_path + input_file_reg)
     data_enc = pd.read_csv(data_path + input_file_enc)
@@ -102,10 +101,10 @@ def main(argv):
     When we want to calibrate _lambda, for a given value of _lambda we train the model on train and evaluate
     the accuracy on calibration set and at the end we pick the _lambda with the highest accuracy.
 
-    When we got the calibrated _lambda, we train the mode on (train+calibration) which we refer to it as
-    data_train_calibration and evaluate the accuracy on (test)
+    When we got the calibrated _lambda, we train the model on (train+calibration) and evaluate the accuracy on (test)
 
     '''
+
     data_train_enc, data_test_enc = train_test_split(data_enc, test_size=0.25, random_state=random_states_list[input_sample - 1])
     data_train_calibration_enc, data_calibration_enc = train_test_split(data_train_enc, test_size=0.33,
                                                                 random_state=random_states_list[input_sample - 1])
@@ -118,9 +117,6 @@ def main(argv):
         data_train_enc = data_train_calibration_enc
         data_train_reg = data_train_calibration_reg
 
-    # data_train_enc = data_enc
-    # data_train_reg = data_reg
-
     train_len = len(data_train_enc.index)
     ##########################################################
     # Creating and Solving the problem
@@ -129,6 +125,7 @@ def main(argv):
     primal = FlowOCT(data_train_enc, data_train_reg, label, tree, _lambda, time_limit, fairness_type, fairness_bound, protected_feature, positive_class, conditional_feature)
 
     primal.create_primal_problem()
+    start_time = time.time()
     primal.model.update()
     primal.model.optimize()
     end_time = time.time()
@@ -153,8 +150,7 @@ def main(argv):
     # Evaluation
     ##########################################################
     '''
-    For classification we report accuracy
-    For regression we report MAE (Mean Absolute Error) , MSE (Mean Squared Error) and  R-squared
+    For classification performance we report accuracy
 
     over training, test and the calibration set
     '''
