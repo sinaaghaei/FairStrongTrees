@@ -30,6 +30,9 @@ dataencoder <- function (data) {
 ##########################################################################################################
 # read data
 ##########################################################################################################
+# data_raw <- read.csv("compas-analysis-master/compas-scores-raw.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+# data_v <- read.csv("compas-analysis-master/compas-scores-two-years-violent.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+# data_compas <- read.csv("compas-analysis-master/compas-scores.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 data <- read.csv("compas-scores-two-years.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 
 data <- dplyr::select(data, age, c_charge_degree, race, age_cat, score_text, sex, priors_count, 
@@ -99,6 +102,6 @@ for(v in features){
   }
 }
 
-
-write.csv(data,"compas.csv",row.names = FALSE)
-write.csv(data_enc,"compas_enc.csv",row.names = FALSE)
+# 
+# write.csv(data,"compas.csv",row.names = FALSE)
+# write.csv(data_enc,"compas_enc.csv",row.names = FALSE)
