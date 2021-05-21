@@ -29,8 +29,8 @@ dataencoder <- function (data) {
 ##########################################################################################################
 # read data 
 ##########################################################################################################
-data_1 <- read.csv("../Data Proprocess code/adult/adult.data", header = FALSE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
-data_2 <- read.csv("../Data Proprocess code/adult/adult.test", header = FALSE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+data_1 <- read.csv("adult.data", header = FALSE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+data_2 <- read.csv("adult.test", header = FALSE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 
 data <- rbind(data_1,data_2)
 rm(data_1,data_2)

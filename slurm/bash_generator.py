@@ -6,9 +6,9 @@ approach_name = 'FairOCT' #
 samples = [1,2,3,4,5]
 depths = [1, 2, 3]
 time_limit = 10800
-datasets = ['compas']
-protected_feature = ['race_factor']
-condition_feature = ['priors_buckets']
+datasets = ['german']#compas adult
+protected_feature = ['age']#race sex
+condition_feature = ['credit_history']#priors_count education
 bounds = [0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
 fairness_type = ['None', 'SP', 'CSP', 'PE', 'EOdds', 'EOpp']
 
@@ -63,7 +63,7 @@ def generate():
         S+="#SBATCH --time=04:00:00\n"
         S+="#SBATCH --export=NONE\n"
         S+="#SBATCH --constraint=\"xeon-2640v4\"\n"
-        S+=f"#SBATCH --array=0-{len(dataset_enc_list)}\n"
+        S+=f"#SBATCH --array=0-{len(dataset_enc_list)-1}\n"
         S+="\n"
         S+="\n"
         S+=f"cd {dir}"

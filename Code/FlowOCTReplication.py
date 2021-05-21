@@ -204,12 +204,16 @@ def main(argv):
             var_func = get_pe
         elif fairness_const_type == 'EOpp':
             var_func = get_eopp
+        elif fairness_const_type == 'EOdds':
+            var_func = get_eodds
 
 
         for data_set in ['train','test','calib']:
             data_set_enc, data_set_reg = data_dict[data_set]
             for source in ['Data','Predictions']:
                 max_value = 0
+                if source == 'Data' and fairness_const_type in ['PE','EOpp','EOdds']:
+                    continue
                 for combos in combinations(protected_levels, 2):
                     p = combos[0]
                     p_prime = combos[1]
@@ -227,11 +231,13 @@ def main(argv):
 
 
     # Print all maximum values with the corresponding protected varibles
-    for fairness_const_type in ['SP','CSP','PE','EOpp']:
+    for fairness_const_type in ['SP','CSP','PE','EOpp','EOdds']:
         getFairnessResults(fairness_const_type)
         print('###################{} Results'.format(fairness_const_type))
         for data_set in ['train','test','calib']:
             for source in ['Data','Predictions']:
+                if source == 'Data' and fairness_const_type in ['PE','EOpp','EOdds']:
+                    continue
                 if fairness_const_type != 'CSP':
                     max_value, p, p_prime = fairness_metrics_dict[(fairness_const_type,data_set,source,'max_diff')]
                     print('{} & {} has {} {} {}: {} '.format(p,p_prime, data_set,source,fairness_const_type, max_value))
@@ -259,12 +265,15 @@ def main(argv):
              fairness_metrics_dict[('CSP','train','Data','max_diff')][0], fairness_metrics_dict[('CSP','train','Predictions','max_diff')][0],
              fairness_metrics_dict[('CSP','test','Data','max_diff')][0], fairness_metrics_dict[('CSP','test','Predictions','max_diff')][0],
              fairness_metrics_dict[('CSP','calib','Data','max_diff')][0], fairness_metrics_dict[('CSP','calib','Predictions','max_diff')][0],
-             fairness_metrics_dict[('PE','train','Data','max_diff')][0], fairness_metrics_dict[('PE','train','Predictions','max_diff')][0],
-             fairness_metrics_dict[('PE','test','Data','max_diff')][0], fairness_metrics_dict[('PE','test','Predictions','max_diff')][0],
-             fairness_metrics_dict[('PE','calib','Data','max_diff')][0], fairness_metrics_dict[('PE','calib','Predictions','max_diff')][0],
-             fairness_metrics_dict[('EOpp','train','Data','max_diff')][0], fairness_metrics_dict[('EOpp','train','Predictions','max_diff')][0],
-             fairness_metrics_dict[('EOpp','test','Data','max_diff')][0], fairness_metrics_dict[('EOpp','test','Predictions','max_diff')][0],
-             fairness_metrics_dict[('EOpp','calib','Data','max_diff')][0], fairness_metrics_dict[('EOpp','calib','Predictions','max_diff')][0]])
+             fairness_metrics_dict[('PE','train','Predictions','max_diff')][0],
+             fairness_metrics_dict[('PE','test','Predictions','max_diff')][0],
+             fairness_metrics_dict[('PE','calib','Predictions','max_diff')][0],
+             fairness_metrics_dict[('EOpp','train','Predictions','max_diff')][0],
+             fairness_metrics_dict[('EOpp','test','Predictions','max_diff')][0],
+             fairness_metrics_dict[('EOpp','calib','Predictions','max_diff')][0],
+             fairness_metrics_dict[('EOdds','train','Predictions','max_diff')][0],
+             fairness_metrics_dict[('EOdds','test','Predictions','max_diff')][0],
+             fairness_metrics_dict[('EOdds','calib','Predictions','max_diff')][0]])
 
 
 if __name__ == "__main__":
