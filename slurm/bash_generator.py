@@ -4,12 +4,12 @@ import sys
 path = '/Users/sina/Documents/GitHub/FairStrongTrees/'
 approach_name = 'FairOCT' #
 samples = [1,2,3,4,5]
-depths = [1, 2, 3]
+depths = [2]
 time_limit = 10800
-datasets = ['german']#compas adult
-protected_feature = ['age']#race sex
-condition_feature = ['credit_history']#priors_count education
-bounds = [0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
+datasets = ['german']# german compas adult
+protected_feature = ['age']# age race sex
+condition_feature = ['credit_history']# credit_history priors_count education
+bounds = [0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]#[x / 100.0 for x in range(1, 56, 1)] #[0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
 fairness_type = ['None', 'SP', 'CSP', 'PE', 'EOdds', 'EOpp']
 
 

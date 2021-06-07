@@ -190,8 +190,8 @@ def main(argv):
     data_dict = {'train':(data_train_enc,data_train_reg),
                  'test':(data_test_enc,data_test_reg),
                  'calib':(data_calibration_enc,data_calibration_reg)}
-    protected_levels = data_reg[protected_feature].unique()
-    conditional_feature_levels = data_reg[conditional_feature].unique()
+    protected_levels = data_train_reg[protected_feature].unique()
+    conditional_feature_levels = data_train_reg[conditional_feature].unique()
     fairness_metrics_dict = {}
     # fairness_metrics_dict[('SP','train','pred','max_diff')] = (max_val, p, p_prime)
     #fairness_metrics_dict[('CSP','train','pred','max_diff')] = (max_val, p, p_prime, L_name, L_level)
