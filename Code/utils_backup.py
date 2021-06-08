@@ -132,8 +132,9 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
         # both groups
         sp_protected = 0
         sp_protected_prime = 0
-        if countProtected != 0 and countProtected_prime != 0:
+        if countProtected != 0:
             sp_protected = (1/countProtected) * df_protected[df_protected[label] == positive_class].count()[label]
+        if countProtected_prime != 0:
             sp_protected_prime = (1/countProtected_prime) * df_protected_prime[df_protected_prime[label] == positive_class].count()[label]
 
         # Return SP between two groups
@@ -146,8 +147,9 @@ def get_sp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
         # Define statistical parity for both groups
         sp_protected_predictions = 0
         sp_protected_prime_predictions = 0
-        if countProtected != 0 and countProtected_prime != 0:
+        if countProtected != 0:
             sp_protected_predictions = (1 / countProtected) * df_protected[df_protected['Predictions'] == positive_class].count()[label]
+        if countProtected_prime != 0:
             sp_protected_prime_predictions = (1 / countProtected_prime) * df_protected_prime[df_protected_prime['Predictions'] == positive_class].count()[label]
 
         # Return sp between both groups
@@ -206,8 +208,9 @@ def get_csp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGrou
         # both groups
         sp_protected = 0
         sp_protected_prime = 0
-        if countProtected != 0 and countProtected_prime != 0:
+        if countProtected != 0:
             sp_protected = (1/countProtected) * df_protected[df_protected[label] == positive_class].count()[label]
+        if countProtected_prime != 0:
             sp_protected_prime = (1/countProtected_prime) * df_protected_prime[df_protected_prime[label] == positive_class].count()[label]
 
         # Return SP between two groups
@@ -220,8 +223,9 @@ def get_csp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGrou
         # Define statistical parity for both groups
         sp_protected_predictions = 0
         sp_protected_prime_predictions = 0
-        if countProtected != 0 and countProtected_prime != 0:
+        if countProtected != 0:
             sp_protected_predictions = (1 / countProtected) * df_protected[df_protected['Predictions'] == positive_class].count()[label]
+        if countProtected_prime != 0:
             sp_protected_prime_predictions = (1 / countProtected_prime) * df_protected_prime[df_protected_prime['Predictions'] == positive_class].count()[label]
         # Return sp between both groups
 
@@ -267,8 +271,9 @@ def get_pe(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGroup
     # Akin to measuring our model's bias
     pe_protected_predictions = 0
     pe_protected_prime_predictions = 0
-    if countProtected != 0 and countProtected_prime != 0:
+    if countProtected != 0:
         pe_protected_predictions = (1 / countProtected) * df_protected[df_protected['Predictions'] == positive_class].count()[label]
+    if countProtected_prime != 0:
         pe_protected_prime_predictions = (1 / countProtected_prime) * df_protected_prime[df_protected_prime['Predictions'] == positive_class].count()[label]
     # Return PE between both groups
 
@@ -315,8 +320,9 @@ def get_eopp(grb_model, local_data_enc, local_data_reg, b, beta, p, protectedGro
     # Akin to measuring our model's bias
     eopp_protected_predictions = 0
     eopp_protected_prime_predictions = 0
-    if countProtected != 0 and countProtected_prime != 0:
+    if countProtected != 0:
         eopp_protected_predictions = (1 / countProtected) * df_protected[df_protected['Predictions'] == positive_class].count()[label]
+    if countProtected_prime != 0:
         eopp_protected_prime_predictions = (1 / countProtected_prime) * df_protected_prime[df_protected_prime['Predictions'] == positive_class].count()[label]
 
     # Return EOpp between both groups
