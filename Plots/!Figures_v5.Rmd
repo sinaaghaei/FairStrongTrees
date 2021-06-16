@@ -32,10 +32,14 @@ library(MASS)
 require(scales)
 rm(list=ls())
 
-data= read.csv('./../Results/June 6/compas_june_6.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 
-# data = data[data$sample %in% c(1,2,3),]
+# data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+
+data= read.csv('./../Results/June_8/compas_june_8.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+
+
+data = data[data$sample %in% c(2) ,]
 # data = data[data$fair.bound!=1,]
 
 forpres=TRUE
@@ -54,9 +58,6 @@ data$depth <- as.factor(data$depth)
 data$fair.type <- as.factor(data$fair.type)
 data$fair.bound <- as.factor(data$fair.bound)
 
-
-# index <- data$fair.bound %in% c(0.01, 0.2, 0.3,1)
-# data <- data[index,]
 
 for(i in c('SP','CSP','PE','EOpp','EOdds')){
   tmp_none <- data[data$fair.type == 'None',]
@@ -93,7 +94,7 @@ names(tmp) <- c("approach","data","depth","fair.type","fair.bound","train.acc",'
                    "train.pred.EOdds","test.pred.EOdds")
 
 
-metric = 'CSP'
+metric = 'EOpp'
 if(metric == 'SP'){
   tmp <- subset(tmp, tmp$fair.type == metric)
   tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',

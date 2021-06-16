@@ -367,3 +367,78 @@ def get_acc(grb_model, local_data, b, beta, p):
 
     acc = acc / len(local_data.index)
     return acc
+
+
+
+
+def would_be_added(fairness_const_type, p, p_prime,protected_feature,conditional_feature,feature_value, data_reg, label, positive_class):
+    if fairness_const_type == 'SP':
+        var_func = sp_would_be_added
+    elif fairness_const_type == 'CSP':
+        var_func = csp_would_be_added
+    elif fairness_const_type == 'PE':
+        var_func = pe_would_be_added
+    elif fairness_const_type == 'EOpp':
+        var_func = eopp_would_be_added
+    elif fairness_const_type == 'EOdds':
+        var_func = eodds_would_be_added
+
+    outcome = var_func(p, p_prime,protected_feature,conditional_feature,feature_value, data_reg, label, positive_class)
+    return outcome
+
+def sp_would_be_added(p, p_prime,protected_feature,conditional_feature,feature_value, data_reg, label, positive_class):
+    outcome = False
+    countProtected = data_reg[data_reg[protected_feature] == p].count()[label]
+    countProtected_prime = data_reg[data_reg[protected_feature] == p_prime].count()[label]
+    if countProtected != 0 and countProtected_prime != 0:
+        outcome = True
+
+    return outcome
+
+def csp_would_be_added(p, p_prime,protected_feature,conditional_feature,feature_value, data_reg, label, positive_class):
+    outcome = False
+    protected_df_old = data_reg[data_reg[protected_feature] == p]
+    protected_prime_df_old = data_reg[data_reg[protected_feature] == p_prime]
+    protected_df = protected_df_old[protected_df_old[conditional_feature] == feature_value]
+    protected_prime_df = protected_prime_df_old[protected_prime_df_old[conditional_feature] == feature_value]
+    countProtected = protected_df.count()[label]
+    countProtected_prime = protected_prime_df.count()[label]
+    if countProtected != 0 and countProtected_prime != 0:
+        outcome = True
+
+    return outcome
+
+def pe_would_be_added(p, p_prime,protected_feature,conditional_feature,feature_value, data_reg, label, positive_class):
+    outcome = False
+    protected_df_old = data_reg[data_reg[protected_feature] == p]
+    protected_prime_df_old = data_reg[data_reg[protected_feature] == p_prime]
+    protected_df = protected_df_old[protected_df_old[label] != positive_class]
+    protected_prime_df = protected_prime_df_old[protected_prime_df_old[label] != positive_class]
+    countProtected = protected_df.count()[label]
+    countProtected_prime = protected_prime_df.count()[label]
+    if countProtected != 0 and countProtected_prime != 0:
+        outcome = True
+
+    return outcome
+
+def eopp_would_be_added(p, p_prime,protected_feature,conditional_feature,feature_value, data_reg, label, positive_class):
+    outcome = False
+    protected_df_old = data_reg[data_reg[protected_feature] == p]
+    protected_prime_df_old = data_reg[data_reg[protected_feature] == p_prime]
+    protected_df = protected_df_old[protected_df_old[label] == positive_class]
+    protected_prime_df = protected_prime_df_old[protected_prime_df_old[label] == positive_class]
+    countProtected = protected_df.count()[label]
+    countProtected_prime = protected_prime_df.count()[label]
+    if countProtected != 0 and countProtected_prime != 0:
+        outcome = True
+
+    return outcome
+
+def eodds_would_be_added(p, p_prime,protected_feature,conditional_feature,feature_value, data_reg, label, positive_class):
+    outcome = False
+    pe = pe_would_be_added(p, p_prime,protected_feature,conditional_feature,feature_value, data_reg, label, positive_class)
+    eopp = eopp_would_be_added(p, p_prime,protected_feature,conditional_feature,feature_value, data_reg, label, positive_class)
+    if pe == True and eopp == True:
+        outcome = True
+
+    return outcome

@@ -71,8 +71,12 @@ data$length_of_stay = cut(data$length_of_stay ,
                         c(-Inf,0,1,7,15,Inf),
                         labels=c(1,2,3,4,5))
 
+index <- !(data$race %in% c('African-American','Caucasian','Hispanic'))
+data$race[index] <- 'Other'
+
 for(f in names(data)){
   data[[f]] = as.factor(data[[f]])
+  data[[f]] = droplevels(data[[f]])
 }
 ##########################################################################################################
 # encoding data
