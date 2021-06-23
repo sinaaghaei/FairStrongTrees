@@ -218,7 +218,7 @@ def main(argv):
                     p = combos[0]
                     p_prime = combos[1]
                     if fairness_const_type != 'CSP':
-                        if  not would_be_added(fairness_const_type, p, p_prime,protected_feature,None,None, data_set_reg, label, positive_class):
+                        if  not would_be_added(fairness_const_type, p, p_prime,protected_feature,None,None, data_train_reg, label, positive_class):
                             continue
                         tmp_value = var_func(primal, data_set_enc, data_set_reg, b_value, beta_value, p_value, p, p_prime, positive_class, source, None, None)
                         if tmp_value >= max_value:
@@ -226,7 +226,7 @@ def main(argv):
                             fairness_metrics_dict[(fairness_const_type,data_set,source,'max_diff')] = (max_value, p, p_prime)
                     else:
                         for feature_value in conditional_feature_levels:
-                            if  not would_be_added(fairness_const_type, p, p_prime,protected_feature,conditional_feature,feature_value, data_set_reg, label, positive_class):
+                            if  not would_be_added(fairness_const_type, p, p_prime,protected_feature,conditional_feature,feature_value, data_train_reg, label, positive_class):
                                 continue
                             tmp_value = var_func(primal, data_set_enc, data_set_reg, b_value, beta_value, p_value, p, p_prime, positive_class, source, conditional_feature, feature_value)
                             if tmp_value >= max_value:

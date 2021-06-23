@@ -116,6 +116,39 @@ for(v in features){
   }
 }
 
-# 
-write.csv(data,"compas.csv",row.names = FALSE)
-write.csv(data_enc,"compas_enc.csv",row.names = FALSE)
+
+
+
+##########################################################################################################
+# Sampling from data
+##########################################################################################################
+seeds = c(123,156,67,1,43)
+
+
+for(Run in c(1,2,3,4,5)){
+  ## set the seed to make your partition reproducible
+  set.seed(seeds[Run])
+  ##########################################################################################################
+  # Splitting data into training and test
+  ##########################################################################################################
+  tmp <- data %>%
+    mutate(index = row_number()) %>%
+    group_by(race, priors_count, target) %>%
+    sample_frac(replace = FALSE, size = 0.75)
+  
+  
+  train_ind <- tmp$index
+  data_train <- data[train_ind, ]
+  data_test <- data[-train_ind, ]
+  
+  data_train_enc <- data_enc[train_ind, ]
+  data_test_enc <- data_enc[-train_ind, ]
+  
+  
+  # Save files
+  write.csv(data_train_enc,paste("compas_train_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_test_enc,paste("compas_test_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_train,paste("compas_train_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_test,paste("compas_test_",toString(Run),".csv",sep=''),row.names = FALSE)
+}
+
