@@ -24,4 +24,8 @@ write.csv(data_data,'data_to_csv.csv',row.names = FALSE)
 
 # Here I save them as .data
 write.dat(data_csv, 'address_folder')
+write.dat(data_data, 'address_folder')
 
+
+
+data_data2<- read.csv("address_folder/data_data.data", header = FALSE, sep = " ",na.strings = "",stringsAsFactors = TRUE)
