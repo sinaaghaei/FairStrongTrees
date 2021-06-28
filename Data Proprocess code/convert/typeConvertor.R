@@ -30,9 +30,10 @@ rm(list=ls())
 # 
 # data_data2<- read.csv("address_folder/data_data.data", header = FALSE, sep = " ",na.strings = "",stringsAsFactors = TRUE)
 
-file_list <- list.files(path="../../DataSets/")
+file_list <- list.files(path="../Files for Conversion/")
+file_list <- file_list[file_list!='arhive ']
 for(file in file_list){
   file_name = as.character(strsplit(file,'.csv')[1])
-  data <- read.csv(file = paste('../../DataSets/',file,sep = ''), header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+  data <- read.csv(file = paste('../Files for Conversion/',file,sep = ''), header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
   write.csv(data,paste(file_name,'.data',sep = ''),row.names = FALSE,quote = FALSE)
 }
