@@ -1,0 +1,437 @@
+def tree(Duration, CreditAmount, InstallmentRate, ResidenceSince, Age, CreditsAtBank, NumDependents, CheckingAccountStatus_A11, CheckingAccountStatus_A12, CheckingAccountStatus_A13, CheckingAccountStatus_A14, CreditHistory_A30, CreditHistory_A31, CreditHistory_A32, CreditHistory_A33, CreditHistory_A34, Purpose_A40, Purpose_A41, Purpose_A410, Purpose_A42, Purpose_A43, Purpose_A44, Purpose_A45, Purpose_A46, Purpose_A48, Purpose_A49, Savings_A61, Savings_A62, Savings_A63, Savings_A64, Savings_A65, EmploymentSince_A71, EmploymentSince_A72, EmploymentSince_A73, EmploymentSince_A74, EmploymentSince_A75, Sex_A91, Sex_A92, Sex_A93, Sex_A94, OtherDebtors_A101, OtherDebtors_A102, OtherDebtors_A103, Property_A121, Property_A122, Property_A123, Property_A124, OtherInstallmentPlans_A141, OtherInstallmentPlans_A142, OtherInstallmentPlans_A143, Housing_A151, Housing_A152, Housing_A153, Job_A171, Job_A172, Job_A173, Job_A174, Telephone_A191, Telephone_A192, ForeignWorker_A201, ForeignWorker_A202):
+    if CheckingAccountStatus_A14 <= 0.5:
+        if CreditHistory_A34 <= 0.5:
+            if CheckingAccountStatus_A11 <= 0.5:
+                if CreditAmount <= 12296.5:
+                    if Savings_A65 <= 0.5:
+                        if Duration <= 43.5:
+                            if Purpose_A43 <= 0.5:
+                                if Age <= 56.0:
+                                    if Sex_A92 <= 0.5:
+                                        if Job_A173 <= 0.5:
+                                            if Purpose_A42 <= 0.5:
+                                                if OtherInstallmentPlans_A143 <= 0.5:
+                                                    if InstallmentRate <= 1.5:
+                                                        return 0
+                                                    else:  # if InstallmentRate > 1.5
+                                                        return 1
+                                                else:  # if OtherInstallmentPlans_A143 > 0.5
+                                                    if EmploymentSince_A71 <= 0.5:
+                                                        if CreditsAtBank <= 2.5:
+                                                            return 0
+                                                        else:  # if CreditsAtBank > 2.5
+                                                            return 1
+                                                    else:  # if EmploymentSince_A71 > 0.5
+                                                        return 1
+                                            else:  # if Purpose_A42 > 0.5
+                                                if CreditAmount <= 1486.0:
+                                                    return 0
+                                                else:  # if CreditAmount > 1486.0
+                                                    return 1
+                                        else:  # if Job_A173 > 0.5
+                                            if CreditAmount <= 1291.0:
+                                                if Housing_A152 <= 0.5:
+                                                    return 1
+                                                else:  # if Housing_A152 > 0.5
+                                                    return 0
+                                            else:  # if CreditAmount > 1291.0
+                                                if EmploymentSince_A74 <= 0.5:
+                                                    return 0
+                                                else:  # if EmploymentSince_A74 > 0.5
+                                                    if Sex_A93 <= 0.5:
+                                                        return 1
+                                                    else:  # if Sex_A93 > 0.5
+                                                        return 0
+                                    else:  # if Sex_A92 > 0.5
+                                        if CheckingAccountStatus_A13 <= 0.5:
+                                            if Property_A121 <= 0.5:
+                                                if CreditAmount <= 2339.0:
+                                                    return 1
+                                                else:  # if CreditAmount > 2339.0
+                                                    if Housing_A152 <= 0.5:
+                                                        if Duration <= 33.0:
+                                                            return 1
+                                                        else:  # if Duration > 33.0
+                                                            return 0
+                                                    else:  # if Housing_A152 > 0.5
+                                                        return 0
+                                            else:  # if Property_A121 > 0.5
+                                                if Duration <= 9.5:
+                                                    return 1
+                                                else:  # if Duration > 9.5
+                                                    if Purpose_A40 <= 0.5:
+                                                        return 0
+                                                    else:  # if Purpose_A40 > 0.5
+                                                        return 1
+                                        else:  # if CheckingAccountStatus_A13 > 0.5
+                                            if CreditAmount <= 1257.5:
+                                                if Age <= 24.5:
+                                                    return 0
+                                                else:  # if Age > 24.5
+                                                    return 1
+                                            else:  # if CreditAmount > 1257.5
+                                                return 0
+                                else:  # if Age > 56.0
+                                    if Purpose_A46 <= 0.5:
+                                        return 1
+                                    else:  # if Purpose_A46 > 0.5
+                                        return 0
+                            else:  # if Purpose_A43 > 0.5
+                                if EmploymentSince_A72 <= 0.5:
+                                    if CreditAmount <= 778.0:
+                                        if Job_A173 <= 0.5:
+                                            if EmploymentSince_A73 <= 0.5:
+                                                return 0
+                                            else:  # if EmploymentSince_A73 > 0.5
+                                                return 1
+                                        else:  # if Job_A173 > 0.5
+                                            return 0
+                                    else:  # if CreditAmount > 778.0
+                                        return 0
+                                else:  # if EmploymentSince_A72 > 0.5
+                                    if Age <= 22.5:
+                                        return 1
+                                    else:  # if Age > 22.5
+                                        if CreditsAtBank <= 1.5:
+                                            if Age <= 25.5:
+                                                if CheckingAccountStatus_A12 <= 0.5:
+                                                    return 1
+                                                else:  # if CheckingAccountStatus_A12 > 0.5
+                                                    if CreditAmount <= 1817.5:
+                                                        return 1
+                                                    else:  # if CreditAmount > 1817.5
+                                                        return 0
+                                            else:  # if Age > 25.5
+                                                return 0
+                                        else:  # if CreditsAtBank > 1.5
+                                            return 1
+                        else:  # if Duration > 43.5
+                            if Savings_A63 <= 0.5:
+                                return 1
+                            else:  # if Savings_A63 > 0.5
+                                return 0
+                    else:  # if Savings_A65 > 0.5
+                        if Sex_A94 <= 0.5:
+                            if Duration <= 13.5:
+                                if CreditAmount <= 2396.0:
+                                    return 0
+                                else:  # if CreditAmount > 2396.0
+                                    if Job_A171 <= 0.5:
+                                        return 1
+                                    else:  # if Job_A171 > 0.5
+                                        return 0
+                            else:  # if Duration > 13.5
+                                return 0
+                        else:  # if Sex_A94 > 0.5
+                            return 1
+                else:  # if CreditAmount > 12296.5
+                    return 1
+            else:  # if CheckingAccountStatus_A11 > 0.5
+                if CreditHistory_A32 <= 0.5:
+                    if Age <= 22.5:
+                        return 0
+                    else:  # if Age > 22.5
+                        if CreditAmount <= 8078.0:
+                            if Savings_A62 <= 0.5:
+                                if Duration <= 19.5:
+                                    if InstallmentRate <= 3.5:
+                                        if Age <= 26.5:
+                                            return 1
+                                        else:  # if Age > 26.5
+                                            return 0
+                                    else:  # if InstallmentRate > 3.5
+                                        if CreditHistory_A33 <= 0.5:
+                                            return 1
+                                        else:  # if CreditHistory_A33 > 0.5
+                                            return 0
+                                else:  # if Duration > 19.5
+                                    return 1
+                            else:  # if Savings_A62 > 0.5
+                                return 0
+                        else:  # if CreditAmount > 8078.0
+                            return 0
+                else:  # if CreditHistory_A32 > 0.5
+                    if CreditAmount <= 1373.0:
+                        if Age <= 37.5:
+                            if CreditAmount <= 653.0:
+                                if Purpose_A46 <= 0.5:
+                                    return 0
+                                else:  # if Purpose_A46 > 0.5
+                                    return 1
+                            else:  # if CreditAmount > 653.0
+                                if Job_A174 <= 0.5:
+                                    if Purpose_A46 <= 0.5:
+                                        if Sex_A94 <= 0.5:
+                                            return 1
+                                        else:  # if Sex_A94 > 0.5
+                                            if Purpose_A40 <= 0.5:
+                                                return 1
+                                            else:  # if Purpose_A40 > 0.5
+                                                if Savings_A61 <= 0.5:
+                                                    return 1
+                                                else:  # if Savings_A61 > 0.5
+                                                    return 0
+                                    else:  # if Purpose_A46 > 0.5
+                                        if Savings_A61 <= 0.5:
+                                            return 0
+                                        else:  # if Savings_A61 > 0.5
+                                            return 1
+                                else:  # if Job_A174 > 0.5
+                                    return 0
+                        else:  # if Age > 37.5
+                            if InstallmentRate <= 3.5:
+                                return 0
+                            else:  # if InstallmentRate > 3.5
+                                if CreditAmount <= 705.0:
+                                    return 0
+                                else:  # if CreditAmount > 705.0
+                                    return 1
+                    else:  # if CreditAmount > 1373.0
+                        if OtherDebtors_A103 <= 0.5:
+                            if Job_A173 <= 0.5:
+                                if EmploymentSince_A75 <= 0.5:
+                                    if EmploymentSince_A72 <= 0.5:
+                                        if CreditAmount <= 2100.5:
+                                            if Duration <= 21.0:
+                                                return 0
+                                            else:  # if Duration > 21.0
+                                                return 1
+                                        else:  # if CreditAmount > 2100.5
+                                            if Age <= 44.0:
+                                                return 0
+                                            else:  # if Age > 44.0
+                                                if EmploymentSince_A74 <= 0.5:
+                                                    return 1
+                                                else:  # if EmploymentSince_A74 > 0.5
+                                                    return 0
+                                    else:  # if EmploymentSince_A72 > 0.5
+                                        if Duration <= 38.5:
+                                            if Property_A122 <= 0.5:
+                                                return 1
+                                            else:  # if Property_A122 > 0.5
+                                                if InstallmentRate <= 3.0:
+                                                    return 1
+                                                else:  # if InstallmentRate > 3.0
+                                                    return 0
+                                        else:  # if Duration > 38.5
+                                            return 0
+                                else:  # if EmploymentSince_A75 > 0.5
+                                    if Job_A172 <= 0.5:
+                                        return 1
+                                    else:  # if Job_A172 > 0.5
+                                        return 0
+                            else:  # if Job_A173 > 0.5
+                                if Duration <= 16.5:
+                                    if Telephone_A191 <= 0.5:
+                                        return 1
+                                    else:  # if Telephone_A191 > 0.5
+                                        return 0
+                                else:  # if Duration > 16.5
+                                    if OtherInstallmentPlans_A142 <= 0.5:
+                                        if Savings_A64 <= 0.5:
+                                            if CreditAmount <= 2838.0:
+                                                if Age <= 50.0:
+                                                    return 1
+                                                else:  # if Age > 50.0
+                                                    if Age <= 60.0:
+                                                        return 0
+                                                    else:  # if Age > 60.0
+                                                        return 1
+                                            else:  # if CreditAmount > 2838.0
+                                                if OtherInstallmentPlans_A143 <= 0.5:
+                                                    return 0
+                                                else:  # if OtherInstallmentPlans_A143 > 0.5
+                                                    if Age <= 30.5:
+                                                        if CreditAmount <= 3420.0:
+                                                            return 1
+                                                        else:  # if CreditAmount > 3420.0
+                                                            if Duration <= 30.0:
+                                                                return 0
+                                                            else:  # if Duration > 30.0
+                                                                if NumDependents <= 1.5:
+                                                                    return 1
+                                                                else:  # if NumDependents > 1.5
+                                                                    return 0
+                                                    else:  # if Age > 30.5
+                                                        return 1
+                                        else:  # if Savings_A64 > 0.5
+                                            return 0
+                                    else:  # if OtherInstallmentPlans_A142 > 0.5
+                                        return 0
+                        else:  # if OtherDebtors_A103 > 0.5
+                            if Sex_A94 <= 0.5:
+                                return 0
+                            else:  # if Sex_A94 > 0.5
+                                return 1
+        else:  # if CreditHistory_A34 > 0.5
+            if Age <= 35.5:
+                if Savings_A65 <= 0.5:
+                    if Property_A121 <= 0.5:
+                        if Duration <= 25.5:
+                            if Age <= 31.5:
+                                return 0
+                            else:  # if Age > 31.5
+                                if Telephone_A191 <= 0.5:
+                                    if EmploymentSince_A75 <= 0.5:
+                                        return 0
+                                    else:  # if EmploymentSince_A75 > 0.5
+                                        return 1
+                                else:  # if Telephone_A191 > 0.5
+                                    return 1
+                        else:  # if Duration > 25.5
+                            if InstallmentRate <= 3.5:
+                                if Sex_A92 <= 0.5:
+                                    return 0
+                                else:  # if Sex_A92 > 0.5
+                                    return 1
+                            else:  # if InstallmentRate > 3.5
+                                return 1
+                    else:  # if Property_A121 > 0.5
+                        if ResidenceSince <= 1.5:
+                            return 0
+                        else:  # if ResidenceSince > 1.5
+                            return 1
+                else:  # if Savings_A65 > 0.5
+                    return 0
+            else:  # if Age > 35.5
+                if Purpose_A42 <= 0.5:
+                    if OtherInstallmentPlans_A141 <= 0.5:
+                        if OtherDebtors_A102 <= 0.5:
+                            return 0
+                        else:  # if OtherDebtors_A102 > 0.5
+                            if Property_A122 <= 0.5:
+                                return 0
+                            else:  # if Property_A122 > 0.5
+                                return 1
+                    else:  # if OtherInstallmentPlans_A141 > 0.5
+                        if Age <= 37.5:
+                            return 1
+                        else:  # if Age > 37.5
+                            return 0
+                else:  # if Purpose_A42 > 0.5
+                    if Telephone_A192 <= 0.5:
+                        return 1
+                    else:  # if Telephone_A192 > 0.5
+                        if Property_A121 <= 0.5:
+                            return 0
+                        else:  # if Property_A121 > 0.5
+                            return 1
+    else:  # if CheckingAccountStatus_A14 > 0.5
+        if OtherInstallmentPlans_A143 <= 0.5:
+            if CreditAmount <= 3761.5:
+                if NumDependents <= 1.5:
+                    if Purpose_A40 <= 0.5:
+                        if Purpose_A46 <= 0.5:
+                            return 0
+                        else:  # if Purpose_A46 > 0.5
+                            if EmploymentSince_A73 <= 0.5:
+                                return 0
+                            else:  # if EmploymentSince_A73 > 0.5
+                                return 1
+                    else:  # if Purpose_A40 > 0.5
+                        if Property_A122 <= 0.5:
+                            return 0
+                        else:  # if Property_A122 > 0.5
+                            return 1
+                else:  # if NumDependents > 1.5
+                    if Job_A172 <= 0.5:
+                        return 0
+                    else:  # if Job_A172 > 0.5
+                        if Savings_A62 <= 0.5:
+                            return 1
+                        else:  # if Savings_A62 > 0.5
+                            return 0
+            else:  # if CreditAmount > 3761.5
+                if Purpose_A49 <= 0.5:
+                    if Purpose_A40 <= 0.5:
+                        if Age <= 46.5:
+                            return 0
+                        else:  # if Age > 46.5
+                            return 1
+                    else:  # if Purpose_A40 > 0.5
+                        return 1
+                else:  # if Purpose_A49 > 0.5
+                    return 1
+        else:  # if OtherInstallmentPlans_A143 > 0.5
+            if Age <= 32.5:
+                if CreditAmount <= 6465.5:
+                    if Age <= 19.5:
+                        return 1
+                    else:  # if Age > 19.5
+                        if CreditHistory_A33 <= 0.5:
+                            if ResidenceSince <= 3.5:
+                                if Duration <= 32.0:
+                                    if Age <= 22.5:
+                                        if Age <= 21.5:
+                                            return 0
+                                        else:  # if Age > 21.5
+                                            return 1
+                                    else:  # if Age > 22.5
+                                        if Savings_A63 <= 0.5:
+                                            return 0
+                                        else:  # if Savings_A63 > 0.5
+                                            if Property_A123 <= 0.5:
+                                                return 1
+                                            else:  # if Property_A123 > 0.5
+                                                return 0
+                                else:  # if Duration > 32.0
+                                    if Sex_A92 <= 0.5:
+                                        return 0
+                                    else:  # if Sex_A92 > 0.5
+                                        return 1
+                            else:  # if ResidenceSince > 3.5
+                                if Age <= 26.5:
+                                    if Purpose_A45 <= 0.5:
+                                        return 0
+                                    else:  # if Purpose_A45 > 0.5
+                                        if EmploymentSince_A74 <= 0.5:
+                                            return 1
+                                        else:  # if EmploymentSince_A74 > 0.5
+                                            return 0
+                                else:  # if Age > 26.5
+                                    if Property_A121 <= 0.5:
+                                        if Telephone_A192 <= 0.5:
+                                            return 1
+                                        else:  # if Telephone_A192 > 0.5
+                                            return 0
+                                    else:  # if Property_A121 > 0.5
+                                        return 0
+                        else:  # if CreditHistory_A33 > 0.5
+                            if InstallmentRate <= 3.5:
+                                return 0
+                            else:  # if InstallmentRate > 3.5
+                                if Savings_A61 <= 0.5:
+                                    return 0
+                                else:  # if Savings_A61 > 0.5
+                                    return 1
+                else:  # if CreditAmount > 6465.5
+                    if Purpose_A43 <= 0.5:
+                        if EmploymentSince_A73 <= 0.5:
+                            return 1
+                        else:  # if EmploymentSince_A73 > 0.5
+                            return 0
+                    else:  # if Purpose_A43 > 0.5
+                        return 0
+            else:  # if Age > 32.5
+                if Purpose_A45 <= 0.5:
+                    if ResidenceSince <= 1.5:
+                        if Sex_A93 <= 0.5:
+                            if Savings_A64 <= 0.5:
+                                return 1
+                            else:  # if Savings_A64 > 0.5
+                                return 0
+                        else:  # if Sex_A93 > 0.5
+                            return 0
+                    else:  # if ResidenceSince > 1.5
+                        if Purpose_A46 <= 0.5:
+                            return 0
+                        else:  # if Purpose_A46 > 0.5
+                            if Job_A174 <= 0.5:
+                                return 0
+                            else:  # if Job_A174 > 0.5
+                                return 1
+                else:  # if Purpose_A45 > 0.5
+                    if CreditAmount <= 1806.5:
+                        return 1
+                    else:  # if CreditAmount > 1806.5
+                        return 0

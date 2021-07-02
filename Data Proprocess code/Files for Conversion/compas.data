@@ -1,4 +1,4 @@
-race,age_cat,sex,priors_count,c_charge_degree,length_of_stay,score_text,target
+race,age_cat,sex,priors_count,c_charge_degree,length_of_stay,score_text,Class
 4,3,2,1,1,2,1,1
 1,2,2,1,1,4,1,2
 1,1,2,3,1,2,1,2
