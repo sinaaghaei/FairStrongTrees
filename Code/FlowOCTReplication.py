@@ -17,18 +17,22 @@ import operator
 
 def main(argv):
     print(argv)
-    input_file_reg = None
-    input_file_enc = None
+    train_file_reg = None
+    train_file_enc = None
+    test_file_reg = None
+    test_file_enc = None
+    calibration_file_reg = None
+    calibration_file_enc = None
     depth = None
     time_limit = None
     _lambda = None
     input_sample = None
-    calibration = None
     fairness_type = None
     fairness_bound = None
     protected_feature = None
     positive_class = None
     conditional_feature = None
+    calibration_mode = None
     '''
     Depending on the value of input_sample we choose one of the following random seeds and then split the whole data
     into train, test and calibration
@@ -36,43 +40,62 @@ def main(argv):
     random_states_list = [41, 23, 45, 36, 19, 123]
 
     try:
-        opts, args = getopt.getopt(argv, "r:f:d:t:l:i:c:a:b:e:g:h:",
-                                   ["input_file_reg=", "input_file_enc=", "depth=", "timelimit=", "lambda=",
-                                    "input_sample=",
-                                    "calibration=", "fairness_type=", "fairness_bound=","protected_feature=",
-                                    'positive_class=', "conditional_feature="])
+        opts, args = getopt.getopt(argv,'a:b:c:d:e:f:g:h:i:j:k:l:m:n:o:',
+                                   ["train_file_reg=", "train_file_enc=",
+                                   "test_file_reg=", "test_file_enc=",
+                                    "calibration_file_reg=", "calibration_file_enc=",
+                                    "depth=", "timelimit=", "_lambda=",
+                                    "fairness_type=", "fairness_bound=","protected_feature=",
+                                    'positive_class=', "conditional_feature=","calibration_mode="])
     except getopt.GetoptError:
         sys.exit(2)
     for opt, arg in opts:
-        if opt in ("-r", "--input_file_reg"):
-            input_file_reg = arg
-        elif opt in ("-f", "--input_file_enc"):
-            input_file_enc = arg
-        elif opt in ("-d", "--depth"):
+        if opt in ('-a',"--train_file_reg"):
+            train_file_reg = arg
+        elif opt in ('-b',"--train_file_enc"):
+            train_file_enc = arg
+        elif opt in ('-c',"--test_file_reg"):
+            test_file_reg = arg
+        elif opt in ('-d',"--test_file_enc"):
+            test_file_enc = arg
+        elif opt in ('-e',"--calibration_file_reg"):
+            calibration_file_reg = arg
+        elif opt in ('-f',"--calibration_file_enc"):
+            calibration_file_enc = arg
+        elif opt in ('-g',"--depth"):
             depth = int(arg)
-        elif opt in ("-t", "--timelimit"):
+        elif opt in ('-h',"--timelimit"):
             time_limit = int(arg)
-        elif opt in ("-l", "--lambda"):
+        elif opt in ('-i',"--_lambda"):
             _lambda = float(arg)
-        elif opt in ("-i", "--input_sample"):
-            input_sample = int(arg)
-        elif opt in ("-c", "--calibration"):
-            calibration = int(arg)
-        elif opt in ("-a", "--fairness_type"):
+        elif opt in ('-j',"--fairness_type"):
             fairness_type = arg
-        elif opt in ("-b", "--fairness_bound"):
+        elif opt in ('-k',"--fairness_bound"):
             fairness_bound = float(arg)
-        elif opt in ("-e", "--protected_feature"):
+        elif opt in ('-l',"--protected_feature"):
             protected_feature = arg
-        elif opt in ("-g", "--positive_class"):
+        elif opt in ('-m',"--positive_class"):
             positive_class = int(arg)
-        elif opt in ("-h", "--conditional_feature"):
+        elif opt in ('-n',"--conditional_feature"):
             conditional_feature = arg
+        elif opt in ('-o',"--calibration_mode"):
+            calibration_mode = arg
 
 
     data_path = os.getcwd() + '/../DataSets/'
-    data_reg = pd.read_csv(data_path + input_file_reg)
-    data_enc = pd.read_csv(data_path + input_file_enc)
+
+    data_train_reg = pd.read_csv(data_path + train_file_reg)
+    data_train_enc = pd.read_csv(data_path + train_file_enc)
+    data_test_reg = pd.read_csv(data_path + test_file_reg)
+    data_test_enc = pd.read_csv(data_path + test_file_enc)
+    data_calibration_reg = pd.read_csv(data_path + calibration_file_reg)
+    data_calibration_enc = pd.read_csv(data_path + calibration_file_enc)
+
+
+
+    train_len = len(data_train_enc.index)
+
+
     '''Name of the column in the dataset representing the class label.
     In the datasets we have, we assume the label is target. Please change this value at your need'''
     label = 'target'
@@ -84,41 +107,11 @@ def main(argv):
     # output setup
     ##########################################################
     approach_name = 'FlowOCT'
-    out_put_name = input_file_enc + '_' + str(input_sample) + '_' + approach_name + '_d_' + str(depth) + '_t_' + str(
-        time_limit) + '_lambda_' + str(
-        _lambda) + '_c_' + str(calibration) + '_ft_' + fairness_type + '_fb_' + str(fairness_bound)
+    out_put_name = f'{train_file_reg}_{approach_name}_d_{depth}_t_{time_limit}_lambda_{_lambda}_ft_{fairness_type}_fb_{fairness_bound}'
     out_put_path = os.getcwd() + '/../Results/'
     # Using logger we log the output of the console in a text file
     sys.stdout = logger(out_put_path + out_put_name + '.txt')
 
-    ##########################################################
-    # data splitting
-    ##########################################################
-    '''
-    Creating  train, test and calibration datasets
-    We take 50% of the whole data as training, 25% as test and 25% as calibration
-
-    When we want to calibrate _lambda, for a given value of _lambda we train the model on train and evaluate
-    the accuracy on calibration set and at the end we pick the _lambda with the highest accuracy.
-
-    When we got the calibrated _lambda, we train the model on (train+calibration) and evaluate the accuracy on (test)
-
-    '''
-
-    data_train_enc, data_test_enc = train_test_split(data_enc, test_size=0.25, random_state=random_states_list[input_sample - 1])
-    data_train_calibration_enc, data_calibration_enc = train_test_split(data_train_enc, test_size=0.33,
-                                                                random_state=random_states_list[input_sample - 1])
-
-    data_train_reg, data_test_reg = train_test_split(data_reg, test_size=0.25, random_state=random_states_list[input_sample - 1])
-    data_train_calibration_reg, data_calibration_reg = train_test_split(data_train_reg, test_size=0.33,
-                                                                random_state=random_states_list[input_sample - 1])
-
-    if calibration == 1:  # in this mode, we train on 50% of the data; otherwise we train on 75% of the data
-        data_train_enc = data_train_calibration_enc
-        data_train_reg = data_train_calibration_reg
-
-
-    train_len = len(data_train_enc.index)
     ##########################################################
     # Creating and Solving the problem
     ##########################################################
@@ -259,7 +252,7 @@ def main(argv):
         results_writer = csv.writer(results, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
 
         results_writer.writerow(
-            [approach_name, input_file_enc, fairness_type, fairness_bound, train_len, depth, _lambda, time_limit,
+            [approach_name, train_file_reg, fairness_type, fairness_bound, train_len,calibration_mode, depth, _lambda, time_limit,
              primal.model.getAttr("Status"), primal.model.getAttr("ObjVal"), train_acc,
              primal.model.getAttr("MIPGap") * 100, primal.model.getAttr("NodeCount"), solving_time,
              test_acc, calibration_acc, input_sample,
