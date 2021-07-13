@@ -26,13 +26,13 @@ def main(argv):
     depth = None
     time_limit = None
     _lambda = None
-    input_sample = None
     fairness_type = None
     fairness_bound = None
     protected_feature = None
     positive_class = None
     conditional_feature = None
     calibration_mode = None
+    input_sample = None
     '''
     Depending on the value of input_sample we choose one of the following random seeds and then split the whole data
     into train, test and calibration
@@ -40,13 +40,13 @@ def main(argv):
     random_states_list = [41, 23, 45, 36, 19, 123]
 
     try:
-        opts, args = getopt.getopt(argv,'a:b:c:d:e:f:g:h:i:j:k:l:m:n:o:',
+        opts, args = getopt.getopt(argv,'a:b:c:d:e:f:g:h:i:j:k:l:m:n:o:p:',
                                    ["train_file_reg=", "train_file_enc=",
                                    "test_file_reg=", "test_file_enc=",
                                     "calibration_file_reg=", "calibration_file_enc=",
                                     "depth=", "timelimit=", "_lambda=",
                                     "fairness_type=", "fairness_bound=","protected_feature=",
-                                    'positive_class=', "conditional_feature=","calibration_mode="])
+                                    'positive_class=', "conditional_feature=","calibration_mode=","sample="])
     except getopt.GetoptError:
         sys.exit(2)
     for opt, arg in opts:
@@ -80,6 +80,8 @@ def main(argv):
             conditional_feature = arg
         elif opt in ('-o',"--calibration_mode"):
             calibration_mode = arg
+        elif opt in ('-p',"--sample"):
+            input_sample = int(arg)
 
 
     data_path = os.getcwd() + '/../DataSets/'
@@ -252,10 +254,10 @@ def main(argv):
         results_writer = csv.writer(results, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
 
         results_writer.writerow(
-            [approach_name, train_file_reg, fairness_type, fairness_bound, train_len,calibration_mode, depth, _lambda, time_limit,
+            [approach_name, train_file_reg,input_sample, fairness_type, fairness_bound, train_len,calibration_mode, depth, _lambda, time_limit,
              primal.model.getAttr("Status"), primal.model.getAttr("ObjVal"), train_acc,
              primal.model.getAttr("MIPGap") * 100, primal.model.getAttr("NodeCount"), solving_time,
-             test_acc, calibration_acc, input_sample,
+             test_acc, calibration_acc,
              fairness_metrics_dict[('SP','train','Data','max_diff')][0], fairness_metrics_dict[('SP','train','Predictions','max_diff')][0],
              fairness_metrics_dict[('SP','test','Data','max_diff')][0], fairness_metrics_dict[('SP','test','Predictions','max_diff')][0],
              fairness_metrics_dict[('SP','calib','Data','max_diff')][0], fairness_metrics_dict[('SP','calib','Predictions','max_diff')][0],

@@ -1,7 +1,7 @@
 import FlowOCTReplication
 
 timelimit = 20
-calibration_mode = 0
+calibration_mode = 1
 
 for data_set in ['compas']:
     for sample in [1]:
@@ -23,4 +23,4 @@ for data_set in ['compas']:
                                                          "--calibration_file_reg", calibration_file_reg,"--calibration_file_enc", calibration_file_enc,
                                                          "--depth", depth, "--timelimit", timelimit, "-i", l,
                                                          "--fairness_type",fairness_type_bound[0], "--fairness_bound", fairness_type_bound[1],
-                                                         "--protected_feature", 'race', "--positive_class", 2,"--conditional_feature", 'priors_count',"--calibration_mode", calibration_mode])
+                                                         "--protected_feature", 'race', "--positive_class", 2,"--conditional_feature", 'priors_count',"--calibration_mode", calibration_mode, "--sample", 1])
