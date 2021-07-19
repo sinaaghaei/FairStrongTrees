@@ -539,3 +539,60 @@ calibration acc 0.5443940375891121
 3 & 4 has train Predictions EOdds: 0.0 
 3 & 4 has test Predictions EOdds: 0.0 
 3 & 4 has calib Predictions EOdds: 0.0 
+Using license file /Users/sina/gurobi.lic
+Academic license - for non-commercial use only - expires 2022-06-26
+Changed value of parameter TimeLimit to 10.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 4 threads
+Optimize a model with 37086 rows, 27804 columns and 200625 nonzeros
+Model fingerprint: 0xeaaa0a21
+Variable types: 6 continuous, 27798 integer (27798 binary)
+Coefficient statistics:
+  Matrix range     [2e-03, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-01, 1e+00]
+Found heuristic solution: objective 1683.0000000
+Presolve removed 9638 rows and 9641 columns
+Presolve time: 4.17s
+Presolved: 27448 rows, 18163 columns, 131262 nonzeros
+Variable types: 6 continuous, 18157 integer (18141 binary)
+
+Deterministic concurrent LP optimizer: primal and dual simplex
+Showing first log only...
+
+Concurrent spin time: 0.00s
+
+Solved with dual simplex
+
+Root relaxation: objective 3.084198e+03, 8003 iterations, 0.25 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 3084.19787    0 6179 1683.00000 3084.19787  83.3%     -   10s
+
+Explored 0 nodes (15105 simplex iterations) in 10.01 seconds
+Thread count was 4 (of 4 available processors)
+
+Solution count 1: 1683 
+
+Time limit reached
+Best objective 1.683000000000e+03, best bound 3.084000000000e+03, gap 83.2442%
+
+
+
+#########node  1
+leaf 1
+#########node  2
+pruned
+#########node  3
+pruned
+
+
+Total Solving Time 10.026233196258545
+obj value 1683.0
+train acc 0.5453661697990927
+test acc 0.5443940375891121
+calibration acc 0.5443940375891121
