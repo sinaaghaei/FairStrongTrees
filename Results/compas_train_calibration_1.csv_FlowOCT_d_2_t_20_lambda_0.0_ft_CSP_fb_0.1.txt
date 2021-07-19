@@ -1,0 +1,49 @@
+Using license file /Users/sina/gurobi.lic
+Academic license - for non-commercial use only - expires 2022-06-26
+Changed value of parameter TimeLimit to 20.0
+   Prev: inf  Min: 0.0  Max: inf  Default: inf
+Gurobi Optimizer version 9.1.0 build v9.1.0rc0 (mac64)
+Thread count: 2 physical cores, 4 logical processors, using up to 4 threads
+Optimize a model with 86470 rows, 64890 columns and 515463 nonzeros
+Model fingerprint: 0xfb6c0159
+Variable types: 14 continuous, 64876 integer (64876 binary)
+Coefficient statistics:
+  Matrix range     [2e-03, 1e+00]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-01, 1e+00]
+Presolve removed 18504 rows and 18513 columns
+Presolve time: 2.49s
+Presolved: 67966 rows, 46377 columns, 361258 nonzeros
+Variable types: 14 continuous, 46363 integer (46347 binary)
+Found heuristic solution: objective 1683.0000000
+
+Deterministic concurrent LP optimizer: primal and dual simplex
+Showing first log only...
+
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+    5337    3.0844281e+03   9.997026e-01   7.999998e+06      5s
+    9617    3.0844280e+03   9.993979e-01   1.899999e+07     10s
+   14707    3.0844263e+03   9.991222e-01   2.148689e+08     15s
+Concurrent spin time: 0.00s
+
+Solved with dual simplex
+
+Root relaxation: objective 3.084198e+03, 26615 iterations, 12.33 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 3084.19787    0 9272 1683.00000 3084.19787  83.3%     -   20s
+
+Explored 0 nodes (41260 simplex iterations) in 20.02 seconds
+Thread count was 4 (of 4 available processors)
+
+Solution count 1: 1683 
+
+Time limit reached
+Best objective 1.683000000000e+03, best bound 3.084000000000e+03, gap 83.2442%
+{1: -0.0, 2: -0.0, 3: -0.0, 4: 1.0, 5: 1.0, 6: 1.0, 7: 1.0}

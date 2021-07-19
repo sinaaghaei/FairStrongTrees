@@ -133,6 +133,8 @@ def main(argv):
     b_value = primal.model.getAttr("X", primal.b)
     beta_value = primal.model.getAttr("X", primal.beta)
     p_value = primal.model.getAttr("X", primal.p)
+    zeta_value = primal.model.getAttr("X", primal.zeta)
+
 
     print("\n\n")
     print_tree(primal,b_value, beta_value, p_value)
@@ -166,19 +168,29 @@ def main(argv):
     yhat_train = []
     yhat_test = []
     yhat_calib = []
+
+    # yhat_prob_train = []
+    # yhat_prob_test = []
+    # yhat_prob_calib = []
+    # leaf_dict = get_leaf_info(primal,data_train_enc,label, b_value, beta_value, p_value,zeta_value)
     for i in data_train_enc.index:
         yhat_train.append(get_predicted_value(primal, data_train_enc, b_value, beta_value, p_value, i))
+        # yhat_prob_train.append(get_predicted_probability(primal, data_train_enc, leaf_dict, b_value, beta_value, p_value, i))
     for i in data_test_enc.index:
         yhat_test.append(get_predicted_value(primal, data_test_enc, b_value, beta_value, p_value, i))
+        # yhat_prob_test.append(get_predicted_probability(primal, data_test_enc,leaf_dict, b_value, beta_value, p_value, i))
     for i in data_calibration_enc.index:
         yhat_calib.append(get_predicted_value(primal, data_calibration_enc, b_value, beta_value, p_value, i))
+        # yhat_prob_calib.append(get_predicted_probability(primal, data_calibration_enc, leaf_dict, b_value, beta_value, p_value, i))
 
 
     data_train_reg['Predictions'] = yhat_train
     data_test_reg['Predictions'] = yhat_test
     data_calibration_reg['Predictions'] = yhat_calib
 
-
+    # data_train_reg['Predictions_prob'] = yhat_prob_train
+    # data_test_reg['Predictions_prob'] = yhat_prob_test
+    # data_calibration_reg['Predictions_prob'] = yhat_prob_calib
 
 
 

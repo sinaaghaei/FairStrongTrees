@@ -6,11 +6,11 @@ approach_name = 'FairOCT' #
 samples = [1,2,3,4,5]
 depths = [2]
 time_limit = 10800
-datasets = ['german']# german compas adult
-protected_feature = ['age']# age race sex
-condition_feature = ['credit_history']# credit_history priors_count education
+datasets = ['compas']# german compas adult
+protected_feature = ['race']# age race sex
+condition_feature = ['priors_count']# credit_history priors_count education
 bounds = [x / 100.0 for x in range(1, 56, 1)]#[x / 100.0 for x in range(1, 56, 1)] #[0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
-fairness_type = ['None', 'SP']
+fairness_type = ['None', 'CSP', 'EOpp']
 
 
 _lambda = 0
@@ -148,7 +148,7 @@ def generate():
 
         S+="\n"
         S+="\n"
-        command = 'python FlowOCTReplication.py '+ '--train_file_reg ' +'${data_train_reg_list[$SLURM_ARRAY_TASK_ID]}'+ '--train_file_enc ' +'${data_train_enc_list[$SLURM_ARRAY_TASK_ID]}'+ '--test_file_reg ' +'${data_test_reg_list[$SLURM_ARRAY_TASK_ID]}'+ '--test_file_enc ' +'${data_test_enc_list[$SLURM_ARRAY_TASK_ID]}'+ '--calibration_file_reg ' +'${data_calibration_reg_list[$SLURM_ARRAY_TASK_ID]}'+ '--calibration_file_enc ' +'${data_calibration_enc_list[$SLURM_ARRAY_TASK_ID]}' + " --depth " + '${depth_list[$SLURM_ARRAY_TASK_ID]}' + " --timelimit " + str(time_limit) + " -i " + str(_lambda)+ " --sample " + '${sample_list[$SLURM_ARRAY_TASK_ID]}'+ " --calibration_mode " + str(calibration_mode) + " --fairness_type " + '${fairness_type_list[$SLURM_ARRAY_TASK_ID]}'+ " --fairness_bound " + '${bounds_list[$SLURM_ARRAY_TASK_ID]}'+" --protected_feature " + '${protected_feature_list[$SLURM_ARRAY_TASK_ID]}'+" --positive_class " + str(positive_class) + " --conditional_feature " + '${condition_feature_list[$SLURM_ARRAY_TASK_ID]}'
+        command = 'python FlowOCTReplication.py '+ ' --train_file_reg ' +'${data_train_reg_list[$SLURM_ARRAY_TASK_ID]}'+ ' --train_file_enc ' +'${data_train_enc_list[$SLURM_ARRAY_TASK_ID]}'+ ' --test_file_reg ' +'${data_test_reg_list[$SLURM_ARRAY_TASK_ID]}'+ ' --test_file_enc ' +'${data_test_enc_list[$SLURM_ARRAY_TASK_ID]}'+ ' --calibration_file_reg ' +'${data_calibration_reg_list[$SLURM_ARRAY_TASK_ID]}'+ ' --calibration_file_enc ' +'${data_calibration_enc_list[$SLURM_ARRAY_TASK_ID]}' + " --depth " + '${depth_list[$SLURM_ARRAY_TASK_ID]}' + " --timelimit " + str(time_limit) + " -i " + str(_lambda)+ " --sample " + '${sample_list[$SLURM_ARRAY_TASK_ID]}'+ " --calibration_mode " + str(calibration_mode) + " --fairness_type " + '${fairness_type_list[$SLURM_ARRAY_TASK_ID]}'+ " --fairness_bound " + '${bounds_list[$SLURM_ARRAY_TASK_ID]}'+" --protected_feature " + '${protected_feature_list[$SLURM_ARRAY_TASK_ID]}'+" --positive_class " + str(positive_class) + " --conditional_feature " + '${condition_feature_list[$SLURM_ARRAY_TASK_ID]}'
         S+=command
         S+="\n"
 
