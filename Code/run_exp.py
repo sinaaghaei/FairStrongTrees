@@ -1,21 +1,26 @@
 import FlowOCTReplication
 
-depths = [1, 2, 3, 4, 5]
-datasets = ["monk1.csv", 'monk1_enc.csv', 'monk2_enc.csv', 'monk3_enc.csv', 'car_evaluation_enc.csv',
-            'balance-scale_enc.csv', 'kr-vs-kp_enc.csv', 'house-votes-84_enc.csv', 'tic-tac-toe_enc.csv',
-            'breast-cancer_enc.csv', 'hayes-roth_enc.csv', 'spect_enc.csv', 'soybean-small_enc.csv',
-            'compas.csv', 'compas_enc.csv','compas__short.csv','compas__short_enc.csv', 'compas_trial.csv',
-            'compas_trial_enc.csv','compas_trial2.csv','compas_trial2_enc.csv','compas_trial3.csv','compas_trial3_enc.csv']
-samples = [1, 2, 3, 4, 5]
+timelimit = 10
+calibration_mode = 1
 
-FlowOCTReplication.main(["-r", 'compas.csv', "-f", 'compas_enc.csv', "-d", 1, "-t", 20, "-l", 0, "-i", 5, "-c", 1, "-a", 'None', "-b", 0.2, "-e", 'race', "-g", 2, "-h", 'priors_count'])
-
-
-
-# for s in [2]:
-#     for fairness_type in ["SP","None"]:
-#         if fairness_type == "None":
-#             FlowOCTReplication.main(["-r", "compas.csv", "-f", 'compas_enc.csv', "-d", 2, "-t", 2100, "-l", 0, "-i", s, "-c", 1, "-a", fairness_type, "-b", 0, "-e", 'race_factor', "-g", 2])
-#         else:
-#             for delta in [0.01, 0.05, 0.1 , 0.2, 0.3]:
-#                 FlowOCTReplication.main(["-r", "compas.csv", "-f", 'compas_enc.csv', "-d", 2, "-t", 2100, "-l", 0, "-i", s, "-c", 1, "-a", fairness_type, "-b", delta, "-e", 'race_factor', "-g", 2])
+for data_set in ['compas']:
+    for sample in [1]:
+        if calibration_mode == 1:
+                train_file_reg = f'compas_train_calibration_{sample}.csv'
+                train_file_enc = f'compas_train_calibration_enc_{sample}.csv'
+        else:
+                train_file_reg = f'compas_train_{sample}.csv'
+                train_file_enc = f'compas_train_enc_{sample}.csv'
+        test_file_reg = f'compas_test_{sample}.csv'
+        test_file_enc = f'compas_test_enc_{sample}.csv'
+        calibration_file_reg = f'compas_calibration_{sample}.csv'
+        calibration_file_enc = f'compas_calibration_enc_{sample}.csv'
+        for depth in [1]:
+                for l in [0]:
+                        for fairness_type_bound in [('CSP',0.1)]:#('None',1),('SP',0.1),('CSP',0.1),('PE',0.1),('EOpp',0.1),('EOdds',0.1)
+                                FlowOCTReplication.main(["--train_file_reg", train_file_reg,"--train_file_enc", train_file_enc,
+                                                         "--test_file_reg", test_file_reg,"--test_file_enc", test_file_enc,
+                                                         "--calibration_file_reg", calibration_file_reg,"--calibration_file_enc", calibration_file_enc,
+                                                         "--depth", depth, "--timelimit", timelimit, "-i", l,
+                                                         "--fairness_type",fairness_type_bound[0], "--fairness_bound", fairness_type_bound[1],
+                                                         "--protected_feature", 'race', "--positive_class", 2,"--conditional_feature", 'priors_count',"--calibration_mode", calibration_mode, "--sample", 1])

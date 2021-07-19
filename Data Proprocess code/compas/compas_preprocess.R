@@ -117,8 +117,9 @@ for(v in features){
 }
 
 
-
-
+rm(dmy)
+write.csv(data,'compas.csv',row.names = FALSE)
+write.csv(data_enc,'compas_enc.csv',row.names = FALSE)
 ##########################################################################################################
 # Sampling from data
 ##########################################################################################################
@@ -144,11 +145,27 @@ for(Run in c(1,2,3,4,5)){
   data_train_enc <- data_enc[train_ind, ]
   data_test_enc <- data_enc[-train_ind, ]
   
+  tmp <- data_train %>%
+    mutate(index = row_number()) %>%
+    group_by(race, priors_count, target) %>%
+    sample_frac(replace = FALSE, size = 2/3)
+  
+  train_calibration_ind <- tmp$index
+  data_train_calibration <- data_train[train_calibration_ind, ]
+  data_calibration<- data_train[-train_calibration_ind, ]
+  
+  data_train_calibration_enc <- data_train_enc[train_calibration_ind, ]
+  data_calibration_enc <- data_train_enc[-train_calibration_ind, ]
   
   # Save files
   write.csv(data_train_enc,paste("compas_train_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
   write.csv(data_test_enc,paste("compas_test_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
   write.csv(data_train,paste("compas_train_",toString(Run),".csv",sep=''),row.names = FALSE)
   write.csv(data_test,paste("compas_test_",toString(Run),".csv",sep=''),row.names = FALSE)
+  
+  write.csv(data_train_calibration,paste("compas_train_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_train_calibration_enc,paste("compas_train_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_calibration,paste("compas_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_calibration_enc,paste("compas_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
 }
 

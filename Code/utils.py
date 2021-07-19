@@ -70,6 +70,52 @@ def print_tree(grb_model, b, beta, p):
             print('leaf {}'.format(value))
 
 
+
+
+def get_leaf_info(grb_model,train_enc,label, b, beta, p,zeta):
+    leaf_dict = {}
+    for current in grb_model.tree.Nodes + grb_model.tree.Leaves:
+        pruned, branching, selected_feature, leaf, value = get_node_status(grb_model, b, beta, p, current)
+        if leaf:
+            tmp_train = train_enc[train_enc[label] == value]
+            # denum = sum_{i} zeta[i,current,value]
+            denum = dict(filter(lambda elem: elem[0][1] == current and elem[0][2] == value, zeta.items()))
+            denum = sum(denum.values())
+
+            # num = sum_{i: y_i = value} zeta[i,current,value]
+            num = dict(filter(lambda elem: elem[0][0] in tmp_train.index and elem[0][1] == current and elem[0][2] == value, zeta.items()))
+            num = sum(num.values())
+
+
+            prob =  num/denum
+            leaf_dict[current] = (value, prob)
+    return leaf_dict
+
+def get_predicted_probability(grb_model, local_data,leaf_dict, b, beta, p, i):
+    '''
+    This function returns the predicted probability for a given datapoint
+    :param grb_model: The gurobi model we solved
+    :param local_data: The dataset we want to compute accuracy for
+    :param b: The value of decision variable b
+    :param beta: The value of decision variable beta
+    :param p: The value of decision variable p
+    :param i: Index of the datapoint we are interested in
+    :return: The predicted value for datapoint i in dataset local_data
+    '''
+    tree = grb_model.tree
+    current = 1
+
+    while True:
+        pruned, branching, selected_feature, leaf, value = get_node_status(grb_model, b, beta, p, current)
+        if leaf:
+            return leaf_dict[current][1]
+        elif branching:
+            if local_data.at[i, selected_feature] == 1:  # going right on the branch
+                current = tree.get_right_children(current)
+            else:  # going left on the branch
+                current = tree.get_left_children(current)
+
+
 def get_predicted_value(grb_model, local_data, b, beta, p, i):
     '''
     This function returns the predicted value for a given datapoint
