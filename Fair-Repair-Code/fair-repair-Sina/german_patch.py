@@ -109,9 +109,10 @@ def parse_args():
 
 if __name__ == '__main__':
     evalu = parse_args()
-    reformed_tree_string = patch.patch(evalu, cols, refineHeuristics, attr_map,classes)
-    reformed_classifier = convert_string_classifier(reformed_tree_string)
-    # test data: X_test, Y_test
-    Y_test_predictions = reformed_classifier(X_test)
-    # we can compute Y_test and Y_pred accuracy and the passing rates
+    patch.patch(evalu, cols, refineHeuristics, attr_map,classes)
+    # reformed_tree_string = patch.patch(evalu, cols, refineHeuristics, attr_map,classes)
+    # reformed_classifier = convert_string_classifier(reformed_tree_string)
+    # # test data: X_test, Y_test
+    # Y_test_predictions = reformed_classifier(X_test)
+    # # we can compute Y_test and Y_pred accuracy and the passing rates
     evalu.save_vals()
