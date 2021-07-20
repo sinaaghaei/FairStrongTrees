@@ -72,9 +72,8 @@ refineHeuristics = [(capitalgain, False), (capitalloss, False),
 def parse_args():
     parser = eutil.create_base_parser(
         description='Patch adult dataset.',
-        sensitive_attrs_default = "['sex']",
-        dataset_default = 'adult.data',
-        fairness_thresh_default = 0.8)
+        sensitive_attrs_default = "['race']",
+        dataset_default = 'adult.data')
     args = parser.parse_args()
     evalu = eutil.EvalUtil(args)
     random.seed(args.random_seed)

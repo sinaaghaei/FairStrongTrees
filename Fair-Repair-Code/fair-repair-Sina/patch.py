@@ -73,7 +73,6 @@ def patchTree(evalu, cols, refineHeuristics, attr_map,classes):
     evalu.record_eval("time-tree-construction", time.time() - last_time)
 
     sizeOfDataset = len_ds
-    print(len_ds)
     to_dict_start = time.time()
     dataList = []
     for i in range(len(df)):
@@ -205,34 +204,8 @@ def patchTree(evalu, cols, refineHeuristics, attr_map,classes):
     foundit = m.Event()
     results = []
 
-    # Added in by Jack
-
-    # Define and gather constants.
-    start_time_test = time.time()
-    ds_test = evalu.get_dataset_test()
-    len_ds_test,df_test,X_test,y_test = readData(ds_test, cols)
-    features = list(X.columns)
-    size =  20
-    # countMultipliesAlpha = 0
-
-    # Train a decision tree:
-    last_time = time.time()
-
-    sizeOfDataset_test = len_ds_test
-    to_dict_start = time.time()
-    dataList_test = []
-    for i in range(len(df_test)):
-        dataList_test.append(df_test.iloc[i].to_dict())
-        dataList_test[i]['index'] = i
-    evalu.record_eval("df_test-to-dict-time",time.time()-to_dict_start)
-
-    # Record outcomes and compute accuracy
-    actual_outcomes_test = [dataList_test[i]['Class'] for i in range(len(df_test))]
-
-    # Added in by Jack
-
-    p1 = pool.apply_async(retVsSolverOld,args=(hsets,hids,hCubeSetIndices,sizeOfDataset_test,c,alpha,minChanges1,evalu,foundit,actual_outcomes_test,cls1,cls2,dataList_test))
-    p2 = pool.apply_async(retVsSolverOld,args=(hsets,hids,hCubeSetIndices,sizeOfDataset_test,c,alpha,minChanges2,evalu,foundit,actual_outcomes_test,cls1,cls2,dataList_test))
+    p1 = pool.apply_async(retVsSolverOld,args=(hsets,hids,hCubeSetIndices,sizeOfDataset,c,alpha,minChanges1,evalu,foundit,actual_outcomes,cls1,cls2,dataList))
+    p2 = pool.apply_async(retVsSolverOld,args=(hsets,hids,hCubeSetIndices,sizeOfDataset,c,alpha,minChanges2,evalu,foundit,actual_outcomes,cls1,cls2,dataList))
     p3 = pool.apply_async(retVsSolver,args=(min1,max1,lst1,hsets,hids,hCubeSetIndices,sizeOfDataset,c,alpha,evalu,actual_outcomes,cls1,cls2,foundit,dataList))
     p4 = pool.apply_async(retVsSolver,args=(min2,max2,lst2,hsets,hids,hCubeSetIndices,sizeOfDataset,c,alpha,evalu,actual_outcomes,cls1,cls2,foundit,dataList))
     p5 = pool.apply_async(retVsSolverFinal,args=(hsets, hids, hCubeSetIndices, sizeOfDataset, c, alpha, minChange, evalu,foundit,actual_outcomes,cls1,cls2,dataList))
@@ -764,7 +737,6 @@ def retVsSolver(min_,max_,lst_,hsets, hids, hCubeSetIndices, sizeOfDataset, c, a
             evalu.record_eval("precision-after",true_pos/(true_pos+false_pos))
             evalu.record_eval("recall-after",true_pos/(true_pos+false_neg))
             evalu.record_eval("accuracy-after",(true_neg+true_pos)/(true_pos+true_neg+false_pos+false_neg))
-            print("A")
             # q.put((True, count, sum(count), ratios))
 
         return True, count, sum(count), ratios
@@ -780,8 +752,6 @@ def retVsSolverOld(hsets, hids, hCubeSetIndices, sizeOfDataset, c, alpha, y_soln
     An testing example:
     maxSMTSolving([[0.2,0.3],[0.1,0.4]], [[1,0],[1,0]], 0.06, 0.8, 1.2) -> UNSAT
     '''
-
-    print(sizeOfDataset)
     
     # Initialisation
     M = len(hsets)
@@ -883,7 +853,7 @@ def retVsSolverOld(hsets, hids, hCubeSetIndices, sizeOfDataset, c, alpha, y_soln
     
     result = opt.check()
     if result == sat:
-        #print("The flipping result is: SAT.")
+        # print("The flipping result is: SAT.")
         m = opt.model()
         newRetVs = [[True for j in range(len(retVs[i]))] for i in range(M)]
         for i in range(M):
@@ -901,13 +871,10 @@ def retVsSolverOld(hsets, hids, hCubeSetIndices, sizeOfDataset, c, alpha, y_soln
                 if newRetVs[i][j] == True:
                     passingNums[i] += pathProbs[i][j]
         ratios = []
-        #diffs = []
         for i in range(len(passingNums)):
             for j in range(len(passingNums)):
                 if intProportions[i] > size and intProportions[j] > size:
                     ratios.append(((passingNums[i]*intProportions[j])/(passingNums[j]*intProportions[i]),i,j))
-                    #diffs.append(((passingNums[i]*intProportions[j])-(passingNums[j]*intProportions[i]),i,j))
-        print(hmap[hids[i][j]].get_points())
         
         if not foundit.is_set():
             foundit.set()
@@ -923,9 +890,6 @@ def retVsSolverOld(hsets, hids, hCubeSetIndices, sizeOfDataset, c, alpha, y_soln
                         hmap[hids[i][j]].set_value(0)
                         for pt in hmap[hids[i][j]].get_points():
                             repaired_outcomes[pt] = cls1
-            print(len(repaired_outcomes))
-            print(repaired_outcomes.count(None))
-
             true_pos, false_pos, true_neg, false_neg = accuracyCalculator(repaired_outcomes,actual_outcomes,cls1,cls2,dataList)
 
             evalu.record_eval("final-passing-rates",[passingNums[i]/intProportions[i] for i in range(len(passingNums))])
@@ -940,7 +904,6 @@ def retVsSolverOld(hsets, hids, hCubeSetIndices, sizeOfDataset, c, alpha, y_soln
             evalu.record_eval("precision-after",true_pos/(true_pos+false_pos))
             evalu.record_eval("recall-after",true_pos/(true_pos+false_neg))
             evalu.record_eval("accuracy-after",(true_neg+true_pos)/(true_pos+true_neg+false_pos+false_neg))
-            print("B")
             # q.put((True, count, sum(count), ratios))
         return True, count, sum(count), ratios
     elif result == unsat:
@@ -1102,7 +1065,6 @@ def retVsSolverFinal(hsets, hids, hCubeSetIndices, sizeOfDataset, c, alpha, minC
             evalu.record_eval("precision-after",true_pos/(true_pos+false_pos))
             evalu.record_eval("recall-after",true_pos/(true_pos+false_neg))
             evalu.record_eval("accuracy-after",(true_neg+true_pos)/(true_pos+true_neg+false_pos+false_neg))
-            print("C")
             # q.put((True, count, sum(count), ratios))
         return True, count, sum(count), ratios
     elif result == unsat:
@@ -1276,7 +1238,6 @@ def anotherRetVsSolver(min_,max_,intersectedHsets,lst_,forest_size, hCubeSetIndi
             evalu.record_eval("precision-after",true_pos/(true_pos+false_pos))
             evalu.record_eval("recall-after",true_pos/(true_pos+false_neg))
             evalu.record_eval("accuracy-after",(true_neg+true_pos)/(true_pos+true_neg+false_pos+false_neg))
-            print("D")
             # q.put(True, count, sum(count), ratios)
 
         return True, count, sum(count), ratios
@@ -1489,7 +1450,6 @@ def retVsSolverIntersected(intersectedHsets,forest_size, hCubeSetIndices, c, alp
             evalu.record_eval("precision-after",true_pos/(true_pos+false_pos))
             evalu.record_eval("recall-after",true_pos/(true_pos+false_neg))
             evalu.record_eval("accuracy-after",(true_neg+true_pos)/(true_pos+true_neg+false_pos+false_neg))
-            print("E")
             
         return True, count, sum(count), ratios
 
@@ -2211,8 +2171,6 @@ def refineProcedure(refineHeuristics,hids,hCubeSetIndices,hsets,c,alpha,minChang
                 pool.terminate()
                 sat = True
             if all([p.ready() for p in results]):
-                print("LOOK HERE")
-                print(p)
                 if foundit.is_set():
                     time.sleep(5)
                     pool.terminate()

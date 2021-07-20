@@ -36,10 +36,10 @@ cols = [
     'Telephone',
     'ForeignWorker',
     #'Class'
-] 
+]
 
 # Get all attributes, continuous and discrete.
-Duration = 'Duration'   
+Duration = 'Duration'
 CreditAmount = 'CreditAmount'
 InstallmentRate = 'InstallmentRate'
 ResidenceSince = 'ResidenceSince'
@@ -87,7 +87,7 @@ attr_map = {
 }
 
 # Some pre-defined refinement heuristics
-refineHeuristics = [(Property, True), (Purpose, True), (Job, True), 
+refineHeuristics = [(Property, True), (Purpose, True), (Job, True),
                     (CreditHistory, True), (CheckingAccountStatus, True),
                     (Savings, True), (OtherInstallmentPlans, True),
                     (Age, False), (Duration, False), (CreditAmount, False),
@@ -100,9 +100,7 @@ def parse_args():
     parser = eutil.create_base_parser(
         description='Patch German dataset.',
         sensitive_attrs_default = "['Sex']",
-        dataset_default = 'german.data',
-        fairness_thresh_default = 0.8)
-        #-
+        dataset_default = 'german.data')
     args = parser.parse_args()
     evalu = eutil.EvalUtil(args)
     random.seed(args.random_seed)
@@ -112,4 +110,9 @@ def parse_args():
 if __name__ == '__main__':
     evalu = parse_args()
     patch.patch(evalu, cols, refineHeuristics, attr_map,classes)
+    # reformed_tree_string = patch.patch(evalu, cols, refineHeuristics, attr_map,classes)
+    # reformed_classifier = convert_string_classifier(reformed_tree_string)
+    # # test data: X_test, Y_test
+    # Y_test_predictions = reformed_classifier(X_test)
+    # # we can compute Y_test and Y_pred accuracy and the passing rates
     evalu.save_vals()

@@ -102,7 +102,7 @@ class HCubeSet:
         # Check if point does not satisfy sensitive constraints.
         for fname, fname_c in self.sensitive_attrs.items():
             # if not fname in point:
-            # raise RuntimeError("No value for feature '" + fname + "' in point: " + str(point))
+            #     raise RuntimeError("No value for feature '" + fname + "' in point: " + str(point))
             if not fname_c.satisfies(point[fname]):
                 return False
         

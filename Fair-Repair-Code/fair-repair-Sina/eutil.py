@@ -6,7 +6,7 @@ import pickle
 import random
 import argparse
 
-def create_base_parser(description, sensitive_attrs_default, dataset_default, dataset_test_default, fairness_thresh_default):
+def create_base_parser(description, sensitive_attrs_default, dataset_default):
     '''Creates and returns an instance of arg parser with common command
     line arguments that are used for all FairRepair programs,
     including adult_patch.py and german_patch.py
@@ -20,7 +20,7 @@ def create_base_parser(description, sensitive_attrs_default, dataset_default, da
                       required=False)
     parser.add_argument('-f', '--fairness-thresh', type=float,
                       help='Fairness threshold value to use',
-                      default=fairness_thresh_default,  
+                      default=0.8, 
                     required=False)
     parser.add_argument('-s', '--sensitive-attrs', type=str,
                       help="Sensitive attributes, e.g., '['sex', 'race']', or '['Sex', 'ForeignWorker']'",
@@ -34,11 +34,6 @@ def create_base_parser(description, sensitive_attrs_default, dataset_default, da
     parser.add_argument('-i', '--dataset', type=str,
                         help='Choice of dataset (or subset)',
                         default=dataset_default,
-                        required=False)
-    # Dataset Test arg:
-    parser.add_argument('-d', '--dataset_test', type=str,
-                        help='Choice of dataset (or subset) for testing',
-                        default=dataset_test_default,
                         required=False)
     # Random forest arg:
     parser.add_argument('-t', '--forest', type=int,
@@ -68,9 +63,6 @@ class EvalUtil:
 
     def get_fairness_thresh(self):
         return self.args.fairness_thresh
-
-    def get_dataset_test(self):
-        return self.args.dataset_test
 
     def get_sensitive_attrs(self):
         return self.args.sensitive_attrs
