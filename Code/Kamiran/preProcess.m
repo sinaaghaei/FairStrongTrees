@@ -16,12 +16,17 @@ X = [X1 X2];
 B_loc = size(X,2); %protected feature (not encoded) location in X
 
 %
+%remove B from column names
 cols = data_encode.Properties.VariableNames;
+cols = cols(:,1:end-1);
+cols1 = cols(:,1:lvl_loc-1);
+cols2 = cols(:,lvl_loc+lvl_n:end);
+cols = [cols1 cols2];
+cols = [cols, B_name];
 
 prep.X = X;
 prep.Y = Y;
 prep.B = B_loc;
 prep.cols = cols;
-prep.B_x = B_x;
 
 

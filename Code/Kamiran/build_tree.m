@@ -59,7 +59,11 @@ curr_X = X(inds{node},:);
 curr_Y = Y(inds{node});
 X_curr_B = X(inds{node},B_loc);
 % Loop over each feature
-for i = 1:size(X,2)
+for i = 1:(size(X,2))
+    %we want to avoid the protected column 
+    if i== B_loc
+        continue
+    end
     feat = curr_X(:,i);
     
     % Deterimine the values to split on

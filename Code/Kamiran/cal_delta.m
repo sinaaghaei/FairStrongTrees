@@ -1,4 +1,4 @@
-function delta = cal_delta(X, Y, B_x, leaf_label, lvl_n, decsn, p, Dep_lim)
+function delta = cal_delta(X, Y, leaf_label, decsn, p, Dep_lim, B_loc, deprived_group, positive_class)
 
 acc = leaf_label;
 acc(:,2) = 0;
@@ -20,8 +20,8 @@ for i=1:size(leaf_label,1)
     acc(i,2) = accuracy(X, Y, tem_leaf_label, decsn, p, Dep_lim, pred_inds_new)- ...
         accuracy(X, Y, leaf_label, decsn, p, Dep_lim, pred_inds);
     
-    disc(i,2) = discrep(X, Y, B_x, tem_leaf_label, lvl_n, decsn, p, Dep_lim, pred_labels_new)-...
-        discrep(X, Y, B_x, leaf_label, lvl_n, decsn, p, Dep_lim, pred_labels);
+    disc(i,2) = get_sp(X(:,B_loc),pred_labels_new,deprived_group,positive_class)- ...
+                get_sp(X(:,B_loc),pred_labels,deprived_group,positive_class);
 end
 
 delta.acc = acc;
