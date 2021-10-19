@@ -23,8 +23,8 @@ eps = 0.05;
 %%
 %data specific parameters
 B_name = 'sex';
-positive_class = 2;
-deprived_group = 1;
+positive_class = 1;
+deprived_group = 2;
 lvl_loc = 8; lvl_n =1; %location of encoded protected feature
 
 %%

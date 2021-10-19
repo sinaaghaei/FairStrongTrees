@@ -25,7 +25,7 @@ cols = [cols1 cols2];
 cols = [cols, B_name];
 
 prep.X = X;
-prep.Y = Y;
+prep.Y = Y-1;%We assume that the target column is 1/2 and not 0/1
 prep.B = B_loc;
 prep.cols = cols;
 
