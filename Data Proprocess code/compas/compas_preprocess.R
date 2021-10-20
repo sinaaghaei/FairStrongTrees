@@ -8,6 +8,8 @@ library(dplyr)
 rm(list=ls())
 graphics.off()
 
+
+Kamiran_version = TRUE
 #################################################################################################
 #Functions
 #################################################################################################
@@ -78,6 +80,15 @@ for(f in names(data)){
   data[[f]] = as.factor(data[[f]])
   data[[f]] = droplevels(data[[f]])
 }
+
+
+data$race <- as.character(data$race)
+if(Kamiran_version){
+  index <- data$race == 'Caucasian'
+  data$race[index] = 'white'
+  data$race[!index] = 'non-white'
+}
+data$race <- as.factor(data$race)
 ##########################################################################################################
 # encoding data
 ##########################################################################################################
@@ -118,6 +129,12 @@ for(v in features){
 
 
 rm(dmy)
+if(Kamiran_version){
+  setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/Kamiran Version/')
+}else{
+  setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/')
+}
+
 write.csv(data,'compas.csv',row.names = FALSE)
 write.csv(data_enc,'compas_enc.csv',row.names = FALSE)
 ##########################################################################################################
