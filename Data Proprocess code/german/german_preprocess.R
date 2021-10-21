@@ -9,7 +9,6 @@ library(dplyr)
 rm(list=ls())
 graphics.off()
 
-
 '
 The analyzer can analyze some data collected by a bank giving a loan. 
 The dataset consists of 1000 datapoints of categorical and numerical 
@@ -17,7 +16,7 @@ dataas well as a good credit vs bad credit metric which has been assigned by ban
 '
 
 
-Kamiran_version = FALSE
+Kamiran_version = TRUE
 #################################################################################################
 #Functions
 #################################################################################################
@@ -196,5 +195,6 @@ for(Run in c(1,2,3,4,5)){
 
 
 # # Test
-# data_train<- read.csv("/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/german_train_calibration_1.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+data_train<- read.csv("/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/german_calibration_1.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+data_train_kamiran <- read.csv("/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/Kamiran Version/german_calibration_1.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 # data_test<- read.csv("/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/german_test_1.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
