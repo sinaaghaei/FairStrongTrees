@@ -36,7 +36,7 @@ rm(list=ls())
 
 # data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
-data= read.csv('./../Results/July 13/compas_july_13.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Oct 20/Kamiran_compas_depth2_oct_20.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 
 # data = data[data$sample %in% c(2) ,]
@@ -59,16 +59,17 @@ data$fair.type <- as.factor(data$fair.type)
 data$fair.bound <- as.factor(data$fair.bound)
 
 
-for(i in c('CSP','EOpp')){#'SP','CSP','PE','EOpp','EOdds'
+for(i in c('SP')){#'SP','CSP','PE','EOpp','EOdds'
   tmp_none <- data[data$fair.type == 'None',]
   tmp_none$fair.type = i
   data = rbind(data,tmp_none)
 }
 
 data <- data[data$fair.type!= 'None',]
+data$fair.type <- droplevels(data$fair.type)
 rm(tmp_none)
 
-data$data <- 'compas.csv'
+data$data <- 'german.csv'
 ```
 
 #Preparing Data
@@ -96,7 +97,7 @@ names(tmp) <- c("approach","data","depth","fair.type","fair.bound","train.acc",'
                    "train.pred.EOdds","test.pred.EOdds")
 
 
-metric = 'EOpp'
+metric = 'SP'
 if(metric == 'SP'){
   tmp <- subset(tmp, tmp$fair.type == metric)
   tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
@@ -121,7 +122,7 @@ if(metric == 'SP'){
 
 
 names(tmp) <- c("approach","data","depth","fair.type","fair.bound","test.acc","train.acc","test.pred.disc","train.pred.disc")
-tmp$fair.type <- factor(tmp$fair.type, levels = c('SP','CSP','PE','EOpp','EOdds'))
+# tmp$fair.type <- factor(tmp$fair.type, levels = c('SP','CSP','PE','EOpp','EOdds'))
 tmp$fair.bound <- as.numeric(as.character(tmp$fair.bound))
 
 
@@ -143,7 +144,7 @@ g1 <- ggplot(data = subset(tmp,tmp$depth ==2),aes(x=(disc)*100, y=acc*100)) +
   geom_line(aes(linetype=source), size=3) + 
   geom_point(aes(color = fair.bound),size=10)+
   scale_color_gradient(low="blue", high="red")+
-  labs(x="Equal Opportunity (%)", y = "Accuracy (%)", linetype = "Data", color = 'EO Bound')+
+  labs(x="Statistical Parity (%)", y = "Accuracy (%)", linetype = "Data", color = 'SP Bound')+
   theme(
     # plot.title = element_text(size = 25),
     axis.text = element_text(size = 30),

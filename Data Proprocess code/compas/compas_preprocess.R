@@ -187,3 +187,8 @@ for(Run in c(1,2,3,4,5)){
   write.csv(data_calibration_enc,paste("compas_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
 }
 
+
+
+data_train<- read.csv("/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/KamiranVersion/compas_train_calibration_1.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+data_train_kamiran <- read.csv("/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/KamiranVersion/compas_train_calibration_1.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+

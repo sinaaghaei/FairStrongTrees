@@ -84,7 +84,7 @@ def main(argv):
             input_sample = int(arg)
 
 
-    data_path = os.getcwd() + '/../DataSets/'
+    data_path = os.getcwd() + '/../DataSets/KamiranVersion/'
 
     data_train_reg = pd.read_csv(data_path + train_file_reg)
     data_train_enc = pd.read_csv(data_path + train_file_enc)
