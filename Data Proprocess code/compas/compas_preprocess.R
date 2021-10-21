@@ -9,7 +9,7 @@ rm(list=ls())
 graphics.off()
 
 
-Kamiran_version = TRUE
+Kamiran_version = FALSE
 #################################################################################################
 #Functions
 #################################################################################################
@@ -34,6 +34,7 @@ dataencoder <- function (data) {
 # data_raw <- read.csv("compas-analysis-master/compas-scores-raw.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 # data_v <- read.csv("compas-analysis-master/compas-scores-two-years-violent.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 # data_compas <- read.csv("compas-analysis-master/compas-scores.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+setwd('/Users/sina/Documents/GitHub/FairStrongTrees/Data Proprocess code/compas/')
 data <- read.csv("compas-analysis-master/compas-scores-two-years.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 
 

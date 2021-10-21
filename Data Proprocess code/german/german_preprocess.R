@@ -16,6 +16,8 @@ The dataset consists of 1000 datapoints of categorical and numerical
 dataas well as a good credit vs bad credit metric which has been assigned by bank employees.
 '
 
+
+Kamiran_version = FALSE
 #################################################################################################
 #Functions
 #################################################################################################
@@ -37,6 +39,7 @@ dataencoder <- function (data) {
 ##########################################################################################################
 # read data 
 ##########################################################################################################
+setwd('/Users/sina/Documents/GitHub/FairStrongTrees/Data Proprocess code/german/')
 data<- read.csv("../german/german.data", header = FALSE, sep = " ",na.strings = "",stringsAsFactors = TRUE)
 
 names(data) <- c("chek_acc","month_duration","credit_history","purpose","Credit_amo","saving_amo","present_employmment",
@@ -61,13 +64,20 @@ for(x in numeric_features){
 }
 
 # Categorize Age into 4 groups : <=30, 30-45, 45-60 and >60
-data<- data %>% mutate(age = ifelse(age <=30, "<=30",
-                                          ifelse(age>30 & age <=45, "30-45",
-                                                 ifelse(age>45 & age <=60,"45-60",
-                                                        ">60"))))
-data$age <- factor(data$age, levels = c('<=30','30-45','45-60','>60'))
+if(Kamiran_version){
+  data<- data %>% mutate(age = ifelse(age <=25, "<=25",'>25'))
+  data$age <- factor(data$age, levels = c('<=25','>25'))
+  
+}else{
+  data<- data %>% mutate(age = ifelse(age <=30, "<=30",
+                                      ifelse(age>30 & age <=45, "30-45",
+                                             ifelse(age>45 & age <=60,"45-60",
+                                                    ">60"))))
+  data$age <- factor(data$age, levels = c('<=30','30-45','45-60','>60'))
+}
+
 # Check levels result of Age after processing
-levels(data$age)
+summary(data$age)
 
 
 
@@ -106,7 +116,12 @@ data_enc$target <- data$target
 
 
 # Taking care of  the integer columns : If x_ij = 1 then x_i(j+1) should be one as well  for odd i's
-features = c('month_duration','Credit_amo','instalrate','present_resident','age','existing_cards')
+if(Kamiran_version){
+  features = c('month_duration','Credit_amo','instalrate','present_resident','existing_cards')
+}else{
+  features = c('month_duration','Credit_amo','instalrate','present_resident','age','existing_cards')
+}
+
 for(v in features){
   for(i in seq(2,nlevels(data[[v]]),1)){
     a =  as.numeric(as.character(data_enc[[paste(v,toString(i),sep = ".")]]))
@@ -114,6 +129,12 @@ for(v in features){
     data_enc[[paste(v,toString(i),sep = ".")]] =  as.numeric(a|b)
     
   }
+}
+
+if(Kamiran_version){
+  setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/Kamiran Version/')
+}else{
+  setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/')
 }
 
 
@@ -174,6 +195,6 @@ for(Run in c(1,2,3,4,5)){
 
 
 
-# Test
-data_train<- read.csv("/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/german_train_calibration_1.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
-data_test<- read.csv("/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/german_test_1.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+# # Test
+# data_train<- read.csv("/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/german_train_calibration_1.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
+# data_test<- read.csv("/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/german_test_1.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
