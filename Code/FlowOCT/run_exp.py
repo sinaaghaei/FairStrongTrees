@@ -17,7 +17,7 @@ for data_set in ['compas']:
         calibration_file_enc = f'compas_calibration_enc_{sample}.csv'
         for depth in [1]:
                 for l in [0]:
-                        for fairness_type_bound in [('CSP',0.1)]:#('None',1),('SP',0.1),('CSP',0.1),('PE',0.1),('EOpp',0.1),('EOdds',0.1)
+                        for fairness_type_bound in [('SP',0.1)]:#('None',1),('SP',0.1),('CSP',0.1),('PE',0.1),('EOpp',0.1),('EOdds',0.1)
                                 FlowOCTReplication.main(["--train_file_reg", train_file_reg,"--train_file_enc", train_file_enc,
                                                          "--test_file_reg", test_file_reg,"--test_file_enc", test_file_enc,
                                                          "--calibration_file_reg", calibration_file_reg,"--calibration_file_enc", calibration_file_enc,

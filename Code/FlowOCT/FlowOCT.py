@@ -41,6 +41,9 @@ class FlowOCT:
         reg_features is the set of all features used for the linear regression prediction model in the leaves.
         '''
         self.cat_features = self.data_enc.columns[self.data_enc.columns != self.label]
+
+        'Here we remove the protected attribute from potential splitting features'
+        self.cat_features = [x for x in self.cat_features  if not self.protected_feature in x]
         # self.reg_features = None
         # self.num_of_reg_features = 1
 
