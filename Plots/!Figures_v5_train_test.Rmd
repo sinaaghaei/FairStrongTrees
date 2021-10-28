@@ -36,7 +36,7 @@ rm(list=ls())
 
 # data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
-data= read.csv('./../Results/Oct 20/Kamiran_compas_depth2_oct_20.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Oct 21/german_kamiran_depth_2.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 
 # data = data[data$sample %in% c(2) ,]
@@ -102,22 +102,43 @@ if(metric == 'SP'){
   tmp <- subset(tmp, tmp$fair.type == metric)
   tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
              'test.pred.sp','train.pred.sp')]
+  
+x_title = "Statistical Parity (%)"
+y_title= "Accuracy (%)"
+legend_title = 'SP Bound'
+
 }else if(metric == 'CSP'){
   tmp <- subset(tmp, tmp$fair.type == metric)
   tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
              'test.pred.csp','train.pred.csp')]
+  
+  x_title = "Conditional Statistical Parity (%)"
+  y_title= "Accuracy (%)"
+  legend_title = 'SP Bound'
 }else if(metric == 'PE'){
   tmp <- subset(tmp, tmp$fair.type == metric)
   tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
              'test.pred.pe','train.pred.pe')]
+  
+  x_title = "Statistical Parity (%)"
+  y_title= "Accuracy (%)"
+  legend_title = 'SP Bound'
 }else if(metric == 'EOpp'){
   tmp <- subset(tmp, tmp$fair.type == metric)
   tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
              'test.pred.EOpp','train.pred.EOpp')]
+  
+  x_title = "Statistical Parity (%)"
+  y_title= "Accuracy (%)"
+  legend_title = 'SP Bound'
 }else if(metric == 'EOdds'){
   tmp <- subset(tmp, tmp$fair.type == metric)
   tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
              'test.pred.EOdds','train.pred.EOdds')]
+  
+  x_title = "Statistical Parity (%)"
+  y_title= "Accuracy (%)"
+  legend_title = 'SP Bound'
 }
 
 
@@ -144,7 +165,7 @@ g1 <- ggplot(data = subset(tmp,tmp$depth ==2),aes(x=(disc)*100, y=acc*100)) +
   geom_line(aes(linetype=source), size=3) + 
   geom_point(aes(color = fair.bound),size=10)+
   scale_color_gradient(low="blue", high="red")+
-  labs(x="Statistical Parity (%)", y = "Accuracy (%)", linetype = "Data", color = 'SP Bound')+
+  labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
   theme(
     # plot.title = element_text(size = 25),
     axis.text = element_text(size = 30),

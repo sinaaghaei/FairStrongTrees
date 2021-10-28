@@ -8,6 +8,8 @@ library(dplyr)
 rm(list=ls())
 graphics.off()
 
+
+Kamiran_version = TRUE
 #################################################################################################
 #Functions
 #################################################################################################
@@ -29,6 +31,7 @@ dataencoder <- function (data) {
 ##########################################################################################################
 # read data 
 ##########################################################################################################
+setwd('/Users/sina/Documents/GitHub/FairStrongTrees/Data Proprocess code/adult/')
 data_1 <- read.csv("adult.data", header = FALSE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 data_2 <- read.csv("adult.test", header = FALSE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 
@@ -192,30 +195,83 @@ for(v in features){
 }
 
 
+rm(dmy)
+if(Kamiran_version){
+  setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/KamiranVersion/')
+}else{
+  setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/')
+}
+
 write.csv(data,"adult.csv",row.names = FALSE)
 write.csv(data_enc,"adult_enc.csv",row.names = FALSE)
 
 
-# Choose the seeds
+##########################################################################################################
+# Sampling from data
+##########################################################################################################
 seeds = c(123,156,67,1,43)
+
+
 for(Run in c(1,2,3,4,5)){
+  ## set the seed to make your partition reproducible
   set.seed(seeds[Run])
   ##########################################################################################################
-  # Splitting data into training and test 
+  # Splitting data into training and test
   ##########################################################################################################
-  smp_size = 8000
+  if(Kamiran_version){
+    tmp <- data %>%
+      mutate(index = row_number()) %>%
+      group_by(sex, target) %>%
+      sample_frac(replace = FALSE, size = 0.75)
+  }else{
+    tmp <- data %>%
+      mutate(index = row_number()) %>%
+      group_by(sex, education, target) %>%
+      sample_frac(replace = FALSE, size = 0.75)
+  }
   
-  ## set the seed to make your partition reproducible
-  sample_ind <- sample(seq_len(nrow(data)), size = smp_size)
   
-  data_sample <- data[sample_ind, ]
-  data_sample_enc <- data_enc[sample_ind, ]
   
+  
+  train_ind <- tmp$index
+  data_train <- data[train_ind, ]
+  data_test <- data[-train_ind, ]
+  
+  data_train_enc <- data_enc[train_ind, ]
+  data_test_enc <- data_enc[-train_ind, ]
+  
+  
+  if(Kamiran_version){
+    tmp <- data_train %>%
+      mutate(index = row_number()) %>%
+      group_by(sex, target) %>%
+      sample_frac(replace = FALSE, size = 2/3)
+  }else{
+    tmp <- data_train %>%
+      mutate(index = row_number()) %>%
+      group_by(sex, education, target) %>%
+      sample_frac(replace = FALSE, size = 2/3)
+  }
+  
+  
+  
+  train_calibration_ind <- tmp$index
+  data_train_calibration <- data_train[train_calibration_ind, ]
+  data_calibration<- data_train[-train_calibration_ind, ]
+  
+  data_train_calibration_enc <- data_train_enc[train_calibration_ind, ]
+  data_calibration_enc <- data_train_enc[-train_calibration_ind, ]
   
   # Save files
-  write.csv(data_sample,paste("adult_sample_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_sample_enc,paste("adult_sample_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_train_enc,paste("adult_train_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_test_enc,paste("adult_test_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_train,paste("adult_train_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_test,paste("adult_test_",toString(Run),".csv",sep=''),row.names = FALSE)
   
+  write.csv(data_train_calibration,paste("adult_train_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_train_calibration_enc,paste("adult_train_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_calibration,paste("adult_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_calibration_enc,paste("adult_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
 }
 
 
