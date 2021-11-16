@@ -9,7 +9,7 @@ rm(list=ls())
 graphics.off()
 
 
-Kamiran_version = FALSE
+Kamiran_version = TRUE
 #################################################################################################
 #Functions
 #################################################################################################
@@ -144,7 +144,7 @@ write.csv(data_enc,'compas_enc.csv',row.names = FALSE)
 seeds = c(123,156,67,1,43)
 
 
-for(Run in c(1,2,3,4,5)){#1,2,3,4,5
+for(Run in c(1,2,3,4,5)){
   ## set the seed to make your partition reproducible
   set.seed(seeds[Run])
   ##########################################################################################################
