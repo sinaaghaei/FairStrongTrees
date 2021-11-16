@@ -35,7 +35,8 @@ setwd('/Users/sina/Documents/GitHub/FairStrongTrees/Data Proprocess code/adult/'
 data_1 <- read.csv("adult.data", header = FALSE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 data_2 <- read.csv("adult.test", header = FALSE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 
-data <- rbind(data_1,data_2)
+# data <- rbind(data_1,data_2)
+data <- data_1
 rm(data_1,data_2)
 
 
@@ -196,11 +197,8 @@ for(v in features){
 
 
 rm(dmy)
-if(Kamiran_version){
-  setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/KamiranVersion/')
-}else{
-  setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/')
-}
+setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/')
+
 
 write.csv(data,"adult.csv",row.names = FALSE)
 write.csv(data_enc,"adult_enc.csv",row.names = FALSE)
@@ -218,19 +216,15 @@ for(Run in c(1,2,3,4,5)){
   ##########################################################################################################
   # Splitting data into training and test
   ##########################################################################################################
-  if(Kamiran_version){
-    tmp <- data %>%
-      mutate(index = row_number()) %>%
-      group_by(sex, target) %>%
-      sample_frac(replace = FALSE, size = 0.75)
-  }else{
-    tmp <- data %>%
-      mutate(index = row_number()) %>%
-      group_by(sex, education, target) %>%
-      sample_frac(replace = FALSE, size = 0.75)
-  }
+  # table(data$sex, data$target)
+  tmp <- data %>%
+    mutate(index = row_number()) %>%
+    group_by(sex, target) %>%
+    sample_frac(replace = FALSE, size = 0.75) %>%
+    ungroup()
   
-  
+  tmp <- tmp %>%
+    sample_n(replace = FALSE, size = 5000)
   
   
   train_ind <- tmp$index
@@ -241,17 +235,10 @@ for(Run in c(1,2,3,4,5)){
   data_test_enc <- data_enc[-train_ind, ]
   
   
-  if(Kamiran_version){
-    tmp <- data_train %>%
-      mutate(index = row_number()) %>%
-      group_by(sex, target) %>%
-      sample_frac(replace = FALSE, size = 2/3)
-  }else{
-    tmp <- data_train %>%
-      mutate(index = row_number()) %>%
-      group_by(sex, education, target) %>%
-      sample_frac(replace = FALSE, size = 2/3)
-  }
+  tmp <- data_train %>%
+    mutate(index = row_number()) %>%
+    group_by(sex, target) %>%
+    sample_frac(replace = FALSE, size = 2/3)
   
   
   
@@ -262,6 +249,12 @@ for(Run in c(1,2,3,4,5)){
   data_train_calibration_enc <- data_train_enc[train_calibration_ind, ]
   data_calibration_enc <- data_train_enc[-train_calibration_ind, ]
   
+  
+  print('#############################')
+  print(table(data_train_calibration$sex, data_train_calibration$target))
+  print(table(data_train$sex, data_train$target))
+  print(table(data_test$sex, data_test$target))
+  print(table(data_calibration$sex, data_calibration$target))
   # Save files
   write.csv(data_train_enc,paste("adult_train_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
   write.csv(data_test_enc,paste("adult_test_enc_",toString(Run),".csv",sep=''),row.names = FALSE)

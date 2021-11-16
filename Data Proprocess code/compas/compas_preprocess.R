@@ -9,7 +9,7 @@ rm(list=ls())
 graphics.off()
 
 
-Kamiran_version = TRUE
+Kamiran_version = FALSE
 #################################################################################################
 #Functions
 #################################################################################################
@@ -38,25 +38,25 @@ setwd('/Users/sina/Documents/GitHub/FairStrongTrees/Data Proprocess code/compas/
 data <- read.csv("compas-analysis-master/compas-scores-two-years.csv", header = TRUE, sep = ",",na.strings = "",stringsAsFactors = TRUE)
 
 
-
+#We remove decile_score, score_text from the features
 data <- dplyr::select(data, race, age_cat, sex,priors_count, c_charge_degree, c_jail_in, c_jail_out, days_b_screening_arrest, 
-                    decile_score, score_text, is_recid, two_year_recid) %>% 
+                    is_recid, two_year_recid) %>% 
   filter(days_b_screening_arrest <= 30) %>%
   filter(days_b_screening_arrest >= -30) %>%
   filter(is_recid != -1) %>%
-  filter(c_charge_degree != "O") %>%
-  filter(score_text != 'N/A')
+  filter(c_charge_degree != "O")
+#  %>% filter(score_text != 'N/A')
 
 
 data$length_of_stay <- as.numeric(as.Date(data$c_jail_out) - as.Date(data$c_jail_in))
 
 data <- dplyr::select(data, race, age_cat, sex,priors_count, c_charge_degree,length_of_stay, 
-                      score_text, two_year_recid)
+                      two_year_recid)
 
 names(data)[names(data)=="two_year_recid"] = "target"
 
 data$age_cat <- factor(data$age_cat, levels = c('Less than 25','25 - 45','Greater than 45'))
-data$score_text <- factor(data$score_text, levels = c('Low','Medium','High'))
+# data$score_text <- factor(data$score_text, levels = c('Low','Medium','High'))
 
 
 
@@ -118,7 +118,7 @@ data_enc <- data_enc[,cols]
 data_enc$target <- data$target
 
 # Taking care of  the integer columns : If x_ij = 1 then x_i(j+1) should be one as well  for odd i's
-features = c('age_cat','priors_count','length_of_stay','score_text')
+features = c('age_cat','priors_count','length_of_stay')#,'score_text'
 for(v in features){
   for(i in seq(2,nlevels(data[[v]]),1)){
     a =  as.numeric(as.character(data_enc[[paste(v,toString(i),sep = ".")]]))
@@ -131,7 +131,7 @@ for(v in features){
 
 rm(dmy)
 if(Kamiran_version){
-  setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/Kamiran Version/')
+  setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/KamiranVersion')
 }else{
   setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/')
 }
@@ -144,7 +144,7 @@ write.csv(data_enc,'compas_enc.csv',row.names = FALSE)
 seeds = c(123,156,67,1,43)
 
 
-for(Run in c(1,2,3,4,5)){
+for(Run in c(1,2,3,4,5)){#1,2,3,4,5
   ## set the seed to make your partition reproducible
   set.seed(seeds[Run])
   ##########################################################################################################
@@ -175,6 +175,12 @@ for(Run in c(1,2,3,4,5)){
   data_train_calibration_enc <- data_train_enc[train_calibration_ind, ]
   data_calibration_enc <- data_train_enc[-train_calibration_ind, ]
   
+  print('#############################')
+  print(table(data_train_calibration$race, data_train_calibration$priors_count  , data_train_calibration$target))
+  print(table(data_train$race, data_train$priors_count  , data_train$target))
+  print(table(data_test$race, data_test$priors_count  , data_test$target))
+  print(table(data_calibration$race, data_calibration$priors_count  , data_calibration$target))
+  # 
   # Save files
   write.csv(data_train_enc,paste("compas_train_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
   write.csv(data_test_enc,paste("compas_test_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
