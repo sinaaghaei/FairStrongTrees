@@ -84,7 +84,7 @@ def main(argv):
             input_sample = int(arg)
 
 
-    data_path = os.getcwd() + '/../DataSets/KamiranVersion/'
+    data_path = os.getcwd() + '/../../DataSets/'
 
     data_train_reg = pd.read_csv(data_path + train_file_reg)
     data_train_enc = pd.read_csv(data_path + train_file_enc)
@@ -110,7 +110,7 @@ def main(argv):
     ##########################################################
     approach_name = 'FlowOCT'
     out_put_name = f'{train_file_reg}_{approach_name}_d_{depth}_t_{time_limit}_lambda_{_lambda}_ft_{fairness_type}_fb_{fairness_bound}'
-    out_put_path = os.getcwd() + '/../Results/'
+    out_put_path = os.getcwd() + '/../../Results/'
     # Using logger we log the output of the console in a text file
     sys.stdout = logger(out_put_path + out_put_name + '.txt')
 

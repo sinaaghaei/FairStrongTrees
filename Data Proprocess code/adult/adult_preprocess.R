@@ -224,7 +224,7 @@ for(Run in c(1,2,3,4,5)){
     ungroup()
   
   tmp <- tmp %>%
-    sample_n(replace = FALSE, size = 5000)
+    sample_n(replace = FALSE, size = 2700)
   
   
   train_ind <- tmp$index

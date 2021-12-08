@@ -36,7 +36,7 @@ rm(list=ls())
 
 # data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
-data= read.csv('./../Results/ٔNov_3/adult_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Kamiran Nov 22/adult_kamiran_2700.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 
 # data = data[data$sample %in% c(2) ,]
@@ -69,7 +69,7 @@ data <- data[data$fair.type!= 'None',]
 data$fair.type <- droplevels(data$fair.type)
 rm(tmp_none)
 
-data$data <- 'german.csv'
+data$data <- 'adult'
 ```
 
 #Preparing Data
