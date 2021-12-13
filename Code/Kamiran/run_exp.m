@@ -7,13 +7,13 @@
 %Load data
 clearvars
 % data_group = 'compas';
-data_train = readtable('../../DataSets/compas_train_calibration_1.csv');
-data_train_enc = readtable('../../DataSets/compas_train_calibration_enc_1.csv');
-data_train_enc.('target') = str2double(data_train_enc.('target'));
+data_train = readtable('../../DataSets/Kamiran Version/compas_train_calibration_1.csv');
+data_train_enc = readtable('../../DataSets/Kamiran Version/compas_train_calibration_enc_1.csv');
+% data_train_enc.('target') = str2double(data_train_enc.('target'));
 
-data_test = readtable('../../DataSets/compas_test_1.csv');
-data_test_enc = readtable('../../DataSets/compas_test_enc_1.csv');
-data_test_enc.('target') = str2double(data_test_enc.('target'));
+data_test = readtable('../../DataSets/Kamiran Version/compas_test_1.csv');
+data_test_enc = readtable('../../DataSets/Kamiran Version/compas_test_enc_1.csv');
+% data_test_enc.('target') = str2double(data_test_enc.('target'));
 %%
 %General Parameters
 %fair coef (on/off)
@@ -22,10 +22,10 @@ Dep_lim = 2; % max depth is Dep_lim + 1
 eps = 0.05;
 %%
 %data specific parameters
-B_name = 'sex';
+B_name = 'race';
 positive_class = 1;
 deprived_group = 2;
-lvl_loc = 8; lvl_n =1; %location of encoded protected feature
+lvl_loc = 1; lvl_n =1; %location of encoded protected feature
 
 %%
 % Preprocess the data
