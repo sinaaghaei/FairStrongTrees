@@ -36,7 +36,7 @@ rm(list=ls())
 
 # data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
-data= read.csv('./../Results/FlowOCT November 25/adult_FlowOCT.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/FlowOCT November 25/compas_FlowOCT.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 header= read.csv('./../header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 names(data) <- names(header)
@@ -99,7 +99,7 @@ names(tmp) <- c("approach","data","depth","fair.type","fair.bound","train.acc",'
                    "train.pred.EOdds","test.pred.EOdds")
 
 
-metric = 'EOdds'
+metric = 'EOpp'
 if(metric == 'SP'){
   tmp <- subset(tmp, tmp$fair.type == metric)
   tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
