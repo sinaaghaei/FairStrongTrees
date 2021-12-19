@@ -10,16 +10,16 @@ time_limit = 10800
 dataset_dict = {('compas','protected_feature'):'race',
  ('compas','positive_class'):1,
  ('compas','deprived_group'):1,
- ('german','protected_feature'):'age',
- ('german','positive_class'):2,
- ('german','deprived_group'):1,
+ ('german-balance','protected_feature'):'age',
+ ('german-balance','positive_class'):2,
+ ('german-balance','deprived_group'):1,
  ('adult','protected_feature'):'sex',
  ('adult','positive_class'):2,
  ('adult','deprived_group'):1,
  ('default','protected_feature'):'SEX',
  ('default','positive_class'):1,
  ('default','deprived_group'):2}
-dset = 'default'# german compas adult default
+dset = 'german-balance'# german-balance compas adult default
 bounds = [x / 100.0 for x in range(1, 56, 1)]#[x / 100.0 for x in range(1, 56, 1)] #[0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
 fairness_type = ['None', 'SP']
 

@@ -183,12 +183,12 @@ class FlowOCT:
                                                                          self.tree.Leaves + self.tree.Nodes)
                                                                 for i in deprived_df.index))) <= self.fairness_bound)
 
-                self.model.addConstr(((1/count_non_deprived) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
-                                                                         (self.tree.Leaves + self.tree.Nodes))
-                                                                for i in non_deprived_df.index)) - (
-                                      (1/count_deprived) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
-                                                                         self.tree.Leaves + self.tree.Nodes)
-                                                                for i in deprived_df.index)) >= -1*self.fairness_bound)
+                # self.model.addConstr(((1/count_non_deprived) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
+                #                                                          (self.tree.Leaves + self.tree.Nodes))
+                #                                                 for i in non_deprived_df.index)) - (
+                #                       (1/count_deprived) * quicksum(quicksum(self.zeta[i,n,self.positive_class] for n in
+                #                                                          self.tree.Leaves + self.tree.Nodes)
+                #                                                 for i in deprived_df.index)) >= -1*self.fairness_bound)
 
 
 

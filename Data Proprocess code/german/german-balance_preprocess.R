@@ -5,6 +5,8 @@ library(stringr)
 library(outliers)
 library(editrules)
 library(dplyr)
+library(mlr)
+
 
 rm(list=ls())
 graphics.off()
@@ -20,19 +22,46 @@ Kamiran_version = TRUE
 #################################################################################################
 #Functions
 #################################################################################################
-dataencoder <- function (data) {
-  #encoding data
-  must_convert<-sapply(data,is.factor)       # logical vector telling if a variable needs to be displayed as numeric
-  M2<-sapply(data[,must_convert],unclass)    # data.frame of all categorical variables now displayed as numeric
-  data_num<-cbind(data[,!must_convert],M2)
-  data_num <- as.data.frame(data_num)
+dataencoder <- function (data, Kamiran_version) {
+  #Now we turn all categorical  features into one-hot vectors
+  data_enc = data
+  dmy <- dummyVars(" ~ .-target", data = data_enc)
+  data_enc <- data.frame(predict(dmy, newdata = data_enc))
   
-  for(tmp_f in names(data)){
-    data_num[[tmp_f]] = as.factor(data_num[[tmp_f]] )
-    data_num[[tmp_f]]  = droplevels(data_num[[tmp_f]] )
+  #if a feature has only two levels we should only keep one column
+  #As our convention, we always keep the first one
+  cols = c()
+  tmp <- gsub("\\..*","",names( data_enc ))
+  for(name in names(data)){
+    # a = grepl( name , tmp ,fixed=TRUE)
+    a = tmp == name
+    if(sum(a)==2){
+      cols <- append(cols, min(which(a == TRUE)))
+    }else{
+      cols <- append(cols, which(a == TRUE))
+    }
   }
   
-  data_num
+  data_enc <- data_enc[,cols]
+  data_enc$target <- data$target
+  
+  # Taking care of  the integer columns : If x_ij = 1 then x_i(j+1) should be one as well  for odd i's
+  if(Kamiran_version){
+    features = c('month_duration','Credit_amo','instalrate','present_resident','existing_cards')
+  }else{
+    features = c('month_duration','Credit_amo','instalrate','present_resident','age','existing_cards')
+  }
+  
+  for(v in features){
+    for(i in seq(2,nlevels(data[[v]]),1)){
+      a =  as.numeric(as.character(data_enc[[paste(v,toString(i),sep = ".")]]))
+      b =  as.numeric(as.character(data_enc[[paste(v,toString(i-1),sep = ".")]]))
+      data_enc[[paste(v,toString(i),sep = ".")]] =  as.numeric(a|b)
+      
+    }
+  }
+  
+  data_enc
 }
 
 ##########################################################################################################
@@ -88,48 +117,6 @@ for(f in names(data)){
 ##########################################################################################################
 # One hot encoded data
 ##########################################################################################################
-data<- dataencoder(data)
-
-data_enc = data
-
-#Now we tuurn all categorical  features into one-hot vectors
-dmy <- dummyVars(" ~ .-target", data = data_enc)
-data_enc <- data.frame(predict(dmy, newdata = data_enc))
-
-#if a feature has only two levels we should only keep one column
-#As our convention, we always keep the first one
-cols = c()
-tmp <- gsub("\\..*","",names( data_enc ))
-for(name in names(data)){
-  # a = grepl( name , tmp ,fixed=TRUE)
-  a = tmp == name
-  if(sum(a)==2){
-    cols <- append(cols, min(which(a == TRUE)))
-  }else{
-    cols <- append(cols, which(a == TRUE))
-  }
-}
-
-data_enc <- data_enc[,cols]
-data_enc$target <- data$target
-
-
-# Taking care of  the integer columns : If x_ij = 1 then x_i(j+1) should be one as well  for odd i's
-if(Kamiran_version){
-  features = c('month_duration','Credit_amo','instalrate','present_resident','existing_cards')
-}else{
-  features = c('month_duration','Credit_amo','instalrate','present_resident','age','existing_cards')
-}
-
-for(v in features){
-  for(i in seq(2,nlevels(data[[v]]),1)){
-    a =  as.numeric(as.character(data_enc[[paste(v,toString(i),sep = ".")]]))
-    b =  as.numeric(as.character(data_enc[[paste(v,toString(i-1),sep = ".")]]))
-    data_enc[[paste(v,toString(i),sep = ".")]] =  as.numeric(a|b)
-    
-  }
-}
-
 if(Kamiran_version){
   setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/KamiranVersion/')
 }else{
@@ -137,10 +124,19 @@ if(Kamiran_version){
 }
 
 
-write.csv(data,"german.csv",row.names = FALSE)
-write.csv(data_enc,"german_enc.csv",row.names = FALSE)
+#encoding data
+must_convert<-sapply(data,is.factor)       # logical vector telling if a variable needs to be displayed as numeric
+M2<-sapply(data[,must_convert],unclass)    # data.frame of all categorical variables now displayed as numeric
+data_num<-cbind(data[,!must_convert],M2)
+data_num <- as.data.frame(data_num)
 
+for(tmp_f in names(data)){
+  data_num[[tmp_f]] = as.factor(data_num[[tmp_f]] )
+  data_num[[tmp_f]]  = droplevels(data_num[[tmp_f]] )
+}
 
+data = data_num
+rm(data_num,M2)
 
 ##########################################################################################################
 # Sampling from data
@@ -164,8 +160,12 @@ for(Run in c(1,2,3,4,5)){
   data_train <- data[train_ind, ]
   data_test <- data[-train_ind, ]
   
-  data_train_enc <- data_enc[train_ind, ]
-  data_test_enc <- data_enc[-train_ind, ]
+  #Let's balance the label:
+  task <- makeClassifTask(data = data_train, target = "target")
+  data_train_balance = getTaskData(oversample(task, 2.1, cl = NULL))
+  
+  data_train_balance_enc <- dataencoder(data_train_balance, Kamiran_version)
+  data_test_enc <- dataencoder(data_test, Kamiran_version)
   
   tmp <- data_train %>%
     mutate(index = row_number()) %>%
@@ -176,19 +176,24 @@ for(Run in c(1,2,3,4,5)){
   data_train_calibration <- data_train[train_calibration_ind, ]
   data_calibration<- data_train[-train_calibration_ind, ]
   
-  data_train_calibration_enc <- data_train_enc[train_calibration_ind, ]
-  data_calibration_enc <- data_train_enc[-train_calibration_ind, ]
   
-  # Save files
-  write.csv(data_train_enc,paste("german_train_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_test_enc,paste("german_test_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_train,paste("german_train_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_test,paste("german_test_",toString(Run),".csv",sep=''),row.names = FALSE)
-
-  write.csv(data_train_calibration,paste("german_train_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_train_calibration_enc,paste("german_train_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_calibration,paste("german_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_calibration_enc,paste("german_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  data_calibration_enc <- dataencoder(data_calibration, Kamiran_version)
+  
+  task <- makeClassifTask(data = data_train_calibration, target = "target")
+  data_train_calibration_balance = getTaskData(oversample(task, 2.1, cl = NULL))
+  
+  
+  data_train_calibration_balance_enc <- dataencoder(data_train_calibration_balance, Kamiran_version)
+  
+  write.csv(data_train_balance_enc,paste("german-balance_train_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_test_enc,paste("german-balance_test_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_train_balance,paste("german-balance_train_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_test,paste("german-balance_test_",toString(Run),".csv",sep=''),row.names = FALSE)
+  
+  write.csv(data_train_calibration_balance,paste("german-balance_train_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_train_calibration_balance_enc,paste("german-balance_train_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_calibration,paste("german-balance_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_calibration_enc,paste("german-balance_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
 }
 
 
