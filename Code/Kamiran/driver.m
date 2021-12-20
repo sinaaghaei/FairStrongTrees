@@ -50,7 +50,7 @@ data_group = "german";
 %data specific parameters
 B_name = "age";
 positive_class = 1;
-deprived_group = 2; % non-white is the deprived group
+deprived_group = 1; % non-white is the deprived group
 lvl_loc = 55; lvl_n = 1; %location of encoded protected feature
 
 train_set = append(data_path, data_group, "_train_calibration_", splits, ".csv");
@@ -113,11 +113,11 @@ end
 %%
 data_path = "../../DataSets/KamiranVersion/";
 splits = ["1", "2", "3", "4", "5"];
-data_group = "german";
+data_group = "german-balance";
 
 %data specific parameters
 B_name = 'age';
-positive_class = 2;
+positive_class = 1;
 deprived_group = 1; % non-white is the deprived group
 lvl_loc = 55; lvl_n = 1; %location of encoded protected feature
 
