@@ -36,7 +36,7 @@ rm(list=ls())
 
 # data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
-data= read.csv('./../Results/Kamiran Nov 22/adult_kamiran_2700.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/FlowOCT Kamiran_version Nov 22/adult 5000/adult_kamiran_5000.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 
 # data = data[data$sample %in% c(2) ,]

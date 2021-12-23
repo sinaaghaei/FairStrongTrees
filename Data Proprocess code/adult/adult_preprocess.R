@@ -200,8 +200,8 @@ rm(dmy)
 setwd('/Users/sina/Documents/GitHub/FairStrongTrees/DataSets/')
 
 
-write.csv(data,"adult.csv",row.names = FALSE)
-write.csv(data_enc,"adult_enc.csv",row.names = FALSE)
+# write.csv(data,"adult.csv",row.names = FALSE)
+# write.csv(data_enc,"adult_enc.csv",row.names = FALSE)
 
 
 ##########################################################################################################
@@ -223,8 +223,8 @@ for(Run in c(1,2,3,4,5)){
     sample_frac(replace = FALSE, size = 0.75) %>%
     ungroup()
   
-  tmp <- tmp %>%
-    sample_n(replace = FALSE, size = 2700)
+  # tmp <- tmp %>%
+  #   sample_n(replace = FALSE, size = 2700)
   
   
   train_ind <- tmp$index
