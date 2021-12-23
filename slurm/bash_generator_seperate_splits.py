@@ -24,18 +24,22 @@ dataset_dict = {
  ('adult','positive_class'):2,
  ('adult','deprived_group'):1,
  ('adult','conditional_feature'):'education',
+  ('limited-adult','protected_feature'):'sex',
+  ('limited-adult','positive_class'):2,
+  ('limited-adult','deprived_group'):1,
+  ('limited-adult','conditional_feature'):'education',
  ('default','protected_feature'):'SEX',
  ('default','positive_class'):1,
  ('default','deprived_group'):2,
  ('default','conditional_feature'):'LIMIT_BAL',}
 
-dset = 'adult'# german compas adult default kamiran_compas
+dset = 'compas'# german compas adult default kamiran_compas
 bounds = [x / 100.0 for x in range(1, 56, 1)]#[x / 100.0 for x in range(1, 56, 1)] #[0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
-fairness_type = ['None', 'SP','PE','EOpp','EOdds'] #'CSP' 'PE' 'EOpp' 'EOdds'
+fairness_type = ['None', 'SP','CSP','PE','EOpp','EOdds'] #'CSP' 'PE' 'EOpp' 'EOdds'
 
 
 _lambda = 0
-calibration_mode = 1
+calibration_mode = 0
 
 
 
