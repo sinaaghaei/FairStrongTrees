@@ -36,7 +36,12 @@ rm(list=ls())
 
 # data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
-data= read.csv('./../Results/FlowOCT Kamiran_version Nov 22/german_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/FlowOCT Kamiran_version Dec 15/german-balance_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+
+header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+
+names(data) <- names(header)
+rm(header)
 
 # data = data[data$sample %in% c(2) ,]
 # data = data[data$fair.bound!=1,]
@@ -103,7 +108,7 @@ rm(tmp,data)
 # Reading and preparing the kamiran's results
 ```{r echo=TRUE, warning=FALSE}
 
-data= read.csv('./../Results/Kamiran/adult-cart.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Kamiran/german-balance.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 data$depth <- data$depth + 1
 data <- data %>%
   group_by(depth, fair.bound) %>%
