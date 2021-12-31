@@ -1,3 +1,4 @@
+#!/bin/bash
 sbatch --array 0-99 slurm_FlowOCT_10800_compas.sh
 sbatch --array 100-199 slurm_FlowOCT_10800_compas.sh
 sbatch --array 200-299 slurm_FlowOCT_10800_compas.sh

@@ -36,7 +36,7 @@ rm(list=ls())
 
 # data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
-data= read.csv('./../Results/FlowOCT Kamiran_version Dec 15/german-balance_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Dec 29/FlowOCT Kamiran_version/Kamiran_adult.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
@@ -190,6 +190,8 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
     axis.title = element_text(size = 40)
     ) 
 print(g1)
+
+
 
 if (forpres)
 {
