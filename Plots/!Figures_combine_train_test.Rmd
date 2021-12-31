@@ -36,8 +36,8 @@ rm(list=ls())
 
 # data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
-data= read.csv('./../Results/Dec 29/FlowOCT Kamiran_version/Kamiran_adult.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-data_name = 'adult'
+data= read.csv('./../Results/Dec 29/FlowOCT Kamiran_version/Kamiran_default.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data_name = 'default'
 header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 names(data) <- names(header)
@@ -46,7 +46,7 @@ rm(header)
 # data = data[data$sample %in% c(2) ,]
 # data = data[data$fair.bound!=1,]
 
-forpres=TRUE
+forpres=FALSE
 if (forpres){
   fontfam = "sans"
 } else {
@@ -108,7 +108,7 @@ rm(tmp,data)
 # Reading and preparing the kamiran's results
 ```{r echo=TRUE, warning=FALSE}
 
-data= read.csv('./../Results/Kamiran/adult-cart.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Kamiran/default.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 data$depth <- data$depth + 1
 data <- data %>%
   group_by(depth, fair.bound) %>%

@@ -36,7 +36,8 @@ rm(list=ls())
 
 # data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
-data= read.csv('./../Results/FlowOCT November 25/compas_FlowOCT.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Dec 29/FlowOCT/FlowOCT_limited-adult.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data_name = 'limited-adult'
 header= read.csv('./../header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 names(data) <- names(header)
@@ -44,7 +45,7 @@ rm(header)
 # data = data[data$sample %in% c(2) ,]
 # data = data[data$fair.bound!=1,]
 
-forpres=TRUE
+forpres=FALSE
 if (forpres){
   fontfam = "sans"
 } else {
@@ -71,7 +72,7 @@ data <- data[data$fair.type!= 'None',]
 data$fair.type <- droplevels(data$fair.type)
 rm(tmp_none)
 
-data$data <- 'compas'
+data$data <- data_name
 ```
 
 #Preparing Data
@@ -99,7 +100,7 @@ names(tmp) <- c("approach","data","depth","fair.type","fair.bound","train.acc",'
                    "train.pred.EOdds","test.pred.EOdds")
 
 
-metric = 'EOpp'
+metric = 'EOdds'
 if(metric == 'SP'){
   tmp <- subset(tmp, tmp$fair.type == metric)
   tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
@@ -163,7 +164,8 @@ rm(tmp1,tmp2)
 
 
 ```{r echo=TRUE, warning=FALSE}
-g1 <- ggplot(data = subset(tmp,tmp$depth ==2),aes(x=(disc)*100, y=acc*100)) +
+t_depth = 2
+g1 <- ggplot(data = subset(tmp,tmp$depth == t_depth),aes(x=(disc)*100, y=acc*100)) +
   geom_line(aes(linetype=source), size=3) + 
   geom_point(aes(color = fair.bound),size=10)+
   scale_color_gradient(low="blue", high="red")+
@@ -179,11 +181,15 @@ g1 <- ggplot(data = subset(tmp,tmp$depth ==2),aes(x=(disc)*100, y=acc*100)) +
     ) 
 print(g1)
 
+
+fig_name = paste('FlowOCT_',data_name,'_depth_',t_depth, '_', metric, '.pdf', sep = '')
+
+
 if (forpres)
 {
-  ggsave(paste(figure_path,"fig.pdf",sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
+  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
 } else {
-  ggsave(paste(figure_path,"fig.pdf",sep = ""),device = "pdf", width = 12, height = 8, units =  "in")
+  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 12, height = 8, units =  "in")
 }
 
 ```
