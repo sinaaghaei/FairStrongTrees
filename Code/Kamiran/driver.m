@@ -208,7 +208,7 @@ end
 data_path = "../../DataSets/KamiranVersion/";
 splits = ["1", "2", "3", "4", "5"];
 % splits = ["5"]
-data_group = "adult";
+data_group = "limited-adult";
 
 %data specific parameters
 B_name = 'sex';
