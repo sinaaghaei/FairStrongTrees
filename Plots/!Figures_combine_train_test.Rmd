@@ -37,7 +37,7 @@ rm(list=ls())
 # data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 data= read.csv('./../Results/Dec 29/FlowOCT Kamiran_version/Kamiran_adult.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-
+data_name = 'adult'
 header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 names(data) <- names(header)
@@ -71,7 +71,7 @@ data <- data[data$fair.type!= 'None',]
 data$fair.type <- droplevels(data$fair.type)
 rm(tmp_none)
 
-# data$data <- 'adult'
+# data$data <- data_name
 ```
 
 #Preparing Data
@@ -108,7 +108,7 @@ rm(tmp,data)
 # Reading and preparing the kamiran's results
 ```{r echo=TRUE, warning=FALSE}
 
-data= read.csv('./../Results/Kamiran/german-balance.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Kamiran/adult-cart.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 data$depth <- data$depth + 1
 data <- data %>%
   group_by(depth, fair.bound) %>%
@@ -169,8 +169,9 @@ data <- subset(data, data$fair.bound %in% data_kamiran$fair.bound)
 ```
 
 ```{r echo=TRUE, warning=FALSE}
-
-tmp <- subset(data,data$depth ==2 & data$source == 'in-sample') #in-sample out-of-sample
+t_depth = 2
+t_source = 'in-sample' 
+tmp <- subset(data,data$depth ==t_depth & data$source == t_source) 
 x_title = "Statistical Parity (%)"
 y_title= "Accuracy (%)"
 legend_title = 'SP Bound'
@@ -192,15 +193,51 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
 print(g1)
 
 
+fig_name = paste('1vs1_',data_name,'_depth_',t_depth,'_', t_source,'.pdf', sep = '')
 
 if (forpres)
 {
-  ggsave(paste(figure_path,"fig.pdf",sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
+  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
 } else {
-  ggsave(paste(figure_path,"fig.pdf",sep = ""),device = "pdf", width = 12, height = 8, units =  "in")
+  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 12, height = 8, units =  "in")
 }
 
 ```
 
+
+```{r echo=TRUE, warning=FALSE}
+t_source = 'out-of-sample'
+tmp <- subset(data,data$depth ==t_depth & data$source == t_source) 
+x_title = "Statistical Parity (%)"
+y_title= "Accuracy (%)"
+legend_title = 'SP Bound'
+
+g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
+  geom_line(aes(linetype=approach), size=3) + 
+  geom_point(aes(color = fair.bound),size=10)+
+  scale_color_gradient(low="blue", high="red")+
+  labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
+  theme(
+    # plot.title = element_text(size = 25),
+    axis.text = element_text(size = 30),
+    legend.position = "right", legend.key.size = unit(1, "cm"),
+    legend.text = element_text(size = 30),
+    legend.title = element_text(size = 35),
+    text = element_text(family=fontfam),
+    axis.title = element_text(size = 40)
+    ) 
+print(g1)
+
+
+fig_name = paste('1vs1_',data_name,'_depth_',t_depth,'_', t_source,'.pdf', sep = '')
+
+if (forpres)
+{
+  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
+} else {
+  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 12, height = 8, units =  "in")
+}
+
+```
 
 
