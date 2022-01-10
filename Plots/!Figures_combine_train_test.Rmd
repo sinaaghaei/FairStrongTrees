@@ -175,8 +175,11 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
   geom_point(aes(color = fair.bound),size=10)+
   scale_color_gradient(low="blue", high="red")+
   labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
-  # xlim(-7, 17)+
-  # ylim(50, 85)+
+  # xlim(-7, 17)+#all
+  #xlim(-7, 12.5)+#limited-adult
+  # xlim(0, 17)+#compas
+  xlim(-2, 9)+#german
+  ylim(50, 85)+
   theme(
     # plot.title = element_text(size = 25),
     axis.text = element_text(size = 45),
@@ -208,8 +211,11 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
   geom_point(aes(color = fair.bound),size=10)+
   scale_color_gradient(low="blue", high="red")+
   labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
-  # xlim(-7, 17)+
-  # ylim(50, 85)+
+  # xlim(-7, 17)+#all
+  #xlim(-7, 12.5)+#limited-adult
+  # xlim(0, 17)+#compas
+  xlim(-2, 9)+#german
+  ylim(50, 85)+
   theme(
     # plot.title = element_text(size = 25),
     axis.text = element_text(size = 45),
