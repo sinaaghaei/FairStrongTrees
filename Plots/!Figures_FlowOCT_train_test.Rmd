@@ -34,23 +34,14 @@ rm(list=ls())
 
 
 
-# data1= read.csv('./../DataSets/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-
 data= read.csv('./../Results/Dec 29/FlowOCT/FlowOCT_limited-adult.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 data_name = 'limited-adult'
 header= read.csv('./../header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 names(data) <- names(header)
 rm(header)
-# data = data[data$sample %in% c(2) ,]
-# data = data[data$fair.bound!=1,]
 
-forpres=FALSE
-if (forpres){
-  fontfam = "sans"
-} else {
-  fontfam = "serif"
-}
+fontfam = "sans" #sans serif
 
 figure_path = "./"
 
@@ -100,79 +91,81 @@ names(tmp) <- c("approach","data","depth","fair.type","fair.bound","train.acc",'
                    "train.pred.EOdds","test.pred.EOdds")
 
 
-metric = 'EOdds'
-if(metric == 'SP'){
-  tmp <- subset(tmp, tmp$fair.type == metric)
-  tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
+for(m in c('SP','PE','EOpp','EOdds')){
+  metric = m
+  if(metric == 'SP'){
+  tmp2 <- subset(tmp, tmp$fair.type == metric)
+  tmp2 <- tmp2[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
              'test.pred.sp','train.pred.sp')]
   
-x_title = "Statistical Parity (%)"
-y_title= "Accuracy (%)"
+x_title = ''#"Statistical Parity (%)"
+y_title= ''#"Accuracy (%)"
 legend_title = 'SP Bound'
 
 }else if(metric == 'CSP'){
-  tmp <- subset(tmp, tmp$fair.type == metric)
-  tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
+  tmp2 <- subset(tmp, tmp$fair.type == metric)
+  tmp2 <- tmp2[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
              'test.pred.csp','train.pred.csp')]
   
-  x_title = "Conditional Statistical Parity (%)"
-  y_title= "Accuracy (%)"
+  x_title = ''#"Conditional Statistical Parity (%)"
+  y_title= ''#"Accuracy (%)"
   legend_title = 'CSP Bound'
 }else if(metric == 'PE'){
-  tmp <- subset(tmp, tmp$fair.type == metric)
-  tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
+  tmp2 <- subset(tmp, tmp$fair.type == metric)
+  tmp2 <- tmp2[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
              'test.pred.pe','train.pred.pe')]
   
-  x_title = "Predictive Equality (%)"
-  y_title= "Accuracy (%)"
+  x_title = ''#"Predictive Equality (%)"
+  y_title= ''#"Accuracy (%)"
   legend_title = 'PE Bound'
 }else if(metric == 'EOpp'){
-  tmp <- subset(tmp, tmp$fair.type == metric)
-  tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
+  tmp2 <- subset(tmp, tmp$fair.type == metric)
+  tmp2 <- tmp2[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
              'test.pred.EOpp','train.pred.EOpp')]
   
-  x_title = "Equal Opportunity (%)"
-  y_title= "Accuracy (%)"
+  x_title = ''#"Equal Opportunity (%)"
+  y_title= ''#"Accuracy (%)"
   legend_title = 'EOpp Bound'
 }else if(metric == 'EOdds'){
-  tmp <- subset(tmp, tmp$fair.type == metric)
-  tmp <- tmp[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
+  tmp2 <- subset(tmp, tmp$fair.type == metric)
+  tmp2 <- tmp2[c("approach","data","depth","fair.type","fair.bound","test.acc",'train.acc',
              'test.pred.EOdds','train.pred.EOdds')]
   
-  x_title = "Equalized Odds (%)"
-  y_title= "Accuracy (%)"
+  x_title = ''#"Equalized Odds (%)"
+  y_title= ''#"Accuracy (%)"
   legend_title = 'EOdds Bound'
 }
 
 
-names(tmp) <- c("approach","data","depth","fair.type","fair.bound","test.acc","train.acc","test.pred.disc","train.pred.disc")
+names(tmp2) <- c("approach","data","depth","fair.type","fair.bound","test.acc","train.acc","test.pred.disc","train.pred.disc")
 # tmp$fair.type <- factor(tmp$fair.type, levels = c('SP','CSP','PE','EOpp','EOdds'))
-tmp$fair.bound <- as.numeric(as.character(tmp$fair.bound))
+tmp2$fair.bound <- as.numeric(as.character(tmp2$fair.bound))
 
 
-tmp1 <- tmp[,c("approach","data","depth","fair.type","fair.bound","test.acc","test.pred.disc")]
-tmp1$source <- 'out-of-sample'
-names(tmp1) <- c("approach","data","depth","fair.type","fair.bound","acc","disc",'source')
-tmp2 <- tmp[,c("approach","data","depth","fair.type","fair.bound","train.acc","train.pred.disc")]
-tmp2$source <- 'in-sample'
-names(tmp2) <- c("approach","data","depth","fair.type","fair.bound","acc","disc",'source')
-tmp <- rbind(tmp1,tmp2)
-rm(tmp1,tmp2)
+tmp2_1 <- tmp2[,c("approach","data","depth","fair.type","fair.bound","test.acc","test.pred.disc")]
+tmp2_1$source <- 'out-of-sample'
+names(tmp2_1) <- c("approach","data","depth","fair.type","fair.bound","acc","disc",'source')
+tmp2_2 <- tmp2[,c("approach","data","depth","fair.type","fair.bound","train.acc","train.pred.disc")]
+tmp2_2$source <- 'in-sample'
+names(tmp2_2) <- c("approach","data","depth","fair.type","fair.bound","acc","disc",'source')
+tmp2 <- rbind(tmp2_1,tmp2_2)
+rm(tmp2_1,tmp2_2)
 
-```
-
-
-
-```{r echo=TRUE, warning=FALSE}
 t_depth = 2
-g1 <- ggplot(data = subset(tmp,tmp$depth == t_depth),aes(x=(disc)*100, y=acc*100)) +
+g1 <- ggplot(data = subset(tmp2,tmp2$depth == t_depth),aes(x=(disc)*100, y=acc*100)) +
   geom_line(aes(linetype=source), size=3) + 
   geom_point(aes(color = fair.bound),size=10)+
   scale_color_gradient(low="blue", high="red")+
   labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
+  # coord_flip(clip = "off") +
+  # xlim(0, 35)+#compas
+  # ylim(50, 70)+#compas
+  # xlim(0, 11)+#limited-adult
+  # ylim(77, 81)+#limited-adult
   theme(
     # plot.title = element_text(size = 25),
-    axis.text = element_text(size = 30),
+    plot.margin = margin(.5, .5, .5, .5, "cm"),
+    axis.text = element_text(size = 45),#30
     legend.position = "right", legend.key.size = unit(1, "cm"),
     legend.text = element_text(size = 30),
     legend.title = element_text(size = 35),
@@ -185,12 +178,15 @@ print(g1)
 fig_name = paste('FlowOCT_',data_name,'_depth_',t_depth, '_', metric, '.pdf', sep = '')
 
 
-if (forpres)
-{
-  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
-} else {
-  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 12, height = 8, units =  "in")
+ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
 }
+
+```
+
+
+
+```{r echo=TRUE, warning=FALSE}
+
 
 ```
 
