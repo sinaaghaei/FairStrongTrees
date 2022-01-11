@@ -34,8 +34,8 @@ rm(list=ls())
 
 
 
-data= read.csv('./../Results/Dec 29/FlowOCT/FlowOCT_limited-adult.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-data_name = 'limited-adult'
+data= read.csv('./../Results/Dec 29/FlowOCT/FlowOCT_limited-adult-2.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data_name = 'limited-adult-2'
 header= read.csv('./../header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 names(data) <- names(header)
@@ -160,8 +160,8 @@ g1 <- ggplot(data = subset(tmp2,tmp2$depth == t_depth),aes(x=(disc)*100, y=acc*1
   # coord_flip(clip = "off") +
   # xlim(0, 35)+#compas
   # ylim(50, 70)+#compas
-  # xlim(0, 11)+#limited-adult
-  # ylim(77, 81)+#limited-adult
+  xlim(0, 11)+#limited-adult
+  ylim(77, 81)+#limited-adult
   theme(
     # plot.title = element_text(size = 25),
     plot.margin = margin(.5, .5, .5, .5, "cm"),
