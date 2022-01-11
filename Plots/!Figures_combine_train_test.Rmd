@@ -34,8 +34,8 @@ rm(list=ls())
 library(extrafont)
 
 
-data= read.csv('./../Results/Dec 29/FlowOCT Kamiran_version/Kamiran_german.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-data_name = 'german'
+data= read.csv('./../Results/Dec 29/FlowOCT Kamiran_version/Kamiran_compas.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data_name = 'compas'
 header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 names(data) <- names(header)
@@ -98,7 +98,7 @@ rm(tmp,data)
 # Reading and preparing the kamiran's results
 ```{r echo=TRUE, warning=FALSE}
 
-data= read.csv('./../Results/Kamiran/german.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Kamiran/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 data$depth <- data$depth + 1
 data <- data %>%
   group_by(depth, fair.bound) %>%
@@ -178,8 +178,8 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
   # xlim(-7, 17)+#all
   #xlim(-7, 12.5)+#limited-adult
   # xlim(0, 17)+#compas
-  xlim(-2, 9)+#german
-  ylim(50, 85)+
+  # xlim(-2, 9)+#german
+  # ylim(50, 85)+
   theme(
     # plot.title = element_text(size = 25),
     axis.text = element_text(size = 45),
@@ -214,12 +214,12 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
   # xlim(-7, 17)+#all
   #xlim(-7, 12.5)+#limited-adult
   # xlim(0, 17)+#compas
-  xlim(-2, 9)+#german
-  ylim(50, 85)+
+  # xlim(-2, 9)+#german
+  # ylim(50, 85)+
   theme(
     # plot.title = element_text(size = 25),
     axis.text = element_text(size = 45),
-    legend.position = "right", legend.key.size = unit(1, "cm"),
+    legend.position = "bottom", legend.key.size = unit(2, "cm"),
     legend.text = element_text(size = 30),
     legend.title = element_text(size = 35),
     text = element_text(family=fontfam),
