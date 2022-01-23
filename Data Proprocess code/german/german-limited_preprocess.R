@@ -157,15 +157,19 @@ for(Run in c(1,2,3,4,5)){
   tmp <- data %>%
     mutate(index = row_number()) %>%
     group_by(age, credit_history, target) %>%
-    sample_frac(replace = FALSE, size = 0.75)
+    sample_frac(replace = FALSE, size = 0.75)%>%
+    ungroup()
   
+  train_ind <- tmp$index
+  data_test <- data[-train_ind, ]
+  data_test_enc <- data_enc[-train_ind, ]
+  
+  tmp <- tmp %>%
+    sample_n(replace = FALSE, size = 250)
   
   train_ind <- tmp$index
   data_train <- data[train_ind, ]
-  data_test <- data[-train_ind, ]
-  
   data_train_enc <- data_enc[train_ind, ]
-  data_test_enc <- data_enc[-train_ind, ]
   
   tmp <- data_train %>%
     mutate(index = row_number()) %>%
@@ -179,16 +183,30 @@ for(Run in c(1,2,3,4,5)){
   data_train_calibration_enc <- data_train_enc[train_calibration_ind, ]
   data_calibration_enc <- data_train_enc[-train_calibration_ind, ]
   
+  print('#############################')
+  print('******train_calibration')
+  # print(table(data_train_calibration$age, data_train_calibration$credit_history  , data_train_calibration$target))
+  print(table(data_train_calibration$age, data_train_calibration$target))
+  print('******train')
+  # print(table(data_train$age, data_train$credit_history  , data_train$target))
+  print(table(data_train$age, data_train$target))
+  print('******test')
+  # print(table(data_test$age, data_test$credit_history  , data_test$target))
+  print(table(data_test$age , data_test$target))
+  print('******calibration')
+  # print(table(data_calibration$age, data_calibration$credit_history  , data_calibration$target))
+  print(table(data_calibration$age, data_calibration$target))
+  #
   # Save files
-  write.csv(data_train_enc,paste("german_train_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_test_enc,paste("german_test_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_train,paste("german_train_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_test,paste("german_test_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_train_enc,paste("german-limited_train_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_test_enc,paste("german-limited_test_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_train,paste("german-limited_train_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_test,paste("german-limited_test_",toString(Run),".csv",sep=''),row.names = FALSE)
 
-  write.csv(data_train_calibration,paste("german_train_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_train_calibration_enc,paste("german_train_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_calibration,paste("german_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
-  write.csv(data_calibration_enc,paste("german_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_train_calibration,paste("german-limited_train_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_train_calibration_enc,paste("german-limited_train_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_calibration,paste("german-limited_calibration_",toString(Run),".csv",sep=''),row.names = FALSE)
+  write.csv(data_calibration_enc,paste("german-limited_calibration_enc_",toString(Run),".csv",sep=''),row.names = FALSE)
 }
 
 

@@ -34,7 +34,7 @@ rm(list=ls())
 library(extrafont)
 
 
-data= read.csv('./../Results/Dec 29/FlowOCT Kamiran_version/Kamiran_compas.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Dec 29/FlowOCT Kamiran_version/Kamiran_compas-limited.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 data_name = 'compas'
 header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
@@ -163,7 +163,7 @@ data$approach<- factor(data$approach, levels = c("FlowOCT","DADT"))
 ```
 
 ```{r echo=TRUE, warning=FALSE}
-t_depth = 2
+t_depth = 3
 t_source = 'in-sample' 
 tmp <- subset(data,data$depth ==t_depth & data$source == t_source) 
 x_title = ""
@@ -219,7 +219,7 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
   theme(
     # plot.title = element_text(size = 25),
     axis.text = element_text(size = 45),
-    legend.position = "bottom", legend.key.size = unit(2, "cm"),
+    legend.position = "right", legend.key.size = unit(1, "cm"),
     legend.text = element_text(size = 30),
     legend.title = element_text(size = 35),
     text = element_text(family=fontfam),
