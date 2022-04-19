@@ -16,7 +16,7 @@ import operator
 
 
 
-def my_train(data_train_enc, data_train_reg, label, depth, _lambda, time_limit, fairness_type, fairness_bound, protected_feature, positive_class, deprived_group, b_warm):
+def warm_train(data_train_enc, data_train_reg, label, depth, _lambda, time_limit, fairness_type, fairness_bound, protected_feature, positive_class, deprived_group, b_warm):
     tree = Tree(depth)
     primal = FlowOCT(data_train_enc, data_train_reg, label, tree, _lambda, time_limit, fairness_type, fairness_bound, protected_feature, positive_class, deprived_group, b_warm)
     primal.create_primal_problem()
@@ -28,7 +28,113 @@ def my_train(data_train_enc, data_train_reg, label, depth, _lambda, time_limit, 
 
     return solving_time, primal
 
-    return
+
+def warm_evaluation(primal, solving_time, data_train_enc, data_test_enc, data_calibration_enc,data_train_reg, data_test_reg, data_calibration_reg, deprived_group, positive_class, protected_feature):
+        ##########################################################
+        # Preparing the output
+        ##########################################################
+        b_value = primal.model.getAttr("X", primal.b)
+        beta_value = primal.model.getAttr("X", primal.beta)
+        p_value = primal.model.getAttr("X", primal.p)
+        zeta_value = primal.model.getAttr("X", primal.zeta)
+
+
+        print("\n\n")
+        print_tree(primal,b_value, beta_value, p_value)
+
+        print('\n\nTotal Solving Time', solving_time)
+
+        # print(b_value)
+        # print(p_value)
+        # print(beta_value)
+        ##########################################################
+        # Evaluation
+        ##########################################################
+        '''
+        For classification performance we report accuracy
+
+        over training, test and the calibration set
+        '''
+        train_acc = test_acc = calibration_acc = 0
+
+        train_acc = get_acc(primal, data_train_enc, b_value, beta_value, p_value)
+        test_acc = get_acc(primal, data_test_enc, b_value, beta_value, p_value)
+        calibration_acc = get_acc(primal, data_calibration_enc, b_value, beta_value, p_value)
+
+        print("obj value", primal.model.getAttr("ObjVal"))
+        print("train acc", train_acc)
+        print("test acc", test_acc)
+        print("calibration acc", calibration_acc)
+
+
+        # Let's pass in the predicted values for data's predicted values
+        yhat_train = []
+        yhat_test = []
+        yhat_calib = []
+
+        # yhat_prob_train = []
+        # yhat_prob_test = []
+        # yhat_prob_calib = []
+        # leaf_dict = get_leaf_info(primal,data_train_enc,label, b_value, beta_value, p_value,zeta_value)
+        for i in data_train_enc.index:
+            yhat_train.append(get_predicted_value(primal, data_train_enc, b_value, beta_value, p_value, i))
+            # yhat_prob_train.append(get_predicted_probability(primal, data_train_enc, leaf_dict, b_value, beta_value, p_value, i))
+        for i in data_test_enc.index:
+            yhat_test.append(get_predicted_value(primal, data_test_enc, b_value, beta_value, p_value, i))
+            # yhat_prob_test.append(get_predicted_probability(primal, data_test_enc,leaf_dict, b_value, beta_value, p_value, i))
+        for i in data_calibration_enc.index:
+            yhat_calib.append(get_predicted_value(primal, data_calibration_enc, b_value, beta_value, p_value, i))
+            # yhat_prob_calib.append(get_predicted_probability(primal, data_calibration_enc, leaf_dict, b_value, beta_value, p_value, i))
+
+
+        data_train_reg['Predictions'] = yhat_train
+        data_test_reg['Predictions'] = yhat_test
+        data_calibration_reg['Predictions'] = yhat_calib
+
+        # data_train_reg['Predictions_prob'] = yhat_prob_train
+        # data_test_reg['Predictions_prob'] = yhat_prob_test
+        # data_calibration_reg['Predictions_prob'] = yhat_prob_calib
+
+
+
+        data_dict = {'train':(data_train_enc,data_train_reg),
+                     'test':(data_test_enc,data_test_reg),
+                     'calib':(data_calibration_enc,data_calibration_reg)}
+        protected_levels = data_train_reg[protected_feature].unique()
+        fairness_metrics_dict = {}
+        # fairness_metrics_dict[('SP','train','pred')] = sp_value
+        def getFairnessResults(fairness_const_type):
+            var_func = get_sp
+
+            for data_set in ['train','test','calib']:
+                data_set_enc, data_set_reg = data_dict[data_set]
+                for source in ['Data','Predictions']:
+                    sp_value = var_func(primal, data_set_enc, data_set_reg, b_value, beta_value, p_value, deprived_group, positive_class, source)
+                    fairness_metrics_dict[(fairness_const_type,data_set,source)] = sp_value
+
+
+        # Print all maximum values with the corresponding protected varibles
+        for fairness_const_type in ['SP']:
+            getFairnessResults(fairness_const_type)
+            print('###################{} Results'.format(fairness_const_type))
+            for data_set in ['train','test','calib']:
+                for source in ['Data','Predictions']:
+                    sp_value = fairness_metrics_dict[(fairness_const_type,data_set,source)]
+                    print('{} {} {}: {} '.format(data_set,source,fairness_const_type, sp_value))
+
+
+
+        warm_results = [primal.model.getAttr("Status"), primal.model.getAttr("ObjVal"), train_acc,
+         primal.model.getAttr("MIPGap") * 100, primal.model.getAttr("NodeCount"), solving_time,
+         test_acc, calibration_acc,
+         fairness_metrics_dict[('SP','train','Data')], fairness_metrics_dict[('SP','train','Predictions')],
+         fairness_metrics_dict[('SP','test','Data')], fairness_metrics_dict[('SP','test','Predictions')],
+         fairness_metrics_dict[('SP','calib','Data')], fairness_metrics_dict[('SP','calib','Predictions')]]
+
+        return warm_results
+
+
+
 def main(argv):
     print(argv)
     train_file_reg = None
@@ -95,7 +201,7 @@ def main(argv):
         elif opt in ('-n',"--conditional_feature"):
             conditional_feature = arg
         elif opt in ('-o',"--calibration_mode"):
-            calibration_mode = arg
+            calibration_mode = int(arg)
         elif opt in ('-p',"--sample"):
             input_sample = int(arg)
         elif opt in ('-q',"--deprived"):
@@ -128,7 +234,7 @@ def main(argv):
     # output setup
     ##########################################################
     approach_name = 'FlowOCT_kamiran_warm'
-    out_put_name = f'{train_file_reg}_{approach_name}_d_{depth}_warmStartDepth_{warm_start_depth}_t_{time_limit}_lambda_{_lambda}_ft_{fairness_type}_fb_{fairness_bound}'
+    out_put_name = f'{train_file_reg}_{approach_name}_d_{depth}_warmStartDepth_{warm_start_depth}_t_{time_limit}_lambda_{_lambda}_ft_{fairness_type}_fb_{fairness_bound}_calibration_{calibration_mode}'
     out_put_path = os.getcwd() + '/../../Results/'
     # Using logger we log the output of the console in a text file
     sys.stdout = logger(out_put_path + out_put_name + '.txt')
@@ -151,108 +257,18 @@ def main(argv):
     # solving_time, primal = my_train(data_train_enc, data_train_reg, label, depth, _lambda, time_limit, fairness_type, fairness_bound, protected_feature, positive_class, deprived_group, None)
 
     #with warm start
+    Results_dic = {}
     b_warm = None
     time_limit_warm = time_limit
     solving_time = 0
     for warm_depth in range(warm_start_depth,depth+1):
-        solving_time_warm, primal = my_train(data_train_enc, data_train_reg, label, warm_depth, _lambda, time_limit_warm, fairness_type, fairness_bound, protected_feature, positive_class, deprived_group, b_warm)
+        print(f'######################################################## Intermediate depth = {warm_depth}')
+        solving_time_warm, primal = warm_train(data_train_enc, data_train_reg, label, warm_depth, _lambda, time_limit_warm, fairness_type, fairness_bound, protected_feature, positive_class, deprived_group, b_warm)
         solving_time += solving_time_warm
-        time_limit_warm = max(time_limit - solving_time,100)
         b_warm = primal.model.getAttr("X", primal.b)
-
-    ##########################################################
-    # Preparing the output
-    ##########################################################
-    b_value = primal.model.getAttr("X", primal.b)
-    beta_value = primal.model.getAttr("X", primal.beta)
-    p_value = primal.model.getAttr("X", primal.p)
-    zeta_value = primal.model.getAttr("X", primal.zeta)
-
-
-    print("\n\n")
-    print_tree(primal,b_value, beta_value, p_value)
-
-    print('\n\nTotal Solving Time', solving_time)
-
-    # print(b_value)
-    # print(p_value)
-    # print(beta_value)
-    ##########################################################
-    # Evaluation
-    ##########################################################
-    '''
-    For classification performance we report accuracy
-
-    over training, test and the calibration set
-    '''
-    train_acc = test_acc = calibration_acc = 0
-
-    train_acc = get_acc(primal, data_train_enc, b_value, beta_value, p_value)
-    test_acc = get_acc(primal, data_test_enc, b_value, beta_value, p_value)
-    calibration_acc = get_acc(primal, data_calibration_enc, b_value, beta_value, p_value)
-
-    print("obj value", primal.model.getAttr("ObjVal"))
-    print("train acc", train_acc)
-    print("test acc", test_acc)
-    print("calibration acc", calibration_acc)
-
-
-    # Let's pass in the predicted values for data's predicted values
-    yhat_train = []
-    yhat_test = []
-    yhat_calib = []
-
-    # yhat_prob_train = []
-    # yhat_prob_test = []
-    # yhat_prob_calib = []
-    # leaf_dict = get_leaf_info(primal,data_train_enc,label, b_value, beta_value, p_value,zeta_value)
-    for i in data_train_enc.index:
-        yhat_train.append(get_predicted_value(primal, data_train_enc, b_value, beta_value, p_value, i))
-        # yhat_prob_train.append(get_predicted_probability(primal, data_train_enc, leaf_dict, b_value, beta_value, p_value, i))
-    for i in data_test_enc.index:
-        yhat_test.append(get_predicted_value(primal, data_test_enc, b_value, beta_value, p_value, i))
-        # yhat_prob_test.append(get_predicted_probability(primal, data_test_enc,leaf_dict, b_value, beta_value, p_value, i))
-    for i in data_calibration_enc.index:
-        yhat_calib.append(get_predicted_value(primal, data_calibration_enc, b_value, beta_value, p_value, i))
-        # yhat_prob_calib.append(get_predicted_probability(primal, data_calibration_enc, leaf_dict, b_value, beta_value, p_value, i))
-
-
-    data_train_reg['Predictions'] = yhat_train
-    data_test_reg['Predictions'] = yhat_test
-    data_calibration_reg['Predictions'] = yhat_calib
-
-    # data_train_reg['Predictions_prob'] = yhat_prob_train
-    # data_test_reg['Predictions_prob'] = yhat_prob_test
-    # data_calibration_reg['Predictions_prob'] = yhat_prob_calib
-
-
-
-    data_dict = {'train':(data_train_enc,data_train_reg),
-                 'test':(data_test_enc,data_test_reg),
-                 'calib':(data_calibration_enc,data_calibration_reg)}
-    protected_levels = data_train_reg[protected_feature].unique()
-    fairness_metrics_dict = {}
-    # fairness_metrics_dict[('SP','train','pred')] = sp_value
-    def getFairnessResults(fairness_const_type):
-        var_func = get_sp
-
-        for data_set in ['train','test','calib']:
-            data_set_enc, data_set_reg = data_dict[data_set]
-            for source in ['Data','Predictions']:
-                sp_value = var_func(primal, data_set_enc, data_set_reg, b_value, beta_value, p_value, deprived_group, positive_class, source)
-                fairness_metrics_dict[(fairness_const_type,data_set,source)] = sp_value
-
-
-    # Print all maximum values with the corresponding protected varibles
-    for fairness_const_type in ['SP']:
-        getFairnessResults(fairness_const_type)
-        print('###################{} Results'.format(fairness_const_type))
-        for data_set in ['train','test','calib']:
-            for source in ['Data','Predictions']:
-                sp_value = fairness_metrics_dict[(fairness_const_type,data_set,source)]
-                print('{} {} {}: {} '.format(data_set,source,fairness_const_type, sp_value))
-
-
+        warm_results = warm_evaluation(primal, solving_time, data_train_enc, data_test_enc, data_calibration_enc,data_train_reg, data_test_reg, data_calibration_reg, deprived_group, positive_class, protected_feature)
+        Results_dic[warm_depth] = [approach_name, train_file_reg, input_sample, fairness_type, fairness_bound, train_len, calibration_mode, warm_depth, _lambda, time_limit_warm] + warm_results
+        time_limit_warm = max(time_limit - solving_time,100)
     ##########################################################
     # writing info to the file
     ##########################################################
@@ -262,14 +278,8 @@ def main(argv):
     with open(out_put_path + result_file, mode='a') as results:
         results_writer = csv.writer(results, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
 
-        results_writer.writerow(
-            [approach_name, train_file_reg,input_sample, fairness_type, fairness_bound, train_len,calibration_mode, depth, _lambda, time_limit,
-             primal.model.getAttr("Status"), primal.model.getAttr("ObjVal"), train_acc,
-             primal.model.getAttr("MIPGap") * 100, primal.model.getAttr("NodeCount"), solving_time,
-             test_acc, calibration_acc,
-             fairness_metrics_dict[('SP','train','Data')], fairness_metrics_dict[('SP','train','Predictions')],
-             fairness_metrics_dict[('SP','test','Data')], fairness_metrics_dict[('SP','test','Predictions')],
-             fairness_metrics_dict[('SP','calib','Data')], fairness_metrics_dict[('SP','calib','Predictions')]])
+        for r in Results_dic.values():
+                results_writer.writerow(r)
 
 
 if __name__ == "__main__":

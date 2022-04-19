@@ -11,28 +11,27 @@ time_limit = 10800
 dataset_dict = {('compas','protected_feature'):'race',
  ('compas','positive_class'):1,
  ('compas','deprived_group'):1,
- ('compas-limited','protected_feature'):'race',
- ('compas-limited','positive_class'):1,
- ('compas-limited','deprived_group'):1,
- ('german-limited','protected_feature'):'age',
- ('german-limited','positive_class'):2,
- ('german-limited','deprived_group'):1,
+ ('german','protected_feature'):'age',
+ ('german','positive_class'):2,
+ ('german','deprived_group'):1,
  ('adult','protected_feature'):'sex',
  ('adult','positive_class'):2,
  ('adult','deprived_group'):1,
- ('limited-adult','protected_feature'):'sex',
- ('limited-adult','positive_class'):2,
- ('limited-adult','deprived_group'):1,
+ ('limited-adult-2','protected_feature'):'sex',
+ ('limited-adult-2','positive_class'):2,
+ ('limited-adult-2','deprived_group'):1,
  ('default','protected_feature'):'SEX',
  ('default','positive_class'):1,
  ('default','deprived_group'):2}
-dset = 'compas'# german compas adult default
+
+
+dset = 'compas'# german compas adult default limited-adult-2
 bounds = [x / 100.0 for x in range(1, 56, 1)]#[x / 100.0 for x in range(1, 56, 1)] #[0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
 fairness_type = ['None', 'SP']
 
 
 _lambda = 0
-calibration_mode = 0
+calibration_mode = 1
 
 
 
@@ -45,7 +44,7 @@ def put_qmark(s):
 
 def generate():
         global time_limit, depths, samples, approach_name, dset, bounds, fairness_type,dataset_dict
-        slurm_file = f'slurm_{approach_name}_{time_limit}_{dset}_warm_start_depth_{warm_start_depth}.sh'
+        slurm_file = f'slurm_{approach_name}_{time_limit}_{dset}_calibration_mode_{calibration_mode}.sh'
         dir=f"/project/vayanou_651/FairStrongTrees/Code/{approach_name}/"
 
         data_train_reg_list=[]
@@ -106,7 +105,7 @@ def generate():
         S+="#SBATCH --ntasks=1\n"
         S+="#SBATCH --cpus-per-task=4\n"
         S+="#SBATCH --mem-per-cpu=4GB\n"
-        S+="#SBATCH --time=04:00:00\n"
+        S+="#SBATCH --time=05:00:00\n"
         S+="#SBATCH --export=NONE\n"
         S+="#SBATCH --constraint=\"xeon-2640v4\"\n"
         S+=f"#SBATCH --array=0-{len(data_train_enc_list)-1}\n"
@@ -158,7 +157,7 @@ def generate():
 
         S+="\n"
         S+="\n"
-        command = 'python FlowOCTReplication.py '+ ' --train_file_reg ' +'${data_train_reg_list[$SLURM_ARRAY_TASK_ID]}'+ ' --train_file_enc ' +'${data_train_enc_list[$SLURM_ARRAY_TASK_ID]}'+ ' --test_file_reg ' +'${data_test_reg_list[$SLURM_ARRAY_TASK_ID]}'+ ' --test_file_enc ' +'${data_test_enc_list[$SLURM_ARRAY_TASK_ID]}'+ ' --calibration_file_reg ' +'${data_calibration_reg_list[$SLURM_ARRAY_TASK_ID]}'+ ' --calibration_file_enc ' +'${data_calibration_enc_list[$SLURM_ARRAY_TASK_ID]}' + " --depth " + '${depth_list[$SLURM_ARRAY_TASK_ID]}' + " --timelimit " + str(time_limit) + " -i " + str(_lambda)+ " --sample " + '${sample_list[$SLURM_ARRAY_TASK_ID]}'+ " --calibration_mode " + str(calibration_mode) + " --fairness_type " + '${fairness_type_list[$SLURM_ARRAY_TASK_ID]}'+ " --fairness_bound " + '${bounds_list[$SLURM_ARRAY_TASK_ID]}'+" --protected_feature " + '${protected_feature_list[$SLURM_ARRAY_TASK_ID]}'+" --positive_class " + str(dataset_dict[(dset,'positive_class')]) + " --deprived " + str(dataset_dict[(dset,'deprived_group')]) + " --warm_start_depth " + str(warm_start_depth)
+        command = 'python FlowOCTReplication.py '+ ' --train_file_reg ' +'${data_train_reg_list[$SLURM_ARRAY_TASK_ID]}'+ ' --train_file_enc ' +'${data_train_enc_list[$SLURM_ARRAY_TASK_ID]}'+ ' --test_file_reg ' +'${data_test_reg_list[$SLURM_ARRAY_TASK_ID]}'+ ' --test_file_enc ' +'${data_test_enc_list[$SLURM_ARRAY_TASK_ID]}'+ ' --calibration_file_reg ' +'${data_calibration_reg_list[$SLURM_ARRAY_TASK_ID]}'+ ' --calibration_file_enc ' +'${data_calibration_enc_list[$SLURM_ARRAY_TASK_ID]}' + " --depth " + '${depth_list[$SLURM_ARRAY_TASK_ID]}' + " --timelimit " + str(time_limit) + " -i " + str(_lambda)+ " --sample " + '${sample_list[$SLURM_ARRAY_TASK_ID]}'+ " -o " + str(calibration_mode) + " --fairness_type " + '${fairness_type_list[$SLURM_ARRAY_TASK_ID]}'+ " --fairness_bound " + '${bounds_list[$SLURM_ARRAY_TASK_ID]}'+" --protected_feature " + '${protected_feature_list[$SLURM_ARRAY_TASK_ID]}'+" --positive_class " + str(dataset_dict[(dset,'positive_class')]) + " --deprived " + str(dataset_dict[(dset,'deprived_group')]) + " --warm_start_depth " + str(warm_start_depth)
         S+=command
         S+="\n"
 
