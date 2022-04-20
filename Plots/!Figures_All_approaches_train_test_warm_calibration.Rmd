@@ -115,7 +115,7 @@ cross_validation <- function (data) {
 # Readine Flow_kamiran_warm results
 
 ```{r echo=TRUE, warning=FALSE}
-data= read.csv('./../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 1/FlowKamiran_warm_german_d6_calib-1.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 1/FlowKamiran_warm_compas_d6_calib-1.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 data_name = 'german'
 header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
@@ -194,7 +194,7 @@ data_flow <- prepare(data_flow)
 ```{r echo=TRUE, warning=FALSE}
 
 ################################################## (IGC).Relab
-data= read.csv('./../Results/Kamiran/tuning/final/igc_relab/german.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Kamiran/tuning/final/igc_relab/compas.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 header= read.csv('./../Results/Kamiran/tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 names(data) <- names(header)
 rm(header)
@@ -211,7 +211,7 @@ data_kamiran_1 <- prepare(data_kamiran_1)
 data_kamiran_1$acc <- data_kamiran_1$acc/100
 
 ################################################## (IGC-IGS).Relab
-data= read.csv('./../Results/Kamiran/tuning/final/igc-igs_relab/german.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Kamiran/tuning/final/igc-igs_relab/compas.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 header= read.csv('./../Results/Kamiran/tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 names(data) <- names(header)
 rm(header)
@@ -229,7 +229,7 @@ data_kamiran_2$acc <- data_kamiran_2$acc/100
 
 
 ################################################## (IGC+IGS).Relab
-data= read.csv('./../Results/Kamiran/tuning/final/igc+igs_relab/ger', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/Kamiran/tuning/final/igc+igs_relab/compas.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 header= read.csv('./../Results/Kamiran/tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 names(data) <- names(header)
 rm(header)

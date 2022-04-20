@@ -34,8 +34,8 @@ rm(list=ls())
 library(extrafont)
 
 
-data= read.csv('./../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 0/FlowKamiran_warm_compas_d3_calib_0.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-data_name = 'compas'
+data= read.csv('./../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 0/FlowKamiran_warm_limited-adult-2_d3_calib_0.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data_name = 'adult'
 header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
 names(data) <- names(header)
@@ -65,105 +65,102 @@ rm(tmp_none)
 ```
 
 #Preparing Data
+
 ```{r echo=TRUE, warning=FALSE}
-tmp <- data[,c("approach",'sample',"depth","fair.bound","train.acc",'test.acc',
-                   "sp.train.pred","sp.test.pred")]
+prepare <- function (data) {
+  tmp <- data[,c("approach",'sample',"depth","fair.bound","train.acc",'test.acc',
+                     "sp.train.pred","sp.test.pred")]
+  
+  tmp <- tmp %>%
+    group_by(approach,depth, fair.bound) %>%
+    summarise(mean(train.acc),mean(test.acc), mean(sp.train.pred),
+              mean(sp.test.pred))
+  
+  names(tmp) <- c("approach","depth","fair.bound","train.acc",'test.acc',
+                     "train.disc","test.disc")
+  
+  tmp$fair.bound <- as.numeric(as.character(tmp$fair.bound))
+  
+  
+  tmp1 <- tmp[,c("approach","depth","fair.bound","test.acc","test.disc")]
+  tmp1$source <- 'out-of-sample'
+  names(tmp1) <- c("approach","depth","fair.bound","acc","disc",'source')
+  tmp2 <- tmp[,c("approach","depth","fair.bound","train.acc","train.disc")]
+  tmp2$source <- 'in-sample'
+  names(tmp2) <- c("approach","depth","fair.bound","acc","disc",'source')
+  tmp <- rbind(tmp1,tmp2)
+  rm(tmp1,tmp2)
+  
+  
+  tmp
+}
+```
 
-tmp <- tmp %>%
-  group_by(approach,depth, fair.bound) %>%
-  summarise(mean(train.acc),mean(test.acc), mean(sp.train.pred),
-            mean(sp.test.pred))
-
-names(tmp) <- c("approach","depth","fair.bound","train.acc",'test.acc',
-                   "train.disc","test.disc")
-
-tmp$fair.bound <- as.numeric(as.character(tmp$fair.bound))
-
-
-tmp1 <- tmp[,c("approach","depth","fair.bound","test.acc","test.disc")]
-tmp1$source <- 'out-of-sample'
-names(tmp1) <- c("approach","depth","fair.bound","acc","disc",'source')
-tmp2 <- tmp[,c("approach","depth","fair.bound","train.acc","train.disc")]
-tmp2$source <- 'in-sample'
-names(tmp2) <- c("approach","depth","fair.bound","acc","disc",'source')
-tmp <- rbind(tmp1,tmp2)
-rm(tmp1,tmp2)
-
-
-data_flow <- tmp
-data_flow$data <- NULL
-rm(tmp,data)
+```{r echo=TRUE, warning=FALSE}
+data_flow <- prepare(data) 
+data_flow$approach <- "FlowOCT"
 ```
 
 # Reading and preparing the kamiran's results
+
 ```{r echo=TRUE, warning=FALSE}
+################################################## (IGC).Relab
+data= read.csv('./../Results/Kamiran/no_tuning/final/igc_relab/limited-adult-2.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+header= read.csv('./../Results/Kamiran/no_tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+names(data) <- names(header)
+rm(header)
 
-data= read.csv('./../Results/Kamiran/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 data$depth <- data$depth + 1
-data <- data %>%
-  group_by(depth, fair.bound) %>%
-  summarise(mean(acc_tr_pre),mean(disc_tr_pre),mean(acc_te_pre), mean(disc_te_pre),
-            mean(train.acc),mean(sp.train.pred),mean(test.acc),mean(sp.test.pred))
+data$approach <- '(IGC).Relab'
 
-names(data) <- c("depth","fair.bound",'acc_tr_pre','disc_tr_pre','acc_te_pre','disc_te_pre','train.acc','sp.train.pred','test.acc','sp.test.pred')
+data <- data[,c('approach',"sample",'fair.bound','depth','train.acc','sp.train.pred','test.acc','sp.test.pred')]
 
+data_kamiran_1 <- prepare(data)
+rm(data)
+data_kamiran_1$acc <- data_kamiran_1$acc/100
 
+################################################## (IGC-IGS).Relab
+data= read.csv('./../Results/Kamiran/no_tuning/final/igc-igs_relab/limited-adult-2.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+header= read.csv('./../Results/Kamiran/no_tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+names(data) <- names(header)
+rm(header)
 
+data$depth <- data$depth + 1
+data$approach <- '(IGC-IGS).Relab'
 
+data <- data[,c('approach',"sample",'fair.bound','depth','train.acc','sp.train.pred','test.acc','sp.test.pred')]
 
-data$approach <- 'DADT'
+data_kamiran_2 <- prepare(data)
+rm(data)
+data_kamiran_2$acc <- data_kamiran_2$acc/100
 
-data_relab <- data[,c('approach','depth','fair.bound','train.acc','sp.train.pred','test.acc','sp.test.pred')]
-# data_relab$approach <- 'Kamiran_relab'
+################################################## (IGC+IGS).Relab
+data= read.csv('./../Results/Kamiran/no_tuning/final/igc+igs_relab/limited-adult-2.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+header= read.csv('./../Results/Kamiran/no_tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+names(data) <- names(header)
+rm(header)
 
-data_relab_train <- data_relab[,c('approach','depth','fair.bound','train.acc','sp.train.pred')]
-data_relab_train$source <- 'in-sample'
-names(data_relab_train) <- c('approach','depth','fair.bound','acc','disc','source')
+data$depth <- data$depth + 1
+data$approach <- '(IGC+IGS).Relab'
 
-data_relab_test <- data_relab[,c('approach','depth','fair.bound','test.acc','sp.test.pred')]
-data_relab_test$source <- 'out-of-sample'
-names(data_relab_test) <- c('approach','depth','fair.bound','acc','disc','source')
+data <- data[,c('approach',"sample",'fair.bound','depth','train.acc','sp.train.pred','test.acc','sp.test.pred')]
 
-data_relab <- rbind(data_relab_train, data_relab_test)
-rm(data_relab_test, data_relab_train)
-
-
-
-data_pre <- data[,c('approach','depth','fair.bound','acc_tr_pre','disc_tr_pre','acc_te_pre','disc_te_pre')]
-
-data_pre_train <- data_pre[,c('approach','depth','fair.bound','acc_tr_pre','disc_tr_pre')]
-data_pre_train$source <- 'in-sample'
-names(data_pre_train) <- c('approach','depth','fair.bound','acc','disc','source')
-
-data_pre_test <- data_pre[,c('approach','depth','fair.bound','acc_te_pre','disc_te_pre')]
-data_pre_test$source <- 'out-of-sample'
-names(data_pre_test) <- c('approach','depth','fair.bound','acc','disc','source')
-
-data_pre <- rbind(data_pre_train, data_pre_test)
-rm(data_pre_test, data_pre_train, data)
-
-data_pre$fair.bound <- 1
-data_pre <- unique(data_pre)
-
-
-# data_kamiran <- rbind(data_pre, data_relab)
-data_kamiran <- data_relab
-rm(data_pre, data_relab)
-
-data_kamiran$acc <- data_kamiran$acc/100
+data_kamiran_3 <- prepare(data)
+rm(data)
+data_kamiran_3$acc <- data_kamiran_3$acc/100
 ```
 
 
 ```{r echo=TRUE, warning=FALSE}
-data <- rbind(data_flow, data_kamiran)
-data <- subset(data, data$fair.bound %in% data_kamiran$fair.bound)
+data <- rbind(data_flow, data_kamiran_1, data_kamiran_2,data_kamiran_3)
+data <- subset(data, data$fair.bound %in% data_kamiran_3$fair.bound)
 
 data$approach <- as.factor(data$approach)
-data$approach<- factor(data$approach, levels = c("FlowOCT","DADT"))
+data$approach<- factor(data$approach, levels = c('FlowOCT','(IGC).Relab','(IGC-IGS).Relab','(IGC+IGS).Relab'))
 ```
 
 ```{r echo=TRUE, warning=FALSE}
-t_depth = 3
+t_depth = 2
 t_source = 'in-sample' 
 tmp <- subset(data,data$depth ==t_depth & data$source == t_source) 
 x_title = ""
@@ -174,6 +171,7 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
   geom_line(aes(linetype=approach), size=3) + 
   geom_point(aes(color = fair.bound),size=10)+
   scale_color_gradient(low="blue", high="red")+
+  scale_linetype_manual(values=c(1,3,2,4))+
   labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
   # xlim(-7, 17)+#all
   #xlim(-7, 12.5)+#limited-adult
@@ -183,7 +181,7 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
   theme(
     # plot.title = element_text(size = 25),
     axis.text = element_text(size = 45),
-    legend.position = "right", legend.key.size = unit(1, "cm"),
+    legend.position = "right", legend.key.size = unit(2, "cm"),
     legend.text = element_text(size = 30),
     legend.title = element_text(size = 35),
     text = element_text(family=fontfam),
@@ -210,6 +208,7 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
   geom_line(aes(linetype=approach), size=3) + 
   geom_point(aes(color = fair.bound),size=10)+
   scale_color_gradient(low="blue", high="red")+
+  scale_linetype_manual(values=c(1,3,2,4))+
   labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
   # xlim(-7, 17)+#all
   #xlim(-7, 12.5)+#limited-adult
@@ -219,7 +218,7 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
   theme(
     # plot.title = element_text(size = 25),
     axis.text = element_text(size = 45),
-    legend.position = "right", legend.key.size = unit(1, "cm"),
+    legend.position = "right", legend.key.size = unit(2, "cm"),
     legend.text = element_text(size = 30),
     legend.title = element_text(size = 35),
     text = element_text(family=fontfam),
