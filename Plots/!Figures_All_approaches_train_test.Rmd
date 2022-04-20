@@ -34,7 +34,7 @@ rm(list=ls())
 library(extrafont)
 
 
-data= read.csv('./../Results/Dec 29/FlowOCT Kamiran_version/Kamiran_compas-limited.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv('./../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 0/FlowKamiran_warm_compas_d3_calib_0.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 data_name = 'compas'
 header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 
