@@ -33,35 +33,8 @@ require(scales)
 rm(list=ls())
 library(extrafont)
 
-
-data= read.csv('./../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 0/FlowKamiran_warm_limited-adult-2_d3_calib_0.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-data_name = 'adult'
-header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-
-names(data) <- names(header)
-rm(header)
-
 fontfam = "sans" #sans serif
-
-figure_path = "./"
-
-
-
-data$sample <- as.factor(data$sample)
-# data$depth <- as.factor(data$depth)
-data$fair.type <- as.factor(data$fair.type)
-data$fair.bound <- as.factor(data$fair.bound)
-
-
-tmp_none <- data[data$fair.type == 'None',]
-tmp_none$fair.type = 'SP'
-data = rbind(data,tmp_none)
-
-data <- data[data$fair.type!= 'None',]
-data$fair.type <- droplevels(data$fair.type)
-rm(tmp_none)
-
-# data$data <- data_name
+data_name = 'german'
 ```
 
 #Preparing Data
@@ -97,16 +70,60 @@ prepare <- function (data) {
 ```
 
 ```{r echo=TRUE, warning=FALSE}
+
+if(data_name == 'adult'){
+  file_address = './../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 0/FlowKamiran_warm_limited-adult-2_d3_calib_0.csv'
+}else if(data_name == 'compas'){
+  file_address = './../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 0/FlowKamiran_warm_compas_d3_calib_0.csv'
+}else if(data_name == 'german'){
+  file_address = './../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 0/FlowKamiran_warm_german_d3_calib_0.csv'
+} 
+
+data= read.csv(file_address, header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+
+names(data) <- names(header)
+rm(header)
+
+
+
+
+data$sample <- as.factor(data$sample)
+# data$depth <- as.factor(data$depth)
+data$fair.type <- as.factor(data$fair.type)
+data$fair.bound <- as.factor(data$fair.bound)
+
+
+tmp_none <- data[data$fair.type == 'None',]
+tmp_none$fair.type = 'SP'
+data = rbind(data,tmp_none)
+
+data <- data[data$fair.type!= 'None',]
+data$fair.type <- droplevels(data$fair.type)
+rm(tmp_none)
+```
+
+#Preparing Data
+
+```{r echo=TRUE, warning=FALSE}
 data_flow <- prepare(data) 
-data_flow$approach <- "FlowOCT"
+data_flow$approach <- "FairOCT"
 ```
 
 # Reading and preparing the kamiran's results
 
 ```{r echo=TRUE, warning=FALSE}
 ################################################## (IGC).Relab
-data= read.csv('./../Results/Kamiran/no_tuning/final/igc_relab/limited-adult-2.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-header= read.csv('./../Results/Kamiran/no_tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+if(data_name == 'adult'){
+  file_address = './../Results/EAAMO/Kamiran/no_tuning/final/igc_relab/adult.csv'
+}else if(data_name == 'compas'){
+  file_address = './../Results/EAAMO/Kamiran/no_tuning/final/igc_relab/compas.csv'
+}else if(data_name == 'german'){
+  file_address = './../Results/EAAMO/Kamiran/no_tuning/final/igc_relab/german.csv'
+}
+
+data= read.csv(file_address, header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+header= read.csv('./../Results/EAAMO/Kamiran/no_tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 names(data) <- names(header)
 rm(header)
 
@@ -120,8 +137,16 @@ rm(data)
 data_kamiran_1$acc <- data_kamiran_1$acc/100
 
 ################################################## (IGC-IGS).Relab
-data= read.csv('./../Results/Kamiran/no_tuning/final/igc-igs_relab/limited-adult-2.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-header= read.csv('./../Results/Kamiran/no_tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+if(data_name == 'adult'){
+  file_address = './../Results/EAAMO/Kamiran/no_tuning/final/igc-igs_relab/adult.csv'
+}else if(data_name == 'compas'){
+  file_address = './../Results/EAAMO/Kamiran/no_tuning/final/igc-igs_relab/compas.csv'
+}else if(data_name == 'german'){
+  file_address = './../Results/EAAMO/Kamiran/no_tuning/final/igc-igs_relab/german.csv'
+}
+
+data= read.csv(file_address, header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+header= read.csv('./../Results/EAAMO/Kamiran/no_tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 names(data) <- names(header)
 rm(header)
 
@@ -135,8 +160,16 @@ rm(data)
 data_kamiran_2$acc <- data_kamiran_2$acc/100
 
 ################################################## (IGC+IGS).Relab
-data= read.csv('./../Results/Kamiran/no_tuning/final/igc+igs_relab/limited-adult-2.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-header= read.csv('./../Results/Kamiran/no_tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+if(data_name == 'adult'){
+  file_address = './../Results/EAAMO/Kamiran/no_tuning/final/igc+igs_relab/adult.csv'
+}else if(data_name == 'compas'){
+  file_address = './../Results/EAAMO/Kamiran/no_tuning/final/igc+igs_relab/compas.csv'
+}else if(data_name == 'german'){
+  file_address = './../Results/EAAMO/Kamiran/no_tuning/final/igc+igs_relab/german.csv'
+}
+
+data= read.csv(file_address, header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+header= read.csv('./../Results/EAAMO/Kamiran/no_tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 names(data) <- names(header)
 rm(header)
 
@@ -156,87 +189,142 @@ data <- rbind(data_flow, data_kamiran_1, data_kamiran_2,data_kamiran_3)
 data <- subset(data, data$fair.bound %in% data_kamiran_3$fair.bound)
 
 data$approach <- as.factor(data$approach)
-data$approach<- factor(data$approach, levels = c('FlowOCT','(IGC).Relab','(IGC-IGS).Relab','(IGC+IGS).Relab'))
+data$approach<- factor(data$approach, levels = c('FairOCT','(IGC).Relab','(IGC-IGS).Relab','(IGC+IGS).Relab'))
 ```
+
+# Plotting
+
+
+## Defualt
 
 ```{r echo=TRUE, warning=FALSE}
-t_depth = 2
-t_source = 'in-sample' 
-tmp <- subset(data,data$depth ==t_depth & data$source == t_source) 
-x_title = ""
-y_title= ""
-legend_title = 'SP Bound'
 
-g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
-  geom_line(aes(linetype=approach), size=3) + 
-  geom_point(aes(color = fair.bound),size=10)+
-  scale_color_gradient(low="blue", high="red")+
-  scale_linetype_manual(values=c(1,3,2,4))+
-  labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
-  # xlim(-7, 17)+#all
-  #xlim(-7, 12.5)+#limited-adult
-  # xlim(0, 17)+#compas
-  # xlim(-2, 9)+#german
-  # ylim(50, 85)+
-  theme(
-    # plot.title = element_text(size = 25),
-    axis.text = element_text(size = 45),
-    legend.position = "right", legend.key.size = unit(2, "cm"),
-    legend.text = element_text(size = 30),
-    legend.title = element_text(size = 35),
-    text = element_text(family=fontfam),
-    axis.title = element_text(size = 40)
-    ) 
-print(g1)
-
-
-fig_name = paste('1vs1_',data_name,'_depth_',t_depth,'_', t_source,'.pdf', sep = '')
-
-ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
-
+default_plot<- function(data, t_source, t_depth){
+  tmp <- subset(data,data$depth ==t_depth & data$source == t_source) 
+  x_title = ""
+  y_title= ""
+  
+  g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
+      geom_line(aes(linetype=approach), size=3) + 
+      geom_point(aes(color = fair.bound),size=10)+
+      scale_color_gradient(low="blue", high="red")+
+      scale_linetype_manual(values=c(1,3,2,4))+
+      labs(x=x_title, y = y_title, linetype = "Approach", color ='SP Bound')+
+      # xlim(-7, 17)+#all
+      #xlim(-7, 12.5)+#limited-adult
+      # xlim(0, 17)+#compas
+      # xlim(-2, 9)+#german
+      ylim(50, 85)+
+      theme(
+        # plot.title = element_text(size = 25),
+        axis.text = element_text(size = 45),
+        legend.position = "right", legend.key.size = unit(2, "cm"),
+        legend.text = element_text(size = 30),
+        legend.title = element_text(size = 35),
+        text = element_text(family=fontfam),
+        axis.title = element_text(size = 40)
+      ) 
+  
+  figure_path = "./EAAMO/no calibration d2&3/default/"
+  fig_name = paste('no_calibration_',data_name,'_depth_',t_depth,'_', t_source,'.pdf', sep = '')
+  
+  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")#width = 12, height = 8
+}
 ```
+
+
+## No circles
+
+```{r echo=TRUE, warning=FALSE}
+
+no_circles_plot<- function(data, t_source, t_depth){
+  tmp <- subset(data,data$depth ==t_depth & data$source == t_source) 
+  x_title = ""
+  y_title= ""
+  
+  g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
+      geom_line(aes(linetype=approach,colour=approach), size=3) + 
+      scale_linetype_manual(values=c(1,3,2,4))+
+      labs(x=x_title, y = y_title, color  = 'Approach', linetype = 'Approach')+
+      # xlim(-7, 17)+#all
+      #xlim(-7, 12.5)+#limited-adult
+      # xlim(0, 17)+#compas
+      # xlim(-2, 9)+#german
+      ylim(50, 85)+
+      theme(
+        # plot.title = element_text(size = 25),
+        axis.text = element_text(size = 45),
+        legend.position = "right", legend.key.size = unit(2, "cm"),
+        legend.text = element_text(size = 30),
+        legend.title = element_text(size = 35),
+        text = element_text(family=fontfam),
+        axis.title = element_text(size = 40)
+      ) 
+  
+  figure_path = "./EAAMO/no calibration d2&3/no circles/"
+  fig_name = paste('no_calibration_',data_name,'_depth_',t_depth,'_', t_source,'.pdf', sep = '')
+  
+  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")#width = 12, height = 8
+}
+```
+
+
+## different point shapes per approach
+
+```{r echo=TRUE, warning=FALSE}
+
+diff_point_shapes_plot<- function(data, t_source, t_depth){
+  tmp <- subset(data,data$depth ==t_depth & data$source == t_source) 
+  x_title = ""
+  y_title= ""
+  
+  g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
+      geom_line(aes(linetype=approach), size=3) + 
+      geom_point(aes(color = fair.bound,shape = approach),size=10)+
+      scale_color_gradient(low="blue", high="red")+
+      scale_linetype_manual(values=c(1,3,2,4))+
+      scale_shape_manual(values=c(15, 16, 17,18))+
+      labs(x=x_title, y = y_title, color  = 'SP Bound', linetype = 'Approach', shape = 'Approach')+
+      # xlim(-7, 17)+#all
+      #xlim(-7, 12.5)+#limited-adult
+      # xlim(0, 17)+#compas
+      # xlim(-2, 9)+#german
+      ylim(50, 85)+
+      theme(
+        # plot.title = element_text(size = 25),
+        axis.text = element_text(size = 45),
+        legend.position = "right", legend.key.size = unit(2, "cm"),
+        legend.text = element_text(size = 30),
+        legend.title = element_text(size = 35),
+        text = element_text(family=fontfam),
+        axis.title = element_text(size = 40)
+      ) 
+  
+  figure_path = "./EAAMO/no calibration d2&3/different point shapes per approach/"
+  fig_name = paste('no_calibration_',data_name,'_depth_',t_depth,'_', t_source,'.pdf', sep = '')
+  
+  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")#width = 12, height = 8
+}
+```
+
 
 
 ```{r echo=TRUE, warning=FALSE}
-t_source = 'out-of-sample'
-tmp <- subset(data,data$depth ==t_depth & data$source == t_source) 
-x_title = ""
-y_title= ""
-legend_title = 'SP Bound'
-
-g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
-  geom_line(aes(linetype=approach), size=3) + 
-  geom_point(aes(color = fair.bound),size=10)+
-  scale_color_gradient(low="blue", high="red")+
-  scale_linetype_manual(values=c(1,3,2,4))+
-  labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
-  xlim(-7, 17)+#all
-  #xlim(-7, 12.5)+#limited-adult
-  # xlim(0, 17)+#compas
-  # xlim(-2, 9)+#german
-  ylim(50, 85)+
-  theme(
-    # plot.title = element_text(size = 25),
-    axis.text = element_text(size = 45),
-    legend.position = "right", legend.key.size = unit(2, "cm"),
-    legend.text = element_text(size = 30),
-    legend.title = element_text(size = 35),
-    text = element_text(family=fontfam),
-    axis.title = element_text(size = 40)
-    ) 
-print(g1)
+for(t in c(2,3)){
+  default_plot(data, 'in-sample',t)
+  default_plot(data, 'out-of-sample',t)
+  
+  no_circles_plot(data, 'in-sample',t)
+  no_circles_plot(data, 'out-of-sample',t)
+  
+  diff_point_shapes_plot(data, 'in-sample',t)
+  diff_point_shapes_plot(data, 'out-of-sample',t)
+}
 
 
-fig_name = paste('1vs1_',data_name,'_depth_',t_depth,'_', t_source,'.pdf', sep = '')
 
-ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
-# if (forpres)
-# {
-#   ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
-# } else {
-#   ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 12, height = 8, units =  "in")
-# }
 
 ```
+
 
 
