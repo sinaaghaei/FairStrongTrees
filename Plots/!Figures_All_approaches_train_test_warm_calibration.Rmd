@@ -1,0 +1,332 @@
+---
+title: "Generating The Figures"
+author: "Sina Aghaei"
+date: "10/24/2020"
+output: 
+  # flexdashboard::flex_dashboard:
+  #   orientation: columns
+  html_document:
+    # number_sections: true
+ 
+---
+
+
+In this script we provide the code for generating the figures in the paper.
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,message = FALSE,warning = FALSE )
+library(kableExtra)
+library(png)
+library(ggplot2)
+library(reshape2)
+library(egg)
+require(tidyr)
+require(dplyr)
+library(dplyr)
+library(latex2exp)
+# library(ggpubr)
+library(data.table)
+library(RColorBrewer)
+library(MASS)
+require(scales)
+rm(list=ls())
+library(extrafont)
+
+```
+
+
+# Cross validation function
+In this section I will find the best depth for any given sample and fairness bound:
+
+Among those that satisfy fairness constraint, we pick the highest acc and if there's ties we pick the smaller depth
+If there's none that satisfy fairness constraint, we pick the one with the smallest discrimination and if there's ties we pick highest acc and smaller depth
+
+```{r echo=TRUE, warning=FALSE}
+
+cross_validation <- function (data) {
+  data$ID <- seq.int(nrow(data))
+  
+  tmp <- data
+  tmp$feasibility <- tmp$sp.cal.pred <= tmp$fair.bound
+  tmp <- tmp[,c('ID','sample', "fair.bound", 'depth' ,"cal.acc", "sp.cal.pred", 'feasibility')]
+  
+  
+  # First I identify those cases where for a given sample and fairness bound, all depths are infeasible. For these cases we choose the depth with the smallest discrimination:
+  
+  tmp_false <- subset(tmp, !tmp$feasibility)
+  tmp_false <- tmp_false %>%
+      group_by(sample, fair.bound) %>%
+      summarise(count=n())
+  tmp_false <- subset(tmp_false, tmp_false$count==4)
+  tmp_all_false <- merge(x = tmp, y=tmp_false, by = c('sample', 'fair.bound'))
+  
+  rm(tmp_false)
+  
+  tmp_all_false <- tmp_all_false[order(tmp_all_false$depth),] 
+  tmp_all_false <- tmp_all_false[order(-tmp_all_false$cal.acc),] 
+  tmp_all_false <- tmp_all_false[order(tmp_all_false$sp.cal.pred),] 
+  tmp_all_false <- tmp_all_false[order(-tmp_all_false$feasibility),]
+  tmp_all_false <- tmp_all_false[order(tmp_all_false$fair.bound),]
+  tmp_all_false <- tmp_all_false[order(tmp_all_false$sample),] 
+  
+  tmp_all_false$count <- NULL
+  tmp_all_false <- tmp_all_false[,names(tmp)]
+  
+  tmp_rest <- tmp %>% anti_join(tmp_all_false)
+  
+  tmp_all_false <- tmp_all_false %>%
+      group_by(sample, fair.bound) %>%
+      mutate(idx = row_number())
+  
+  tmp_all_false <- subset(tmp_all_false, tmp_all_false$idx==1)
+  tmp_all_false$idx <- NULL
+  
+  
+  # For the rest of the cases, for a given sample and fair bound, among the feasible depths, we pick the highest acc and if there's ties we pick the smaller depth
+  
+  tmp_rest <- tmp_rest[order(tmp_rest$depth),]
+  tmp_rest <- tmp_rest[order(tmp_rest$sp.cal.pred),] 
+  tmp_rest <- tmp_rest[order(-tmp_rest$cal.acc),] 
+  tmp_rest <- tmp_rest[order(-tmp_rest$feasibility),]
+  tmp_rest <- tmp_rest[order(tmp_rest$fair.bound),]
+  tmp_rest <- tmp_rest[order(tmp_rest$sample),] 
+  
+  tmp_rest <- tmp_rest %>%
+      group_by(sample, fair.bound) %>%
+      mutate(idx = row_number())
+  
+  tmp_rest <- subset(tmp_rest, tmp_rest$idx==1)
+  tmp_rest$idx <- NULL
+  
+  tmp <- rbind(tmp_rest, tmp_all_false)
+  rm(tmp_rest, tmp_all_false)
+  
+  
+  final  <- data
+  final <- subset(final, final$ID %in% tmp$ID)
+  
+  final
+}
+
+```
+
+
+# Readine Flow_kamiran_warm results
+
+```{r echo=TRUE, warning=FALSE}
+data= read.csv('./../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 1/FlowKamiran_warm_german_d6_calib-1.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data_name = 'german'
+header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+
+names(data) <- names(header)
+rm(header)
+
+fontfam = "sans" #sans serif
+
+figure_path = "./"
+
+
+
+data$sample <- as.factor(data$sample)
+# data$depth <- as.factor(data$depth)
+data$fair.type <- as.factor(data$fair.type)
+# data$fair.bound <- as.factor(data$fair.bound)
+
+
+tmp_none <- data[data$fair.type == 'None',]
+tmp_none$fair.type = 'SP'
+data = rbind(data,tmp_none)
+
+data <- data[data$fair.type!= 'None',]
+data$fair.type <- droplevels(data$fair.type)
+rm(tmp_none)
+data <- data[data$depth!=2,]
+```
+
+
+
+# Cross validating
+
+```{r echo=TRUE, warning=FALSE}
+data_flow <- cross_validation(data)
+rm(data)
+```
+
+#Preparing Data
+
+```{r echo=TRUE, warning=FALSE}
+prepare <- function (data) {
+  tmp <- data[,c("approach",'sample',"depth","fair.bound","train.acc",'test.acc',
+                   "sp.train.pred","sp.test.pred")]
+
+  tmp <- tmp %>%
+    group_by(approach, fair.bound) %>%
+    summarise(mean(depth),mean(train.acc),mean(test.acc), mean(sp.train.pred),
+              mean(sp.test.pred))
+
+names(tmp) <- c("approach","fair.bound","depth","train.acc",'test.acc',
+                   "train.disc","test.disc")
+
+tmp$fair.bound <- as.numeric(as.character(tmp$fair.bound))
+
+
+tmp1 <- tmp[,c("approach","depth","fair.bound","test.acc","test.disc")]
+tmp1$source <- 'out-of-sample'
+names(tmp1) <- c("approach","depth","fair.bound","acc","disc",'source')
+tmp2 <- tmp[,c("approach","depth","fair.bound","train.acc","train.disc")]
+tmp2$source <- 'in-sample'
+names(tmp2) <- c("approach","depth","fair.bound","acc","disc",'source')
+tmp <- rbind(tmp1,tmp2)
+
+tmp
+}
+```
+#Preparing Data
+```{r echo=TRUE, warning=FALSE}
+data_flow$approach <- "FlowOCT"
+data_flow <- prepare(data_flow) 
+```
+
+
+# Reading and preparing the kamiran's results
+
+```{r echo=TRUE, warning=FALSE}
+
+################################################## (IGC).Relab
+data= read.csv('./../Results/Kamiran/tuning/final/igc_relab/german.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+header= read.csv('./../Results/Kamiran/tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+names(data) <- names(header)
+rm(header)
+
+data$depth <- data$depth + 1
+data$approach <- '(IGC).Relab'
+
+data <- data[,c('approach',"sample",'fair.bound','depth','train.acc','sp.train.pred','test.acc','sp.test.pred',"cal.acc","sp.cal.pred")]
+
+
+data_kamiran_1 <- cross_validation(data)
+rm(data)
+data_kamiran_1 <- prepare(data_kamiran_1) 
+data_kamiran_1$acc <- data_kamiran_1$acc/100
+
+################################################## (IGC-IGS).Relab
+data= read.csv('./../Results/Kamiran/tuning/final/igc-igs_relab/german.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+header= read.csv('./../Results/Kamiran/tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+names(data) <- names(header)
+rm(header)
+
+data$depth <- data$depth + 1
+data$approach <- '(IGC-IGS).Relab'
+
+data <- data[,c('approach',"sample",'fair.bound','depth','train.acc','sp.train.pred','test.acc','sp.test.pred',"cal.acc","sp.cal.pred")]
+
+
+data_kamiran_2 <- cross_validation(data)
+rm(data)
+data_kamiran_2 <- prepare(data_kamiran_2) 
+data_kamiran_2$acc <- data_kamiran_2$acc/100
+
+
+################################################## (IGC+IGS).Relab
+data= read.csv('./../Results/Kamiran/tuning/final/igc+igs_relab/ger', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+header= read.csv('./../Results/Kamiran/tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+names(data) <- names(header)
+rm(header)
+
+data$depth <- data$depth + 1
+data$approach <- '(IGC+IGS).Relab'
+
+data <- data[,c('approach',"sample",'fair.bound','depth','train.acc','sp.train.pred','test.acc','sp.test.pred',"cal.acc","sp.cal.pred")]
+
+
+data_kamiran_3 <- cross_validation(data)
+rm(data)
+data_kamiran_3 <- prepare(data_kamiran_3) 
+data_kamiran_3$acc <- data_kamiran_3$acc/100
+
+```
+
+
+```{r echo=TRUE, warning=FALSE}
+data <- rbind(data_flow, data_kamiran_1, data_kamiran_2,data_kamiran_3)
+data <- subset(data, data$fair.bound %in% data_kamiran_3$fair.bound)
+
+data$approach <- as.factor(data$approach)
+data$approach<- factor(data$approach, levels = c('FlowOCT','(IGC).Relab','(IGC-IGS).Relab','(IGC+IGS).Relab'))
+```
+
+```{r echo=TRUE, warning=FALSE}
+t_source = 'in-sample' 
+tmp <- subset(data,data$source == t_source) 
+x_title = ""
+y_title= ""
+legend_title = 'SP Bound'
+
+g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
+  geom_line(aes(linetype=approach), size=3) + 
+  geom_point(aes(color = fair.bound),size=10)+
+  scale_color_gradient(low="blue", high="red")+
+  scale_linetype_manual(values=c(1,3,2,4))+
+  labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
+  # xlim(-7, 17)+
+  # ylim(50, 85)+
+  theme(
+    # plot.title = element_text(size = 25),
+    axis.text = element_text(size = 45),
+    legend.position = "right", legend.key.size = unit(2, "cm"),
+    legend.text = element_text(size = 30),
+    legend.title = element_text(size = 35),
+    text = element_text(family=fontfam),
+    axis.title = element_text(size = 40)
+    ) 
+print(g1)
+
+
+fig_name = 'Corss_Validation_in-sample-results.pdf'
+
+ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
+
+```
+
+
+```{r echo=TRUE, warning=FALSE}
+t_source = 'out-of-sample'
+tmp <- subset(data,data$source == t_source) 
+x_title = ""
+y_title= ""
+legend_title = 'SP Bound'
+
+g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
+  geom_line(aes(linetype=approach), size=3) + 
+  geom_point(aes(color = fair.bound),size=10)+
+  scale_color_gradient(low="blue", high="red")+
+  scale_linetype_manual(values=c(1,3,2,4))+
+  labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
+  # xlim(-7, 17)+
+  # ylim(50, 85)+
+  theme(
+    # plot.title = element_text(size = 25),
+    axis.text = element_text(size = 45),
+    legend.position = "right", legend.key.size = unit(2, "cm"),
+    legend.text = element_text(size = 30),
+    legend.title = element_text(size = 35),
+    text = element_text(family=fontfam),
+    axis.title = element_text(size = 40)
+    ) 
+print(g1)
+
+
+fig_name = 'Corss_Validation_out-of-sample-results.pdf'
+
+ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
+# if (forpres)
+# {
+#   ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
+# } else {
+#   ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 12, height = 8, units =  "in")
+# }
+
+```
+
+
