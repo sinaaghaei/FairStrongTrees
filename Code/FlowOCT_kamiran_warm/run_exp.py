@@ -1,7 +1,7 @@
 import FlowOCTReplication
 
-timelimit = 200
-calibration_mode = 1
+timelimit = 20
+calibration_mode = 0
 
 # dataset_dict = {('compas','protected_feature'):'race',
 #  ('compas','positive_class'):1,
@@ -56,4 +56,4 @@ for data_set in ['compas']:
                                                          "--depth", depth, "--timelimit", timelimit, "-i", l,
                                                          "--fairness_type",fairness_type_bound[0], "--fairness_bound", fairness_type_bound[1],
                                                          "--protected_feature", dataset_dict[(data_set,'protected_feature')], "--positive_class", dataset_dict[(data_set,'positive_class')],"--conditional_feature", 'priors_count',
-                                                         "--calibration_mode", calibration_mode, "--sample", 1, "--deprived", dataset_dict[(data_set,'deprived_group')],"--warm_start_depth", 1])
+                                                         "-o", calibration_mode, "--sample", 1, "--deprived", dataset_dict[(data_set,'deprived_group')],"--warm_start_depth", 1])
