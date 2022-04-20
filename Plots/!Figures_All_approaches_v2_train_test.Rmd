@@ -210,11 +210,11 @@ g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
   scale_color_gradient(low="blue", high="red")+
   scale_linetype_manual(values=c(1,3,2,4))+
   labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
-  # xlim(-7, 17)+#all
+  xlim(-7, 17)+#all
   #xlim(-7, 12.5)+#limited-adult
   # xlim(0, 17)+#compas
   # xlim(-2, 9)+#german
-  # ylim(50, 85)+
+  ylim(50, 85)+
   theme(
     # plot.title = element_text(size = 25),
     axis.text = element_text(size = 45),

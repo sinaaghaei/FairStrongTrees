@@ -33,6 +33,8 @@ require(scales)
 rm(list=ls())
 library(extrafont)
 
+
+data_name = 'adult'
 ```
 
 
@@ -111,49 +113,9 @@ cross_validation <- function (data) {
 
 ```
 
+#Preparing Data function
 
-# Readine Flow_kamiran_warm results
-
-```{r echo=TRUE, warning=FALSE}
-data= read.csv('./../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 1/FlowKamiran_warm_compas_d6_calib-1.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-data_name = 'german'
-header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
-
-names(data) <- names(header)
-rm(header)
-
-fontfam = "sans" #sans serif
-
-figure_path = "./"
-
-
-
-data$sample <- as.factor(data$sample)
-# data$depth <- as.factor(data$depth)
-data$fair.type <- as.factor(data$fair.type)
-# data$fair.bound <- as.factor(data$fair.bound)
-
-
-tmp_none <- data[data$fair.type == 'None',]
-tmp_none$fair.type = 'SP'
-data = rbind(data,tmp_none)
-
-data <- data[data$fair.type!= 'None',]
-data$fair.type <- droplevels(data$fair.type)
-rm(tmp_none)
-data <- data[data$depth!=2,]
-```
-
-
-
-# Cross validating
-
-```{r echo=TRUE, warning=FALSE}
-data_flow <- cross_validation(data)
-rm(data)
-```
-
-#Preparing Data
+I group by fairness bound and take avg across 5 splits
 
 ```{r echo=TRUE, warning=FALSE}
 prepare <- function (data) {
@@ -182,6 +144,57 @@ tmp <- rbind(tmp1,tmp2)
 tmp
 }
 ```
+
+# Readine FlowOCT Results (The warm_start version)
+
+```{r echo=TRUE, warning=FALSE}
+if(data_name == 'adult'){
+  file_address = './../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 1/FlowKamiran_warm_limited-adult-2_d6_calib-1.csv'
+}else if(data_name == 'compas'){
+  file_address = './../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 1/FlowKamiran_warm_compas_d6_calib-1.csv'
+}else if(data_name == 'german'){
+  file_address = './../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 1/FlowKamiran_warm_german_d6_calib-1.csv'
+} 
+
+data= read.csv(file_address, header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+
+names(data) <- names(header)
+rm(header)
+
+fontfam = "sans" #sans serif
+
+
+
+data$sample <- as.factor(data$sample)
+# data$depth <- as.factor(data$depth)
+data$fair.type <- as.factor(data$fair.type)
+# data$fair.bound <- as.factor(data$fair.bound)
+
+
+tmp_none <- data[data$fair.type == 'None',]
+tmp_none$fair.type = 'SP'
+data = rbind(data,tmp_none)
+
+data <- data[data$fair.type!= 'None',]
+data$fair.type <- droplevels(data$fair.type)
+rm(tmp_none)
+data <- data[data$depth!=2,]
+
+if(data_name == 'compas'){# Kamiran couldn't run depth 6 on kamiran
+  data <- data[data$depth!=6,]
+}
+```
+
+
+
+# Cross validating
+
+```{r echo=TRUE, warning=FALSE}
+data_flow <- cross_validation(data)
+rm(data)
+```
+
 #Preparing Data
 ```{r echo=TRUE, warning=FALSE}
 data_flow$approach <- "FlowOCT"
@@ -192,9 +205,16 @@ data_flow <- prepare(data_flow)
 # Reading and preparing the kamiran's results
 
 ```{r echo=TRUE, warning=FALSE}
+if(data_name == 'adult'){
+  file_address = './../Results/Kamiran/tuning/final/igc_relab/limited-adult-2.csv'
+}else if(data_name == 'compas'){
+  file_address = './../Results/Kamiran/tuning/final/igc_relab/compas.csv'
+}else if(data_name == 'german'){
+  file_address = './../Results/Kamiran/tuning/final/igc_relab/german.csv'
+}
 
 ################################################## (IGC).Relab
-data= read.csv('./../Results/Kamiran/tuning/final/igc_relab/compas.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv(file_address, header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 header= read.csv('./../Results/Kamiran/tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 names(data) <- names(header)
 rm(header)
@@ -204,6 +224,9 @@ data$approach <- '(IGC).Relab'
 
 data <- data[,c('approach',"sample",'fair.bound','depth','train.acc','sp.train.pred','test.acc','sp.test.pred',"cal.acc","sp.cal.pred")]
 
+if(data_name == 'compas'){# Kamiran couldn't run depth 6 on kamiran
+  data <- data[data$depth!=6,]
+}
 
 data_kamiran_1 <- cross_validation(data)
 rm(data)
@@ -211,7 +234,7 @@ data_kamiran_1 <- prepare(data_kamiran_1)
 data_kamiran_1$acc <- data_kamiran_1$acc/100
 
 ################################################## (IGC-IGS).Relab
-data= read.csv('./../Results/Kamiran/tuning/final/igc-igs_relab/compas.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv(file_address, header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 header= read.csv('./../Results/Kamiran/tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 names(data) <- names(header)
 rm(header)
@@ -221,6 +244,9 @@ data$approach <- '(IGC-IGS).Relab'
 
 data <- data[,c('approach',"sample",'fair.bound','depth','train.acc','sp.train.pred','test.acc','sp.test.pred',"cal.acc","sp.cal.pred")]
 
+if(data_name == 'compas'){# Kamiran couldn't run depth 6 on kamiran
+  data <- data[data$depth!=6,]
+}
 
 data_kamiran_2 <- cross_validation(data)
 rm(data)
@@ -229,7 +255,7 @@ data_kamiran_2$acc <- data_kamiran_2$acc/100
 
 
 ################################################## (IGC+IGS).Relab
-data= read.csv('./../Results/Kamiran/tuning/final/igc+igs_relab/compas.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data= read.csv(file_address, header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 header= read.csv('./../Results/Kamiran/tuning/header.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
 names(data) <- names(header)
 rm(header)
@@ -239,6 +265,9 @@ data$approach <- '(IGC+IGS).Relab'
 
 data <- data[,c('approach',"sample",'fair.bound','depth','train.acc','sp.train.pred','test.acc','sp.test.pred',"cal.acc","sp.cal.pred")]
 
+if(data_name == 'compas'){# Kamiran couldn't run depth 6 on kamiran
+  data <- data[data$depth!=6,]
+}
 
 data_kamiran_3 <- cross_validation(data)
 rm(data)
@@ -256,77 +285,71 @@ data$approach <- as.factor(data$approach)
 data$approach<- factor(data$approach, levels = c('FlowOCT','(IGC).Relab','(IGC-IGS).Relab','(IGC+IGS).Relab'))
 ```
 
+
+
+# Plotting
+
+
+## Defualt
+
 ```{r echo=TRUE, warning=FALSE}
-t_source = 'in-sample' 
-tmp <- subset(data,data$source == t_source) 
-x_title = ""
-y_title= ""
-legend_title = 'SP Bound'
 
-g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
-  geom_line(aes(linetype=approach), size=3) + 
-  geom_point(aes(color = fair.bound),size=10)+
-  scale_color_gradient(low="blue", high="red")+
-  scale_linetype_manual(values=c(1,3,2,4))+
-  labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
-  # xlim(-7, 17)+
-  # ylim(50, 85)+
-  theme(
-    # plot.title = element_text(size = 25),
-    axis.text = element_text(size = 45),
-    legend.position = "right", legend.key.size = unit(2, "cm"),
-    legend.text = element_text(size = 30),
-    legend.title = element_text(size = 35),
-    text = element_text(family=fontfam),
-    axis.title = element_text(size = 40)
-    ) 
-print(g1)
+default_plot<- function(data, t_source){
+  tmp <- subset(data,data$source == t_source) 
+  x_title = ""
+  y_title= ""
+  legend_title = 'SP Bound'
+  
+  g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
+      geom_line(aes(linetype=approach), size=3) + 
+      geom_point(aes(color = fair.bound),size=10)+
+      scale_color_gradient(low="blue", high="red")+
+      scale_linetype_manual(values=c(1,3,2,4))+
+      labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
+      # xlim(-7, 17)+
+      ylim(50, 85)+
+      theme(
+        # plot.title = element_text(size = 25),
+        axis.text = element_text(size = 45),
+        legend.position = "right", legend.key.size = unit(2, "cm"),
+        legend.text = element_text(size = 30),
+        legend.title = element_text(size = 35),
+        text = element_text(family=fontfam),
+        axis.title = element_text(size = 40)
+      ) 
+  
+  figure_path = "./EAAMO/calibration d6/default/"
+  fig_name = paste('cross_validation_',data_name,'_', t_source,'.pdf', sep = '')
+  
+  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")#width = 12, height = 8
+}
+```
 
 
-fig_name = 'Corss_Validation_in-sample-results.pdf'
 
-ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
+
+
+## No circles
+
+
+
+
+## different point shapes per approach
+
+
+
+## depth circles
+
+
+
+
+```{r echo=TRUE, warning=FALSE}
+default_plot(data, 'in-sample')
+default_plot(data, 'out-of-sample')
+
 
 ```
 
 
-```{r echo=TRUE, warning=FALSE}
-t_source = 'out-of-sample'
-tmp <- subset(data,data$source == t_source) 
-x_title = ""
-y_title= ""
-legend_title = 'SP Bound'
-
-g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
-  geom_line(aes(linetype=approach), size=3) + 
-  geom_point(aes(color = fair.bound),size=10)+
-  scale_color_gradient(low="blue", high="red")+
-  scale_linetype_manual(values=c(1,3,2,4))+
-  labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
-  # xlim(-7, 17)+
-  # ylim(50, 85)+
-  theme(
-    # plot.title = element_text(size = 25),
-    axis.text = element_text(size = 45),
-    legend.position = "right", legend.key.size = unit(2, "cm"),
-    legend.text = element_text(size = 30),
-    legend.title = element_text(size = 35),
-    text = element_text(family=fontfam),
-    axis.title = element_text(size = 40)
-    ) 
-print(g1)
-
-
-fig_name = 'Corss_Validation_out-of-sample-results.pdf'
-
-ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
-# if (forpres)
-# {
-#   ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
-# } else {
-#   ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 12, height = 8, units =  "in")
-# }
-
-```
 
 
