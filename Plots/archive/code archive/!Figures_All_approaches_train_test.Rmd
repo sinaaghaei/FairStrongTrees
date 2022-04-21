@@ -1,0 +1,243 @@
+---
+title: "Generating The Figures"
+author: "Sina Aghaei"
+date: "10/24/2020"
+output: 
+  # flexdashboard::flex_dashboard:
+  #   orientation: columns
+  html_document:
+    # number_sections: true
+ 
+---
+
+
+In this script we provide the code for generating the figures in the paper.
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,message = FALSE,warning = FALSE )
+library(kableExtra)
+library(png)
+library(ggplot2)
+library(reshape2)
+library(egg)
+require(tidyr)
+require(dplyr)
+library(dplyr)
+library(latex2exp)
+# library(ggpubr)
+library(data.table)
+library(RColorBrewer)
+library(MASS)
+require(scales)
+rm(list=ls())
+library(extrafont)
+
+
+data= read.csv('./../Results/EAAMO/Flow_KamiranVersion_warm (April 19)/calib 0/FlowKamiran_warm_compas_d3_calib_0.csv', header=FALSE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data_name = 'compas'
+header= read.csv('./../header_kamiran.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+
+names(data) <- names(header)
+rm(header)
+
+fontfam = "sans" #sans serif
+
+figure_path = "./"
+
+
+
+data$sample <- as.factor(data$sample)
+# data$depth <- as.factor(data$depth)
+data$fair.type <- as.factor(data$fair.type)
+data$fair.bound <- as.factor(data$fair.bound)
+
+
+tmp_none <- data[data$fair.type == 'None',]
+tmp_none$fair.type = 'SP'
+data = rbind(data,tmp_none)
+
+data <- data[data$fair.type!= 'None',]
+data$fair.type <- droplevels(data$fair.type)
+rm(tmp_none)
+
+# data$data <- data_name
+```
+
+#Preparing Data
+```{r echo=TRUE, warning=FALSE}
+tmp <- data[,c("approach",'sample',"depth","fair.bound","train.acc",'test.acc',
+                   "sp.train.pred","sp.test.pred")]
+
+tmp <- tmp %>%
+  group_by(approach,depth, fair.bound) %>%
+  summarise(mean(train.acc),mean(test.acc), mean(sp.train.pred),
+            mean(sp.test.pred))
+
+names(tmp) <- c("approach","depth","fair.bound","train.acc",'test.acc',
+                   "train.disc","test.disc")
+
+tmp$fair.bound <- as.numeric(as.character(tmp$fair.bound))
+
+
+tmp1 <- tmp[,c("approach","depth","fair.bound","test.acc","test.disc")]
+tmp1$source <- 'out-of-sample'
+names(tmp1) <- c("approach","depth","fair.bound","acc","disc",'source')
+tmp2 <- tmp[,c("approach","depth","fair.bound","train.acc","train.disc")]
+tmp2$source <- 'in-sample'
+names(tmp2) <- c("approach","depth","fair.bound","acc","disc",'source')
+tmp <- rbind(tmp1,tmp2)
+rm(tmp1,tmp2)
+
+
+data_flow <- tmp
+data_flow$data <- NULL
+rm(tmp,data)
+```
+
+# Reading and preparing the kamiran's results
+```{r echo=TRUE, warning=FALSE}
+
+data= read.csv('./../Results/Kamiran/compas.csv', header=TRUE, sep=',', na.strings="", stringsAsFactors =TRUE) 
+data$depth <- data$depth + 1
+data <- data %>%
+  group_by(depth, fair.bound) %>%
+  summarise(mean(acc_tr_pre),mean(disc_tr_pre),mean(acc_te_pre), mean(disc_te_pre),
+            mean(train.acc),mean(sp.train.pred),mean(test.acc),mean(sp.test.pred))
+
+names(data) <- c("depth","fair.bound",'acc_tr_pre','disc_tr_pre','acc_te_pre','disc_te_pre','train.acc','sp.train.pred','test.acc','sp.test.pred')
+
+
+
+
+
+data$approach <- 'DADT'
+
+data_relab <- data[,c('approach','depth','fair.bound','train.acc','sp.train.pred','test.acc','sp.test.pred')]
+# data_relab$approach <- 'Kamiran_relab'
+
+data_relab_train <- data_relab[,c('approach','depth','fair.bound','train.acc','sp.train.pred')]
+data_relab_train$source <- 'in-sample'
+names(data_relab_train) <- c('approach','depth','fair.bound','acc','disc','source')
+
+data_relab_test <- data_relab[,c('approach','depth','fair.bound','test.acc','sp.test.pred')]
+data_relab_test$source <- 'out-of-sample'
+names(data_relab_test) <- c('approach','depth','fair.bound','acc','disc','source')
+
+data_relab <- rbind(data_relab_train, data_relab_test)
+rm(data_relab_test, data_relab_train)
+
+
+
+data_pre <- data[,c('approach','depth','fair.bound','acc_tr_pre','disc_tr_pre','acc_te_pre','disc_te_pre')]
+
+data_pre_train <- data_pre[,c('approach','depth','fair.bound','acc_tr_pre','disc_tr_pre')]
+data_pre_train$source <- 'in-sample'
+names(data_pre_train) <- c('approach','depth','fair.bound','acc','disc','source')
+
+data_pre_test <- data_pre[,c('approach','depth','fair.bound','acc_te_pre','disc_te_pre')]
+data_pre_test$source <- 'out-of-sample'
+names(data_pre_test) <- c('approach','depth','fair.bound','acc','disc','source')
+
+data_pre <- rbind(data_pre_train, data_pre_test)
+rm(data_pre_test, data_pre_train, data)
+
+data_pre$fair.bound <- 1
+data_pre <- unique(data_pre)
+
+
+# data_kamiran <- rbind(data_pre, data_relab)
+data_kamiran <- data_relab
+rm(data_pre, data_relab)
+
+data_kamiran$acc <- data_kamiran$acc/100
+```
+
+
+```{r echo=TRUE, warning=FALSE}
+data <- rbind(data_flow, data_kamiran)
+data <- subset(data, data$fair.bound %in% data_kamiran$fair.bound)
+
+data$approach <- as.factor(data$approach)
+data$approach<- factor(data$approach, levels = c("FlowOCT","DADT"))
+```
+
+```{r echo=TRUE, warning=FALSE}
+t_depth = 3
+t_source = 'in-sample' 
+tmp <- subset(data,data$depth ==t_depth & data$source == t_source) 
+x_title = ""
+y_title= ""
+legend_title = 'SP Bound'
+
+g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
+  geom_line(aes(linetype=approach), size=3) + 
+  geom_point(aes(color = fair.bound),size=10)+
+  scale_color_gradient(low="blue", high="red")+
+  labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
+  # xlim(-7, 17)+#all
+  #xlim(-7, 12.5)+#limited-adult
+  # xlim(0, 17)+#compas
+  # xlim(-2, 9)+#german
+  # ylim(50, 85)+
+  theme(
+    # plot.title = element_text(size = 25),
+    axis.text = element_text(size = 45),
+    legend.position = "right", legend.key.size = unit(1, "cm"),
+    legend.text = element_text(size = 30),
+    legend.title = element_text(size = 35),
+    text = element_text(family=fontfam),
+    axis.title = element_text(size = 40)
+    ) 
+print(g1)
+
+
+fig_name = paste('1vs1_',data_name,'_depth_',t_depth,'_', t_source,'.pdf', sep = '')
+
+ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
+
+```
+
+
+```{r echo=TRUE, warning=FALSE}
+t_source = 'out-of-sample'
+tmp <- subset(data,data$depth ==t_depth & data$source == t_source) 
+x_title = ""
+y_title= ""
+legend_title = 'SP Bound'
+
+g1 <- ggplot(tmp,aes(x=((disc))*100, y=acc*100)) +
+  geom_line(aes(linetype=approach), size=3) + 
+  geom_point(aes(color = fair.bound),size=10)+
+  scale_color_gradient(low="blue", high="red")+
+  labs(x=x_title, y = y_title, linetype = "Data", color =legend_title)+
+  # xlim(-7, 17)+#all
+  #xlim(-7, 12.5)+#limited-adult
+  # xlim(0, 17)+#compas
+  # xlim(-2, 9)+#german
+  # ylim(50, 85)+
+  theme(
+    # plot.title = element_text(size = 25),
+    axis.text = element_text(size = 45),
+    legend.position = "right", legend.key.size = unit(1, "cm"),
+    legend.text = element_text(size = 30),
+    legend.title = element_text(size = 35),
+    text = element_text(family=fontfam),
+    axis.title = element_text(size = 40)
+    ) 
+print(g1)
+
+
+fig_name = paste('1vs1_',data_name,'_depth_',t_depth,'_', t_source,'.pdf', sep = '')
+
+ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
+# if (forpres)
+# {
+#   ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")
+# } else {
+#   ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 12, height = 8, units =  "in")
+# }
+
+```
+
+
