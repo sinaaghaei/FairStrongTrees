@@ -35,7 +35,7 @@ library(extrafont)
 
 
 fontfam = "sans" #sans serif
-data_name = 'compas'
+data_name = 'german'
 ```
 
 
@@ -458,34 +458,45 @@ depth_circles_plot<- function(data, t_source){
 
 
 ```{r echo=TRUE, warning=FALSE}
-default_plot(data, 'in-sample')
-default_plot(data, 'out-of-sample')
-
-no_circles_plot(data, 'in-sample')
-no_circles_plot(data, 'out-of-sample')
-
-diff_point_shapes_plot(data, 'in-sample')
-diff_point_shapes_plot(data, 'out-of-sample')
-
-
-depth_circles_plot(data, 'in-sample')
-depth_circles_plot(data, 'out-of-sample')
+# default_plot(data, 'in-sample')
+# default_plot(data, 'out-of-sample')
+# 
+# no_circles_plot(data, 'in-sample')
+# no_circles_plot(data, 'out-of-sample')
+# 
+# diff_point_shapes_plot(data, 'in-sample')
+# diff_point_shapes_plot(data, 'out-of-sample')
+# 
+# 
+# depth_circles_plot(data, 'in-sample')
+# depth_circles_plot(data, 'out-of-sample')
 
 
 ```
 
-
+```{r echo=TRUE, warning=FALSE}
+figure_path = "./EAAMO/calibration d6/"
+fig_name_flow = paste('cross_validation_FairOCT_',data_name,'.csv', sep = '')
+fig_name_kam_1 = paste('cross_validation_IGC_Relab_',data_name,'.csv', sep = '')
+fig_name_kam_2 = paste('cross_validation_IGC-IGS_Relab_',data_name,'.csv', sep = '')
+fig_name_kam_3 = paste('cross_validation_IGC+IGS_Relab_',data_name,'.csv', sep = '')
+  
+write.csv(data_flow, paste(figure_path,fig_name_flow,sep = ""), row.names = FALSE)
+write.csv(data_kamiran_1, paste(figure_path,fig_name_kam_1,sep = ""), row.names = FALSE)
+write.csv(data_kamiran_2, paste(figure_path,fig_name_kam_2,sep = ""), row.names = FALSE)
+write.csv(data_kamiran_3, paste(figure_path,fig_name_kam_3,sep = ""), row.names = FALSE)
+```
 
 ```{r echo=TRUE, warning=FALSE}
-data_flow$x <- data_flow$acc/data_flow$depth
-data_kamiran_1$x <- data_kamiran_1$acc/data_kamiran_1$depth
-data_kamiran_2$x <- data_kamiran_2$acc/data_kamiran_2$depth
-data_kamiran_3$x <- data_kamiran_3$acc/data_kamiran_3$depth
-
-summary(data_flow$x)
-summary(data_kamiran_1$x)
-summary(data_kamiran_2$x)
-summary(data_kamiran_3$x)
+# data_flow$x <- data_flow$acc/data_flow$depth
+# data_kamiran_1$x <- data_kamiran_1$acc/data_kamiran_1$depth
+# data_kamiran_2$x <- data_kamiran_2$acc/data_kamiran_2$depth
+# data_kamiran_3$x <- data_kamiran_3$acc/data_kamiran_3$depth
+# 
+# summary(data_flow$x)
+# summary(data_kamiran_1$x)
+# summary(data_kamiran_2$x)
+# summary(data_kamiran_3$x)
 ```
 
 
