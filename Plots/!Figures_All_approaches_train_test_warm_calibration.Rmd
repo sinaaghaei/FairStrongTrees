@@ -62,7 +62,7 @@ cross_validation <- function (data) {
       group_by(sample, fair.bound) %>%
       summarise(count=n())
   if(data_name == 'compas'){# Kamiran can't run depth 6 
-    tmp_false <- subset(tmp_false, tmp_false$count==4)#3,4,5
+    tmp_false <- subset(tmp_false, tmp_false$count==3)#3,4,5
   }else{
     tmp_false <- subset(tmp_false, tmp_false$count==4)# 3,4,5,6
   }
@@ -457,18 +457,18 @@ depth_circles_plot<- function(data, t_source){
 
 
 ```{r echo=TRUE, warning=FALSE}
-default_plot(data, 'in-sample')
-default_plot(data, 'out-of-sample')
-
-no_circles_plot(data, 'in-sample')
-no_circles_plot(data, 'out-of-sample')
-
-diff_point_shapes_plot(data, 'in-sample')
-diff_point_shapes_plot(data, 'out-of-sample')
-
-
-depth_circles_plot(data, 'in-sample')
-depth_circles_plot(data, 'out-of-sample')
+# default_plot(data, 'in-sample')
+# default_plot(data, 'out-of-sample')
+# 
+# no_circles_plot(data, 'in-sample')
+# no_circles_plot(data, 'out-of-sample')
+# 
+# diff_point_shapes_plot(data, 'in-sample')
+# diff_point_shapes_plot(data, 'out-of-sample')
+# 
+# 
+# depth_circles_plot(data, 'in-sample')
+# depth_circles_plot(data, 'out-of-sample')
 
 
 ```
