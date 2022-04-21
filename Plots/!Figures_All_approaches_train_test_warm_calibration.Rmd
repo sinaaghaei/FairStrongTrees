@@ -35,7 +35,7 @@ library(extrafont)
 
 
 fontfam = "sans" #sans serif
-data_name = 'adult'
+data_name = 'compas'
 ```
 
 
@@ -367,6 +367,7 @@ no_circles_plot<- function(data, t_source){
       # ylim(50, 85)+
       theme(
         # plot.title = element_text(size = 25),
+        plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm"),
         axis.text = element_text(size = 45),
         legend.position = "right", legend.key.size = unit(2, "cm"),
         legend.text = element_text(size = 30),
@@ -378,7 +379,7 @@ no_circles_plot<- function(data, t_source){
   figure_path = "./EAAMO/calibration d6/no circles/"
   fig_name = paste('cross_validation_',data_name,'_', t_source,'.pdf', sep = '')
   
-  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")#width = 12, height = 8
+  ggsave(paste(figure_path,fig_name,sep = ""),device = "pdf", width = 16, height = 12, units =  "in")#width = 16, height = 12
 }
 ```
 
@@ -457,18 +458,18 @@ depth_circles_plot<- function(data, t_source){
 
 
 ```{r echo=TRUE, warning=FALSE}
-# default_plot(data, 'in-sample')
-# default_plot(data, 'out-of-sample')
-# 
-# no_circles_plot(data, 'in-sample')
-# no_circles_plot(data, 'out-of-sample')
-# 
-# diff_point_shapes_plot(data, 'in-sample')
-# diff_point_shapes_plot(data, 'out-of-sample')
-# 
-# 
-# depth_circles_plot(data, 'in-sample')
-# depth_circles_plot(data, 'out-of-sample')
+default_plot(data, 'in-sample')
+default_plot(data, 'out-of-sample')
+
+no_circles_plot(data, 'in-sample')
+no_circles_plot(data, 'out-of-sample')
+
+diff_point_shapes_plot(data, 'in-sample')
+diff_point_shapes_plot(data, 'out-of-sample')
+
+
+depth_circles_plot(data, 'in-sample')
+depth_circles_plot(data, 'out-of-sample')
 
 
 ```
