@@ -4,7 +4,7 @@ import sys
 path = '/Users/sina/Documents/GitHub/FairStrongTrees/'
 approach_name = 'FlowOCT' #
 samples = [1,2,3,4,5]
-depths = [2]
+depths = [3]
 time_limit = 10800
 
 dataset_dict = {
@@ -20,6 +20,10 @@ dataset_dict = {
  ('german','positive_class'):2,
  ('german','deprived_group'):1,
  ('german','conditional_feature'):'credit_history',
+('german_binary','protected_feature'):'age',
+('german_binary','positive_class'):2,
+('german_binary','deprived_group'):1,
+('german_binary','conditional_feature'):'credit_history',
  ('adult','protected_feature'):'sex',
  ('adult','positive_class'):2,
  ('adult','deprived_group'):1,
@@ -33,9 +37,9 @@ dataset_dict = {
  ('default','deprived_group'):2,
  ('default','conditional_feature'):'LIMIT_BAL',}
 
-dset = 'compas'# german compas adult default kamiran_compas
+dset = 'german_binary'# german_binary german compas adult default kamiran_compas
 bounds = [x / 100.0 for x in range(1, 56, 1)]#[x / 100.0 for x in range(1, 56, 1)] #[0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
-fairness_type = ['None', 'SP','CSP','PE','EOpp','EOdds'] #'CSP' 'PE' 'EOpp' 'EOdds'
+fairness_type = ['None', 'SP','PE','EOpp','EOdds'] #'CSP' 'PE' 'EOpp' 'EOdds'
 
 
 _lambda = 0
