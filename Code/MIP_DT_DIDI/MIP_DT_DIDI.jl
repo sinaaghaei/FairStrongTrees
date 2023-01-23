@@ -74,6 +74,7 @@ if data_group == "compas"
     # We need the class label to be binary (0,1). In this data, the class lables are (1,2)
     data_train[!,class] .-= 1;
     data_test[!,class] .-= 1;
+    data_calibration[!,class] .-= 1;
 
 
     deprvied_group = 1
@@ -97,6 +98,7 @@ if data_group == "german_binary"
     # We need the class label to be binary (0,1). In this data, the class lables are (1,2)
     data_train[!,class] .-= 1;
     data_test[!,class] .-= 1;
+    data_calibration[!,class] .-= 1;
 
     positive_class = 1
     deprvied_group = 1
@@ -120,6 +122,7 @@ if data_group == "adult"
     # We need the class label to be binary (0,1). In this data, the class lables are (1,2)
     data_train[!,class] .-= 1;
     data_test[!,class] .-= 1;
+    data_calibration[!,class] .-= 1;
 
     deprvied_group = 1
     positive_class = 1
@@ -174,9 +177,9 @@ function get_MIP_model(nn, nl, left, right, data_train, B, class, F_c, F_q, lamb
     N = size(data,1)
 
     # Parameters
-    M=200;
-    M2=200;
-    ep=0.1;
+    M = maximum(maximum.(eachcol(data[!,F_q])));
+    M2= M;
+    ep= minimum(minimum.(eachcol(data[!,F_q])));
 
     fair = 1; # whether we have fairness penalty (fair=1) or not (fair=0)
     if lambda ==0
@@ -253,18 +256,23 @@ function get_MIP_model(nn, nl, left, right, data_train, B, class, F_c, F_q, lamb
     #Fairness constraints
     ############################################
     if fair == 1
+        # We assune y is binary 0 and 1
         # rpp[y,xp] = |P(y) - P(y|xp)|
-        for y in levels(data[!,class]), xp in levels(data[!,B])
-            # Let's |i: data[i,B]=xp|
-            N_xp = size(data[(data[!,B] .== xp),:],1)
+        for xp in levels(data[!,B])
+            N_xp = size(data[(data[!,B] .== xp),:],1) # |i: data[i,B]=xp|
             if (N_xp!= 0)
-            @constraint(model, sum(ind(sum(rp[i,l] for l=1:nl)==y) for i=1:N)/ N
-                             - sum(ind(sum(rp[i,l] for l=1:nl)==y) for i=1:N if (data[i,B]==xp) )/N_xp<= rpp[y,xp]);
-            @constraint(model, -sum(ind(sum(rp[i,l] for l=1:nl)==y) for i=1:N)/ N
-                               +sum(ind(sum(rp[i,l] for l=1:nl)==y) for i=1:N if (data[i,B]==xp) )/N_xp<= rpp[y,xp]);
+              @constraint(model, sum(sum(rp[i,l] for l=1:nl) for i=1:N)/ N
+                               - sum(sum(rp[i,l] for l=1:nl) for i=1:N if (data[i,B]==xp))/N_xp<= rpp[1,xp]);
+              @constraint(model, - sum(sum(rp[i,l] for l=1:nl) for i=1:N)/ N
+                                 + sum(sum(rp[i,l] for l=1:nl) for i=1:N if (data[i,B]==xp))/N_xp<= rpp[1,xp]);
 
+              @constraint(model,   sum((1-sum(rp[i,l] for l=1:nl)) for i=1:N)/ N
+                                 - sum((1-sum(rp[i,l] for l=1:nl)) for i=1:N if (data[i,B]==xp))/N_xp<= rpp[0,xp]);
+              @constraint(model, - sum((1-sum(rp[i,l] for l=1:nl)) for i=1:N)/ N
+                                 + sum((1-sum(rp[i,l] for l=1:nl)) for i=1:N if (data[i,B]==xp))/N_xp<= rpp[0,xp]);
             end
         end
+
 
         # rp[i,l] = x[i,l]*z[l] so sum(rp[i,l] over l) = yhat_i
         for i in 1:N, l in 1:nl
@@ -342,9 +350,9 @@ function get_predictions(nn,nl,left,right, ac, aq, b, s, z, time_limit, data_org
     #####################################################################
     model_pred = Model(Gurobi.Optimizer)
     set_optimizer_attribute(model_pred, "TimeLimit", time_limit)
-    M=200;
-    M2=200;
-    ep=0.1;
+    M = maximum(maximum.(eachcol(data[!,F_q])));
+    M2= M;
+    ep= minimum(minimum.(eachcol(data[!,F_q])));
     #####################################################################
     @variable(model_pred, x[1:N,1:nl],Bin);
     @variable(model_pred, gp[1:N,1:nn]>=0);
@@ -479,7 +487,7 @@ nn, nl, left, right = get_tree(depth);
 DT_model = get_MIP_model(nn, nl, left, right, data_train, B, class, F_c, F_q, lambda);
 
 # Let's solve the model
-set_optimizer_attribute(DT_model, "TimeLimit", time_limit);
+set_time_limit_sec(DT_model, time_limit);
 set_optimizer(DT_model, Gurobi.Optimizer);
 JuMP.optimize!(DT_model);
 
