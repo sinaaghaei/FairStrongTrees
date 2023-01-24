@@ -37,7 +37,7 @@ dataset_dict = {
  ('default','deprived_group'):2,
  ('default','conditional_feature'):'LIMIT_BAL',}
 
-dset = 'german_binary'# german_binary german compas adult default kamiran_compas
+dset = 'limited-adult'# german_binary german compas adult default kamiran_compas
 bounds = [x / 100.0 for x in range(1, 56, 1)]#[x / 100.0 for x in range(1, 56, 1)] #[0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6]
 fairness_type = ['None', 'SP','PE','EOpp','EOdds'] #'CSP' 'PE' 'EOpp' 'EOdds'
 
