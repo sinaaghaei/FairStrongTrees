@@ -54,8 +54,12 @@ N_train = size(data_train,1);
 data_test = CSV.read(file_path*test_file_name ,DataFrame);
 N_test = size(data_test,1);
 
-data_calibration = CSV.read(file_path*calibration_file_name ,DataFrame);
-
+# data_calibration = CSV.read(file_path*calibration_file_name ,DataFrame);
+if data_group != "german_binary"
+    data_calibration = CSV.read(file_path*calibration_file_name ,DataFrame);
+else
+    data_calibration = deepcopy(data_test);
+end
 
 if data_group == "compas"
     # Need to specify name of the column containing the class label and protected feature
@@ -88,7 +92,7 @@ if data_group == "german_binary"
 
     # Need to specify which column are categorical and which columns are non-categorical (quantitative)
     # categorical features
-    F_c = [:check_acc, :credit_history, :purpose, :saving_amo, :present_employment, :p_status, :guatan, :property, :installment, :Housing, :job, :telephn, :foreign_worker];
+    F_c = [:chek_acc, :credit_history, :purpose, :saving_amo, :present_employmment, :p_status, :guatan, :property, :installment, :Housing, :job, :telephn, :foreign_worker];
     nf_c=size(F_c,1);
 
     # quantitative features
@@ -105,7 +109,7 @@ if data_group == "german_binary"
 end
 
 
-if data_group == "adult"
+if data_group == "limited-adult-2"
     # Need to specify name of the column containing the class label and protected feature
     class = :target; # name of the class label in the dataset
     B = :sex; # protected feautre
@@ -450,6 +454,9 @@ function get_DIDI(data, class, label_souce, B)
 end
 
 function print_tree(nn, nl, data, F_c, F_q, ac, aq, b, s, z)
+    tree = []
+    nodes = []
+    leaves = []
     for n in 1:nn
         for j in F_c
             if ac[n,j]==1
@@ -460,20 +467,27 @@ function print_tree(nn, nl, data, F_c, F_q, ac, aq, b, s, z)
                     end
                 end
                 @printf("######## Node %d: Go to left if %s is in %s \n", n,j,string(left_levels))
+                push!(nodes, (n,j, string(left_levels)));
             end
         end
 
         for j in F_q
             if aq[n,j]==1
                 @printf("######## Node %d: Go to left if %s <= %f \n", n,j,b[n])
+                push!(nodes, (n,j, b[n]));
             end
         end
     end
 
     for n in 1:nl
         @printf("######## Leaf %d: %d \n",n ,z[n])
+        push!(leaves, (n,z[n]));
     end
 
+    push!(tree, nodes)
+    push!(tree, leaves)
+
+    tree
 end
 
 
@@ -501,7 +515,7 @@ s = round.(JuMP.value.(DT_model[:s]));
 z = round.(JuMP.value.(DT_model[:z]));
 
 
-print_tree(nn, nl, data_train, F_c, F_q, ac, aq, b, s, z)
+tree = print_tree(nn, nl, data_train, F_c, F_q, ac, aq, b, s, z);
 
 
 train_pred,train_acc = get_predictions(nn,nl,left,right, ac, aq, b, s, z, time_limit, data_train, F_c, F_q);
@@ -561,18 +575,18 @@ println("calibration_pred_sp=\t",calibration_pred_sp)
 ####################################################################################
 #Saving results
 ####################################################################################
-filePath = "./../../Results/"*"MIP_DIDI_"*train_file_name*"_depth_"* string(depth)*"_lambda_"*string(lambda)*".csv";
+filePath = "./../../Results/MIP_DT_DIDI/"*"MIP_DIDI_"*train_file_name*"_depth_"* string(depth)*"_lambda_"*string(lambda)*".csv";
 
 header=["Approach", "train_file_name", "test_file_name", "kamiran_version", "N_train", "depth", "lambda", "time_limit",
            "obj_val", "gap",
            "train_acc", "train_data_didi", "train_pred_didi", "train_data_sp", "train_pred_sp",
            "test_acc", "test_data_didi", "test_pred_didi", "test_data_sp", "test_pred_sp",
-           "calibration_acc", "calibration_data_didi", "calibration_pred_didi", "calibration_data_sp", "calibration_pred_sp"];
+           "calibration_acc", "calibration_data_didi", "calibration_pred_didi", "calibration_data_sp", "calibration_pred_sp", "tree"];
 
 row_input=["MIP_DIDI", train_file_name, test_file_name, kamiran_version, N_train, depth, lambda, time_limit,
            objective_value(DT_model), relative_gap(DT_model::Model),
            train_acc, train_data_didi, train_pred_didi, train_data_sp, train_pred_sp,
            test_acc, test_data_didi, test_pred_didi, test_data_sp, test_pred_sp,
-           calibration_acc, calibration_data_didi, calibration_pred_didi, calibration_data_sp, calibration_pred_sp];
+           calibration_acc, calibration_data_didi, calibration_pred_didi, calibration_data_sp, calibration_pred_sp, string(tree)];
 
 CSV.write(filePath,  Tables.table(row_input), header = header)
