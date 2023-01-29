@@ -347,7 +347,7 @@ end
 
 
 
-function get_predictions(nn,nl,left,right, ac, aq, b, s, z, time_limit, data_org, F_c, F_q)
+function get_predictions(nn,nl,left,right, ac, aq, b, s, z, time_limit, data_train, data_org, F_c, F_q)
     data = deepcopy(data_org);
     N = size(data,1)
 
@@ -366,7 +366,7 @@ function get_predictions(nn,nl,left,right, ac, aq, b, s, z, time_limit, data_org
 
     # routing constraints for categorical features
     for i in 1:N,n in 1:nn
-        @constraint(model_pred,wc[i,n] == sum(sum(s[n,f,k]*ind(data[i,f]==k) for k in levels(data[!,f])) for f in F_c) );
+        @constraint(model_pred,wc[i,n] == sum(sum(s[n,f,k]*ind(data[i,f]==k) for k in levels(data_train[!,f])) for f in F_c) );
         for l in left[n]
             @constraint(model_pred,x[i,l] <= wc[i,n]+1-sum(ac[n,f] for f in F_c));
         end
@@ -518,17 +518,17 @@ z = round.(JuMP.value.(DT_model[:z]));
 tree = print_tree(nn, nl, data_train, F_c, F_q, ac, aq, b, s, z);
 
 
-train_pred,train_acc = get_predictions(nn,nl,left,right, ac, aq, b, s, z, time_limit, data_train, F_c, F_q);
+train_pred,train_acc = get_predictions(nn,nl,left,right, ac, aq, b, s, z, time_limit, data_train, data_train, F_c, F_q);
 data_train[!,:class_pred] = train_pred;
 println("train_acc=\t",train_acc)
 
 
-test_pred,test_acc = get_predictions(nn,nl,left,right, ac, aq, b, s, z, time_limit, data_test, F_c, F_q);
+test_pred,test_acc = get_predictions(nn,nl,left,right, ac, aq, b, s, z, time_limit, data_train, data_test, F_c, F_q);
 data_test[!,:class_pred] = test_pred;
 println("test_acc=\t",test_acc)
 
 
-calibration_pred,calibration_acc = get_predictions(nn,nl,left,right, ac, aq, b, s, z, time_limit, data_calibration, F_c, F_q);
+calibration_pred,calibration_acc = get_predictions(nn,nl,left,right, ac, aq, b, s, z, time_limit, data_train, data_calibration, F_c, F_q);
 data_calibration[!,:class_pred] = calibration_pred;
 println("calibration_acc=\t",calibration_acc)
 
