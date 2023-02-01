@@ -6,10 +6,10 @@ path = '/Users/sina/Documents/GitHub/FairStrongTrees/'
 approach_name = 'MIP_DT_DIDI'
 
 
-data_group = 'limited-adult'# german_binary german compas adult default limited_adult
+data_group = 'limited-adult-2'# german_binary german compas adult default limited_adult
 KamiranVersion = 0
 samples = [1,2,3,4,5]
-depths = [1,2,3]
+depths = [3]
 lambdas = [x / 100.0 for x in range(0, 100, 2)]
 time_limit = 10800
 
@@ -43,7 +43,7 @@ def generate():
         # S+="#SBATCH --ntasks=100\n"
         S+="#SBATCH --ntasks=1\n"
         S+="#SBATCH --cpus-per-task=4\n"
-        S+="#SBATCH --mem-per-cpu=4GB\n"
+        S+="#SBATCH --mem-per-cpu=14GB\n"
         S+="#SBATCH --time=05:00:00\n"
         S+="#SBATCH --export=NONE\n"
         S+="#SBATCH --constraint=\"xeon-2640v4\"\n"
