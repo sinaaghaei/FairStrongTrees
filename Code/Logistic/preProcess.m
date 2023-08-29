@@ -21,6 +21,6 @@ X = [ones(n, 1) X];
 
 
 prep.X = X;
-prep.y =y;
+prep.y = y;
 prep.p = p;
 

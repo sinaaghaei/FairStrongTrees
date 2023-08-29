@@ -6,7 +6,8 @@
 #SBATCH --export=NONE
 #SBATCH --constraint="xeon-2640v4"
 #SBATCH --array=0-1104
-
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=nathanael.jo@gmail.com
 
 cd /project/vayanou_651/FairStrongTrees/Code/FlowOCT/
 

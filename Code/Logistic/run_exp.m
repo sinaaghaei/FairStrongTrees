@@ -7,10 +7,25 @@
 %Load data
 clearvars
 % data_group = 'compas';
-data_train = readtable('../../DataSets/KamiranVersion/compas_train_1.csv');
-data_train_enc = readtable('../../DataSets/KamiranVersion/compas_train_enc_1.csv');
-data_train_enc.('target') = str2double(data_train_enc.('target'));
+data_path = "../../DataSets/KamiranVersion/";
+splits = ["1", "2", "3", "4", "5"];
+data_group = "compas";
 
+train_set = append(data_path, data_group, "_train_calibration_", splits, ".csv");
+train_set_enc = append(data_path, data_group, "_train_calibration_enc_", splits, ".csv");
+test_set = append(data_path, data_group, "_test_", splits, ".csv");
+test_set_enc = append(data_path, data_group, "_test_enc_", splits, ".csv");
+val_set = append(data_path, data_group, "_calibration_", splits, ".csv");
+val_set_enc = append(data_path, data_group, "_calibration_enc_", splits, ".csv");
+
+data_train = readtable('../../DataSets/KamiranVersion/compas_train_2.csv');
+data_train_enc = readtable('../../DataSets/KamiranVersion/compas_train_enc_2.csv');
+% data_train = readtable('../../DataSets/KamiranVersion/compas_train_2.csv');
+% data_train_enc = readtable('../../DataSets/KamiranVersion/compas_train_enc_2.csv');
+% data_train = readtable('../../DataSets/KamiranVersion/compas_train_2.csv');
+% data_train_enc = readtable('../../DataSets/KamiranVersion/compas_train_enc_2.csv');
+% fprintf('%d', height(data_train_enc));
+% hi = str2double(data_train_enc.target);
 %data specific parameters
 positive_class = 1;
 deprived_group = 1; 
@@ -28,7 +43,7 @@ p = preprocess.p; % The column of protected feature
 %General Parameters
 global ind_fair; global group_fair;  global lambda; global p_lvl; global M;
 
-group_fair = 0;
+group_fair = 1;
 ind_fair =  0;
 lambda = .1;
 
@@ -84,6 +99,22 @@ toc
 %% ============== Predict and Accuracies ==============
 
 % Compute accuracy on our training set
+tr_pred = predict(theta, X);
+tr_acc = mean(double(tr_pred == y)) * 100;
+fprintf('Train Accuracy: %f\n', tr_acc);
+
+tr_sp = get_sp(p,tr_pred,deprived_group,positive_class);
+fprintf('training statistical parity %f\n',tr_sp);
+
+% Compute accuracy on our test set
+te_pred = predict(theta, X);
+te_acc = mean(double(te_pred == y)) * 100;
+fprintf('Train Accuracy: %f\n', te_acc);
+
+te_sp = get_sp(p,te_pred,deprived_group,positive_class);
+fprintf('training statistical parity %f\n',te_sp);
+
+% Compute accuracy on our val set
 tr_pred = predict(theta, X);
 tr_acc = mean(double(tr_pred == y)) * 100;
 fprintf('Train Accuracy: %f\n', tr_acc);

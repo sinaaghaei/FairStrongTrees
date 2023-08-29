@@ -26,7 +26,8 @@ else
     % Get entropy
     ent_B = -sum(prob_B .* log2(prob_B));
     
-    result = ent_class + fair * ent_B; %H_class + H_B
+    % WE CHANGE THIS TO BE - if we want to do IGC-IGS
+    result = ent_class - fair * ent_B; %H_class + H_B
 end
 end
 

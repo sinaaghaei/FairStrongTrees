@@ -4,7 +4,7 @@ function [J] = costFunction(theta, X, y, p)
 %   parameter for logistic regression and the gradient of the cost
 %   w.r.t. to the parameters.
 
-global ind_fair;global group_fair; global M; global lambda; global p_lvl;
+global ind_fair; global group_fair; global M; global lambda; global p_lvl;
 
 % Initialize some useful values
 n = length(y); % number of training examples

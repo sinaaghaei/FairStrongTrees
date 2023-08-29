@@ -4,7 +4,7 @@
 % growing the tree
 
 function res = Copy_of_run_exp(data_train, data_train_enc, data_test, data_test_enc, ...
-    B_name, positive_class, deprived_group, lvl_loc, lvl_n, eps, fair, Dep_lim)
+    data_val, data_val_enc, B_name, positive_class, deprived_group, lvl_loc, lvl_n, eps, fair, Dep_lim)
 % Preprocess the data
 preprocess = preProcess(data_train_enc, data_train, B_name, lvl_loc, lvl_n)
 X = preprocess.X;
@@ -16,6 +16,11 @@ cols = preprocess.cols;
 preprocess_tes = preProcess(data_test_enc, data_test, B_name, lvl_loc, lvl_n)
 X_tes = preprocess_tes.X;
 Y_tes = preprocess_tes.Y;
+
+% Preprocess the val data
+preprocess_val = preProcess(data_val_enc, data_val, B_name, lvl_loc, lvl_n)
+X_val = preprocess_val.X;
+Y_val = preprocess_val.Y;
 
 % Build decision tree
 tic
@@ -76,7 +81,6 @@ res.disc_tr_pre = disc_tr;
 fprintf('disc tr before Relab %f\n',disc_tr);
 
 % evaluation
-
 prediction = pred(X_tes, decsn, p, Dep_lim, leaf_label);
 pred_inds_tes = prediction.inds;
 pred_labels_tes = prediction.pred_labels;
@@ -87,6 +91,18 @@ res.acc_te_pre = acc_tes*100;
 disc_tes = get_sp(X_tes(:,B_loc),pred_labels_tes,deprived_group,positive_class);
 fprintf('disc tes before Relab %f\n',disc_tes);
 res.disc_te_pre = disc_tes;
+fprintf('fair = %d\n', fair); 
+
+% val evaluation
+prediction = pred(X_val, decsn, p, Dep_lim, leaf_label);
+pred_inds_val = prediction.inds;
+pred_labels_val = prediction.pred_labels;
+acc_val = sum(Y_val==pred_labels_val)/size(Y_val,1);
+fprintf('acc val before Relab %f\n',acc_val*100);
+res.acc_val_pre = acc_val*100;
+disc_val = get_sp(X_val(:,B_loc),pred_labels_val,deprived_group,positive_class);
+fprintf('disc val before Relab %f\n',disc_val);
+res.disc_val_pre = disc_val;
 fprintf('fair = %d\n', fair); 
 
 % use training to calculate the relabaling costs and gains
@@ -115,4 +131,17 @@ fprintf('disc tes after Relab %f\n',disc_tes);
 
 res.acc_te_post = acc_tes*100;
 res.disc_te_post = disc_tes;
+
+%Evaluation on val after relab
+prediction = pred(X_val, decsn, p, Dep_lim, Relab.labls);
+pred_inds_val = prediction.inds;
+pred_labels_val = prediction.pred_labels;
+
+acc_val = sum(Y_val==pred_labels_val)/size(Y_val,1);
+fprintf('acc val after Relab %f\n',acc_val*100);
+disc_val = get_sp(X_val(:,B_loc),pred_labels_val,deprived_group,positive_class);
+fprintf('disc val after Relab %f\n',disc_val);
+
+res.acc_val_post = acc_val*100;
+res.disc_val_post = disc_val;
 
